@@ -1,0 +1,22 @@
+{
+  "name": "staff-appraisal-system",
+  "version": "1.0.0",
+  "description": "staff appraisal and evaluation system.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/deb1398/staff-appraisal-system.git"
+  },
+  "author": "Debashish Choudhury",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/deb1398/staff-appraisal-system/issues"
+  },
+  "homepage": "https://github.com/deb1398/staff-appraisal-system#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
