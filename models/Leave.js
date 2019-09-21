@@ -2,7 +2,24 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 //create Schema
-const PostLeave = new Schema({
+const LeaveRecord = new Schema({
+    pre_casual_leave: {
+        type: Number,
+        required: true
+    },
+    pre_outdoor_leave: {
+        type: Number,
+        required: true
+    },
+    pre_medical_leave: {
+        type: Number,
+        required: true
+    },
+    pre_special_leave: {
+        type: Number,
+        required: true
+    },
+
     post_casual_leave: {
         type: Number,
         required: true
@@ -25,4 +42,4 @@ const PostLeave = new Schema({
     }
 });
 
-mongoose.model('postleaves', PostLeave);
+mongoose.model('leaves', LeaveRecord);
