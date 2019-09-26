@@ -1,45 +1,48 @@
+{{!-- Dropdown for side bar --}}
+
 <ul id="dropdown2" class="dropdown-content">
-  <li><a href="/staffInfo" class = "black-text">Staff information</a></li>
-  <li><a href="/leaveform" class = "black-text">Leave form</a></li>
+  <li><a href="/teachingLoad" class="black-text">Teaching Load</a></li>
+  <li><a href="/newBooks" class="black-text">New Books</a></li>
+  <li><a href="/addedExp" class="black-text">Added Experiments</a></li>
+  <li><a href="/innovativeTeaching" class="black-text">Teaching Techniques</a></li>
   <li class="divider"></li>
-  <li><a href="#!" class = "black-text">More</a></li>
+  <li><a href="" class="black-text">Annexure 2</a></li>
+  <li><a href="" class="black-text">Annexure 3</a></li>
 </ul>
-<nav class="purple">
-    <div class="container">
-  <div class="nav-wrapper">
-    <a href="#!" class="brand-logo">Appraisal</a>
-    <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-    <ul class="right hide-on-med-and-down">
-      <li><a href="/">Home</a></li>
-      <li><a href="/about">About</a></li>
-      <!-- Dropdown Trigger -->
-      <li><a class="dropdown-trigger" href="" data-target="dropdown1">Profile<i class="material-icons right">arrow_drop_down</i></a></li>
-    </ul>
-    <ul id="dropdown1" class="dropdown-content text-black">
-  <li><a href="/staffinfo" class = "black-text">Staff information</a></li>
-  <li><a href="/leaveform" class = "black-text">Leave form</a></li>
-  <li class="divider"></li>
-  <li><a href="#!" class = "black-text">More</a></li>
-</ul>
+<div class="navbar-fixed">
+<nav class="purple fix">
+  <div class="container">
+    <div class="nav-wrapper">
+      <a href="#!" class="brand-logo">Appraisal</a>
+      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">About</a></li>
+        <!-- Dropdown Trigger -->
+        <li><a class="dropdown-trigger" href="" data-target="dropdown1">Academic<i
+              class="material-icons right">arrow_drop_down</i></a></li>
+        <li><a href="/leaveform">Leave</a></li>
+        <li><a href="/profile/index">Profile</a></li>
+      </ul>
+      <ul id="dropdown1" class="dropdown-content text-black">
+        <li><a href="teachingLoad" class="black-text">Teaching Load</a></li>
+        <li><a href="/newBooks" class="black-text">New Books</a></li>
+        <li><a href="/addedExp" class="black-text">Added Experiments</a></li>
+        <li><a href="/innovativeTeaching" class="black-text">Teaching Techniques</a></li>
+        <li class="divider"></li>
+        <li><a href="" class="black-text">Annexure 2</a></li>
+        <li><a href="" class="black-text">Annexure 3</a></li>
+      </ul>
+    </div>
   </div>
-  </div>
-
-
 </nav>
-
+</div>
 {{!-- side bar content for mobile view --}}
 <ul class="sidenav" id="mobile-demo">
-    <li><a href="/">Home</a></li>
-    <li><a href="/about">About</a></li>
-    <li><a class="dropdown-trigger" href="" data-target="dropdown2">Profile<i class="material-icons right">arrow_drop_down</i></a></li>
+  <li><a href="/">Home</a></li>
+  <li><a href="/about">About</a></li>
+  <li><a class="dropdown-trigger" href="" data-target="dropdown2">Academic<i
+        class="material-icons right">arrow_drop_down</i></a></li>
+  <li><a href="/leaveform">Leave</a></li>
+  <li><a href="/profile/index">Profile</a></li>
 </ul>
-
-  {{!-- tabs content --}}
-<ul class="tabs tabs-fixed-width tab-demo z-depth-1">
-    <li class="tab"><a href="/">Test 1</a></li>
-    {{!-- <li class="tab"><a class="active" href="/leaveform">Leave Form</a></li> --}}
-    <li class="tab"><a class="black-text" href="/leaveform">Leave Form</a></li>
-    {{!-- <li class="tab disabled"><a href="#test3">Disabled Tab</a></li> --}}
-    <li class="tab"><a href="#test4">Test 4</a></li>
-    <li class="tab"><a href="#test0">Test 5</a></li>
-  </ul>

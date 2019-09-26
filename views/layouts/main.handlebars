@@ -8,15 +8,27 @@
     <title>Appraisal System</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        .input-field label {
+            color: black !important;
+        }
+        .input-field input {
+            color: black !important;
+        }
+        .input-field input:focus+label {
+            color: black !important;
+        }
+
+    </style>
 
 </head>
 
 <body>
     {{> _navbar}}
     <div class="container">
-        <div class="container">
-            {{{body}}}
-        </div>
+
+        {{{body}}}
+
     </div>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
@@ -38,10 +50,8 @@
         $(document).ready(function () {
             $('select').formSelect();
         });
-
-        // tabs initialization
         $(document).ready(function () {
-            $('ul.tabs').tabs();
+            $('select').material_select();
         });
     </script>
 </body>

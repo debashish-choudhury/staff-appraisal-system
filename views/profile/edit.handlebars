@@ -1,0 +1,59 @@
+<h4>Staff Information Form</h4>
+<hr><br>
+<div class="row">
+    <form action="/profile/{{profile.id}}?_method=PUT" method="post" class="col s12">
+    <input type="hidden" name="_method" value="PUT">
+        <div class="row">
+            <div class="input-field col s6">
+                <input id="faculty_name" type="text" value="{{profile.faculty_name}}" name="faculty_name" class="validate" required>
+                <label for="faculty_name">Full Name</label>
+            </div>
+            <div class="input-field col s6">
+                <input id="designation" type="text" value="{{profile.designation}}" name="designation" class="validate" required>
+                <label for="designation">Designation</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s6">
+                <input id="department" type="text" value="{{profile.department}}" name="department" class="validate" required>
+                <label for="outdoor_leave">Department</label>
+            </div>
+            <div class="input-field col s6">
+                <input id="qualification" type="text" value="{{profile.qualification}}" name="qualification" class="validate" required>
+                <label for="qualification">Qualification</label>
+            </div>
+            
+        </div>
+        <div class="row">
+            <div class="input-field col s6">
+                <input id="teaching_exp" type="number" value="{{profile.teaching_exp}}" name="teaching_exp" class="validate" required>
+                <label for="teaching_exp">Teaching Exp.</label>
+            </div>
+            <div class="input-field col s6">
+                    <select name="appointment">
+                        <option value="" disabled selected>Appointment</option>
+                        <option value="Adhoc">Adhoc</option>
+                        <option value="Probationer">Probationer</option>
+                        <option value="Permanent">Permanent</option>
+                    </select>
+            </div>
+        </div>
+        <div class="row">
+            
+            <div class="input-field col s4">
+                <input id="date_of_join" type="date" value="{{profile.date_of_join}}" name="date_of_join" class="validate" required>
+                <label for="date_of_join">Date of joining</label>
+            </div>
+            <div class="input-field col s4">
+                <input id="DOB" type="date" value="{{profile.DOB}}" name="DOB" class="validate" required>
+                <label for="DOB">Date of birth</label>
+            </div>
+            <div class="input-field col s4">
+                <input id="salary" type="number" value="{{profile.salary}}" name="salary" class="validate" required>
+                <label for="salary">Present salary</label>
+            </div>
+        </div>
+        <button class="btn waves-effect waves-light darken-3" type="submit">Submit
+        </button>
+    </form>
+</div>
