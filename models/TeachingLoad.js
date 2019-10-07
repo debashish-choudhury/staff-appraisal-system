@@ -16,7 +16,7 @@ const TeachingRecord = new Schema({
         required: true
     },
     semester: {
-        type: Number,
+        type: String,
         required: true
     },
 

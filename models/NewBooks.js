@@ -12,7 +12,7 @@ const NewBooks = new Schema({
         required: true
     },
     semester: {
-        type: Number,
+        type: String,
         required: true
     },
     class: {

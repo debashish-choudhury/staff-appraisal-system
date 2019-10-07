@@ -12,7 +12,7 @@ const Innovation = new Schema({
         required: true
     },
     semester: {
-        type: Number,
+        type: String,
         required: true
     },
     technique: {
