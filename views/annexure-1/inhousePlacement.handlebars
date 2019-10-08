@@ -3,10 +3,10 @@
 <h5>In-house Placement Activities(Trainings and Workshops)</h5>
 <hr>
 <div class="row" id="in-house-placementActivities">
-    <form action="/annexture-1/inhouseplacement" method="post" class="col s12">
+    <form action="/annexure-1/inhousePlacement" method="post" class="col s12">
         <div class="row">
             <div class="input-field col s6 md5">
-                <input id="trainings-and-workshops" type="text" name="trainings-and-workshops" class="validate" required>
+                <input id="trainings-and-workshops" type="text" name="trainings_and_workshops" class="validate" required>
                 <label for="trainings-and-workshops">Trainings and Workshops conducted</label>
             </div>
              <div class="input-field col s6 md5">
@@ -17,23 +17,23 @@
 
         <div class="row"> 
             
-            <div class="input-field col s6 md5">
+            <div class="input-field col s6">
                 <select name="department">
                     <option value="" disabled selected>Department</option>
-                    <option value="civil">Civil</option>
-                    <option value="comp">Computer</option>
-                    <option value="it">Information Technology</option>
-                    <option value="extc">Electronics and Telecommunication</option>
-                    <option value="mech">Mechanical</option>
-                   
+                    <option value="Information Technology">Information Technology</option>
+                    <option value="Computer Engineering">Computer Engineering</option>
+                    <option value="Mechanical Engineering">Mechanical Engineering</option>
+                    <option value="Civil Engineering">Civil Engineering</option>
+                    <option value="EXTC Engineering">EXTC Engineering</option>
                 </select>
             </div>
 
             <div class="input-field col s6 md5">
-                <input id="no-of-participants" type="number" name="no-of-participants" class="validate" required>
+                <input id="no-of-participants" type="number" name="no_of_participants" class="validate" required>
                 <label for="no-of-participants">Number of students participated</label>
             </div>
         </div>
+        <a href="/annexure-1/studentOrganizations" class="waves-effect waves-light btn center">Not Applicable</a>
         <button onclick="M.toast({html: 'In-house Placement Activities contribution added successfully'})" class="btn waves-effect waves-light darken-3" type="submit">Submit
         </button>
     </form>

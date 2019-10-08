@@ -3,24 +3,33 @@ const mongoose = require('mongoose');
 const router = express.Router();
 
 // Load teaching model
-require('../models/TeachingLoad')
+require('../models/AcademicPerformance/TeachingLoad')
 const TeachingLoad = mongoose.model('teachingload');
 
+// Load teaching assistant model
+require('../models/AcademicPerformance/TeachingAssistant')
+const TeachingAssistant = mongoose.model('teachingassistant');
+
 //load new books info model
-require('../models/NewBooks');
+require('../models/AcademicPerformance/NewBooks');
 const NewBooks = mongoose.model('newbooks');
 
 //load added exxperiments info model
-require('../models/AddedExp');
+require('../models/AcademicPerformance/AddedExp');
 const AddedExp = mongoose.model('addedexp');
 
 // Load innovative teaching technique model
-require('../models/Innovation')
+require('../models/AcademicPerformance/Innovation')
 const Innovation = mongoose.model('innovation');
 
 // Teaching load route
 router.get('/teachingLoad', (req, res) => {
     res.render('academicPerformance/teachingLoad');
+});
+
+// Teaching load route
+router.get('/teachingAssistant', (req, res) => {
+    res.render('academicPerformance/teachingAssistant');
 });
 
 // new books load route
@@ -57,6 +66,22 @@ router.post('/teachingLoad', (req, res) => {
         .save()
         .then(teaching => {
             res.redirect('/academicPerformance/teachingLoad');
+        });
+});
+
+//process teaching form
+router.post('/teachingAssistant', (req, res) => {
+    // add preleave data into db
+    const teachingAssistantRecord = {
+        faculty_name: req.body.faculty_name,
+        class: req.body.class,
+        semester: req.body.semester,
+        subject: req.body.subject
+    }
+    new TeachingAssistant(teachingAssistantRecord)
+        .save()
+        .then(teachingAssistant => {
+            res.redirect('/academicPerformance/teachingAssistant');
         });
 });
 

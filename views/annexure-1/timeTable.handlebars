@@ -3,20 +3,20 @@
 <h5>Timetable related Activities</h5>
 <hr>
 <div class="row" id="timetable">
-    <form action="/annexture-1/timetable" method="post" class="col s12">
+    <form action="/annexure-1/timetable" method="post" class="col s12">
         <div class="row">
             <div class="input-field col s6 md5">
                 <input id="role" type="text" name="role" class="validate" required>
                 <label for="role">Role</label>
             </div>
-             <div class="input-field col s6 md5">
+             <div class="input-field col s6">
                 <select name="department">
                     <option value="" disabled selected>Department</option>
-                    <option value="civil">Civil</option>
-                    <option value="comp">Computer</option>
-                    <option value="it">Information Technology</option>
-                    <option value="extc">Electronics and Telecommunication</option>
-                    <option value="mech">Mechanical</option>
+                    <option value="Information Technology">Information Technology</option>
+                    <option value="Computer Engineering">Computer Engineering</option>
+                    <option value="Mechanical Engineering">Mechanical Engineering</option>
+                    <option value="Civil Engineering">Civil Engineering</option>
+                    <option value="EXTC Engineering">EXTC Engineering</option>
                 </select>
             </div>
         </div>
@@ -38,6 +38,7 @@
             </div>
             
         </div>
+        <a href="/annexure-1/classAdvisor" class="waves-effect waves-light btn center">Not Applicable</a>
         <button onclick="M.toast({html: 'Timetable activities added successfully'})" class="btn waves-effect waves-light darken-3" type="submit">Submit
         </button>
     </form>

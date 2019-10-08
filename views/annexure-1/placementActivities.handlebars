@@ -3,10 +3,10 @@
 <h5>Placement Activities</h5>
 <hr>
 <div class="row" id="placementActivities">
-    <form action="/annexture-1/placement" method="post" class="col s12">
+    <form action="/annexure-1/placementActivities" method="post" class="col s12">
         <div class="row">
             <div class="input-field col s6 md5">
-                <select name="placement-role">
+                <select name="placement_role">
                     <option value="" disabled selected>Role</option>
                     <option value="tpo">TPO</option>
                     <option value="dept coordinator">Dept Co-ordinator</option>
@@ -14,7 +14,7 @@
                 </select>
             </div>
              <div class="input-field col s6 md5">
-                <input id="no-of-companies" type="number" name="no-of-companies" class="validate" required>
+                <input id="no-of-companies" type="number" name="no_of_companies" class="validate" required>
                 <label for="no-of-companies">Number of Companies visited</label>
             </div>
         </div>
@@ -22,24 +22,24 @@
         <div class="row">
             
             <div class="input-field col s6 md5">
-                <input id="no-of-placed-students" type="number" name="no-of-placed-students" class="validate" required>
+                <input id="no-of-placed-students" type="number" name="no_of_placed_students" class="validate" required>
                 <label for="no-of-placed-students">Number of students placed</label>
             </div>
            
              
             
-            <div class="input-field col s6 md5">
+            <div class="input-field col s6">
                 <select name="department">
                     <option value="" disabled selected>Department</option>
-                    <option value="civil">Civil</option>
-                    <option value="comp">Computer</option>
-                    <option value="it">Information Technology</option>
-                    <option value="extc">Electronics and Telecommunication</option>
-                    <option value="mech">Mechanical</option>
-                   
+                    <option value="Information Technology">Information Technology</option>
+                    <option value="Computer Engineering">Computer Engineering</option>
+                    <option value="Mechanical Engineering">Mechanical Engineering</option>
+                    <option value="Civil Engineering">Civil Engineering</option>
+                    <option value="EXTC Engineering">EXTC Engineering</option>
                 </select>
             </div>
         </div>
+        <a href="/annexure-1/inhousePlacement" class="waves-effect waves-light btn center">Not Applicable</a>
         <button onclick="M.toast({html: 'Placement Activities contribution added successfully'})" class="btn waves-effect waves-light darken-3" type="submit">Submit
         </button>
     </form>

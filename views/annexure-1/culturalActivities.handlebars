@@ -3,14 +3,14 @@
 <h5>Cultural Activities</h5>
 <hr>
 <div class="row" id="culturalActivities">
-    <form action="/annexture-1/cultural" method="post" class="col s12">
+    <form action="/annexure-1/culturalActivities" method="post" class="col s12">
         <div class="row">
             <div class="input-field col s6 md5">
                 <input id="cultural_name" type="text" name="cultural_name" class="validate" required>
                 <label for="cultural_name">Name of Cultural Activity</label>
             </div>
              <div class="input-field col s6 md5">
-                <input id="cultural-category" type="text" name="cultural-category" class="validate" required>
+                <input id="cultural-category" type="text" name="cultural_category" class="validate" required>
                 <label for="cultural-category">Category</label>
             </div>
         </div>
@@ -18,7 +18,7 @@
         <div class="row">
            
              <div class="input-field col s6 md5">
-                <select name="cultural-role">
+                <select name="cultural_role">
                     <option value="" disabled selected>Role</option>
                     <option value="incharge">Incharge</option>
                     <option value="coordinator">Co-orditors</option>
@@ -27,7 +27,7 @@
             </div>
             
             <div class="input-field col s6 md5">
-                <select name="cultural-ojus-or-other">
+                <select name="cultural_ojus_or_other">
                     <option value="" disabled selected>Ojus/Other College Activities</option>
                     <option value="sports-ojus">Ojus</option>
                     <option value="other-ojus">Other College Activities</option>
@@ -35,6 +35,7 @@
                 </select>
             </div>
         </div>
+        <a href="/annexure-1/projectBasedLearning" class="waves-effect waves-light btn center">Not Applicable</a>
         <button onclick="M.toast({html: 'Cultural Activities contribution added successfully'})" class="btn waves-effect waves-light darken-3" type="submit">Submit
         </button>
     </form>
