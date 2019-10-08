@@ -1,0 +1,71 @@
+<h4>Annexure 1</h4><br>
+<div class="container">
+<h5>Student Organization Activities</h5>
+<hr>
+<div class="row" id="studentOrganizations">
+    <form action="/annexture-1/studentOrganizations" method="post" class="col s12">
+        <div class="row">
+            <div class="input-field col s6 md5">
+                <input id="student-organizations-trainings" type="text" name="student-organizations-trainings" class="validate" required>
+                <label for="student-organizations-trainings">Events/Trainings/Workshops conducted</label>
+            </div>
+             <div class="input-field col s6 md5">
+                <input id="class_name" type="text" name="class_name" class="validate" required>
+                <label for="class_name">Class</label>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="input-field col s6 md5">
+                <select name="department">
+                    <option value="" disabled selected>Department</option>
+                    <option value="civil">Civil</option>
+                    <option value="comp">Computer</option>
+                    <option value="it">Information Technology</option>
+                    <option value="extc">Electronics and Telecommunication</option>
+                    <option value="mech">Mechanical</option>
+                   
+                </select>
+            </div>
+            
+            <div class="input-field col s6 md5">
+                <input id="no-of-participants" type="number" name="no-of-participants" class="validate" required>
+                <label for="no-of-participants">Number of students participated</label>
+            </div>   
+            
+        </div>
+        <div class="row">
+
+           <div class="input-field col s6 md5">
+                <select name="student-organization-role">
+                    <option value="" disabled selected>Role</option>
+                    <option value="incharge">Incharge</option>
+                    <option value="co-ordintor">Co-ordinator</option>
+                  
+                </select>
+            </div>
+            
+            <div class="input-field col s6 md5">
+                <input id="student-event-duration" type="number" name="student-event-duration" class="validate" required>
+                <label for="student-event-duration">Duration(hours)</label>
+            </div>   
+            
+        </div>
+        <div class="row">
+           
+             <div class="input-field col s6 md5">
+                <input id="student-event-start-date" type="date" name="student-event-start-date" class="validate" required>
+                <label for="student-event-start-date">Start Date</label>
+            </div>
+            
+            <div class="input-field col s6 md5">
+                <input id="student-event-end-date" type="date" name="student-event-end-date" class="validate" required>
+                <label for="student-event-end-date">End Date</label>
+            </div>
+        </div>
+        <button onclick="M.toast({html: 'Student Organization Activities contribution added successfully'})" class="btn waves-effect waves-light darken-3" type="submit">Submit
+        </button>
+    </form>
+</div>
+</div>
