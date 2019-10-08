@@ -9,7 +9,10 @@ const app = express();
 // Load routes
 const academicPerformance = require('./routes/academicPerformance');
 const profile = require('./routes/profile');
+<<<<<<< HEAD
 const annexure_1 = require('./routes/annexure-1');
+=======
+>>>>>>> 5d0dac9028e51ba533acc4355e4d0cad6484d9b0
 
 //connect to mongoose
 mongoose.connect('mongodb://localhost/staff-db', {
