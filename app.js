@@ -11,7 +11,6 @@ const academicPerformance = require('./routes/academicPerformance');
 const profile = require('./routes/profile');
 const annexure_1 = require('./routes/annexure-1');
 
-
 //connect to mongoose
 mongoose.connect('mongodb://localhost/staff-db', {
     useNewUrlParser: true
