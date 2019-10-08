@@ -1,0 +1,36 @@
+<h4>Annexure 1</h4><br>
+<div class="container">
+<h5>UDAAN Incubation Activities</h5>
+<hr>
+<div class="row" id="udaan">
+    <form action="/annexture-1/udaan" method="post" class="col s12">
+        <div class="row">
+            <div class="input-field col s6 md5">
+                <input id="udaan-subject" type="text" name="udaan-subject" class="validate" required>
+                <label for="udaan-subject">Area of Participation</label>
+            </div>
+             <div class="input-field col s6 md5">
+                <textarea rows="3" cols="20" id="udaan-contribution" name="udaan-contribution" class="validate" required>
+                </textarea>
+                <label for="udaan-contribution">Contribution</label>
+            </div>
+        </div>
+
+        <div class="row">
+           
+             <div class="input-field col s6 md5">
+                <input id="udaan-start-date" type="date" name="udaan-start-date" class="validate" required>
+                <label for="udaan-start-date">Start Date</label>
+            </div>
+            
+            <div class="input-field col s6 md5">
+                <input id="udaan-end-date" type="date" name="udaan-end-date" class="validate" required>
+                <label for="udaan-end-date">End Date</label>
+            </div>
+        </div>
+        
+        <button onclick="M.toast({html: 'Udaan contribution added successfully'})" class="btn waves-effect waves-light darken-3" type="submit">Submit
+        </button>
+    </form>
+</div>
+</div>
