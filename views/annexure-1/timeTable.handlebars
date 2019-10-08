@@ -1,0 +1,46 @@
+<h4>Annexure 1</h4><br>
+<div class="container">
+<h5>Timetable related Activities</h5>
+<hr>
+<div class="row" id="timetable">
+    <form action="/annexture-1/timetable" method="post" class="col s12">
+        <div class="row">
+            <div class="input-field col s6 md5">
+                <input id="role" type="text" name="role" class="validate" required>
+                <label for="role">Role</label>
+            </div>
+             <div class="input-field col s6 md5">
+                <select name="department">
+                    <option value="" disabled selected>Department</option>
+                    <option value="civil">Civil</option>
+                    <option value="comp">Computer</option>
+                    <option value="it">Information Technology</option>
+                    <option value="extc">Electronics and Telecommunication</option>
+                    <option value="mech">Mechanical</option>
+                   
+                </select>
+            </div>
+        </div>
+
+        <div class="row">
+           
+             <div class="input-field col s6 md5">
+                <select name="semester">
+                    <option value="" disabled selected>Semester</option>
+                    <option value="sem 1">Sem 1</option>
+                    <option value="sem 2">Sem 2</option>
+                    <option value="sem 3">Sem 3</option>
+                    <option value="sem 4">Sem 4</option>
+                    <option value="sem 5">Sem 5</option>
+                    <option value="sem 6">Sem 6</option>
+                    <option value="sem 7">Sem 7</option>
+                    <option value="sem 8">Sem 8</option>
+                </select>
+            </div>
+            
+        </div>
+        <button onclick="M.toast({html: 'Timetable activities added successfully'})" class="btn waves-effect waves-light darken-3" type="submit">Submit
+        </button>
+    </form>
+</div>
+</div>
