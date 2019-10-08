@@ -1,0 +1,46 @@
+<h4>Annexure 1</h4><br>
+<div class="container">
+<h5>Sports Activities</h5>
+<hr>
+<div class="row" id="leaveform">
+    <form action="/annexture-1/sports" method="post" class="col s12">
+        <div class="row">
+            <div class="input-field col s6 md5">
+                <input id="sport_name" type="text" name="Sport_name" class="validate" required>
+                <label for="class_name">Name of Sport</label>
+            </div>
+             <div class="input-field col s6 md5">
+                <select name="sports-category">
+                    <option value="" disabled selected>Category</option>
+                    <option value="indoor">Indoor</option>
+                    <option value="outdoor">Outdoor</option>
+        
+                </select>
+            </div>
+        </div>
+
+        <div class="row">
+           
+             <div class="input-field col s6 md5">
+                <select name="sports-role">
+                    <option value="" disabled selected>Role</option>
+                    <option value="incharge">Incharge</option>
+                    <option value="coordinator">Co-orditors</option>
+                  
+                </select>
+            </div>
+            
+            <div class="input-field col s6 md5">
+                <select name="sports-ojus-or-other">
+                    <option value="" disabled selected>Ojus/Other College Activities</option>
+                    <option value="sports-ojus">Ojus</option>
+                    <option value="other-ojus">Other College Activities</option>
+                  
+                </select>
+            </div>
+        </div>
+        <button onclick="M.toast({html: 'Sports Activities contribution added successfully'})" class="btn waves-effect waves-light darken-3" type="submit">Submit
+        </button>
+    </form>
+</div>
+</div>
