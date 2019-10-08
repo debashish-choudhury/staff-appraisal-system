@@ -1,0 +1,51 @@
+<h4>Annexure 1</h4><br>
+<div class="container">
+<h5>Admission Process Related Activities</h5>
+<hr>
+<div class="row" id="udaan">
+    <form action="/annexure-1/admission" method="post" class="col s12">
+        <div class="row">
+            <div class="input-field col s6 md5">
+                <select name="admission_role">
+                    <option value="" disabled selected>Role</option>
+                    <option value="incharge">Incharge</option>
+                    <option value="coordinator">Co-orditors</option>
+                  
+                </select>
+            </div>
+             <div class="input-field col s6 md5">
+                <select name="admission_duties">
+                    <option value="" disabled selected>Category</option>
+                    <option value="confirmation">Confirmation</option>
+                    <option value="verification">Verification</option>
+        
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div>
+                <input type="checkbox" name="fe" value="FE"> First Year
+                <input type="checkbox" name="dse" value="DSE"> Direct Second Year<br>
+                <label>Select the applicable class</label>
+            </div>
+            
+        </div>
+
+        <div class="row">
+           
+             <div class="input-field col s6 md5">
+                <input id="admission-start-date" type="date" name="admission_start_date" class="validate" required>
+                <label for="admission-start-date">Start Date</label>
+            </div>
+            
+            <div class="input-field col s6 md5">
+                <input id="admission-end-date" type="date" name="admission_end_date" class="validate" required>
+                <label for="admission-end-date">End Date</label>
+            </div>
+        </div>
+        
+        <button onclick="M.toast({html: 'Admission Process contribution added successfully'})" class="btn waves-effect waves-light darken-3" type="submit">Submit
+        </button>
+    </form>
+</div>
+</div>
