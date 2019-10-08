@@ -1,0 +1,47 @@
+<h4>Annexure 1</h4><br>
+<div class="container">
+<h5>Placement Activities</h5>
+<hr>
+<div class="row" id="placementActivities">
+    <form action="/annexture-1/placement" method="post" class="col s12">
+        <div class="row">
+            <div class="input-field col s6 md5">
+                <select name="placement-role">
+                    <option value="" disabled selected>Role</option>
+                    <option value="tpo">TPO</option>
+                    <option value="dept coordinator">Dept Co-ordinator</option>
+                  
+                </select>
+            </div>
+             <div class="input-field col s6 md5">
+                <input id="no-of-companies" type="number" name="no-of-companies" class="validate" required>
+                <label for="no-of-companies">Number of Companies visited</label>
+            </div>
+        </div>
+
+        <div class="row">
+            
+            <div class="input-field col s6 md5">
+                <input id="no-of-placed-students" type="number" name="no-of-placed-students" class="validate" required>
+                <label for="no-of-placed-students">Number of students placed</label>
+            </div>
+           
+             
+            
+            <div class="input-field col s6 md5">
+                <select name="department">
+                    <option value="" disabled selected>Department</option>
+                    <option value="civil">Civil</option>
+                    <option value="comp">Computer</option>
+                    <option value="it">Information Technology</option>
+                    <option value="extc">Electronics and Telecommunication</option>
+                    <option value="mech">Mechanical</option>
+                   
+                </select>
+            </div>
+        </div>
+        <button onclick="M.toast({html: 'Placement Activities contribution added successfully'})" class="btn waves-effect waves-light darken-3" type="submit">Submit
+        </button>
+    </form>
+</div>
+</div>
