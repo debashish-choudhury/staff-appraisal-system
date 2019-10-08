@@ -1,0 +1,41 @@
+<h4>Annexure 1</h4><br>
+<div class="container">
+<h5>Project Based Learning</h5>
+<hr>
+<div class="row" id="projectBasedLearning">
+    <form action="/annexture-1/projectBasedLearning" method="post" class="col s12">
+        <div class="row">
+            <div class="input-field col s6 md5">
+                <input id="pbl-subject" type="text" name="pbl-subject" class="validate" required>
+                <label for="pbl-subject">Name of Subject</label>
+            </div>
+             <div class="input-field col s6 md5">
+                <input id="pbl-role" type="text" name="pbl-role" class="validate" required>
+                <label for="pbl-role">Role</label>
+            </div>
+        </div>
+
+        <div class="row">
+           
+             <div class="input-field col s6 md5">
+                <input id="pbl-start-date" type="date" name="pbl-start-date" class="validate" required>
+                <label for="pbl-start-date">Start Date</label>
+            </div>
+            
+            <div class="input-field col s6 md5">
+                <input id="pbl-end-date" type="date" name="pbl-end-date" class="validate" required>
+                <label for="pbl-end-date">End Date</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s6 md5">
+                <input id="pbl-description" type="text" name="pbl-description" class="validate" required>
+                <label for="pbl-description">Description</label>
+            </div>
+           
+        </div>
+        <button onclick="M.toast({html: 'PBL contribution added successfully'})" class="btn waves-effect waves-light darken-3" type="submit">Submit
+        </button>
+    </form>
+</div>
+</div>
