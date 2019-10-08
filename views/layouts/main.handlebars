@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Appraisal System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        .input-field label {
+            color: black !important;
+        }
+        .input-field input {
+            color: black !important;
+        }
+        .input-field input:focus+label {
+            color: black !important;
+        }
+
+    </style>
+
+</head>
+
+<body>
+    {{> _navbar}}
+    <div class="container">
+
+        {{{body}}}
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+
+        // Side bar initialization
+        $(document).ready(function () {
+            $('.sidenav').sidenav();
+        });
+
+        // Dropdown initialization
+        $(".dropdown-trigger").dropdown({
+            constrainWidth: false
+        });
+
+        // Form select option initialization
+        $(document).ready(function () {
+            $('select').formSelect();
+        });
+        $(document).ready(function () {
+            $('select').material_select();
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,54 @@
+<h4>Leave Form</h4>
+<hr>
+<h5>Pre-sanctioned leave record (Enter 0 if none)</h5>
+<div class="row" id="leaveform">
+    <form action="/leave-form" method="post" class="col s12">
+        <div class="row">
+            <div class="input-field col s6 md5">
+                <input id="casual_leave" type="number" name="pre_casual_leave" class="validate" required>
+                <label for="casual_leave">Casual Leave</label>
+            </div>
+            <div class="input-field col s6">
+                <input id="outdoor_leave" type="number" name="pre_outdoor_leave" class="validate" required>
+                <label for="outdoor_leave">Outdoor Leave</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s6">
+                <input id="medical_leave" type="number" name="pre_medical_leave" class="validate" required>
+                <label for="medical_leave">Medical Leave</label>
+            </div>
+            <div class="input-field col s6">
+                <input id="special_leave" type="number" name="pre_special_leave" class="validate" required>
+                <label for="special_leave">Special Leave</label>
+            </div>
+        </div>
+
+        <h5>Post-sanctioned leave record (Enter 0 if none)</h5>
+        <div class="row">
+            <div class="input-field col s6 md5">
+                <input id="casual_leave" type="number" name="post_casual_leave" class="validate" required>
+                <label for="casual_leave">Casual Leave</label>
+            </div>
+            <div class="input-field col s6">
+                <input id="outdoor_leave" type="number" name="post_outdoor_leave" class="validate" required>
+                <label for="outdoor_leave">Outdoor Leave</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s6">
+                <input id="medical_leave" type="number" name="post_medical_leave" class="validate" required>
+                <label for="medical_leave">Medical Leave</label>
+            </div>
+            <div class="input-field col s6">
+                <input id="special_leave" type="number" name="post_special_leave" class="validate" required>
+                <label for="special_leave">Special Leave</label>
+                
+            </div>
+        </div>
+        <button onclick="M.toast({html: 'Leave form submitted successfully'})" class="btn waves-effect waves-light darken-3" type="submit">Submit
+        </button>
+    </form>
+</div>
