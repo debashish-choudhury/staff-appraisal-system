@@ -1,34 +1,36 @@
 <h4>Annexure 1</h4><br>
-        <div class="container">
-        <h5>Department UG Projects Undertaken</h5>
-        <hr>
-        <div class="row" id="DeptUGProjects">
-            <form action="/annexure-1/DeptUGProjects" method="post" class="col s12">
-                <div class="row">
-                    <div class="input-field col s6 md5">
+<div class="container">
+    <h5>Department UG Projects Undertaken</h5>
+    <hr>
+    <div class="row" id="DeptUGProjects">
+        <form action="/annexure-1/departmentUGProjects" method="post" class="col s12">
+            <div class="row">
+                <div class="input-field col s6 md5">
                     <select name="dept_project_role">
                         <option value="" disabled selected>Role</option>
                         <option value="guide">Guide</option>
                         <option value="co-guide">Co-guide</option>
-                  
+
                     </select>
                 </div>
-                    <div class="input-field col s6">
-                            <input id="project_title" type="text" name="project_title" class="validate" required>
-                            <label for="project_title">Title Of Project</label>
-                    </div>
+                <div class="input-field col s6">
+                    <input id="project_title" type="text" name="project_title" class="validate" required>
+                    <label for="project_title">Title Of Project</label>
                 </div>
-                <div class="row">
-                    <div class="input-field col s6">
-                                <input id="project_no_of_students" type="number" name="project_no_of_students" class="validate" required>
-                                <label for="project_no_of_students">Number Of Students</label>
-                    </div> 
-
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="project_no_of_students" type="number" name="project_no_of_students" class="validate"
+                        required>
+                    <label for="project_no_of_students">Number Of Students</label>
                 </div>
 
-        
-                <button onclick="M.toast({html: ' Department UG Projects Undertaken added succesfully'})" class="btn waves-effect waves-dark darken-5" type="submit">Submit
-                </button>
-            </form>
-        </div>
-        </div>
+            </div>
+
+
+            <button onclick="M.toast({html: ' Department UG Projects Undertaken added succesfully'})"
+                class="btn waves-effect waves-dark darken-5" type="submit">Submit
+            </button>
+        </form>
+    </div>
+</div>

@@ -3,7 +3,7 @@
 <h5>Admission Process Related Activities</h5>
 <hr>
 <div class="row" id="udaan">
-    <form action="/annexure-1/admission" method="post" class="col s12">
+    <form action="/annexure-1/admissionProcessActivities" method="post" class="col s12">
         <div class="row">
             <div class="input-field col s6 md5">
                 <select name="admission_role">
@@ -23,10 +23,19 @@
             </div>
         </div>
         <div class="row">
-            <div>
+            {{!-- <div>
                 <input type="checkbox" name="fe" value="FE"> First Year
                 <input type="checkbox" name="dse" value="DSE"> Direct Second Year<br>
                 <label>Select the applicable class</label>
+            </div> --}}
+
+            <div class="input-field col s12 md5">
+                <select name="admission_class">
+                    <option value="" disabled selected>Select the applicable class</option>
+                    <option value="FE">First Year</option>
+                    <option value="DSE">Direct Second Year</option>
+        
+                </select>
             </div>
             
         </div>

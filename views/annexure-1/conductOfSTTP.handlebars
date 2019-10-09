@@ -1,71 +1,71 @@
 <h4>Annexure 1</h4><br>
-        <div class="container">
-        <h5>Conduct Of STTP</h5>
-        <hr>
-        <div class="row" id="conductOfSTTP">
-            <form action="/annexure-1/conductOfSTTP" method="post" class="col s12">
-                <div class="row">
-                    <div class="input-field col s6 md5">
-                        <input id="sttp_role" type="text" name="sttp_role" class="validate" required>
-                        <label for="sttp_role">Role(Organizing Committee)</label>
-                    </div>
-                    <div class="input-field col s6">
-                            <input id="no_of_sttp" type="number" name="no_of_sttp" class="validate" required>
-                            <label for="no_of_sttp">Number Of STTP's Conducted</label>
-                    </div>
+<div class="container">
+    <h5>Conduct Of STTP</h5>
+    <hr>
+    <div class="row" id="conductOfSTTP">
+        <form action="/annexure-1/conductOfSTTP" method="post" class="col s12">
+            <div class="row">
+                <div class="input-field col s6 md5">
+                    <input id="sttp_role" type="text" name="sttp_role" class="validate" required>
+                    <label for="sttp_role">Role(Organizing Committee)</label>
                 </div>
-                <div class="row">
-                    <div class="input-field col s6">
-                                <input id="sttp_technology" type="text" name="sttp_technology" class="validate" required>
-                                <label for="sttp_technology">Technology</label>
-                    
-                    </div>
-
-                    <div class="input-field col s6">
-                            <input id="sttp_duration" type="number" name="sttp_duration" class="validate" required>
-                            <label for="sttp_duration">Duartion Of Course(hrs)</label>
-                        </div>
+                <div class="input-field col s6">
+                    <input id="no_of_sttp" type="number" name="no_of_sttp" class="validate" required>
+                    <label for="no_of_sttp">Number Of STTP's Conducted</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <input id="sttp_technology" type="text" name="sttp_technology" class="validate" required>
+                    <label for="sttp_technology">Technology</label>
 
                 </div>
-                
-                
-                <div class="row">
-                    <div class="input-field col s6">
-                        <input id="sttp_end_date" type="date" name="sttp_end_date" class="validate" required>
-                        <label for="sttp_end_date">Start Date</label>
-            
+
+                <div class="input-field col s6">
+                    <input id="sttp_duration" type="number" name="sttp_duration" class="validate" required>
+                    <label for="sttp_duration">Duartion Of Course(hrs)</label>
                 </div>
 
-                 <div class="input-field col s6">
+            </div>
+
+
+            <div class="row">
+                <div class="input-field col s6">
+                    <input id="sttp_end_date" type="date" name="sttp_start_date" class="validate" required>
+                    <label for="sttp_end_date">Start Date</label>
+
+                </div>
+
+                <div class="input-field col s6">
                     <input id="sttp_end_date" type="date" name="sttp_end_date" class="validate" required>
                     <label for="sttp_end_date">End Date</label>
-        
-                </div>
 
                 </div>
 
-                <div class="row">
-                    <div class="input-field col s6">
-                    <input id="sttp_participants" type="text" name="sttp_participants" class="validate" required>
+            </div>
+
+            <div class="row">
+                <div class="input-field col s6">
+                    <input id="sttp_participants" type="number" name="sttp_participants" class="validate" required>
                     <label for="sttp_participants">Number Of Participants</label>
-    
+
                 </div>
 
-               <div class="input-field col s6 md5">
+                <div class="input-field col s6">
                 <select name="department">
                     <option value="" disabled selected>Department</option>
-                    <option value="civil">Civil</option>
-                    <option value="comp">Computer</option>
-                    <option value="it">Information Technology</option>
-                    <option value="extc">Electronics and Telecommunication</option>
-                    <option value="mech">Mechanical</option>
-                   
+                    <option value="Information Technology">Information Technology</option>
+                    <option value="Computer Engineering">Computer Engineering</option>
+                    <option value="Mechanical Engineering">Mechanical Engineering</option>
+                    <option value="Civil Engineering">Civil Engineering</option>
+                    <option value="EXTC Engineering">EXTC Engineering</option>
                 </select>
             </div>
             </div>
 
-                <button onclick="M.toast({html:'Conduct Of STTP added succesfully'})" class="btn waves-effect waves-dark darken-5" type="submit">Submit
-                </button>
-            </form>
-        </div>
-        </div>
+            <button onclick="M.toast({html:'Conduct Of STTP added succesfully'})"
+                class="btn waves-effect waves-dark darken-5" type="submit">Submit
+            </button>
+        </form>
+    </div>
+</div>

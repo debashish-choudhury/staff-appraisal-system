@@ -1,39 +1,42 @@
 <h4>Annexure 1</h4><br>
-        <div class="container">
-        <h5 >Lakshya Related Activties</h5>
-        <hr>
-        <div class="row" id=" Lakshya Related Activties">
-            <form action="/annexure-1/lakshya" method="post" class="col s12">
-                <div class="row">
-                    <div class="input-field col s6 md5">
-                        <input id="lakshya_activities" type="text" name="lakshya_activities" class="validate" required>
-                        <label for="lakshya_activities">Activties Conducted</label>
-                    </div>
-                    <div class="input-field col s6">
-                            <textarea rows="3" cols="20" id="lakshya_description" type="text" name="lakshya_description" class="validate" required></textarea>
-                            <label for="lakshya_description">Description</label>
-                    </div>
+<div class="container">
+    <h5>Lakshya Related Activties</h5>
+    <hr>
+    <div class="row" id=" Lakshya Related Activties">
+        <form action="/annexure-1/lakshya" method="post" class="col s12">
+            <div class="row">
+                <div class="input-field col s6 md5">
+                    <input id="lakshya_activities" type="text" name="lakshya_activities" class="validate" required>
+                    <label for="lakshya_activities">Activties Conducted</label>
                 </div>
-                <div class="row">
-                    <div class="input-field col s6">
-                                <input id="class" type="date" name="class" class="validate" required>
-                                <label for="class">Date</label>
-                    
-                    </div>
-
-                    <div class="input-field col s6">
-                            <input id="lakshya-no-of-participants" type="number" name="lakshya-no-of-participants" class="validate" required>
-                            <label for="lakshya-no-of-participants">Number Of Students Participated</label>
-                    </div>
-
+                <div class="input-field col s6">
+                    <textarea name="lakshya_description" id="lakshya_description" class="materialize-textarea validate"
+                        required></textarea>
+                    <label for="lakshya_description">Description</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <input id="class" type="date" name="lakshya_date" class="validate" required>
+                    <label for="class">Date</label>
 
                 </div>
-        
-                     
-                    
-        
-                <button onclick="M.toast({html: 'Lakshya Related Activties added succesfully'})" class="btn waves-effect waves-dark darken-5" type="submit">Submit
-                </button>
-            </form>
-        </div>
-        </div>
+
+                <div class="input-field col s6">
+                    <input id="lakshya-no-of-participants" type="number" name="lakshya_no_of_participants"
+                        class="validate" required>
+                    <label for="lakshya-no-of-participants">Number Of Students Participated</label>
+                </div>
+
+
+            </div>
+
+
+
+
+            <button onclick="M.toast({html: 'Lakshya Related Activties added succesfully'})"
+                class="btn waves-effect waves-dark darken-5" type="submit">Submit
+            </button>
+        </form>
+    </div>
+</div>

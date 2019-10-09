@@ -1,0 +1,50 @@
+<h4>Annexure 1</h4><br>
+<div class="container">
+    <h5>Exam Supervision</h5>
+    <hr>
+    <div class="row" id="DeptUGProjects">
+        <form action="/annexure-1/examActivitiesSupervision" method="post" class="col s12">
+            <div class="row">
+                <div class="input-field col s6 md5">
+                    <select name="exam_role">
+                        <option value="" disabled selected>Role</option>
+                        <option value="CS">CS</option>
+                        <option value="SS">SS</option>
+                        <option value="JS">JS</option>
+                        <option value="US">US</option>
+                        <option value="CAP incharge">CAP incharge</option>
+                        <option value="Exam incharge">Exam incharge</option>
+
+                    </select>
+                </div>
+                <div class="input-field col s6">
+                    <input id="exam_name" type="text" name="exam_name" class="validate" required>
+                    <label for="exam_name">Exam</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <input id="morning_sessions" type="number" name="morning_sessions" class="validate" required>
+                    <label for="morning_sessions">Number Of Morning sessions</label>
+                </div>
+                <div class="input-field col s6">
+                    <input id="evening_sessions" type="number" name="evening_sessions" class="validate" required>
+                    <label for="evening_sessions">Number Of Evening sessions</label>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="no_of_supervision_days" type="number" name="no_of_supervision_days" class="validate"
+                        required>
+                    <label for="no_of_supervision_days">Number Of Days</label>
+                </div>
+            </div>
+
+
+            <button onclick="M.toast({html: ' University Exam Supervision duties added succesfully'})"
+                class="btn waves-effect waves-dark darken-5" type="submit">Submit
+            </button>
+        </form>
+    </div>
+</div>

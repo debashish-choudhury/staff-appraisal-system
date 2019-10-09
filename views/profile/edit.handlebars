@@ -16,13 +16,14 @@
         <div class="row">
             <div class="input-field col s6">
                 <select name="department">
-                    <option value="{{profile.department}}" disabled selected>Department</option>
+                    <option value="{{profile.department}}">{{profile.department}}</option>
                     <option value="Information Technology">Information Technology</option>
                     <option value="Computer Engineering">Computer Engineering</option>
                     <option value="Mechanical Engineering">Mechanical Engineering</option>
                     <option value="Civil Engineering">Civil Engineering</option>
                     <option value="EXTC Engineering">EXTC Engineering</option>
                 </select>
+                <label for="department">Department</label>
             </div>
             <div class="input-field col s6">
                 <input id="qualification" type="text" value="{{profile.qualification}}" name="qualification" class="validate" required>
@@ -37,11 +38,12 @@
             </div>
             <div class="input-field col s6">
                     <select name="appointment">
-                        <option value="" disabled selected>Appointment</option>
+                        <option value="{{profile.appointment}}">{{profile.appointment}}</option>
                         <option value="Adhoc">Adhoc</option>
                         <option value="Probationer">Probationer</option>
                         <option value="Permanent">Permanent</option>
                     </select>
+                    <label for="">Appointment</label>
             </div>
         </div>
         <div class="row">
