@@ -1,0 +1,44 @@
+<h4 >Annexure 1</h4><br>
+        <div class="container">
+        <h5>College/Department Magazine/Newsletter related Activities</h5>
+        <hr>
+        <div class="row" id="magazineNewsletter">
+            <form action="/annexure-1/magazineNewsletter" method="post" class="col s12">
+                <div class="row">
+                    <div class="input-field col s6 md5">
+                        <input id="class_name" type="text" name="class_name" class="validate" required>
+                        <label for="class_name">Title</label>
+                    </div>
+                    <div class="input-field col s6 md5">
+                    <select name="magazine_role">
+                        <option value="" disabled selected>Role</option>
+                        <option value="incharge">Incharge</option>
+                        <option value="coordinator">Co-orditors</option>
+                  
+                    </select>
+                </div>
+                <div class="row">
+
+                    <div class="input-field col s6 md5">
+                <select name="magazineNewsletter_type">
+                    <option value="" disabled selected>Type</option>
+                    <option value="incharge">Magazine</option>
+                    <option value="coordinator">Newsletter</option>
+                    <option value="coordinator">Other</option>
+                  
+                </select>
+                </div>
+                
+                     <div class="input-field col s6">
+                                <input id="year_of_publication" type="year" name="year_of_publication" class="validate" required>
+                                <label for="year_of_publication">Year OF publication</label>
+                    
+                    </div>
+                </div>
+
+                    
+                <button onclick="M.toast({html:'College/Department Magazine/Newsletter related Activities added succesfully'})" class="btn waves-effect waves-dark darken-5" type="submit">Submit
+                </button>
+            </form>
+        </div>
+        </div>
