@@ -1,0 +1,41 @@
+<h4 >Annexure 1</h4><br>
+        <div class="container">
+        <h5>Exam Related Activities(College Level)</h5>
+        <hr>
+        <div class="row" id="examActivitiesCollegeLevel">
+            <form action="/annexure-1/examActivitiesCollegeLevel" method="post" class="col s12">
+                <div class="row">
+                    <div class="input-field col s6 md5">
+                        <input id="subject_name" type="text" name="subject_name" class="validate" required>
+                        <label for="subject_name">Name Of Subject</label>
+                    </div>
+                    <div class="input-field col s6 md5">
+                <select name="semester">
+                    <option value="" disabled selected>Semester</option>
+                    <option value="sem 1">Sem 1</option>
+                    <option value="sem 2">Sem 2</option>
+                    <option value="sem 3">Sem 3</option>
+                    <option value="sem 4">Sem 4</option>
+                    <option value="sem 5">Sem 5</option>
+                    <option value="sem 6">Sem 6</option>
+                    <option value="sem 7">Sem 7</option>
+                    <option value="sem 8">Sem 8</option>
+                </select>
+            </div>
+            <div class="row">
+                 <div class="input-field col s6 md5">
+                <select name="exam_type">
+                    <option value="" disabled selected>Exam Type</option>
+                    <option value="assessment">Assessment</option>
+                    <option value="oral">Oral</option>
+                    <option value="practical">Practical</option>
+                </select>
+            </div>
+            </div>      
+                
+        
+                <button onclick="M.toast({html: 'Exam Related Activities(College Level) added succesfully'})" class="btn waves-effect waves-dark darken-5" type="submit">Submit
+                </button>
+            </form>
+        </div>
+    </div>

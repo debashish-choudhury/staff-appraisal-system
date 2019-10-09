@@ -1,0 +1,39 @@
+<h4 >Annexure 1</h4><br>
+        <div class="container">
+        <h5>IT Maintenance</h5>
+        <hr>
+        <div class="row" id=" IT Maintenance">
+            <form action="/annexure-1/ IT Maintenance" method="post" class="col s12">
+                <div class="row">
+                    <div class="input-field col s6 md5">
+                        <input id="class_name" type="text" name="class_name" class="validate" required>
+                        <label for="class_name">Issues Solved</label>
+                    </div>
+                    <div class="input-field col s6">
+                            <textarea row="3" cols="20" name="IT_maintenance_desc" id="IT_maintenance_desc" class="validate" required></textarea>
+                            <label for="class">Description</label>
+                    </div>
+                </div>
+                <div class="row">
+                        <div class="input-field col s6 md5">
+                        <select name="IT_maintenance_task">
+                            <option value="" disabled selected>Task Completed?</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                            <option value="ongoing">Ongoing</option>
+                  
+                         </select>
+                        </div>
+
+                        <div class="input-field col s6">
+                            <input id="it_maintenance_date" type="date" name="it_maintenance_date" class="validate" required>
+                            <label for="class">Date</label>
+                        </div>
+
+                </div>
+                
+                <button onclick="M.toast({html: 'IT Maintenance duties added succesfully'})" class="btn waves-effect waves-dark darken-5" type="submit">Submit
+                </button>
+            </form>
+        </div>
+        </div>
