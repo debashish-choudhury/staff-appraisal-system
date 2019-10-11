@@ -1,17 +1,23 @@
 <h4>1. Academic Performance</h4><br>
 <div class="container">
-<h5>1.1 Teaching Assistant</h5>
+<h5>1.2 Teaching Assistant</h5>
 <hr>
-<div class="row" id="leaveform">
+<div class="row" id="teachingAssistant">
     <form action="/academicPerformance/teachingAssistant" method="post" class="col s12">
         <div class="row">
             <div class="input-field col s6 md5">
                 <input id="faculty_name" type="text" name="faculty_name" class="validate " required>
-                <label for="faculty_name" class="">Faculty Name</label>
+                <label for="faculty_name" class="">Teaching Assistant Name</label>
             </div>
             <div class="input-field col s6">
-                <input id="class" type="text" name="class" class="validate" required>
-                <label for="class">Class</label>
+                <select name="class_name">
+                    <option value="" disabled selected>Class</option>
+                    <option value="FE">FE</option>
+                    <option value="SE">SE</option>
+                    <option value="TE">TE</option>
+                    <option value="BE">BE</option>
+                    
+                </select>
             </div>
         </div>
 
@@ -31,10 +37,15 @@
             </div>
             <div class="input-field col s6">
                 <input id="subject" type="text" name="subject" class="validate" required>
-                <label for="subject">Subject</label>
+                <label for="subject">Subject Contribution</label>
             </div>
         </div>
+<<<<<<< HEAD
         <button onclick="M.toast({html: 'Teaching technique added successfully'})" class="btn waves-effect waves-light darken-3" type="submit">Submit
+=======
+        <a href="/academicPerformance/newBooks" class="waves-effect waves-light btn center">Not Applicable</a>
+        <button class="btn waves-effect waves-light darken-3" type="submit">Submit
+>>>>>>> d2c4e729935b4d20ee353f76bb1a78c607eb6ac3
         </button>
     </form>
 </div>
