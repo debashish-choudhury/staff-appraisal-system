@@ -10,8 +10,14 @@
                 <label for="subject_name" class="">Subject Name</label>
             </div>
             <div class="input-field col s6">
-                <input id="class" type="text" name="class" class="validate" required>
-                <label for="class">Class</label>
+                <select name="class_name">
+                    <option value="" disabled selected>Class</option>
+                    <option value="FE">FE</option>
+                    <option value="SE">SE</option>
+                    <option value="TE">TE</option>
+                    <option value="BE">BE</option>
+                    
+                </select>
             </div>
         </div>
 
@@ -43,36 +49,37 @@
         <div class="row">
             <div class="input-field col s6 md5">
                 <input id="theory" type="number" name="theory_subject" class="validate" required>
-                <label for="theory">Theory Subjects</label>
+                <label for="theory">Theory Teaching Load(per week)</label>
             </div>
             <div class="input-field col s6">
                 <input id="lab" type="number" name="lab_subject" class="validate" required>
-                <label for="lab">Lab Subects</label>
+                <label for="lab">Lab Teaching Load(per week)</label>
             </div>
         </div>
 
         <div class="row">
             <div class="input-field col s6">
                 <input id="tutorials" type="number" name="tutorials" class="validate" required>
-                <label for="tutorials">Number of tutorials</label>
+                <label for="tutorials">Tutorials Teaching Load(per week)</label>
             </div>
             <div class="input-field col s6">
                 <input id="theory_session" type="number" name="theory_session" class="validate" required>
-                <label for="theory_session">Theory session(Hrs/Week)</label>
+                <label for="theory_session">No. of Theory sessions conducted(hrs)</label>
                 
             </div>
         </div>
         <div class="row">
             <div class="input-field col s6">
                 <input id="practical_session" type="number" name="practical_session" class="validate" required>
-                <label for="practical_session">Practical session(Hrs/Week)</label>
+                <label for="practical_session">No. of Practical sessions conducted(hrs)</label>
             </div>
             <div class="input-field col s6">
                 <input id="Student_feedback" type="number" name="Student_feedback" class="validate" required>
-                <label for="Student_feedback">Student feedback(1-5)</label>
+                <label for="Student_feedback">Online Student feedback(1-5)</label>
                 
             </div>
         </div>
+       
         <button class="btn waves-effect waves-light darken-3" type="submit">Submit
         </button>
     </form>

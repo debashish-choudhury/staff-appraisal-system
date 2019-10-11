@@ -1,6 +1,6 @@
 <h4>1. Academic Performance</h4><br>
 <div class="container">
-<h5>1.4 Additional Experiments</h5>
+<h5>1.4 Additional Experiments added to lab manual</h5>
 <hr>
 <div class="row" id="leaveform">
     <form action="/academicPerformance/addedExp" method="post" class="col s12">
@@ -9,9 +9,15 @@
                 <input id="subject_name" type="text" name="subject_name" class="validate" required>
                 <label for="subject_name">Subject Name</label>
             </div>
-            <div class="input-field col s6">
-                <input id="class" type="text" name="class" class="validate" required>
-                <label for="class">Class</label>
+             <div class="input-field col s6">
+                <select name="class_name">
+                    <option value="" disabled selected>Class</option>
+                    <option value="FE">FE</option>
+                    <option value="SE">SE</option>
+                    <option value="TE">TE</option>
+                    <option value="BE">BE</option>
+                    
+                </select>
             </div>
         </div>
 
@@ -34,6 +40,7 @@
                 <label for="exp_name">Experiment Name</label>
             </div>
         </div>
+        <a href="/academicPerformance/innovativeTeaching" class="waves-effect waves-light btn center">Not Applicable</a>
         <button onclick="M.toast({html: 'Experiments details added successfully'})" class="btn waves-effect waves-light darken-3" type="submit">Submit
         </button>
     </form>

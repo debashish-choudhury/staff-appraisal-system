@@ -1,13 +1,19 @@
 <h4>Annexure 1</h4><br>
 <div class="container">
-<h5>Class Advisor</h5>
+<h5>1.2 Class Advisor</h5>
 <hr>
 <div class="row" id="classAdvisor">
     <form action="/annexure-1/classadvisor" method="post" class="col s12">
         <div class="row">
-            <div class="input-field col s6 md5">
-                <input id="class_name" type="text" name="class_name" class="validate" required>
-                <label for="class_name">Class</label>
+             <div class="input-field col s6">
+                <select name="class_name">
+                    <option value="" disabled selected>Class</option>
+                    <option value="FE">FE</option>
+                    <option value="SE">SE</option>
+                    <option value="TE">TE</option>
+                    <option value="BE">BE</option>
+                    
+                </select>
             </div>
              <div class="input-field col s6">
                 <select name="department">
