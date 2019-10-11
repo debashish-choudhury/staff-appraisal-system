@@ -10,6 +10,7 @@ const app = express();
 const academicPerformance = require('./routes/academicPerformance');
 const profile = require('./routes/profile');
 const annexure_1 = require('./routes/annexure-1');
+const annexure_2 = require('./routes/annexure-2');
 
 //connect to mongoose
 mongoose.connect('mongodb://localhost/staff-db', {
@@ -79,7 +80,8 @@ app.post('/leave-form', (req, res) => {
 // Use routes
 app.use('/academicPerformance', academicPerformance);
 app.use('/profile', profile);
-app.use('/annexure-1', annexure_1)
+app.use('/annexure-1', annexure_1);
+app.use('/annexure-2', annexure_2);
 
 port = 5000;
 app.listen(port, () => console.log(`Server running on port ${port}`));
