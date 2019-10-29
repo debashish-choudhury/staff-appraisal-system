@@ -52,8 +52,16 @@
                 <label for="admission-end-date">End Date</label>
             </div>
         </div>
-        <a href="/annexure-1/examActivitiesSupervision" class="waves-effect waves-light btn center">Not Applicable</a>
-        <button onclick="M.toast({html: 'Admission Process contribution added successfully'})" class="btn waves-effect waves-light darken-3" type="submit">Submit
+        <div>
+             <p>
+                 <label>
+                <input id="indeterminate-checkbox" type="checkbox" required/>
+                 <span>I acknowledge that above filled information is verified and justified by me.</span>
+                </label>
+            </p>
+        </div>
+        <a href="/annexure-1/examActivitiesSupervision" class="waves-effect waves-light btn red center">Not Applicable</a>
+        <button onclick="M.toast({html: 'Admission Process contribution added successfully'})" class="btn waves-effect waves-light" type="submit" id="submit_btn" disabled>Submit
         </button>
     </form>
 </div>

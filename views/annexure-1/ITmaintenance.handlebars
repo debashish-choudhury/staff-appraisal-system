@@ -31,11 +31,18 @@
                     <input id="it_maintenance_date" type="date" name="it_maintenance_date" class="validate" required>
                     <label for="class">Date</label>
                 </div>
-
             </div>
-            <a href="/annexure-1/lakshya" class="waves-effect waves-light btn center">Not Applicable</a>
+            <div>
+             <p>
+                 <label>
+                <input id="indeterminate-checkbox" type="checkbox" required/>
+                 <span>I acknowledge that above filled information is verified and justified by me.</span>
+                </label>
+            </p>
+        </div>
+            <a href="/annexure-1/lakshya" class="waves-effect waves-light btn red center">Not Applicable</a>
             <button onclick="M.toast({html: 'IT Maintenance duties added succesfully'})"
-                class="btn waves-effect waves-dark darken-5" type="submit">Submit
+                class="btn waves-effect waves-dark" id="submit_btn" type="submit" disabled>Submit
             </button>
         </form>
     </div>

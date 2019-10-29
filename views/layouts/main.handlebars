@@ -6,19 +6,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Appraisal System</title>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <style>
         .input-field label {
             color: black !important;
         }
+
         .input-field input {
             color: black !important;
         }
+
         .input-field input:focus+label {
             color: black !important;
         }
 
+        i.fa {
+            color: black;
+        }
+
+        input[type=button] {
+            color: purple;
+        }
     </style>
 
 </head>
@@ -39,11 +50,13 @@
         // Side bar initialization
         $(document).ready(function () {
             $('.sidenav').sidenav();
+            $('.collapsible').collapsible();
         });
-
         // Dropdown initialization
         $(".dropdown-trigger").dropdown({
-            constrainWidth: false
+            constrainWidth: false,
+            coverTrigger: false,
+            hover: true
         });
 
         // Form select option initialization
@@ -53,6 +66,25 @@
         $(document).ready(function () {
             $('select').material_select();
         });
+
+        // Date format initialization
+        $(document).ready(function () {
+            $('.datepicker').datepicker();
+        });
+        $('.tooltipped').tooltip();
+        $('button').addClass('purple');
+
+        //ack checkbox validation
+        $('#indeterminate-checkbox').click(function () {
+        //check if checkbox is checked
+        if ($(this).is(':checked')) {
+
+            $('#submit_btn').removeAttr('disabled'); //enable input
+
+        } else {
+            $('#submit_btn').attr('disabled', true); //disable input
+        }
+    });
     </script>
 </body>
 

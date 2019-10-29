@@ -10,7 +10,8 @@
                     <label for="udaan-subject">Area of Participation</label>
                 </div>
                 <div class="input-field col s6">
-                    <textarea id="udaan-contribution" name="udaan_contribution" class="materialize-textarea validate" required></textarea>
+                    <textarea id="udaan-contribution" name="udaan_contribution" class="materialize-textarea validate"
+                        required></textarea>
                     <label for="udaan-contribution">Contribution</label>
                 </div>
             </div>
@@ -27,9 +28,17 @@
                     <label for="udaan-end-date">End Date</label>
                 </div>
             </div>
-            <a href="/annexure-1/placementActivities" class="waves-effect waves-light btn center">Not Applicable</a>
+            <div>
+                <p>
+                    <label>
+                        <input id="indeterminate-checkbox" type="checkbox" required />
+                        <span>I acknowledge that above filled information is verified and justified by me.</span>
+                    </label>
+                </p>
+            </div>
+            <a href="/annexure-1/placementActivities" class="waves-effect waves-light btn red center">Not Applicable</a>
             <button onclick="M.toast({html: 'Udaan contribution added successfully'})"
-                class="btn waves-effect waves-light darken-3" type="submit">Submit
+                class="btn waves-effect waves-light" id="submit_btn" type="submit" disabled>Submit
             </button>
         </form>
     </div>

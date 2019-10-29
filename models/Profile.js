@@ -29,11 +29,11 @@ const ProfileRecord = new Schema({
         required: true
     },
     date_of_join: {
-        type: Date,
+        type: String,
         required: true
     },
     DOB: {
-        type: Date,
+        type: String,
         required: true
     },
     salary: {

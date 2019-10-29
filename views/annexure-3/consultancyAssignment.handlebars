@@ -1,31 +1,26 @@
 <h4>Annexure 3</h4><br>
 <div class="container">
-<h5>3.4 Consultancy Assignment</h5>
-<hr>
-
-<div class="row" id="consultancyAssignment">
+    <h5>3.4 Consultancy Assignment</h5>
+    <hr>
     <form action="/annexure-3/consultancyAssignment" method="post" class="col s12">
         <div class="row">
-            
+
             <div class="input-field col s6 md5">
                 <input id="rolesAndResponsilbilty" type="text" name="rolesAndResponsilbilty" class="validate" required>
                 <label for="rolesAndResponsilbilty">Roles And Responsilbilty</label>
             </div>
-            
+
             <div class="input-field col s6 md5">
                 <input id="typeOfWorkorDomain" type="text" name="typeOfWorkorDomain" class="validate" required>
                 <label for="typeOfWorkorDomain">Type Of Work/Domain</label>
             </div>
         </div>
-
-
+        
         <div class="row">
-            
             <div class="input-field col s6 md5">
                 <input id="organization" type="text" name="organization" class="validate" required>
                 <label for="organization">Organization</label>
             </div>
-            
             <div class="input-field col s6 md5">
                 <input id="duration" type="number" name="duration" class="validate" required>
                 <label for="duration">Duration</label>
@@ -33,26 +28,25 @@
         </div>
 
         <div class="row">
-            
+
             <div class="input-field col s6">
-                 <input id="numberofVisits" type="number" name="numberofVisits" class="validate" required>
+                <input id="numberofVisits" type="number" name="numberofVisits" class="validate" required>
                 <label for="numberofVisits">Number Of Visits</label>
             </div>
-         </div>
+        </div>
 
-         <div>
-             <p>
-                 <label>
-                <input id="indeterminate-checkbox" type="checkbox" />
-                 <span>I acknowledge that above filled information is verified and justified by me.</span>
+        <div>
+            <p>
+                <label>
+                    <input id="indeterminate-checkbox" type="checkbox" />
+                    <span>I acknowledge that above filled information is verified and justified by me.</span>
                 </label>
             </p>
         </div>
-                    
 
-  <a href="/annexure-3/consultancyAssignment" class="waves-effect waves-light btn center red">Not Applicable</a>
-        <button onclick="M.toast({html: 'Consultancy Assignment added successfully'})" class="btn waves-effect waves-light" type="submit">Submit
+        <a href="/annexure-3/externalProjectsOrCompetition" class="waves-effect waves-light btn center red">Not
+            Applicable</a>
+        <button onclick="M.toast({html: 'Consultancy Assignment added successfully'})"
+            class="btn waves-effect waves-light" type="submit" id="submit_btn" disabled>Submit
         </button>
     </form>
-</div>
-</div>

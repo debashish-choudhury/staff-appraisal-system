@@ -1,11 +1,11 @@
 <h4>Annexure-2</h4><br>
 <div class="container">
-<h5>2.2 Papers Published International Conference</h5>
-<hr>
-<div class="row" id="Papers Published In International Conference">
-    <form action="/annexure-2/papersPublishedinInternationalConf" method="post" class="col s12">
+    <h5>2.2 Papers Published International Conference</h5>
+    <hr>
+    <div class="row" id="Papers Published In International Conference">
+        <form action="/annexure-2/papersPublishedinInternationalConf" method="post" class="col s12">
 
-        <div class="row">
+            <div class="row">
                 <div class="input-field col s6 md5">
                     <input id="title_of_paper_published" type="text" name="title_of_paper_published" class="validate "
                         required>
@@ -14,7 +14,8 @@
                 </div>
 
                 <div class="input-field col s6">
-                    <input id="published_date" type="text" placeholder="march 2018" name="published_date" class="validate" required>
+                    <input id="published_date" type="text" placeholder="march 2018" name="published_date"
+                        class="validate" required>
                     <label for="published_date">Month / Year</label>
                 </div>
             </div>
@@ -62,9 +63,18 @@
                     <label for="link">Online Link</label>
                 </div>
             </div>
-
-        <button class="btn waves-effect waves-light darken-3" type="submit">Submit
-        </button>
-    </form>
-</div>
+            <div>
+                <p>
+                    <label>
+                        <input id="indeterminate-checkbox" type="checkbox" required />
+                        <span>I acknowledge that above filled information is verified and justified by me.</span>
+                    </label>
+                </p>
+            </div>
+            <a href="/annexure-2/papersPublishedinJournals" class="waves-effect waves-light btn red center">Not
+                Applicable</a>
+            <button class="btn waves-effect waves-light" id="submit_btn" type="submit" disabled>Submit
+            </button>
+        </form>
+    </div>
 </div>

@@ -29,14 +29,22 @@
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                    <textarea id="pbl-description" name="pbl_description" class="materialize-textarea validate" required></textarea>
+                    <textarea id="pbl-description" name="pbl_description" class="materialize-textarea validate"
+                        required></textarea>
                     <label for="pbl-description">Description</label>
                 </div>
-
             </div>
-            <a href="/annexure-1/udaan" class="waves-effect waves-light btn center">Not Applicable</a>
+            <div>
+                <p>
+                    <label>
+                        <input id="indeterminate-checkbox" type="checkbox" required />
+                        <span>I acknowledge that above filled information is verified and justified by me.</span>
+                    </label>
+                </p>
+            </div>
+            <a href="/annexure-1/udaan" class="waves-effect waves-light btn red center">Not Applicable</a>
             <button onclick="M.toast({html: 'PBL contribution added successfully'})"
-                class="btn waves-effect waves-light darken-3" type="submit">Submit
+                class="btn waves-effect waves-light" id="submit_btn" type="submit" disabled>Submit
             </button>
         </form>
     </div>
