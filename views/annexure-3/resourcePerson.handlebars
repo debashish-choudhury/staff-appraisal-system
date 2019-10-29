@@ -8,8 +8,8 @@
         <div class="row">
             
             <div class="input-field col s6 md5">
-                <input id="Topic Name" type="text" name="Topic Name" class="validate" required>
-                <label for="Topic Name">Topic Name</label>
+                <input id="topicName" type="text" name="topicName" class="validate" required>
+                <label for="topicName">Topic Name</label>
             </div>
             
             <div class="input-field col s6 md5">
@@ -22,18 +22,27 @@
         <div class="row">
             
             <div class="input-field col s6 md5">
-                <input id="nameofinstitute" type="text" name="nameofinstitute" class="validate" required>
-                <label for="nameofinstitute">Name Of Institute</label>
-            </div>
+                <input id="nameofInstitute" type="text" name="nameofInstitute" class="validate" required>
+                <label for="nameofInstitute">Name Of Institute</label>
+         </div>
             
-            <div class="input-field col s6 md5">
-                <input id="numberofparticipants" type="number" name="numberofparticipants" class="validate" required>
-                <label for="numberofparticipants">Number Of Participants</label>
+         <div class="input-field col s6 md5">
+                <input id="numberofParticipants" type="number" name="numberofParticipants" class="validate" required>
+                <label for="numberofParticipants">Number Of Participants</label>
             </div>
         </div>
 
-  <a href="/annexure-3/resourcePerson" class="waves-effect waves-light btn center">Not Applicable</a>
-        <button onclick="M.toast({html: ' Resource Person in STTP/Training Course/Lecture Talks added successfully'})" class="btn waves-effect waves-light darken-3" type="submit">Submit
+        <div>
+             <p>
+                 <label>
+                <input id="indeterminate-checkbox" type="checkbox" />
+                 <span>I acknowledge that above filled information is verified and justified.</span>
+                </label>
+            </p>
+        </div>
+
+  <a href="/annexure-3/resourcePerson" class="waves-effect waves-light btn center red">Not Applicable</a>
+        <button onclick="M.toast({html: ' Resource Person in STTP/Training Course/Lecture Talks added successfully'})" class="btn waves-effect waves-light" type="submit">Submit
         </button>
     </form>
 </div>
