@@ -73,9 +73,9 @@ app.post('/leave-form', (req, res) => {
     }
     new Leave(LeaveRecord)
         .save()
-        .then(leaves => {
-            res.redirect('/leaveForm');
-        });
+        .then(setTimeout(leaves => {
+            res.redirect('/annexure-1/timeTable');
+        }, 3000));
 });
 
 // Use routes

@@ -48,7 +48,15 @@
                 
             </div>
         </div>
-        <button onclick="M.toast({html: 'Leave form submitted successfully'})" class="btn waves-effect waves-light" type="submit">Submit
+        <div>
+             <p>
+                 <label>
+                <input id="indeterminate-checkbox" type="checkbox" required/>
+                 <span>I acknowledge that above filled information is verified and justified by me.</span>
+                </label>
+            </p>
+        </div>
+        <button onclick="M.toast({html: 'Leave form submitted successfully'})" class="btn waves-effect waves-light" type="submit" id="submit_btn" disabled>Submit
         </button>
     </form>
 </div>

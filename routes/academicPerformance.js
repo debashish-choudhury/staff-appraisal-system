@@ -131,7 +131,7 @@ router.post('/innovation', (req, res) => {
     new Innovation(InnovationTeachingRecords)
         .save()
         .then(setTimeout(innovationrecords => {
-            res.redirect('/annexure-1/timeTable');
+            res.redirect('/leaveForm');
         }, 3000));
 });
 
