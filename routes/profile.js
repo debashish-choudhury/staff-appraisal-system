@@ -72,9 +72,9 @@ router.put('/:id', (req, res) => {
         profile.salary = req.body.salary
 
         profile.save()
-        .then(profile => {
+        .then(setTimeout(profile => {
             res.redirect('/profile/index');
-        });
+        }, 3000));
     });
 });
 

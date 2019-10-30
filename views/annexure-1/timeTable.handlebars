@@ -1,53 +1,53 @@
 <h4>Annexure 1</h4><br>
 <div class="container">
-<h5>1.1 Timetable related Activities</h5>
-<hr>
-<div class="row" id="timetable">
-    <form action="/annexure-1/timetable" method="post" class="col s12">
-        <div class="row">
-            <div class="input-field col s6 md5">
-                <input id="role" type="text" name="role" class="validate" required>
-                <label for="role">Role</label>
+    <h5>1.1 Timetable related Activities</h5>
+    <hr>
+    <div class="row" id="timetable">
+        <form action="/annexure-1/timetable" method="post" class="col s12">
+            <div class="row">
+                <div class="input-field col s6 md5">
+                    <input id="role" type="text" name="role" class="validate" required>
+                    <label for="role">Role &nbsp; <a href="#" class="tooltipped"
+                            data-tooltip="Enter the type of role given to you in time table related activities"><i class="fa fa-info-circle"></i></a></label>
+                </div>
+                <div class="input-field col s6">
+                    <select name="department">
+                        <option value="" disabled selected>Department</option>
+                        <option value="Information Technology">Information Technology</option>
+                        <option value="Computer Engineering">Computer Engineering</option>
+                        <option value="Mechanical Engineering">Mechanical Engineering</option>
+                        <option value="Civil Engineering">Civil Engineering</option>
+                        <option value="EXTC Engineering">EXTC Engineering</option>
+                    </select>
+                </div>
             </div>
-             <div class="input-field col s6">
-                <select name="department">
-                    <option value="" disabled selected>Department</option>
-                    <option value="Information Technology">Information Technology</option>
-                    <option value="Computer Engineering">Computer Engineering</option>
-                    <option value="Mechanical Engineering">Mechanical Engineering</option>
-                    <option value="Civil Engineering">Civil Engineering</option>
-                    <option value="EXTC Engineering">EXTC Engineering</option>
-                </select>
+            <div class="row">
+                <div class="input-field col s6 md5">
+                    <select name="semester">
+                        <option value="" disabled selected>Semester</option>
+                        <option value="sem 1">Sem 1</option>
+                        <option value="sem 2">Sem 2</option>
+                        <option value="sem 3">Sem 3</option>
+                        <option value="sem 4">Sem 4</option>
+                        <option value="sem 5">Sem 5</option>
+                        <option value="sem 6">Sem 6</option>
+                        <option value="sem 7">Sem 7</option>
+                        <option value="sem 8">Sem 8</option>
+                    </select>
+                </div>
             </div>
-        </div>
-
-        <div class="row">
-           
-             <div class="input-field col s6 md5">
-                <select name="semester">
-                    <option value="" disabled selected>Semester</option>
-                    <option value="sem 1">Sem 1</option>
-                    <option value="sem 2">Sem 2</option>
-                    <option value="sem 3">Sem 3</option>
-                    <option value="sem 4">Sem 4</option>
-                    <option value="sem 5">Sem 5</option>
-                    <option value="sem 6">Sem 6</option>
-                    <option value="sem 7">Sem 7</option>
-                    <option value="sem 8">Sem 8</option>
-                </select>
+            <div>
+                <p>
+                    <label>
+                        <input id="indeterminate-checkbox" type="checkbox" required />
+                        <span>I acknowledge that above filled information is verified and justified by me.</span>
+                    </label>
+                </p>
             </div>
-        </div>
-        <div>
-             <p>
-                 <label>
-                <input id="indeterminate-checkbox" type="checkbox" required/>
-                 <span>I acknowledge that above filled information is verified and justified by me.</span>
-                </label>
-            </p>
-        </div>
-        <a href="/annexure-1/classAdvisor" class="waves-effect waves-light btn red center">Not Applicable</a>
-        <button onclick="M.toast({html: 'Timetable activities added successfully'})" class="btn waves-effect waves-light" id="submit_btn" type="submit" disabled>Submit
-        </button>
-    </form>
-</div>
+            <a href="/annexure-1/classAdvisor" class="waves-effect waves-light btn red center">Not Applicable</a>
+            <button onclick="M.toast({html: 'Timetable activities added successfully'})"
+                class="btn waves-effect waves-light" id="submit_btn" type="submit" disabled>Submit
+            </button>
+        </form>
+    </div>
 </div>
