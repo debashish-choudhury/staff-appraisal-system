@@ -25,7 +25,7 @@
                 </div>
 
                 <div class="input-field col s6 md5">
-                    <input id="start_date" type="date" name="start_date" class="validate " required>
+                    <input id="start_date" type="text" name="start_date" class="datepicker validate" required>
                     <label for="start_date" class="">Starting Date</label>
                 </div>
 
@@ -34,7 +34,7 @@
             <div class="row">
 
                 <div class="input-field col s6 md5">
-                    <input id="end_date" type="date" name="end_date" class="validate " required>
+                    <input id="end_date" type="text" name="end_date" class="datepicker validate" required>
                     <label for="end_date" class="">Ending Date</label>
                 </div>
 
@@ -62,7 +62,7 @@
                 </p>
             </div>
             <a href="/annexure-3/resourcePerson" class="waves-effect waves-light btn red center">Not Applicable</a>
-            <button class="btn waves-effect waves-light" id="submit_btn" type="submit" disabled>Submit
+            <button onclick="M.toast({html: 'Seminar details added succesfully'})" class="btn waves-effect waves-light" id="submit_btn" type="submit" disabled>Submit
             </button>
         </form>
     </div>

@@ -12,11 +12,11 @@ const ProjectBasedLearning = new Schema({
         required: true
     },
     pbl_start_date: {
-        type: Date,
+        type: String,
         required: true
     },
     pbl_end_date: {
-        type: Date,
+        type: String,
         required: true
     },
     pbl_description: {

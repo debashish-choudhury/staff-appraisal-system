@@ -12,11 +12,11 @@ const Udaan = new Schema({
         required: true
     },
     udaan_start_date: {
-        type: Date,
+        type: String,
         required: true
     },
     udaan_end_date: {
-        type: Date,
+        type: String,
         required: true
     }
 });

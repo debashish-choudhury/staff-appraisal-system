@@ -58,9 +58,9 @@ router.post('/resourcePerson', (req, res) => {
     }
     new ResourcePerson(resourcePerson)
         .save()
-        .then(resourcePersonRecords => {
-            res.redirect('/annexure-3/resourcePerson');
-        });
+        .then(setTimeout(resourcePersonRecords => {
+            res.redirect('/annexure-3/contributionToSyllabus');
+        }, 3000));
 });
 
 // Processing contribution to syllabus form
@@ -74,9 +74,9 @@ router.post('/contributionToSyllabus', (req, res) => {
     }
     new ContributionToSyllabus(contributionToSyllabus)
         .save()
-        .then(contributionToSyllabusRecords => {
-            res.redirect('/annexure-3/contributionToSyllabus');
-        });
+        .then(setTimeout(contributionToSyllabusRecords => {
+            res.redirect('/annexure-3/memberOfUniversityCommitte');
+        }, 3000));
 });
 
 // Processing member of university committe form
@@ -89,9 +89,9 @@ router.post('/memberOfUniversityCommitte', (req, res) => {
     }
     new MemberOfUniversityCommitte(memberOfUniversityCommitte)
         .save()
-        .then(memberOfUniversityCommitteRecords => {
-            res.redirect('/annexure-3/memberOfUniversityCommitte');
-        });
+        .then(setTimeout(memberOfUniversityCommitteRecords => {
+            res.redirect('/annexure-3/consultancyAssignment');
+        }, 3000));
 });
 
 // Processing consultancy assignment form
@@ -106,9 +106,9 @@ router.post('/consultancyAssignment', (req, res) => {
     }
     new ConsultancyAssignment(consultancyAssignment)
         .save()
-        .then(consultancyAssignmentRecords => {
-            res.redirect('/annexure-3/consultancyAssignment');
-        });
+        .then(setTimeout(consultancyAssignmentRecords => {
+            res.redirect('/annexure-3/externalProjectsOrCompetition');
+        }, 3000));
 });
 
 // Processing external projects or competitions form
@@ -123,9 +123,9 @@ router.post('/externalProjectsOrCompetition', (req, res) => {
     }
     new ExternalProjectsOrCompetition(externalProjectsOrCompetition)
         .save()
-        .then(externalProjectsOrCompetitionRecords => {
+        .then(setTimeout(externalProjectsOrCompetitionRecords => {
             res.redirect('/annexure-3/externalProjectsOrCompetition');
-        });
+        }, 3000));
 });
 
 module.exports = router;

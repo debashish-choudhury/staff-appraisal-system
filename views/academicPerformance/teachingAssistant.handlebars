@@ -1,6 +1,6 @@
-<h4>1. Academic Performance</h4><br>
+<h4> Academic Performance</h4><br>
 <div class="container">
-<h5>1.2 Teaching Assistant</h5>
+<h5> Teaching Assistant</h5>
 <hr>
 <div class="row" id="teachingAssistant">
     <form action="/academicPerformance/teachingAssistant" method="post" class="col s12">
@@ -40,7 +40,15 @@
                 <label for="subject">Subject Contribution</label>
             </div>
         </div>
-        <button onclick="M.toast({html: 'Teaching technique added successfully'})" class="btn waves-effect waves-light" type="submit">Submit
+        <div>
+             <p>
+                 <label>
+                <input id="indeterminate-checkbox" type="checkbox" required/>
+                 <span>I acknowledge that above filled information is verified and justified by me.</span>
+                </label>
+            </p>
+        </div>
+        <button onclick="M.toast({html: 'Teaching assistant added successfully'})" class="btn waves-effect waves-light" type="submit" id="submit_btn" disabled>Submit
         </button>
     </form>
 </div>

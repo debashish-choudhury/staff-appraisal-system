@@ -1,6 +1,6 @@
-<h4>1. Academic Performance</h4><br>
+<h4> Academic Performance</h4><br>
 <div class="container">
-<h5>1.5 Innovative Teaching Technique Adopted</h5>
+<h5>Innovative Teaching Technique Adopted</h5>
 <hr>
 <div class="row" id="leaveform">
     <form action="/academicPerformance/innovation" method="post" class="col s12">
@@ -40,8 +40,16 @@
                 <label for="technique">Technique adopted</label>
             </div>
         </div>
-        <a href="/annexure-1/timeTable" class="waves-effect waves-light btn purple center">Not Applicable</a>
-        <button onclick="M.toast({html: 'Teaching technique added successfully'})" class="btn waves-effect waves-light" type="submit">Submit
+        <div>
+             <p>
+                 <label>
+                <input id="indeterminate-checkbox" type="checkbox" required/>
+                 <span>I acknowledge that above filled information is verified and justified by me.</span>
+                </label>
+            </p>
+        </div>
+        <a href="/annexure-1/timeTable" class="waves-effect waves-light btn red center">Not Applicable</a>
+        <button onclick="M.toast({html: 'Innovative teaching added successfully'})" class="btn waves-effect waves-light" type="submit" id="submit_btn" disabled>Submit
         </button>
     </form>
 </div>

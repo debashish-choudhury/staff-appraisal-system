@@ -64,9 +64,9 @@ router.post('/teachingLoad', (req, res) => {
     }
     new TeachingLoad(TeachingRecord)
         .save()
-        .then(teaching => {
-            res.redirect('/academicPerformance/teachingLoad');
-        });
+        .then(setTimeout(teaching => {
+            res.redirect('/academicPerformance/teachingAssistant');
+        }, 3000));
 });
 
 //process teaching form
@@ -80,9 +80,9 @@ router.post('/teachingAssistant', (req, res) => {
     }
     new TeachingAssistant(teachingAssistantRecord)
         .save()
-        .then(teachingAssistant => {
-            res.redirect('/academicPerformance/teachingAssistant');
-        });
+        .then(setTimeout(teachingAssistant => {
+            res.redirect('/academicPerformance/newBooks');
+        }, 3000));
 });
 
 //process new books form
@@ -98,9 +98,9 @@ router.post('/newBooks', (req, res) => {
     }
     new NewBooks(NewBooksRecord)
         .save()
-        .then(newbooks => {
-            res.redirect('/academicPerformance/newBooks');
-        });
+        .then(setTimeout(newbooks => {
+            res.redirect('/academicPerformance/addedExp');
+        }, 3000));
 });
 
 //process added experiments form
@@ -114,9 +114,9 @@ router.post('/addedExp', (req, res) => {
     }
     new AddedExp(AddedExpRecord)
         .save()
-        .then(newbooks => {
-            res.redirect('/academicPerformance/addedExp');
-        });
+        .then(setTimeout(newbooks => {
+            res.redirect('/academicPerformance/innovativeTeaching');
+        }, 3000));
 });
 
 //process innovation teaching technique form
@@ -124,15 +124,15 @@ router.post('/innovation', (req, res) => {
     // add preleave data into db
     const InnovationTeachingRecords = {
         subject_name: req.body.subject_name,
-        class: req.body.class,
+        class_name: req.body.class_name,
         semester: req.body.semester,
         technique: req.body.technique
     }
     new Innovation(InnovationTeachingRecords)
         .save()
-        .then(innovationrecords => {
-            res.redirect('/academicPerformance/innovativeTeaching');
-        });
+        .then(setTimeout(innovationrecords => {
+            res.redirect('/annexure-1/timeTable');
+        }, 3000));
 });
 
 module.exports = router;

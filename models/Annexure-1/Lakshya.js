@@ -12,7 +12,7 @@ const Lakshya = new Schema({
         required: true
     },
     lakshya_date: {
-        type: Date,
+        type: String,
         required: true
     },
     lakshya_no_of_participants: {

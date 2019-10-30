@@ -28,11 +28,11 @@ const Studentorganization = new Schema({
         required: true
     },
     student_event_start_date: {
-        type: Date,
+        type: String,
         required: true
     },
     student_event_end_date: {
-        type: Date,
+        type: String,
         required: true
     },
 });

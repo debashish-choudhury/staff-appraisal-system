@@ -16,12 +16,12 @@ const ShortTermTraining = new Schema({
         required: true
     },
     start_date: {
-        type: Date,
+        type: String,
         required: true
     },
 
     end_date: {
-        type: Date,
+        type: String,
         required: true
     },
     internal_external: {

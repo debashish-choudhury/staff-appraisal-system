@@ -1,6 +1,6 @@
-<h4>1. Academic Performance</h4><br>
+<h4> Academic Performance</h4><br>
 <div class="container">
-<h5>1.1 Teaching Load</h5>
+<h5> Teaching Load</h5>
 <hr>
 <div class="row" id="leaveform">
     <form action="/academicPerformance/teachingLoad" method="post" class="col s12">
@@ -81,8 +81,15 @@
                 
             </div>
         </div>
-       
-        <button class="btn waves-effect waves-light" type="submit">Submit
+       <div>
+             <p>
+                 <label>
+                <input id="indeterminate-checkbox" type="checkbox" required/>
+                 <span>I acknowledge that above filled information is verified and justified by me.</span>
+                </label>
+            </p>
+        </div>
+        <button onclick="M.toast({html: 'Teaching load added successfully'})" class="btn waves-effect waves-light" type="submit" id="submit_btn" disabled>Submit
         </button>
     </form>
 </div>

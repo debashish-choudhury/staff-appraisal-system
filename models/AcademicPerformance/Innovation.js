@@ -7,7 +7,7 @@ const Innovation = new Schema({
         type: String,
         required: true
     },
-    class: {
+    class_name: {
         type: String,
         required: true
     },

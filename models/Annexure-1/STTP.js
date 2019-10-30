@@ -20,11 +20,11 @@ const STTP = new Schema({
         required: true
     },
     sttp_start_date: {
-        type: Date,
+        type: String,
         required: true
     },
     sttp_end_date: {
-        type: Date,
+        type: String,
         required: true
     },
     sttp_participants: {
