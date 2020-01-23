@@ -49,6 +49,9 @@ router.get('/innovativeTeaching', (req, res) => {
 
 //process teaching form
 router.post('/teachingLoad', (req, res) => {
+
+    var msg = "i am a";
+    
     // add preleave data into db
     const TeachingRecord = {
         subject_name: req.body.subject_name,
