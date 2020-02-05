@@ -49,8 +49,6 @@ router.get('/innovativeTeaching', (req, res) => {
 
 //process teaching form
 router.post('/teachingLoad', (req, res) => {
-
-    var msg = "i am a";
     
     // add preleave data into db
     const TeachingRecord = {
@@ -67,9 +65,10 @@ router.post('/teachingLoad', (req, res) => {
     }
     new TeachingLoad(TeachingRecord)
         .save()
-        .then(setTimeout(teaching => {
+        .then(teaching => {
+            req.flash('success_msg', 'Data entered successfully');
             res.redirect('/academicPerformance/teachingAssistant');
-        }, 3000));
+        });
 });
 
 //process teaching form
@@ -83,9 +82,10 @@ router.post('/teachingAssistant', (req, res) => {
     }
     new TeachingAssistant(teachingAssistantRecord)
         .save()
-        .then(setTimeout(teachingAssistant => {
+        .then(teachingAssistant => {
+            req.flash('success_msg', 'Data entered successfully');
             res.redirect('/academicPerformance/newBooks');
-        }, 3000));
+        });
 });
 
 //process new books form
@@ -101,9 +101,10 @@ router.post('/newBooks', (req, res) => {
     }
     new NewBooks(NewBooksRecord)
         .save()
-        .then(setTimeout(newbooks => {
+        .then(newbooks => {
+            req.flash('success_msg', 'Data entered successfully');
             res.redirect('/academicPerformance/addedExp');
-        }, 3000));
+        });
 });
 
 //process added experiments form
@@ -117,9 +118,10 @@ router.post('/addedExp', (req, res) => {
     }
     new AddedExp(AddedExpRecord)
         .save()
-        .then(setTimeout(newbooks => {
+        .then(newbooks => {
+            req.flash('success_msg', 'Data entered successfully');
             res.redirect('/academicPerformance/innovativeTeaching');
-        }, 3000));
+        });
 });
 
 //process innovation teaching technique form
@@ -133,9 +135,10 @@ router.post('/innovation', (req, res) => {
     }
     new Innovation(InnovationTeachingRecords)
         .save()
-        .then(setTimeout(innovationrecords => {
+        .then(innovationrecords => {
+            req.flash('success_msg', 'Data entered successfully');
             res.redirect('/leaveForm');
-        }, 3000));
+        });
 });
 
 module.exports = router;

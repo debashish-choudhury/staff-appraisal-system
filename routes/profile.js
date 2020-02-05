@@ -50,6 +50,7 @@ router.post('/', (req, res) => {
     new Profile(ProfileRecord)
         .save()
         .then((profile) => {
+            req.flash('success_msg', 'Profile added');
             res.redirect('/profile/index');
         });
 });
@@ -73,6 +74,7 @@ router.put('/:id', (req, res) => {
 
         profile.save()
         .then(setTimeout(profile => {
+            req.flash('success_msg', 'Profile edited');
             res.redirect('/profile/index');
         }, 3000));
     });

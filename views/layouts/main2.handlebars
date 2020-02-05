@@ -10,47 +10,13 @@
         integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <style>
-        .input-field label {
-            color: black !important;
-        }
-
-        .input-field input {
-            color: black !important;
-        }
-
-        .input-field input:focus+label {
-            color: black !important;
-        }
-
-        i.fa {
-            color: black;
-        }
-
-        input[type=button] {
-            color: purple;
-        }
-        li a.sideNavPadding {
-            padding: 0 16px;
-        }
-
-        .icon_style {
-            position: absolute;
-            right: 10px;
-            top: 10px;
-            font-size: 20px;
-            color: white;
-            cursor: pointer;
-        }
-    </style>
+    
 
 </head>
 
 <body>
-    {{> _navbar}}
     <div class="container">
-        {{> _msg}}
-        {{> _errors}}
+
         {{{body}}}
 
     </div>
@@ -99,12 +65,9 @@
         }
     });
 
-    $(document).ready(function () {
-            $('.tabs').tabs();
-        });
-
-
-        $("#alert_box").fadeOut(10000);
+    $(document).ready(function(){
+    $('.tabs').tabs();
+  });
     </script>
 </body>
 

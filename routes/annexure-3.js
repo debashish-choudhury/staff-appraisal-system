@@ -58,9 +58,10 @@ router.post('/resourcePerson', (req, res) => {
     }
     new ResourcePerson(resourcePerson)
         .save()
-        .then(setTimeout(resourcePersonRecords => {
+        .then(resourcePersonRecords => {
+            req.flash('success_msg', 'Data entered successfully');
             res.redirect('/annexure-3/contributionToSyllabus');
-        }, 3000));
+        });
 });
 
 // Processing contribution to syllabus form
@@ -74,9 +75,10 @@ router.post('/contributionToSyllabus', (req, res) => {
     }
     new ContributionToSyllabus(contributionToSyllabus)
         .save()
-        .then(setTimeout(contributionToSyllabusRecords => {
+        .then(contributionToSyllabusRecords => {
+            req.flash('success_msg', 'Data entered successfully');
             res.redirect('/annexure-3/memberOfUniversityCommitte');
-        }, 3000));
+        });
 });
 
 // Processing member of university committe form
@@ -89,9 +91,10 @@ router.post('/memberOfUniversityCommitte', (req, res) => {
     }
     new MemberOfUniversityCommitte(memberOfUniversityCommitte)
         .save()
-        .then(setTimeout(memberOfUniversityCommitteRecords => {
+        .then(memberOfUniversityCommitteRecords => {
+            req.flash('success_msg', 'Data entered successfully');
             res.redirect('/annexure-3/consultancyAssignment');
-        }, 3000));
+        });
 });
 
 // Processing consultancy assignment form
@@ -106,9 +109,10 @@ router.post('/consultancyAssignment', (req, res) => {
     }
     new ConsultancyAssignment(consultancyAssignment)
         .save()
-        .then(setTimeout(consultancyAssignmentRecords => {
+        .then(consultancyAssignmentRecords => {
+            req.flash('success_msg', 'Data entered successfully');
             res.redirect('/annexure-3/externalProjectsOrCompetition');
-        }, 3000));
+        });
 });
 
 // Processing external projects or competitions form
@@ -123,9 +127,10 @@ router.post('/externalProjectsOrCompetition', (req, res) => {
     }
     new ExternalProjectsOrCompetition(externalProjectsOrCompetition)
         .save()
-        .then(setTimeout(externalProjectsOrCompetitionRecords => {
+        .then(externalProjectsOrCompetitionRecords => {
+            req.flash('success_msg', 'Data entered successfully');
             res.redirect('/annexure-3/externalProjectsOrCompetition');
-        }, 3000));
+        });
 });
 
 module.exports = router;

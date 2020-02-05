@@ -81,9 +81,10 @@ router.post('/papersPublishedinNationalConf', (req, res) => {
     }
     new PapersPublishedNationalConf(papersPublishedNationalRecords)
         .save()
-        .then(setTimeout(papersPublishedNational => {
+        .then(papersPublishedNational => {
+            req.flash('success_msg', 'Data entered successfully');
             res.redirect('/annexure-2/papersPublishedinInternationalConf');
-        }, 3000));
+        });
 });
 
 //process paper published in international conference form
@@ -102,9 +103,10 @@ router.post('/papersPublishedinInternationalConf', (req, res) => {
     }
     new PapersPublishedInternationalConf(papersPublishedInternationalRecords)
         .save()
-        .then(setTimeout(papersPublishedInternational => {
+        .then(papersPublishedInternational => {
+            req.flash('success_msg', 'Data entered successfully');
             res.redirect('/annexure-2/papersPublishedinJournals');
-        }, 3000));
+        });
 });
 
 //process paper published in journals form
@@ -123,9 +125,10 @@ router.post('/papersPublishedinJournals', (req, res) => {
     }
     new PapersPublishedJournals(papersPublishedJournalsRecords)
         .save()
-        .then(setTimeout(papersPublishedJournals => {
+        .then(papersPublishedJournals => {
+            req.flash('success_msg', 'Data entered successfully');
             res.redirect('/annexure-2/moocs');
-        }, 3000));
+        });
 });
 
 //process moocs form
@@ -139,9 +142,10 @@ router.post('/moocs', (req, res) => {
     }
     new Moocs(moocsRecords)
         .save()
-        .then(setTimeout(moocs => {
+        .then(moocs => {
+            req.flash('success_msg', 'Data entered successfully');
             res.redirect('/annexure-2/swayam');
-        }, 3000));
+        });
 });
 
 //process swayam form
@@ -155,9 +159,10 @@ router.post('/swayam', (req, res) => {
     }
     new Swayam(swayamRecords)
         .save()
-        .then(setTimeout(swayam => {
+        .then(swayam => {
+            req.flash('success_msg', 'Data entered successfully');
             res.redirect('/annexure-2/shortTermTraining');
-        }, 3000));
+        });
 });
 
 //process short term training form
@@ -173,9 +178,10 @@ router.post('/shortTermTraining', (req, res) => {
     }
     new ShortTermTraining(shortTermTrainingRecords)
         .save()
-        .then(setTimeout(shortTermTraining => {
+        .then(shortTermTraining => {
+            req.flash('success_msg', 'Data entered successfully');
             res.redirect('/annexure-2/seminars');
-        }, 3000));
+        });
 });
 
 //process seminars form
@@ -191,9 +197,10 @@ router.post('/seminars', (req, res) => {
     }
     new Seminars(seminarsRecords)
         .save()
-        .then(setTimeout(seminars => {
+        .then(seminars => {
+            req.flash('success_msg', 'Data entered successfully');
             res.redirect('/annexure-3/resourcePerson');
-        }, 3000));
+        });
 });
 
 module.exports = router;

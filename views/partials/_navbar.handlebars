@@ -5,8 +5,10 @@
         <a href="#!" class="brand-logo">Appraisal</a>
         <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
         <ul class="right hide-on-med-and-down">
-          <li><a href="/">Home</a></li>
+          
           <!-- Dropdown Trigger -->
+          {{#if user}}
+          <li><a href="/">Home</a></li>
           <li><a class="dropdown-trigger" href="" data-target="academic-web">Academic<i
                 class="material-icons right">arrow_drop_down</i></a></li>
           <li><a href="/leaveform">Leave</a></li>
@@ -17,7 +19,10 @@
           <li><a class="dropdown-trigger" href="" data-target="annexure-3-web">Annexure 3<i
                 class="material-icons right">arrow_drop_down</i></a></li>
 
-          <li><a href="/profile/index">Profile</a></li>
+          <li><a class="dropdown-trigger" href="" data-target="profile"><i class="material-icons">account_box</i></a></li>
+          {{else}}
+            <li><a href="/">Home</a></li>
+          {{/if}}
         </ul>
         {{!-- dropdown of web view --}}
         <ul id="academic-web" class="dropdown-content text-black">
@@ -83,14 +88,20 @@
           <li><a href="/annexure-3/externalProjectsOrCompetition" class="black-text">3.5 External Projects Or
               Competitions Participations</a></li>
         </ul>
+        <ul id="profile" class="dropdown-content text-black">
+          <li><a href="/profile/index" class="black-text">View Profile</a></li>
+          <li class="divider"></li>
+          <li><a href="/users/logout" class="black-text">Logout</a></li>
+          
+        </ul>
       </div>
     </div>
   </nav>
 </div>
 {{!-- side bar content for mobile view --}}
 <ul id="mobile-demo" class="sidenav">
+  {{#if user}}
   <li><a class="sideNavPadding" href="/">Home</a></li>
-
   <li class="no-padding">
     <ul class="collapsible collapsible-accordion">
       
@@ -182,4 +193,7 @@
     </ul>
   </li>
   <li><a class="sideNavPadding" href="/profile/index">Profile</a></li>
+  {{else}}
+  <li><a href="/">Home</a></li>
+  {{/if}}
 </ul>

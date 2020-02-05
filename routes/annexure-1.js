@@ -183,9 +183,10 @@ router.post('/timetable', (req, res) => {
     }
     new TimeTable(timeTableRecords)
         .save()
-        .then(setTimeout(timetable => {
+        .then(timetable => {
+            req.flash('success_msg', 'Data entered successfully');
             res.redirect('/annexure-1/classAdvisor');
-        }, 3000));
+        });
 });
 
 //process class advisor form
@@ -199,9 +200,10 @@ router.post('/classadvisor', (req, res) => {
     }
     new ClassAdvisor(classAdvisorRecords)
         .save()
-        .then(setTimeout(classAdvisor => {
+        .then(classAdvisor => {
+            req.flash('success_msg', 'Data entered successfully');
             res.redirect('/annexure-1/sportsActivities');
-        }, 3000));
+        });
 });
 
 //process sports activities form
@@ -215,9 +217,10 @@ router.post('/sportsActivities', (req, res) => {
     }
     new SportsActivities(sportsActivitiesRecords)
         .save()
-        .then(setTimeout(sportsactivities => {
+        .then(sportsactivities => {
+            req.flash('success_msg', 'Data entered successfully');
             res.redirect('/annexure-1/culturalActivities');
-        }, 3000));
+        });
 });
 
 //process cultural activities form
@@ -231,9 +234,10 @@ router.post('/culturalActivities', (req, res) => {
     }
     new CulturalActivities(culturalActivitiesRecords)
         .save()
-        .then(setTimeout(culturalsactivities => {
+        .then(culturalsactivities => {
+            req.flash('success_msg', 'Data entered successfully');
             res.redirect('/annexure-1/projectBasedLearning');
-        }, 3000));
+        });
 });
 
 //process PBL activities form
@@ -248,9 +252,10 @@ router.post('/projectBasedLearning', (req, res) => {
     }
     new ProjectBasedLearning(projectBasedLearningRecords)
         .save()
-        .then(setTimeout(projectBasedLearning => {
+        .then(projectBasedLearning => {
+            req.flash('success_msg', 'Data entered successfully');
             res.redirect('/annexure-1/udaan');
-        }, 3000));
+        });
 });
 
 //process Udaan activities form
@@ -264,9 +269,10 @@ router.post('/udaan', (req, res) => {
     }
     new Udaan(udaanRecords)
         .save()
-        .then(setTimeout(udaan => {
+        .then(udaan => {
+            req.flash('success_msg', 'Data entered successfully');
             res.redirect('/annexure-1/placementActivities');
-        }, 3000));
+        });
 });
 
 //process placement activities form
@@ -280,9 +286,10 @@ router.post('/placementActivities', (req, res) => {
     }
     new PlacementActivities(placementActivitiesRecords)
         .save()
-        .then(setTimeout( placementActivities => {
+        .then( placementActivities => {
+            req.flash('success_msg', 'Data entered successfully');
             res.redirect('/annexure-1/inhousePlacement');
-        }, 3000));
+        });
 });
 
 //process inhouse placement form
@@ -296,9 +303,10 @@ router.post('/inhousePlacement', (req, res) => {
     }
     new InhousePlacement(inhousePlacementRecords)
         .save()
-        .then(setTimeout(inhousePlacement => {
+        .then(inhousePlacement => {
+            req.flash('success_msg', 'Data entered successfully');
             res.redirect('/annexure-1/studentOrganizations');
-        }, 3000));
+        });
 });
 
 //process student organizations form
@@ -316,9 +324,10 @@ router.post('/studentOrganizations', (req, res) => {
     }
     new StudentOrganizations(studentOrganizationRecords)
         .save()
-        .then(setTimeout( studentOrganization => {
+        .then( studentOrganization => {
+            req.flash('success_msg', 'Data entered successfully');
             res.redirect('/annexure-1/industrialVisitActivities');
-        }, 3000));
+        });
 });
 
 //process Industrial visit activities form
@@ -338,9 +347,10 @@ router.post('/industrialVisitActivities', (req, res) => {
     }
     new IndustrialVisitActivities(industrialVisitRecords)
         .save()
-        .then(setTimeout(industrialVisit => {
+        .then(industrialVisit => {
+            req.flash('success_msg', 'Data entered successfully');
             res.redirect('/annexure-1/admissionProcessActivities');
-        }, 3000));
+        });
 });
 
 //process admission process activities form
@@ -355,9 +365,10 @@ router.post('/admissionProcessActivities', (req, res) => {
     }
     new AdmissionProcessActivities(admissionProcessRecords)
         .save()
-        .then(setTimeout(industrialVisit => {
+        .then(industrialVisit => {
+            req.flash('success_msg', 'Data entered successfully');
             res.redirect('/annexure-1/examAssessmentExternal');
-        }, 3000));
+        });
 });
 
 //process exam assessment external form
@@ -373,9 +384,10 @@ router.post('/examAssessmentExternal', (req, res) => {
     }
     new ExamAssessmentExternal(examAssessmentRecords)
         .save()
-        .then(setTimeout(examAssessment => {
+        .then(examAssessment => {
+            req.flash('success_msg', 'Data entered successfully');
             res.redirect('/annexure-1/examActivitiesSupervision');
-        }, 3000));
+        });
 });
 
 //process exam assessment external form
@@ -390,9 +402,10 @@ router.post('/examActivitiesSupervision', (req, res) => {
     }
     new ExamActivitiesSupervision(examActivitiesSupervisionRecords)
         .save()
-        .then(setTimeout(examActivitiesSupervision => {
+        .then(examActivitiesSupervision => {
+            req.flash('success_msg', 'Data entered successfully');
             res.redirect('/annexure-1/examActivitiesCollegeLevel');
-        }, 3000));
+        });
 });
 
 //process exam activities college level form
@@ -405,9 +418,10 @@ router.post('/examActivitiesCollegeLevel', (req, res) => {
     }
     new ExamActivitiesCollegeLevel(examActivitiesCollegeLevel)
         .save()
-        .then(setTimeout(examActivitiesCollege => {
+        .then(examActivitiesCollege => {
+            req.flash('success_msg', 'Data entered successfully');
             res.redirect('/annexure-1/ITmaintenance');
-        }, 3000));
+        });
 });
 
 //process inhouse placement form
@@ -421,9 +435,10 @@ router.post('/ITmaintenance', (req, res) => {
     }
     new ITMaintenance(ITmaintenance)
         .save()
-        .then(setTimeout(ITmaintenance => {
+        .then(ITmaintenance => {
+            req.flash('success_msg', 'Data entered successfully');
             res.redirect('/annexure-1/lakshya');
-        }, 3000));
+        });
 });
 
 //process lakshya form
@@ -437,9 +452,10 @@ router.post('/lakshya', (req, res) => {
     }
     new Lakshya(lakshyaRecords)
         .save()
-        .then(setTimeout(lakshyaData => {
+        .then(lakshyaData => {
+            req.flash('success_msg', 'Data entered successfully');
             res.redirect('/annexure-1/magazineNewsletter');
-        }, 3000));
+        });
 });
 
 //process magazine/newsletter form
@@ -453,9 +469,10 @@ router.post('/magazineNewsletter', (req, res) => {
     }
     new MagazineNewsletter(magazineNewsletterRecords)
         .save()
-        .then(setTimeout(magazineNewsletter => {
+        .then(magazineNewsletter => {
+            req.flash('success_msg', 'Data entered successfully');
             res.redirect('/annexure-1/conductOfSTTP');
-        }, 3000));
+        });
 });
 
 //process student organizations form
@@ -473,9 +490,10 @@ router.post('/conductOfSTTP', (req, res) => {
     }
     new STTP(conductOfSTTPRecords)
         .save()
-        .then(setTimeout(sttp => {
+        .then(sttp => {
+            req.flash('success_msg', 'Data entered successfully');
             res.redirect('/annexure-1/departmentUGProjects');
-        }, 3000));
+        });
 });
 
 //process class advisor form
@@ -488,9 +506,10 @@ router.post('/departmentUGProjects', (req, res) => {
     }
     new DepartmentUGProjects(departmentUGProjectRecords)
         .save()
-        .then(setTimeout(departmentUGProject => {
+        .then(departmentUGProject => {
+            req.flash('success_msg', 'Data entered successfully');
             res.redirect('/annexure-2/papersPublishedinNationalConf');
-        }, 3000));
+        });
 });
 
 module.exports = router;
