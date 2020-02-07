@@ -5,9 +5,9 @@
         <a href="#!" class="brand-logo">Appraisal</a>
         <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
         <ul class="right hide-on-med-and-down">
-          
+
           <!-- Dropdown Trigger -->
-          {{#if user}}
+          {{#if_eq user.type 'faculty'}}
           <li><a href="/">Home</a></li>
           <li><a class="dropdown-trigger" href="" data-target="academic-web">Academic<i
                 class="material-icons right">arrow_drop_down</i></a></li>
@@ -19,10 +19,22 @@
           <li><a class="dropdown-trigger" href="" data-target="annexure-3-web">Annexure 3<i
                 class="material-icons right">arrow_drop_down</i></a></li>
 
-          <li><a class="dropdown-trigger" href="" data-target="profile"><i class="material-icons">account_box</i></a></li>
+          <li><a class="dropdown-trigger" href="" data-target="profile"><i class="material-icons">account_box</i></a>
+          </li>
           {{else}}
-            <li><a href="/">Home</a></li>
-          {{/if}}
+          {{/if_eq}}
+
+          {{#if_eq user.type 'hod'}}
+          <li><a href="/users/hod/home">Home</a></li>
+          <li><a class="dropdown-trigger" href="" data-target="profile-hod"><i
+                class="material-icons">account_box</i></a>
+          </li>
+          {{else}}
+          {{/if_eq}}
+          
+        {{#unless user}}
+        <li><a href="/">Home</a></li>
+        {{/unless}}
         </ul>
         {{!-- dropdown of web view --}}
         <ul id="academic-web" class="dropdown-content text-black">
@@ -92,7 +104,13 @@
           <li><a href="/profile/index" class="black-text">View Profile</a></li>
           <li class="divider"></li>
           <li><a href="/users/logout" class="black-text">Logout</a></li>
-          
+
+        </ul>
+        <ul id="profile-hod" class="dropdown-content text-black">
+          <li><a href="/profile/index" class="black-text">View Profile</a></li>
+          <li class="divider"></li>
+          <li><a href="/users/logout" class="black-text">Logout</a></li>
+
         </ul>
       </div>
     </div>
@@ -100,11 +118,11 @@
 </div>
 {{!-- side bar content for mobile view --}}
 <ul id="mobile-demo" class="sidenav">
-  {{#if user}}
+  {{#if_eq user.type 'faculty'}}
   <li><a class="sideNavPadding" href="/">Home</a></li>
   <li class="no-padding">
     <ul class="collapsible collapsible-accordion">
-      
+
       <li>
         <a class="collapsible-header">Academic<i class="material-icons right">arrow_drop_down</i></a>
         <div class="collapsible-body">
@@ -194,6 +212,16 @@
   </li>
   <li><a class="sideNavPadding" href="/profile/index">Profile</a></li>
   {{else}}
+  {{/if_eq}}
+
+  {{#if_eq user.type 'hod'}}
   <li><a href="/">Home</a></li>
-  {{/if}}
+  <li><a class="dropdown-trigger" href="" data-target="profile"></a>
+  </li>
+  {{else}}
+  {{/if_eq}}
+
+  {{#unless user}}
+  <li><a href="/">Home</a></li>
+  {{/unless}}
 </ul>

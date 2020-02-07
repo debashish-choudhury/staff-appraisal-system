@@ -13,6 +13,10 @@ const Faculty = mongoose.model('users');
 require('../models/Users/Hod');
 const Hod = mongoose.model('hod');
 
+// Load HOD confidential form model
+require('../models/Users/Confidential');
+const Confidential = mongoose.model('confidential_form');
+
 // User register form
 router.get('/register', (req, res) => {
     res.render('users/register');
@@ -28,63 +32,53 @@ router.get('/hod/login', (req, res) => {
     res.render('users/hod/login');
 });
 
+// hod user login form
+router.get('/hod/confidential', (req, res) => {
+    res.render('users/hod/confidential');
+});
+
 // User register form
 router.get('/register', (req, res) => {
     res.render('users/register');
 });
 
-router.get("/faculty/home", function(req, res){
-    res.send("hi student")
-  });
-  
-  router.get("/hod/home", function(req, res){
-    res.send("hi teacher")  
-  });
-
-// router.post('/faculty/login', (req, res, next) => {
-//     passport.authenticate('local', {
-//         successRedirect: '/',
-//         failureRedirect: '/users/login',
-//         failureFlash: true
-//     })(req, res, next);
-// });
-
 router.post('/faculty/login',
     passport.authenticate('faculty', { successRedirect: '/', failureRedirect: '/users/faculty/login', failureFlash: true }));
 
 router.post('/hod/login',
-    passport.authenticate('hod', { successRedirect: '/', failureRedirect: '/users/hod/login', failureFlash: true }));
+    passport.authenticate('hod', { successRedirect: '/users/hod/home', failureRedirect: '/users/hod/login', failureFlash: true }));
 
 
-// router.post('/hod/login', (req, res) => {
-//     var password = req.body.password;
-//     User.findOne({
-//         email: req.body.email
-//     }).then(user => {
-//         if (user.select_user === 'faculty') {
-//             req.flash('error_msg', 'User not found');
-//             res.redirect('/users/login');
-//         }
-//         else {
-//             if (user) {
-//                 bcrypt.compare(password, user.password, (err, isMatch) => {
-//                     if (err) throw err;
-//                     if (isMatch) {
-//                         req.flash('success_msg', 'Successfully Logged In');
-//                         res.redirect('/')
-//                     } else {
-//                         req.flash('error_msg', 'Password Incorrect');
-//                         res.redirect('/users/login');
-//                     }
-//                 })
-//             }
-//             else {
-//                 req.flash('error_msg', 'No user found');
-//                 res.redirect('/users/login');
-//             }
-//         }
-//     });
-// });
+router.get('/hod/home', (req, res) => {
+    Faculty.find({})
+    .then(faculty => {
+        console.log(faculty);
+        res.render('users/hod/home', {
+            faculty: faculty
+        });
+    });
+});
+
+router.post('/hod/confidential', (req, res) => {
+    let errors = [];
+    if(req.body.value1 == '' || req.body.value2 == '' || req.body.value3 == '' || req.body.value4 == '' || req.body.value5 == '' ) {
+        errors.push({text: 'Please mark all the buttons'});        
+    } else {
+        const confidentialForm = {
+            value1: req.body.value1,
+            value2: req.body.value2,
+            value3: req.body.value3,
+            value4: req.body.value4,
+            value5: req.body.value5
+        }
+        new Confidential(confidentialForm)
+        .save()
+        .then(confidential_form => {
+            req.flash('success_msg', 'Marks added successfully');
+            res.redirect('/users/hod/home');
+        })
+    }
+});
 
 // Register Form POST
 router.post('/register', (req, res) => {
@@ -188,10 +182,6 @@ router.post('/register', (req, res) => {
     }
 
 });
-
-
-
-
 
 // Logout user
 router.get('/logout', (req, res) => {

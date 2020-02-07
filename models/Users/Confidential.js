@@ -2,20 +2,24 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 //create Schema
-const UserSchema = new Schema({
-    name: {
+const ConfidentialForm = new Schema({
+    value1: {
         type: String,
         required: true
     },
-    email: {
+    value2: {
         type: String,
         required: true
     },
-    type: {
+    value3: {
         type: String,
         required: true
     },
-    password: {
+    value4: {
+        type: String,
+        required: true
+    },
+    value5: {
         type: String,
         required: true
     },
@@ -25,4 +29,4 @@ const UserSchema = new Schema({
     }
 });
 
-mongoose.model('users', UserSchema);
+mongoose.model('confidential_form', ConfidentialForm);
