@@ -1,60 +1,61 @@
 <h3>Profile Page</h3>
 <hr>
-{{#each profile}}
 {{#if_eq user.type 'faculty'}}
-<div class="row">
-  <div class="col s12 m12">
-    <div class="card darken-1">
-      <table class="striped">
-        <tbody>
-          <tr>
-            <td class="card-title">Name:</td>
-            <td class="card-title">{{faculty_name}}</td>
-          </tr>
-          <tr>
-            <td class="card-title">Designation:</td>
-            <td class="card-title">{{designation}}</td>
-          </tr>
-          <tr>
-            <td class="card-title">Department:</td>
-            <td class="card-title">{{department}}</td>
-          </tr>
-          <tr>
-            <td class="card-title">Qualification:</td>
-            <td class="card-title">{{qualification}}</td>
-          </tr>
-          <tr>
-            <td class="card-title">Teaching experience:</td>
-            <td class="card-title">{{teaching_exp}}</td>
-          </tr>
-          <tr>
-            <td class="card-title">Nature of appointment:</td>
-            <td class="card-title">{{appointment}}</td>
-          </tr>
-          <tr>
-            <td class="card-title">Date of joining:</td>
-            <td class="card-title">{{date_of_join}}</td>
-          </tr>
-          <tr>
-            <td class="card-title">Date of birth:</td>
-            <td class="card-title">{{DOB}}</td>
-          </tr>
-          <tr>
-            <td class="card-title">Salary:</td>
-            <td class="card-title">{{salary}}</td>
-          </tr>
-        </tbody>
-      </table>
-      <div class="card-action purple">
-        <a href="/profile/edit/{{id}}" class="white-text">Edit Profile</a>
+  {{#each faculty_profile}}
+      <div class="row">
+        <div class="col s12 m12">
+          <div class="card darken-1">
+            <table class="striped">
+              <tbody>
+                <tr>
+                  <td class="card-title">Name:</td>
+                  <td class="card-title">{{faculty_name}}</td>
+                </tr>
+                <tr>
+                  <td class="card-title">Designation:</td>
+                  <td class="card-title">{{designation}}</td>
+                </tr>
+                <tr>
+                  <td class="card-title">Department:</td>
+                  <td class="card-title">{{department}}</td>
+                </tr>
+                <tr>
+                  <td class="card-title">Qualification:</td>
+                  <td class="card-title">{{qualification}}</td>
+                </tr>
+                <tr>
+                  <td class="card-title">Teaching experience:</td>
+                  <td class="card-title">{{teaching_exp}}</td>
+                </tr>
+                <tr>
+                  <td class="card-title">Nature of appointment:</td>
+                  <td class="card-title">{{appointment}}</td>
+                </tr>
+                <tr>
+                  <td class="card-title">Date of joining:</td>
+                  <td class="card-title">{{date_of_join}}</td>
+                </tr>
+                <tr>
+                  <td class="card-title">Date of birth:</td>
+                  <td class="card-title">{{DOB}}</td>
+                </tr>
+                <tr>
+                  <td class="card-title">Salary:</td>
+                  <td class="card-title">{{salary}}</td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="card-action purple">
+              <a href="/profile/edit/{{id}}" class="white-text">Edit Profile</a>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</div>
+  {{else}}
+  <p>Profile not added.</p>
+  <a href="/profile/addProfile" class="waves-effect waves-light btn btn-large center">Add Profile</a>
+  {{/each}}
+
 {{else}}
-<p>Hello hod</p>
+  <p>Welcome HOD</p>
 {{/if_eq}}
-{{else}}
-<p>Profile not added.</p>
-<a href="/profile/addProfile" class="waves-effect waves-light btn btn-large center">Add Profile</a>
-{{/each}}

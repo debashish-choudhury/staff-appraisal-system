@@ -27,6 +27,10 @@ router.get('/faculty/login', (req, res) => {
     res.render('users/faculty/login');
 });
 
+router.get('/faculty/facultyOverview', (req, res) => {
+    res.render('users/faculty/facultyOverview');
+});
+
 // hod user login form
 router.get('/hod/login', (req, res) => {
     res.render('users/hod/login');

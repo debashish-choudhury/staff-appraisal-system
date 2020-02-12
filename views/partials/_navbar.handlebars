@@ -31,10 +31,10 @@
           </li>
           {{else}}
           {{/if_eq}}
-          
-        {{#unless user}}
-        <li><a href="/">Home</a></li>
-        {{/unless}}
+
+          {{#unless user}}
+          <li><a href="/">Home</a></li>
+          {{/unless}}
         </ul>
         {{!-- dropdown of web view --}}
         <ul id="academic-web" class="dropdown-content text-black">
@@ -102,15 +102,16 @@
         </ul>
         <ul id="profile" class="dropdown-content text-black">
           <li><a href="/profile/index" class="black-text">View Profile</a></li>
+          
+          <li><a href="/users/faculty/facultyOverview" class="black-text">Faculty Overview</a></li>
+          <li class="divider"></li>
           <li class="divider"></li>
           <li><a href="/users/logout" class="black-text">Logout</a></li>
 
         </ul>
         <ul id="profile-hod" class="dropdown-content text-black">
           <li><a href="/profile/index" class="black-text">View Profile</a></li>
-          <li class="divider"></li>
           <li><a href="/users/logout" class="black-text">Logout</a></li>
-
         </ul>
       </div>
     </div>
@@ -211,6 +212,9 @@
     </ul>
   </li>
   <li><a class="sideNavPadding" href="/profile/index">Profile</a></li>
+  <li><a class="sideNavPadding" href="/users/faculty/facultyOverview" class="black-text">Faculty Overview</a></li>
+  <li class="divider"></li>
+  <li><a class="sideNavPadding" href="/users/logout" class="black-text">Logout</a></li>
   {{else}}
   {{/if_eq}}
 

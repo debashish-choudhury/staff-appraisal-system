@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 //create Schema
-const ProfileRecord = new Schema({
+const FacultyProfile = new Schema({
     faculty_name: {
         type: String,
         required: true
@@ -42,4 +42,4 @@ const ProfileRecord = new Schema({
     }
 });
 
-mongoose.model('profile', ProfileRecord);
+mongoose.model('faculty_profile', FacultyProfile);

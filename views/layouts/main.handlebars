@@ -30,6 +30,7 @@
         input[type=button] {
             color: purple;
         }
+
         li a.sideNavPadding {
             padding: 0 16px;
         }
@@ -47,7 +48,7 @@
 </head>
 
 <body>
-    
+
     {{> _navbar}}
     <div class="container">
         {{> _msg}}
@@ -90,18 +91,23 @@
 
         //ack checkbox validation
         $('#indeterminate-checkbox').click(function () {
-        //check if checkbox is checked
-        if ($(this).is(':checked')) {
+            //check if checkbox is checked
+            if ($(this).is(':checked')) {
 
-            $('#submit_btn').removeAttr('disabled'); //enable input
+                $('#submit_btn').removeAttr('disabled'); //enable input
 
-        } else {
-            $('#submit_btn').attr('disabled', true); //disable input
-        }
-    });
+            } else {
+                $('#submit_btn').attr('disabled', true); //disable input
+            }
+        });
 
-    $(document).ready(function () {
+        $(document).ready(function () {
             $('.tabs').tabs();
+        });
+
+        //Collapsable div initialization
+        $(document).ready(function () {
+            $('.collapsible').collapsible();
         });
 
 

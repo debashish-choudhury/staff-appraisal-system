@@ -2,16 +2,20 @@ const express = require('express');
 const mongoose = require('mongoose');
 const router = express.Router();
 
-//load Profile info model
-require('../models/Profile');
-const Profile = mongoose.model('profile');
+//load Faculty Profile info model
+require('../models/Users/FacultyProfile');
+const FacultyProfile = mongoose.model('faculty_profile');
+
+//load Faculty Profile info model
+require('../models/Users/HodProfile');
+const HodProfile = mongoose.model('hod_profile');
 
 // profile info
 router.get('/index', (req, res) => {
-    Profile.find({})
-        .then(profile => {
+    FacultyProfile.find({})
+        .then(faculty_profile => {
             res.render('profile/index', {
-                profile: profile
+                faculty_profile: faculty_profile
             });
         });
 });
@@ -23,12 +27,12 @@ router.get('/addProfile', (req, res) => {
 
 // edit profile page
 router.get('/edit/:id', (req, res) => {
-    Profile.findOne({
+    FacultyProfile.findOne({
         _id: req.params.id
     })
-    .then(profile => {
+    .then(faculty_profile => {
         res.render('profile/edit', {
-            profile: profile
+            faculty_profile: faculty_profile
         });
     });
 });
@@ -47,9 +51,9 @@ router.post('/', (req, res) => {
         DOB: req.body.DOB,
         salary: req.body.salary
     }
-    new Profile(ProfileRecord)
+    new FacultyProfile(ProfileRecord)
         .save()
-        .then((profile) => {
+        .then((faculty_profile) => {
             req.flash('success_msg', 'Profile added');
             res.redirect('/profile/index');
         });
@@ -57,23 +61,23 @@ router.post('/', (req, res) => {
 
 //process profile edit form
 router.put('/:id', (req, res) => {
-    Profile.findOne({
+    FacultyProfile.findOne({
         _id: req.params.id
     })
-    .then(profile => {
+    .then(faculty_profile => {
         // New values
-        profile.faculty_name = req.body.faculty_name,
-        profile.designation = req.body.designation,
-        profile.department = req.body.department,
-        profile.qualification = req.body.qualification,
-        profile.teaching_exp = req.body.teaching_exp,
-        profile.appointment = req.body.appointment,
-        profile.date_of_join = req.body.date_of_join,
-        profile.DOB = req.body.DOB,
-        profile.salary = req.body.salary
+        faculty_profile.faculty_name = req.body.faculty_name,
+        faculty_profile.designation = req.body.designation,
+        faculty_profile.department = req.body.department,
+        faculty_profile.qualification = req.body.qualification,
+        faculty_profile.teaching_exp = req.body.teaching_exp,
+        faculty_profile.appointment = req.body.appointment,
+        faculty_profile.date_of_join = req.body.date_of_join,
+        faculty_profile.DOB = req.body.DOB,
+        faculty_profile.salary = req.body.salary
 
-        profile.save()
-        .then(setTimeout(profile => {
+        faculty_profile.save()
+        .then(setTimeout(faculty_profile => {
             req.flash('success_msg', 'Profile edited');
             res.redirect('/profile/index');
         }, 3000));
