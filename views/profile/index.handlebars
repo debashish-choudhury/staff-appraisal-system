@@ -57,5 +57,8 @@
   {{/each}}
 
 {{else}}
-  <p>Welcome HOD</p>
+  {{#if_eq user.type 'hod'}}
+    <p>Welcome HOD</p>
+  {{else}}
+  {{/if_eq}}
 {{/if_eq}}
