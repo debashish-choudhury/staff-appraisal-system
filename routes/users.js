@@ -36,9 +36,14 @@ router.get('/hod/login', (req, res) => {
     res.render('users/hod/login');
 });
 
-// hod user login form
+// hod Confidential form
 router.get('/hod/confidential', (req, res) => {
     res.render('users/hod/confidential');
+});
+
+// hod overview form
+router.get('/hod/hodOverview', (req, res) => {
+    res.render('users/hod/hodOverview');
 });
 
 // User register form
