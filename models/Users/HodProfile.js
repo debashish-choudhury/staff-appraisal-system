@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 //create Schema
 const HodProfile = new Schema({
-    faculty_name: {
+    hod_name: {
         type: String,
         required: true
     },
@@ -42,4 +42,4 @@ const HodProfile = new Schema({
     }
 });
 
-mongoose.model('hod_profile', HodProfile);
+mongoose.model('hod_profile', HodProfile, 'hod_profile');

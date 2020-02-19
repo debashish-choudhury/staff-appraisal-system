@@ -25,4 +25,4 @@ const HodSchema = new Schema({
     }
 });
 
-mongoose.model('hod', HodSchema);
+mongoose.model('hod', HodSchema, 'hod');
