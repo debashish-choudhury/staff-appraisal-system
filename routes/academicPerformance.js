@@ -52,6 +52,7 @@ router.post('/teachingLoad', (req, res) => {
     
     // add preleave data into db
     const TeachingRecord = {
+        academic_year: req.body.subject_name,
         subject_name: req.body.subject_name,
         class: req.body.class,
         department: req.body.department,
