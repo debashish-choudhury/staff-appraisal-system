@@ -25,8 +25,11 @@ const {
 // Passport config
 require('./config/passport')(passport);
 
+// DB config
+const db = require('./config/database');
+
 //connect to mongoose
-mongoose.connect('mongodb://localhost/staff-db', {
+mongoose.connect(db.mongoURI, {
     useNewUrlParser: true
 })
     .then(() => { console.log('Connected to MongoDB...') })
@@ -125,5 +128,5 @@ app.use('/annexure-2', annexure_2);
 app.use('/annexure-3', annexure_3);
 app.use('/users', users);
 
-port = 5000;
+port = process.env.PORT || 5000;
 app.listen(port, () => console.log(`Server running on port ${port}`));
