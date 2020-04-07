@@ -22,6 +22,10 @@ const ExamActivitiesSupervision = new Schema({
     no_of_supervision_days: {
         type: Number,
         required: true
+    },
+    user: {
+        type: String,
+        required: true
     }
 });
 

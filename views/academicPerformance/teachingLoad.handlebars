@@ -3,7 +3,230 @@
 <h5> Teaching Load</h5>
 <hr>
 
+{{#if result}}
+{{#each result}}
+    <div class="row" id="leaveform">
+        <div class="row">
+            <div class="input-field col s6">
+                <select name="academic_year">
+                    <option value="{{academic_year}}">{{academic_year}}</option>
+                    <option value="2014-15" disabled>2014-15</option>
+                    <option value="2015-16" disabled>2015-16</option>
+                    <option value="2016-17" disabled>2016-17</option>
+                    <option value="2017-18" disabled>2017-18</option>
+                    <option value="2018-19" disabled>2018-19</option>
+                    <option value="2019-20" disabled>2019-20</option>
+                </select>
+                <label for="">Academic Year</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s6 md5">
+                <input id="subject_name" type="text" name="subject_name" value="{{subject_name}}" disabled>
+                
+                <label for="subject_name" class="">Subject Name</label>
+                
+            </div>
+            <div class="input-field col s6">
+                <select name="class">
+                    <option value="{{class}}">{{class}}</option>
+                    <option value="FE" disabled>FE</option>
+                    <option value="SE" disabled>SE</option>
+                    <option value="TE" disabled>TE</option>
+                    <option value="BE" disabled>BE</option>
+                </select>
+                <label for="">Class</label>
+            </div>
+        </div>
 
+        <div class="row">
+            <div class="input-field col s6">
+                <select name="department">
+                    <option value="{{department}}">{{department}}</option>
+                    <option value="Information Technology" disabled>Information Technology</option>
+                    <option value="Computer Engineering" disabled>Computer Engineering</option>
+                    <option value="Mechanical Engineering" disabled>Mechanical Engineering</option>
+                    <option value="Civil Engineering" disabled>Civil Engineering</option>
+                    <option value="EXTC Engineering" disabled>EXTC Engineering</option>
+                </select>
+                <label for="">Department</label>
+            </div>
+            <div class="input-field col s6 md5">
+                <select name="semester">
+                    <option value="{{semester}}">{{semester}}</option>
+                    <option value="sem 1" disabled>Sem 1</option>
+                    <option value="sem 2" disabled>Sem 2</option>
+                    <option value="sem 3" disabled>Sem 3</option>
+                    <option value="sem 4" disabled>Sem 4</option>
+                    <option value="sem 5" disabled>Sem 5</option>
+                    <option value="sem 6" disabled>Sem 6</option>
+                    <option value="sem 7" disabled>Sem 7</option>
+                    <option value="sem 8" disabled>Sem 8</option>
+                </select>
+                <label for="">Semester</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s6 md5">
+                <input id="theory" type="number" name="theory_subject" value="{{theory_subject}}" disabled>
+                <label for="theory">Theory Teaching Load(per week)</label>
+            </div>
+            <div class="input-field col s6">
+                <input id="lab" type="number" name="lab_subject" value="{{lab_subject}}" disabled>
+                <label for="lab">Lab Teaching Load(per week)</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s6">
+                <input id="tutorials" type="number" name="tutorials" value="{{tutorials}}" disabled>
+                <label for="tutorials">Tutorials Teaching Load (per week)</label>
+            </div>
+            <div class="input-field col s6">
+                <input id="theory_session" type="number" name="theory_session" value="{{theory_session}}" disabled>
+                <label for="theory_session">No. of Theory sessions conducted(hrs)</label>
+                
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s6">
+                <input id="practical_session" type="number" name="practical_session" value="{{practical_session}}" disabled>
+                <label for="practical_session">No. of Practical sessions conducted(hrs)</label>
+            </div>
+            <div class="input-field col s6">
+                <input id="Student_feedback" type="number" name="Student_feedback" value="{{Student_feedback}}" disabled>
+                <label for="Student_feedback">Online Student feedback(1-5)</label>
+                
+            </div>
+        </div>
+        <a href="/academicPerformance/teachingLoad/edit/{{id}}" class="btn waves-effect waves-light red center mb-2">Edit</a>
+        <a href="/users/faculty/facultyOverview" class="btn waves-effect waves-light purple center mb-2">Back to overview</a><br><br>
+        <form method="post" action="/academicPerformance/teachingLoad/delete/{{id}}?_method=DELETE">
+            <input type="hidden" name="_method" value="DELETE">
+            <input type="submit" class="btn waves-effect waves-light red center" value="Delete">
+        </form>
+        
+</div>
+</div>
+{{else}}
+{{/each}}
+{{else}}
+{{#if editResult}}
+<div class="row" id="leaveform">
+        <form method="post" action="/academicPerformance/teachingLoad/{{editResult.id}}?_method=PUT" class="col s12">
+        <input type="hidden" name="_method" value="PUT">
+            <div class="row">
+                <div class="input-field col s6">
+                    <select name="academic_year">
+                        <option value="{{editResult.academic_year}}">{{editResult.academic_year}}</option>
+                        <option value="2014-15">2014-15</option>
+                        <option value="2015-16">2015-16</option>
+                        <option value="2016-17">2016-17</option>
+                        <option value="2017-18">2017-18</option>
+                        <option value="2018-19">2018-19</option>
+                        <option value="2019-20">2019-20</option>
+                    </select>
+                    <label for="">Academic Year</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6 md5">
+                    <input id="subject_name" type="text" name="subject_name" value="{{editResult.subject_name}}"
+                        class="validate" required>
+
+                    <label for="subject_name" class="">Subject Name</label>
+
+                </div>
+                <div class="input-field col s6">
+                    <select name="class">
+                        <option value="{{editResult.class}}">{{editResult.class}}</option>
+                        <option value="FE">FE</option>
+                        <option value="SE">SE</option>
+                        <option value="TE">TE</option>
+                        <option value="BE">BE</option>
+                    </select>
+                    <label for="">Class</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field col s6">
+                    <select name="department">
+                        <option value="{{editResult.department}}">{{editResult.department}}</option>
+                        <option value="Information Technology">Information Technology</option>
+                        <option value="Computer Engineering">Computer Engineering</option>
+                        <option value="Mechanical Engineering">Mechanical Engineering</option>
+                        <option value="Civil Engineering">Civil Engineering</option>
+                        <option value="EXTC Engineering">EXTC Engineering</option>
+                    </select>
+                    <label for="">Department</label>
+                </div>
+                <div class="input-field col s6 md5">
+                    <select name="semester">
+                        <option value="{{editResult.semester}}">{{editResult.semester}}</option>
+                        <option value="sem 1">Sem 1</option>
+                        <option value="sem 2">Sem 2</option>
+                        <option value="sem 3">Sem 3</option>
+                        <option value="sem 4">Sem 4</option>
+                        <option value="sem 5">Sem 5</option>
+                        <option value="sem 6">Sem 6</option>
+                        <option value="sem 7">Sem 7</option>
+                        <option value="sem 8">Sem 8</option>
+                    </select>
+                    <label for="">Semester</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6 md5">
+                    <input id="theory" type="number" name="theory_subject" value="{{editResult.theory_subject}}"
+                        class="validate" required>
+                    <label for="theory">Theory Teaching Load(per week)</label>
+                </div>
+                <div class="input-field col s6">
+                    <input id="lab" type="number" name="lab_subject" value="{{editResult.lab_subject}}" class="validate"
+                        required>
+                    <label for="lab">Lab Teaching Load(per week)</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field col s6">
+                    <input id="tutorials" type="number" name="tutorials" value="{{editResult.tutorials}}" class="validate"
+                        required>
+                    <label for="tutorials">Tutorials Teaching Load (per week)</label>
+                </div>
+                <div class="input-field col s6">
+                    <input id="theory_session" type="number" name="theory_session" value="{{editResult.theory_session}}"
+                        class="validate" required>
+                    <label for="theory_session">No. of Theory sessions conducted(hrs)</label>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <input id="practical_session" type="number" name="practical_session"
+                        value="{{editResult.practical_session}}" class="validate" required>
+                    <label for="practical_session">No. of Practical sessions conducted(hrs)</label>
+                </div>
+                <div class="input-field col s6">
+                    <input id="Student_feedback" type="number" name="Student_feedback"
+                        value="{{editResult.Student_feedback}}" class="validate" required>
+                    <label for="Student_feedback">Online Student feedback(1-5)</label>
+
+                </div>
+                <div>
+                    <p>
+                        <label>
+                            <input id="indeterminate-checkbox" type="checkbox" required />
+                            <span>I acknowledge that above filled information is verified and justified by me.</span>
+                        </label>
+                    </p>
+                </div>
+                <button class="btn waves-effect waves-light" type="submit" id="submit_btn" disabled>Submit
+                </button>
+        </form>
+    </div>
+{{else}}
 <div class="row" id="leaveform">
     <form action="/academicPerformance/teachingLoad" method="post" class="col s12">
 
@@ -112,3 +335,5 @@
     </form>
 </div>
 </div>
+{{/if}}
+{{/if}}

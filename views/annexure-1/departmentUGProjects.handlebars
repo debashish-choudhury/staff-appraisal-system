@@ -2,24 +2,66 @@
 <div class="container">
     <h5>1.19 Department UG Projects Undertaken</h5>
     <hr>
+{{#if result}}
+{{#each result}}
     <div class="row" id="DeptUGProjects">
-        <form action="/annexure-1/departmentUGProjects" method="post" class="col s12">
+        <div class="row">
+            <div class="input-field col s6 md5">
+                <select name="dept_project_role">
+                    <option value="{{dept_project_role}}" disabled selected>{{dept_project_role}}</option>
+                    <option value="guide">Guide</option>
+                    <option value="co-guide">Co-guide</option>
+                </select>
+                <label for="">Role</label>
+            </div>
+            <div class="input-field col s6">
+                <input id="project_title" type="text" name="project_title" value="{{project_title}}" dclass="validate"
+                    required>
+                <label for="project_title">Title Of Project</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="project_no_of_students" type="number" name="project_no_of_students"
+                    value="{{project_no_of_students}}" class="validate" required>
+                <label for="project_no_of_students">Number Of Students</label>
+            </div>
+
+        </div>
+        <a href="/annexure-1/departmentUGProjects/edit/{{id}}"
+            class="btn waves-effect waves-light red center mb-2">Edit</a>
+        <a href="/users/faculty/facultyOverview" class="btn waves-effect waves-light purple center mb-2">Back to
+            overview</a><br><br>
+        <form method="post" action="/annexure-1/departmentUGProjects/delete/{{id}}?_method=DELETE">
+            <input type="hidden" name="_method" value="DELETE">
+            <input type="submit" class="btn waves-effect waves-light center red white-text" value="Delete">
+        </form>
+    </div>
+</div>
+{{else}}
+{{/each}}
+{{else}}
+{{#if editResult}}
+    <div class="row" id="DeptUGProjects">
+        <form action="/annexure-1/departmentUGProjects/{{editResult.id}}?_method=PUT" method="post" class="col s12">
+            <input type="hidden" name="_method" value="PUT">
             <div class="row">
                 <div class="input-field col s6 md5">
-                    <select name="dept_project_role">
-                        <option value="" disabled selected>Role</option>
+                    <select name="dept_project_role" required>
+                        <option value="{{editResult.dept_project_role}}" selected>{{editResult.dept_project_role}}</option>
                         <option value="guide">Guide</option>
                         <option value="co-guide">Co-guide</option>
                     </select>
+                    <label for="">Role</label>
                 </div>
                 <div class="input-field col s6">
-                    <input id="project_title" type="text" name="project_title" class="validate" required>
+                    <input id="project_title" type="text" name="project_title" value="{{editResult.project_title}}" class="validate" required>
                     <label for="project_title">Title Of Project</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                    <input id="project_no_of_students" type="number" name="project_no_of_students" class="validate"
+                    <input id="project_no_of_students" type="number" name="project_no_of_students" value="{{editResult.project_no_of_students}}" class="validate"
                         required>
                     <label for="project_no_of_students">Number Of Students</label>
                 </div>
@@ -33,10 +75,49 @@
                 </label>
             </p>
         </div>
-            <a href="/annexure-2/paperspublishedinNationalConf" class="waves-effect waves-light btn red center">Not Applicable</a>
             <button
                 class="btn waves-effect waves-dark" id="submit_btn" type="submit" disabled>Submit
             </button>
         </form>
     </div>
+{{else}}
+<div class="row" id="DeptUGProjects">
+    <form action="/annexure-1/departmentUGProjects" method="post" class="col s12">
+        <div class="row">
+            <div class="input-field col s6 md5">
+                <select name="dept_project_role">
+                    <option value="" disabled selected>Role</option>
+                    <option value="guide">Guide</option>
+                    <option value="co-guide">Co-guide</option>
+                </select>
+            </div>
+            <div class="input-field col s6">
+                <input id="project_title" type="text" name="project_title" class="validate" required>
+                <label for="project_title">Title Of Project</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="project_no_of_students" type="number" name="project_no_of_students" class="validate"
+                    required>
+                <label for="project_no_of_students">Number Of Students</label>
+            </div>
+
+        </div>
+        <div>
+            <p>
+                <label>
+                    <input id="indeterminate-checkbox" type="checkbox" required />
+                    <span>I acknowledge that above filled information is verified and justified by me.</span>
+                </label>
+            </p>
+        </div>
+        <a href="/annexure-2/paperspublishedinNationalConf" class="waves-effect waves-light btn red center">Not
+            Applicable</a>
+        <button class="btn waves-effect waves-dark" id="submit_btn" type="submit" disabled>Submit
+        </button>
+    </form>
 </div>
+</div>
+{{/if}}
+{{/if}}

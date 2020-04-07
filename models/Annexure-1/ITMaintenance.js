@@ -18,6 +18,10 @@ const ITMaintenance = new Schema({
     it_maintenance_date: {
         type: String,
         required: true
+    },
+    user: {
+        type: String,
+        required: true
     }
 });
 

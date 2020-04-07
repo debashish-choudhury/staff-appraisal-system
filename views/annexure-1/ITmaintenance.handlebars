@@ -2,6 +2,93 @@
 <div class="container">
     <h5>1.15 IT Maintenance</h5>
     <hr>
+{{#if result}}
+{{#each result}}
+<div class="row" id=" IT Maintenance">
+            <div class="row">
+                <div class="input-field col s6 md5">
+                    <input id="class_name" type="text" name="class_name" value="{{class_name}}" class="validate" required>
+                    <label for="class_name">Issues Solved</label>
+                </div>
+
+                <div class="input-field col s6">
+                    <textarea name="IT_maintenance_desc" aria-valuetext="{{IT_maintenance_desc}}" id="IT_maintenance_desc" class="materialize-textarea validate"
+                        required></textarea>
+                    <label for="IT_maintenance_desc">Description</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6 md5">
+                    <select name="IT_maintenance_task">
+                        <option value="{{IT_maintenance_task}}" disabled selected>{{IT_maintenance_task}}</option>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                        <option value="ongoing">Ongoing</option>
+                    </select>
+                    <label for="">Task Completed?</label>
+                </div>
+
+                <div class="input-field col s6">
+                    <input id="it_maintenance_date" type="text" name="it_maintenance_date" value="{{it_maintenance_date}}" class="datepicker validate" required>
+                    <label for="class">Date</label>
+                </div>
+            </div>
+        <a href="/annexure-1/ITmaintenance/edit/{{id}}" class="btn waves-effect waves-light red center mb-2">Edit</a>
+        <a href="/users/faculty/facultyOverview" class="btn waves-effect waves-light purple center mb-2">Back to
+            overview</a><br><br>
+        <form method="post" action="/annexure-1/ITmaintenance/delete/{{id}}?_method=DELETE">
+            <input type="hidden" name="_method" value="DELETE">
+            <input type="submit" class="btn waves-effect waves-light center red white-text" value="Delete">
+        </form>
+        </div>
+    </div> 
+{{else}}
+{{/each}}
+{{else}}
+{{#if editResult}}
+<div class="row" id=" IT Maintenance">
+        <form action="/annexure-1/ITmaintenance/{{editResult.id}}?_method=PUT" method="post" class="col s12">
+            <input type="hidden" name="_method" value="PUT">
+            <div class="row">
+                <div class="input-field col s6 md5">
+                    <input id="class_name" type="text" name="class_name" value="{{editResult.class_name}}" class="validate" required>
+                    <label for="class_name">Issues Solved</label>
+                </div>
+
+                <div class="input-field col s6">
+                    <textarea name="IT_maintenance_desc" id="IT_maintenance_desc" value="{{editResult.IT_maintenance_desc}}" class="materialize-textarea validate"
+                        required></textarea>
+                    <label for="IT_maintenance_desc">Description</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6 md5">
+                    <select name="IT_maintenance_task" required>
+                        <option value="{{editResult.IT_maintenance_task}}" disabled selected>{{editResult.IT_maintenance_task}}</option>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                        <option value="ongoing">Ongoing</option>
+                    </select>
+                    <label for="">Task Completed?</label>
+                </div>
+
+                <div class="input-field col s6">
+                    <input id="it_maintenance_date" type="text" name="it_maintenance_date" value="{{editResult.it_maintenance_date}}" class="datepicker validate" required>
+                    <label for="class">Date</label>
+                </div>
+            </div>
+            <div>
+             <p>
+                 <label>
+                <input id="indeterminate-checkbox" type="checkbox" required/>
+                 <span>I acknowledge that above filled information is verified and justified by me.</span>
+                </label>
+            </p>
+        </div>
+            <button class="btn waves-effect waves-dark" id="submit_btn" type="submit" disabled>Submit </button>
+        </form>
+    </div>
+{{else}}
     <div class="row" id=" IT Maintenance">
         <form action="/annexure-1/ITmaintenance" method="post" class="col s12">
             <div class="row">
@@ -47,3 +134,5 @@
         </form>
     </div>
 </div>
+{{/if}}
+{{/if}}

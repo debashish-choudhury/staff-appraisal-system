@@ -6,15 +6,15 @@ const session = require('express-session');
 const bodyParser = require('body-parser');
 const passport = require('passport');
 const mongoose = require('mongoose');
-
 const app = express();
 
 // Load routes
 const academicPerformance = require('./routes/academicPerformance');
-const profile = require('./routes/profile');
+const leave = require('./routes/leave');
 const annexure_1 = require('./routes/annexure-1');
 const annexure_2 = require('./routes/annexure-2');
 const annexure_3 = require('./routes/annexure-3');
+const profile = require('./routes/profile');
 const users = require('./routes/users');
 
 // Load helpers
@@ -84,48 +84,13 @@ app.get('/', (req, res) => {
     });
 });
 
-//about page route
-app.get('/about', (req, res) => {
-    res.render('about');
-});
-
-//show leave records
-app.get('/showleaves', (req, res) => {
-    res.send('ok');
-});
-
-//leave form route
-app.get('/leaveform', (req, res) => {
-    res.render('leaveForm');
-});
-
-//process leave form
-app.post('/leave-form', (req, res) => {
-    // add preleave data into db
-    const LeaveRecord = {
-        pre_casual_leave: req.body.pre_casual_leave,
-        pre_outdoor_leave: req.body.pre_outdoor_leave,
-        pre_medical_leave: req.body.pre_medical_leave,
-        pre_special_leave: req.body.pre_special_leave,
-        post_casual_leave: req.body.post_casual_leave,
-        post_outdoor_leave: req.body.post_outdoor_leave,
-        post_medical_leave: req.body.post_medical_leave,
-        post_special_leave: req.body.post_special_leave
-    }
-    new Leave(LeaveRecord)
-        .save()
-        .then(leaves => {
-            req.flash('success_msg', 'Data entered successfully');
-            res.redirect('/annexure-1/timeTable');
-        });
-});
-
 // Use routes
 app.use('/academicPerformance', academicPerformance);
-app.use('/profile', profile);
+app.use('/leave', leave);
 app.use('/annexure-1', annexure_1);
 app.use('/annexure-2', annexure_2);
 app.use('/annexure-3', annexure_3);
+app.use('/profile', profile);
 app.use('/users', users);
 
 port = process.env.PORT || 5000;

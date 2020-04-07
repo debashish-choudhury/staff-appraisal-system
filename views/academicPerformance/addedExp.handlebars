@@ -1,7 +1,111 @@
 <h4> Academic Performance</h4><br>
 <div class="container">
-<h5> Additional Experiments Added To Lab Manual</h5>
-<hr>
+    <h5> Additional Experiments Added To Lab Manual</h5>
+    <hr>
+{{#if result}}
+{{#each result}}
+<div class="row" id="leaveform">
+        <div class="row">
+            <div class="input-field col s6 md5">
+                <input id="subject_name" type="text" name="subject_name" value="{{subject_name}}" disabled>
+                <label for="subject_name">Subject Name</label>
+            </div>
+            <div class="input-field col s6">
+                <select name="class">
+                    <option value="{{class}}">{{class}}</option>
+                    <option value="FE" disabled>FE</option>
+                    <option value="SE" disabled>SE</option>
+                    <option value="TE" disabled>TE</option>
+                    <option value="BE" disabled>BE</option>
+                </select>
+                <label for="">Class</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s6 md5">
+                <select name="semester">
+                    <option value="{{semester}}">{{semester}}</option>
+                    <option value="sem 1" disabled>Sem 1</option>
+                    <option value="sem 2" disabled>Sem 2</option>
+                    <option value="sem 3" disabled>Sem 3</option>
+                    <option value="sem 4" disabled>Sem 4</option>
+                    <option value="sem 5" disabled>Sem 5</option>
+                    <option value="sem 6" disabled>Sem 6</option>
+                    <option value="sem 7" disabled>Sem 7</option>
+                    <option value="sem 8" disabled>Sem 8</option>
+                </select>
+                <label for="">Semester</label>
+            </div>
+            <div class="input-field col s6 md5">
+                <input id="exp_name" type="text" name="exp_name" value="{{exp_name}}" disabled>
+                <label for="exp_name">Experiment Name</label>
+            </div>
+        </div>
+        <a href="/academicPerformance/addedExp/edit/{{id}}" class="waves-effect waves-light btn red center">Edit</a>
+        <a href="/users/faculty/facultyOverview" class="waves-effect waves-light btn purple center">Back to overview</a>
+        <br><br>
+        <form method="post" action="/academicPerformance/addedExp/delete/{{id}}?_method=DELETE">
+            <input type="hidden" name="_method" value="DELETE">
+            <input type="submit" class="btn waves-effect waves-light red center white-text" value="Delete">
+        </form>
+    </div>
+{{else}}
+{{/each}}
+{{else}}
+{{#if editResult}}
+    <div class="row" id="">
+        <form action="/academicPerformance/addedExp/{{editResult.id}}?_method=PUT" method="post" class="col s12">
+        <input type="hidden" name="_method" value="PUT">
+        <div class="row">
+            <div class="input-field col s6 md5">
+                <input id="subject_name" type="text" name="subject_name" value="{{editResult.subject_name}}" class="validate" required>
+                <label for="subject_name">Subject Name</label>
+            </div>
+            <div class="input-field col s6">
+                <select name="class">
+                    <option value="{{editResult.class}}" selected>{{editResult.class}}</option>
+                    <option value="FE" >FE</option>
+                    <option value="SE" >SE</option>
+                    <option value="TE" >TE</option>
+                    <option value="BE" >BE</option>
+                </select>
+                <label for="">Class</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s6 md5">
+                <select name="semester">
+                    <option value="{{editResult.semester}}" selected>{{editResult.semester}}</option>
+                    <option value="sem 1" >Sem 1</option>
+                    <option value="sem 2" >Sem 2</option>
+                    <option value="sem 3" >Sem 3</option>
+                    <option value="sem 4" >Sem 4</option>
+                    <option value="sem 5" >Sem 5</option>
+                    <option value="sem 6" >Sem 6</option>
+                    <option value="sem 7" >Sem 7</option>
+                    <option value="sem 8" >Sem 8</option>
+                </select>
+                <label for="">Semester</label>
+            </div>
+            <div class="input-field col s6 md5">
+                <input id="exp_name" type="text" name="exp_name" value="{{editResult.exp_name}}" class="validate" required>
+                <label for="exp_name">Experiment Name</label>
+            </div>
+        </div>
+        <div>
+            <p>
+                <label>
+                    <input id="indeterminate-checkbox" type="checkbox" required />
+                    <span>I acknowledge that above filled information is verified and justified by me.</span>
+                </label>
+            </p>
+        </div>
+        <button class="btn waves-effect waves-light" type="submit" id="submit_btn" disabled>Submit
+        </button>
+        </form>
+    </div>
+{{else}}
 <div class="row" id="leaveform">
     <form action="/academicPerformance/addedExp" method="post" class="col s12">
         <div class="row">
@@ -9,14 +113,14 @@
                 <input id="subject_name" type="text" name="subject_name" class="validate" required>
                 <label for="subject_name">Subject Name</label>
             </div>
-             <div class="input-field col s6">
+            <div class="input-field col s6">
                 <select name="class">
                     <option value="" disabled selected>Class</option>
                     <option value="FE">FE</option>
                     <option value="SE">SE</option>
                     <option value="TE">TE</option>
                     <option value="BE">BE</option>
-                    
+
                 </select>
             </div>
         </div>
@@ -41,16 +145,19 @@
             </div>
         </div>
         <div>
-             <p>
-                 <label>
-                <input id="indeterminate-checkbox" type="checkbox" required/>
-                 <span>I acknowledge that above filled information is verified and justified by me.</span>
+            <p>
+                <label>
+                    <input id="indeterminate-checkbox" type="checkbox" required />
+                    <span>I acknowledge that above filled information is verified and justified by me.</span>
                 </label>
             </p>
         </div>
-        <a href="/academicPerformance/innovativeTeaching" class="waves-effect waves-light btn red center">Not Applicable</a>
+        <a href="/academicPerformance/innovativeTeaching" class="waves-effect waves-light btn red center">Not
+            Applicable</a>
         <button class="btn waves-effect waves-light" type="submit" id="submit_btn" disabled>Submit
         </button>
     </form>
 </div>
 </div>
+{{/if}}
+{{/if}}

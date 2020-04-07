@@ -2,6 +2,148 @@
 <div class="container">
     <h5>1.13 Exam Assessment Related Activities (External)</h5>
     <hr>
+{{#if result}}
+{{#each result}}
+<div class="row" id="examAssessmentExternal">
+            <div class="row">
+                <div class="input-field col s6 md5">
+                    <input id="exam-role-external" type="text" name="exam_role_external" value="{{exam_role_external}}" class="validate" required>
+                    <label for="exam-role-external">Role</label>
+                </div>
+                <div class="input-field col s6 md5">
+                    <select name="semester">
+                        <option value="{{semester}}" disabled selected>{{semester}}</option>
+                        <option value="sem 1">Sem 1</option>
+                        <option value="sem 2">Sem 2</option>
+                        <option value="sem 3">Sem 3</option>
+                        <option value="sem 4">Sem 4</option>
+                        <option value="sem 5">Sem 5</option>
+                        <option value="sem 6">Sem 6</option>
+                        <option value="sem 7">Sem 7</option>
+                        <option value="sem 8">Sem 8</option>
+                    </select>
+                    <label for="">Semester</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <input id="name_of_college_university" type="text" name="name_of_college_university" value="{{name_of_college_university}}"
+                        class="validate" required>
+                    <label for="name_of_college_university">College/University</label>
+
+                </div>
+
+                <div class="input-field col s6">
+                    <input id="exam_subject_external" type="text" name="exam_subject_external" value="{{exam_subject_external}}" class="validate"
+                        required>
+                    <label for="exam_subject_external">Subject</label>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <input id="outdoor_activities" type="number" name="outdoor_activities" value="{{outdoor_activities}}" class="validate" required>
+                    <label for="outdoor_activities">Total Number Of Outdoor Activites</label>
+                </div>
+
+                <div class="input-field col s6">
+                    <input id="papers_revaluated" type="number" name="papers_revaluated" value="{{papers_revaluated}}" class="validate" required>
+                    <label for="papers_revaluated">Number Of Paper Revaluated</label>
+                </div>
+
+            </div>
+
+
+            <div class="row">
+                <div class="input-field col s6">
+                    <input id="papers_moderated" type="number" name="papers_moderated" value="{{papers_moderated}}" class="validate" required>
+                    <label for="papers_moderated">Number Of Paper Moderated</label>
+                </div>
+            </div>
+            <a href="/annexure-1/examAssessmentExternal/edit/{{id}}" class="btn waves-effect waves-light red center mb-2">Edit</a>
+        <a href="/users/faculty/facultyOverview" class="btn waves-effect waves-light purple center mb-2">Back to
+            overview</a><br><br>
+        <form method="post" action="/annexure-1/examAssessmentExternal/delete/{{id}}?_method=DELETE">
+            <input type="hidden" name="_method" value="DELETE">
+            <input type="submit" class="btn waves-effect waves-light center red white-text" value="Delete">
+        </form>
+        </div>
+    </div>  
+{{else}}
+{{/each}}
+{{else}}
+{{/if editResult}}
+<div class="row" id="examAssessmentExternal">
+        <form action="/annexure-1/examAssessmentExternal/{{editResult.id}}?_method=PUT" method="post" class="col s12">
+            <input type="hidden" name="_method" value="PUT">
+            <div class="row">
+                <div class="input-field col s6 md5">
+                    <input id="exam-role-external" type="text" name="exam_role_external" value="{{editResult.exam_role_external}}" class="validate" required>
+                    <label for="exam-role-external">Role</label>
+                </div>
+                <div class="input-field col s6 md5">
+                    <select name="semester" class="validate" required>
+                        <option value="{{editResult.semester}}" selected>{{editResult.semester}}</option>
+                        <option value="sem 1">Sem 1</option>
+                        <option value="sem 2">Sem 2</option>
+                        <option value="sem 3">Sem 3</option>
+                        <option value="sem 4">Sem 4</option>
+                        <option value="sem 5">Sem 5</option>
+                        <option value="sem 6">Sem 6</option>
+                        <option value="sem 7">Sem 7</option>
+                        <option value="sem 8">Sem 8</option>
+                    </select>
+                    <label for="">Semester</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <input id="name_of_college_university" type="text" value="{{editResult.name_of_college_university}}" name="name_of_college_university"
+                        class="validate" required>
+                    <label for="name_of_college_university">College/University</label>
+
+                </div>
+
+                <div class="input-field col s6">
+                    <input id="exam_subject_external" type="text" name="exam_subject_external" value="{{editResult.exam_subject_external}}" class="validate" required>
+                    <label for="exam_subject_external">Subject</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <input id="outdoor_activities" type="number" name="outdoor_activities" value="{{editResult.outdoor_activities}}" class="validate" required>
+                    <label for="outdoor_activities">Total Number Of Outdoor Activites</label>
+                </div>
+
+                <div class="input-field col s6">
+                    <input id="papers_revaluated" type="number" name="papers_revaluated" value="{{editResult.papers_revaluated}}" class="validate" required>
+                    <label for="papers_revaluated">Number Of Paper Revaluated</label>
+                </div>
+
+            </div>
+
+
+            <div class="row">
+                <div class="input-field col s6">
+                    <input id="papers_moderated" type="number" name="papers_moderated" value="{{editResult.papers_moderated}}" class="validate" required>
+                    <label for="papers_moderated">Number Of Paper Moderated</label>
+                </div>
+            </div>
+            <div>
+                <p>
+                    <label>
+                        <input id="indeterminate-checkbox" type="checkbox" required />
+                        <span>I acknowledge that above filled information is verified and justified by me.</span>
+                    </label>
+                </p>
+            </div>
+    </div>
+    <button
+        class="btn waves-effect waves-dark" id="submit_btn" type="submit" disabled>Submit
+    </button>
+    </form>
+</div>
+{{else}}
     <div class="row" id="examAssessmentExternal">
         <form action="/annexure-1/examAssessmentExternal" method="post" class="col s12">
             <div class="row">
@@ -74,3 +216,5 @@
     </form>
 </div>
 </div>
+{{/if}}
+{{/if}}

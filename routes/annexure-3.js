@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const {ensureAuthenticated} = require('../helpers/auth');
 const router = express.Router();
 
 // Load resource person model
@@ -23,29 +24,116 @@ require('../models/Annexure-3/ExternalProjectsOrCompetition');
 const ExternalProjectsOrCompetition = mongoose.model('external_projects_or_competition');
 
 // Resourse person load route
-router.get('/resourcePerson', (req, res) => {
-    res.render('annexure-3/resourcePerson');
+router.get('/resourcePerson', ensureAuthenticated, (req, res) => {
+    ResourcePerson.find({user: req.user.id})
+    .then(result => {
+        res.render('annexure-3/resourcePerson',{ result });
+    })
 });
 
 // contribute to syllabus load route
-router.get('/contributionToSyllabus', (req, res) => {
-    res.render('annexure-3/contributionToSyllabus');
+router.get('/contributionToSyllabus', ensureAuthenticated, (req, res) => {
+    ContributionToSyllabus.find({ user: req.user.id })
+    .then(result => {
+        res.render('annexure-3/contributionToSyllabus', { result });
+    })
 });
 
 // mumber of university load route
-router.get('/memberOfUniversityCommitte', (req, res) => {
-    res.render('annexure-3/memberOfUniversityCommitte');
+router.get('/memberOfUniversityCommitte', ensureAuthenticated, (req, res) => {
+    MemberOfUniversityCommitte.find({ user: req.user.id })
+    .then(result => {
+        res.render('annexure-3/memberOfUniversityCommitte', { result });
+    })
 });
 
 // consultancy assignment load route
-router.get('/consultancyAssignment', (req, res) => {
-    res.render('annexure-3/consultancyAssignment');
+router.get('/consultancyAssignment', ensureAuthenticated, (req, res) => {
+    ConsultancyAssignment.find({ user: req.user.id })
+    .then(result => {
+        res.render('annexure-3/consultancyAssignment', { result })
+    })
 });
 
 // External project load route
-router.get('/externalProjectsOrCompetition', (req, res) => {
-    res.render('annexure-3/externalProjectsOrCompetition');
+router.get('/externalProjectsOrCompetition', ensureAuthenticated, (req, res) => {
+    ExternalProjectsOrCompetition.find({ user: req.user.id })
+    .then(result => {
+        res.render('annexure-3/externalProjectsOrCompetition', { result });
+    })
 });
+
+//////////
+/////////////
+////////////
+///////////////
+/////////
+// Load edit Route for Annexure-3
+// Resourse person load route
+router.get('/resourcePerson/edit/:id', ensureAuthenticated, (req, res) => {
+    ResourcePerson.findOne({ _id: req.params.id })
+    .then(result => {
+        if(result.user != req.user.id) {
+            req.flash('error_msg', 'Not Authorized');
+            res.redirect('/annexure-3/resourcePerson');
+        } else {
+            res.render('annexure-3/resourcePerson',{ editResult: result });
+        }
+    })
+});
+
+// contribute to syllabus load route
+router.get('/contributionToSyllabus/edit/:id', ensureAuthenticated, (req, res) => {
+    ContributionToSyllabus.findOne({ _id: req.params.id })
+    .then(result => {
+        if(result.user != req.user.id) {
+            req.flash('error_msg', 'Not Authorized');
+            res.redirect('/annexure-3/contributionToSyllabus');
+        } else {
+            res.render('annexure-3/contributionToSyllabus', { editResult: result });
+        }
+    })
+});
+
+// mumber of university load route
+router.get('/memberOfUniversityCommitte/edit/:id', ensureAuthenticated, (req, res) => {
+    MemberOfUniversityCommitte.findOne({ _id: req.params.id })
+    .then(result => {
+        if(result.user != req.user.id) {
+            req.flash('error_msg', 'Not Authorized');
+            res.redirect('/annexure-3/contributionToSyllabus');
+        } else {
+            res.render('annexure-3/memberOfUniversityCommitte', { editResult: result });
+        }
+    })
+});
+
+// consultancy assignment load route
+router.get('/consultancyAssignment/edit/:id', ensureAuthenticated, (req, res) => {
+    ConsultancyAssignment.findOne({ _id: req.params.id })
+    .then(result => {
+        if(result.user != req.user.id) {
+            req.flash('error_msg', 'Not Authorized');
+            res.redirect('/annexure-3/consultancyAssignment');
+        } else {
+            res.render('annexure-3/consultancyAssignment', { editResult: result });
+        }
+    })
+});
+
+// External project load route
+router.get('/externalProjectsOrCompetition/edit/:id', ensureAuthenticated, (req, res) => {
+    ExternalProjectsOrCompetition.findOne({ _id: req.params.id })
+    .then(result => {
+        if(result.user != req.user.id) {
+            req.flash('error_msg', 'Not Authorized');
+            res.redirect('/annexure-3/externalProjectsOrCompetition');
+        } else {
+            res.render('annexure-3/externalProjectsOrCompetition', { editResult: result });
+        }
+    })
+});
+
 
 // Processing resource person form
 router.post('/resourcePerson', (req, res) => {
@@ -54,7 +142,8 @@ router.post('/resourcePerson', (req, res) => {
         topicName: req.body.topicName,
         department: req.body.department,
         nameofInstitute: req.body.nameofInstitute,
-        numberofParticipants: req.body.numberofParticipants
+        numberofParticipants: req.body.numberofParticipants,
+        user: req.user.id
     }
     new ResourcePerson(resourcePerson)
         .save()
@@ -71,7 +160,8 @@ router.post('/contributionToSyllabus', (req, res) => {
         nameofSub: req.body.nameofSub,
         role: req.body.role,
         nameofUniversity: req.body.nameofUniversity,
-        otherDetails: req.body.otherDetails
+        otherDetails: req.body.otherDetails,
+        user: req.user.id
     }
     new ContributionToSyllabus(contributionToSyllabus)
         .save()
@@ -87,7 +177,8 @@ router.post('/memberOfUniversityCommitte', (req, res) => {
     const memberOfUniversityCommitte = {
         nameofCommittee: req.body.nameofCommittee,
         rolesAndResponsibility: req.body.rolesAndResponsibility,
-        designation: req.body.designation
+        designation: req.body.designation,
+        user: req.user.id
     }
     new MemberOfUniversityCommitte(memberOfUniversityCommitte)
         .save()
@@ -105,7 +196,8 @@ router.post('/consultancyAssignment', (req, res) => {
         typeOfWorkorDomain: req.body.typeOfWorkorDomain,
         organization: req.body.organization,
         duration: req.body.duration,
-        numberofVisits: req.body.numberofVisits
+        numberofVisits: req.body.numberofVisits,
+        user: req.user.id
     }
     new ConsultancyAssignment(consultancyAssignment)
         .save()
@@ -123,7 +215,8 @@ router.post('/externalProjectsOrCompetition', (req, res) => {
         contribution: req.body.contribution,
         university: req.body.university,
         duration: req.body.duration,
-        comments: req.body.comments
+        comments: req.body.comments,
+        user: req.user.id
     }
     new ExternalProjectsOrCompetition(externalProjectsOrCompetition)
         .save()
@@ -131,6 +224,130 @@ router.post('/externalProjectsOrCompetition', (req, res) => {
             req.flash('success_msg', 'Data entered successfully');
             res.redirect('/annexure-3/externalProjectsOrCompetition');
         });
+});
+
+// PUT request Route
+
+router.put('/resourcePerson/:id', (req, res) => {
+    ResourcePerson.findOne({ _id: req.params.id })
+    .then(result => {
+        result.topicName = req.body.topicName,
+        result.department = req.body.department,
+        result.nameofInstitute = req.body.nameofInstitute,
+        result.numberofParticipants = req.body.numberofParticipants
+
+        result.save()
+        .then(() => {
+            req.flash('success_msg', 'Data updated Successfully');
+            res.redirect('/annexure-3/resourcePerson');
+        })
+    })
+});
+
+router.put('/contributionToSyllabus/:id', (req, res) => {
+    ContributionToSyllabus.findOne({ _id: req.params.id })
+    .then(result => {
+        result.nameofSub = req.body.nameofSub,
+        result.role = req.body.role,
+        result.nameofUniversity = req.body.nameofUniversity,
+        result.otherDetails = req.body.otherDetails
+
+        result.save()
+        .then(() => {
+            req.flash('success_msg', 'Data updated Successfully');
+            res.redirect('/annexure-3/contributionToSyllabus');
+        })
+    })
+});
+
+router.put('/memberOfUniversityCommitte/:id', (req, res) => {
+    MemberOfUniversityCommitte.findOne({ _id: req.params.id })
+    .then(result => {
+        result.nameofCommittee = req.body.nameofCommittee,
+        result.rolesAndResponsibility = req.body.rolesAndResponsibility,
+        result.designation = req.body.designation
+
+        result.save()
+        .then(() => {
+            req.flash('success_msg', 'Data updated Successfully');
+            res.redirect('/annexure-3/memberOfUniversityCommitte');
+        })
+    })
+});
+
+router.put('/consultancyAssignment/:id', (req, res) => {
+    ConsultancyAssignment.findOne({ _id: req.params.id })
+    .then(result => {
+        result.rolesAndResponsilbilty = req.body.rolesAndResponsilbilty,
+        result.typeOfWorkorDomain = req.body.typeOfWorkorDomain,
+        result.organization = req.body.organization,
+        result.duration = req.body.duration,
+        result.numberofVisits = req.body.numberofVisits
+
+        result.save()
+        .then(() => {
+            req.flash('success_msg', 'Data updated Successfully');
+            res.redirect('/annexure-3/consultancyAssignment');
+        })
+    })
+});
+
+router.put('/externalProjectsOrCompetition/:id', (req, res) => {
+    ExternalProjectsOrCompetition.findOne({ _id: req.params.id })
+    .then(result => {
+        result.description = req.body.description,
+        result.contribution = req.body.contribution,
+        result.university = req.body.university,
+        result.duration = req.body.duration,
+        result.comments = req.body.comments
+
+        result.save()
+        .then(() => {
+            req.flash('success_msg', 'Data updated Successfully');
+            res.redirect('/annexure-3/externalProjectsOrCompetition');
+        })
+    })
+});
+
+// Delete Route
+router.delete('/resourcePerson/delete/:id', (req, res) => {
+    ResourcePerson.deleteOne({ _id: req.params.id })
+    .then(() => {
+        req.flash('success_msg', 'Data is deleted successfully');
+        res.redirect('/annexure-3/resourcePerson');
+    })
+});
+
+router.delete('/contributionToSyllabus/delete/:id', (req, res) => {
+    ContributionToSyllabus.deleteOne({ _id: req.params.id })
+    .then(() => {
+        req.flash('success_msg', 'Data is deleted successfully');
+        res.redirect('/annexure-3/contributionToSyllabus');
+    })
+});
+
+router.delete('/memberOfUniversityCommitte/delete/:id', (req, res) => {
+    MemberOfUniversityCommitte.deleteOne({ _id: req.params.id })
+    .then(() => {
+        req.flash('success_msg', 'Data is deleted successfully');
+        res.redirect('/annexure-3/memberOfUniversityCommitte');
+    })
+});
+
+router.delete('/consultancyAssignment/delete/:id', (req, res) => {
+    ConsultancyAssignment.deleteOne({ _id: req.params.id })
+    .then(() => {
+        req.flash('success_msg', 'Data is deleted successfully');
+        res.redirect('/annexure-3/consultancyAssignment');
+    })
+});
+
+router.delete('/externalProjectsOrCompetition/delete/:id', (req, res) => {
+    ExternalProjectsOrCompetition.deleteOne({ _id: req.params.id })
+    .then(() => {
+        req.flash('success_msg', 'Data is deleted successfully');
+        res.redirect('/annexure-3/externalProjectsOrCompetition');
+    })
 });
 
 module.exports = router;

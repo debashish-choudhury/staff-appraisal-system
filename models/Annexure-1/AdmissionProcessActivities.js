@@ -22,6 +22,10 @@ const AdmissionProcessActivities = new Schema({
     admission_end_date: {
         type: String,
         required: true
+    },
+    user: {
+        type: String,
+        required: true
     }
 });
 

@@ -2,6 +2,111 @@
 <div class="container">
     <h5>1.12 Exam related activities(University exams Supervision)</h5>
     <hr>
+{{#if result}}
+{{#each result}}
+<div class="row" id="examActivitiesSupervision">
+            <div class="row">
+                <div class="input-field col s6 md5">
+                    <select name="exam_role">
+                        <option value="{{exam_role}}" disabled selected>{{exam_role}}</option>
+                        <option value="CS">CS</option>
+                        <option value="SS">SS</option>
+                        <option value="JS">JS</option>
+                        <option value="US">US</option>
+                        <option value="CAP incharge">CAP incharge</option>
+                        <option value="Exam incharge">Exam incharge</option>
+                    </select>
+                    <label for="">Role</label>
+                </div>
+                <div class="input-field col s6">
+                    <input id="exam_name" type="text" name="exam_name" value="{{exam_name}}" class="validate" required>
+                    <label for="exam_name">Exam</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <input id="morning_sessions" type="number" name="morning_sessions" value="{{morning_sessions}}" class="validate" required>
+                    <label for="morning_sessions">Number Of Morning sessions</label>
+                </div>
+                <div class="input-field col s6">
+                    <input id="evening_sessions" type="number" name="evening_sessions" value="{{evening_sessions}}" class="validate" required>
+                    <label for="evening_sessions">Number Of Evening sessions</label>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="no_of_supervision_days" type="number" name="no_of_supervision_days" value="{{no_of_supervision_days}}" class="validate"
+                        required>
+                    <label for="no_of_supervision_days">Number Of Days</label>
+                </div>
+            </div>
+        <a href="/annexure-1/examActivitiesSupervision/edit/{{id}}" class="btn waves-effect waves-light red center mb-2">Edit</a>
+        <a href="/users/faculty/facultyOverview" class="btn waves-effect waves-light purple center mb-2">Back to
+            overview</a><br><br>
+        <form method="post" action="/annexure-1/examActivitiesSupervision/delete/{{id}}?_method=DELETE">
+            <input type="hidden" name="_method" value="DELETE">
+            <input type="submit" class="btn waves-effect waves-light center red white-text" value="Delete">
+        </form>
+        </div>
+    </div>    
+{{else}}
+{{/each}}
+{{else}}
+
+{{#if editResult}}
+<div class="row" id="examActivitiesSupervision">
+        <form action="/annexure-1/examActivitiesSupervision/{{editResult.id}}?_mehtod=PUT" method="post" class="col s12">
+            <input type="hidden" name="_method" value="PUT">
+            <div class="row">
+                <div class="input-field col s6 md5">
+                    <select name="exam_role" required>
+                        <option value="{{editResult.exam_role}}" selected>{{editResult.exam_role}}</option>
+                        <option value="CS">CS</option>
+                        <option value="SS">SS</option>
+                        <option value="JS">JS</option>
+                        <option value="US">US</option>
+                        <option value="CAP incharge">CAP incharge</option>
+                        <option value="Exam incharge">Exam incharge</option>
+                    </select>
+                    <label for="">Role</label>
+                </div>
+                <div class="input-field col s6">
+                    <input id="exam_name" type="text" name="exam_name" value="{{editResult.exam_name}}" class="validate" required>
+                    <label for="exam_name">Exam</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <input id="morning_sessions" type="number" name="morning_sessions" value="{{editResult.morning_sessions}}" class="validate" required>
+                    <label for="morning_sessions">Number Of Morning sessions</label>
+                </div>
+                <div class="input-field col s6">
+                    <input id="evening_sessions" type="number" name="evening_sessions" value="{{editResult.evening_sessions}}" class="validate" required>
+                    <label for="evening_sessions">Number Of Evening sessions</label>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="no_of_supervision_days" type="number" name="no_of_supervision_days" value="{{editResult.no_of_supervision_days}}" class="validate" required>
+                    <label for="no_of_supervision_days">Number Of Days</label>
+                </div>
+            </div>
+            <div>
+             <p>
+                 <label>
+                <input id="indeterminate-checkbox" type="checkbox" required/>
+                 <span>I acknowledge that above filled information is verified and justified by me.</span>
+                </label>
+            </p>
+        </div>
+                class="btn waves-effect waves-dark" id="submit_btn" type="submit" disabled>Submit
+            </button>
+        </form>
+    </div>
+{{else}}
+
     <div class="row" id="examActivitiesSupervision">
         <form action="/annexure-1/examActivitiesSupervision" method="post" class="col s12">
             <div class="row">
@@ -55,3 +160,5 @@
         </form>
     </div>
 </div>
+{{/if}}
+{{/if}}

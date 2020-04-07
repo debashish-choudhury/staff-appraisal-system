@@ -39,6 +39,10 @@ const HodProfile = new Schema({
     salary: {
         type: Number,
         required: true
+    },
+    user: {
+        type: String,
+        required: true
     }
 });
 

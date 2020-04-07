@@ -14,6 +14,10 @@ const ExamActivitiesCollegeLevel = new Schema({
     exam_type: {
         type: String,
         required: true
+    },
+    user: {
+        type: String,
+        required: true
     }
 });
 

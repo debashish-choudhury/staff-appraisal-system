@@ -2,6 +2,98 @@
 <div class="container">
     <h5>1.5 Project Based Learning</h5>
     <hr>
+{{#if result}}
+{{#each result}}
+<div class="row" id="projectBasedLearning">
+            <div class="row">
+                <div class="input-field col s6 md5">
+                    <input id="pbl-subject" type="text" name="pbl_subject" value="{{pbl_subject}}" class="validate" required>
+                    <label for="pbl-subject">Name of Subject</label>
+                </div>
+                <div class="input-field col s6 md5">
+                    <input id="pbl-role" type="text" name="pbl_role" value="{{pbl_role}}" class="validate" required>
+                    <label for="pbl-role">Role &nbsp; <a href="#" class="tooltipped" data-tooltip="role performed by the staff in that PBL activity. eg: co-author, guide, co-guide, etc"><i class="fa fa-info-circle"></i></a></label>
+                </div>
+            </div>
+
+            <div class="row">
+
+                <div class="input-field col s6 md5">
+                    <input id="pbl-start-date" type="text" name="pbl_start_date" value="{{pbl_start_date}}" class="datepicker validate" required>
+                    <label for="pbl-start-date">Start Date</label>
+                </div>
+
+                <div class="input-field col s6 md5">
+                    <input id="pbl-end-date" type="text" name="pbl_end_date" value="{{pbl_end_date}}" class="datepicker validate" required>
+                    <label for="pbl-end-date">End Date</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <textarea id="pbl-description" name="pbl_description" class="materialize-textarea validate"
+                        required>{{pbl_description}}</textarea>
+                    <label for="pbl-description">Description</label>
+                </div>
+            </div>
+            <a href="/annexure-1/projectBasedLearning/edit/{{id}}" class="btn waves-effect waves-light red center mb-2">Edit</a>
+            <a href="/users/faculty/facultyOverview" class="btn waves-effect waves-light purple center mb-2">Back to
+                overview</a><br><br>
+            <form method="post" action="/annexure-1/projectBasedLearning/delete/{{id}}?_method=DELETE">
+                <input type="hidden" name="_method" value="DELETE">
+                <input type="submit" class="btn waves-effect waves-light center red white-text" value="Delete">
+            </form>
+        </div>
+    </div> 
+{{else}}
+{{/each}}
+{{else}}
+{{#if editResult}}
+<div class="row" id="projectBasedLearning">
+        <form action="/annexure-1/projectBasedLearning/{{editResult.id}}?_method=PUT" method="post" class="col s12">
+        <input type="hidden" name="_method" value="PUT">
+            <div class="row">
+                <div class="input-field col s6 md5">
+                    <input id="pbl-subject" type="text" name="pbl_subject" value="{{editResult.pbl_subject}}" class="validate" required>
+                    <label for="pbl-subject">Name of Subject</label>
+                </div>
+                <div class="input-field col s6 md5">
+                    <input id="pbl-role" type="text" name="pbl_role" value="{{editResult.pbl_role}}" class="validate" required>
+                    <label for="pbl-role">Role &nbsp; <a href="#" class="tooltipped" data-tooltip="role performed by the staff in that PBL activity. eg: co-author, guide, co-guide, etc"><i class="fa fa-info-circle"></i></a></label>
+                </div>
+            </div>
+
+            <div class="row">
+
+                <div class="input-field col s6 md5">
+                    <input id="pbl-start-date" type="text" name="pbl_start_date" value="{{editResult.pbl_start_date}}" class="datepicker validate" required>
+                    <label for="pbl-start-date">Start Date</label>
+                </div>
+
+                <div class="input-field col s6 md5">
+                    <input id="pbl-end-date" type="text" name="pbl_end_date" value="{{editResult.pbl_end_date}}" class="datepicker validate" required>
+                    <label for="pbl-end-date">End Date</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <textarea id="pbl-description" name="pbl_description" value="{{editResult.pbl_description}}" class="materialize-textarea validate" required></textarea>
+                    <label for="pbl-description">Description</label>
+                </div>
+            </div>
+            <div>
+                <p>
+                    <label>
+                        <input id="indeterminate-checkbox" type="checkbox" required />
+                        <span>I acknowledge that above filled information is verified and justified by me.</span>
+                    </label>
+                </p>
+            </div>
+            <button
+                class="btn waves-effect waves-light" id="submit_btn" type="submit" disabled>Submit
+            </button>
+        </form>
+    </div>
+{{else}}
     <div class="row" id="projectBasedLearning">
         <form action="/annexure-1/projectBasedLearning" method="post" class="col s12">
             <div class="row">
@@ -49,3 +141,5 @@
         </form>
     </div>
 </div>
+{{/if}}
+{{/if}}

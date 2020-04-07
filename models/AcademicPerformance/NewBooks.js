@@ -26,6 +26,10 @@ const NewBooks = new Schema({
     author: {
         type: String,
         required: true
+    },
+    user: {
+        type: String,
+        required: true
     }
 });
 

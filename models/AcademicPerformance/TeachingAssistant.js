@@ -18,6 +18,10 @@ const TeachingAssistant = new Schema({
     subject: {
         type: String,
         required: true
+    },
+    user: {
+        type: String,
+        required: true
     }
 });
 

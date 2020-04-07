@@ -2,6 +2,108 @@
 <div class="container">
 <h5>1.3 Sports Activities</h5>
 <hr>
+{{#if result}}
+{{#each result}}
+<div class="row" id="sportsActivities">
+        <div class="row">
+            <div class="input-field col s6 md5">
+                <input id="sports_name" type="text" name="sports_name" value="{{sports_name}}" class="validate" required>
+                <label for="sports_name">Name of Sport &nbsp; <a href="#" class="tooltipped" data-tooltip="Enter the name of sports eg: football, cricket, kabaddi!!"><i class="fa fa-info-circle"></i></a></label>
+            </div>
+             <div class="input-field col s6 md5">
+                <select name="sports_category">
+                    <option value="{{sports_category}}" disabled selected>{{sports_category}}</option>
+                    <option value="indoor">Indoor</option>
+                    <option value="outdoor">Outdoor</option>
+                </select>
+                <label for="">Category</label>
+            </div>
+        </div>
+
+        <div class="row">
+           
+             <div class="input-field col s6 md5">
+                <select name="sports_role">
+                    <option value="{{sports_role}}" disabled selected>{{sports_role}}</option>
+                    <option value="incharge">Incharge</option>
+                    <option value="coordinator">Co-orditors</option>
+                </select>
+                <label for="">Role</label>
+            </div>
+            
+            <div class="input-field col s6 md5">
+                <select name="sports_ojus_or_other">
+                    <option value="{{sports_ojus_or_other}}" disabled selected>{{editResult.sports_ojus_or_other}}</option>
+                    <option value="sports-ojus">Ojus</option>
+                    <option value="other-ojus">Other College Activities</option>
+                </select>
+                <label for="">Ojus/Other College Activities</label>
+            </div>
+        </div>
+        <a href="/annexure-1/sportsActivities/edit/{{id}}" class="btn waves-effect waves-light red center mb-2">Edit</a>
+            <a href="/users/faculty/facultyOverview" class="btn waves-effect waves-light purple center mb-2">Back to
+                overview</a><br><br>
+            <form method="post" action="/annexure-1/sportsActivities/delete/{{id}}?_method=DELETE">
+                <input type="hidden" name="_method" value="DELETE">
+                <input type="submit" class="btn waves-effect waves-light center red white-text" value="Delete">
+            </form>
+        </div>
+    </div> 
+{{else}}
+{{/each}}
+{{else}}
+{{#if editResult}}
+<div class="row" id="sportsActivities">
+    <form action="/annexure-1/sportsActivities/{{editResult.id}}?_method=PUT" method="post" class="col s12">
+    <input type="hidden" name="_method" value="PUT">
+        <div class="row">
+            <div class="input-field col s6 md5">
+                <input id="sports_name" type="text" name="sports_name" value="{{editResult.sports_name}}" class="validate" required>
+                <label for="sports_name">Name of Sport &nbsp; <a href="#" class="tooltipped" data-tooltip="Enter the name of sports eg: football, cricket, kabaddi!!"><i class="fa fa-info-circle"></i></a></label>
+            </div>
+             <div class="input-field col s6 md5">
+                <select name="sports_category">
+                    <option value="{{editResult.sports_category}}" disabled selected>{{editResult.sports_category}}</option>
+                    <option value="indoor">Indoor</option>
+                    <option value="outdoor">Outdoor</option>
+                </select>
+                <label for="">Category</label>
+            </div>
+        </div>
+
+        <div class="row">
+           
+             <div class="input-field col s6 md5">
+                <select name="sports_role" class="validate" required>
+                    <option value="{{sports_role}}" disabled selected>{{sports_role}}</option>
+                    <option value="incharge">Incharge</option>
+                    <option value="coordinator">Co-orditors</option>
+                </select>
+                <label for="">Role</label>
+            </div>
+            
+            <div class="input-field col s6 md5">
+                <select name="sports_ojus_or_other" class="validate" required>
+                    <option value="{{editResult.sports_ojus_or_other}}" disabled selected>{{editResult.sports_ojus_or_other}}</option>
+                    <option value="sports-ojus">Ojus</option>
+                    <option value="other-ojus">Other College Activities</option>
+                </select>
+                <label for="">Ojus/Other College Activities</label>
+            </div>
+        </div>
+        <div>
+             <p>
+                 <label>
+                <input id="indeterminate-checkbox" type="checkbox" required/>
+                 <span>I acknowledge that above filled information is verified and justified by me.</span>
+                </label>
+            </p>
+        </div>
+        <button class="btn waves-effect waves-light" id="submit_btn" type="submit" disabled>Submit
+        </button>
+    </form>
+</div>
+{{else}}
 <div class="row" id="sportsActivities">
     <form action="/annexure-1/sportsActivities" method="post" class="col s12">
         <div class="row">
@@ -52,3 +154,5 @@
     </form>
 </div>
 </div>
+{{/if}}
+{{/if}}

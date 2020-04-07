@@ -22,6 +22,10 @@ const ProjectBasedLearning = new Schema({
     pbl_description: {
         type: String,
         required: true
+    },
+    user: {
+        type: String,
+        required: true
     }
 });
 

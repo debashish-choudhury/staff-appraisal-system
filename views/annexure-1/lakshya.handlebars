@@ -2,6 +2,86 @@
 <div class="container">
     <h5>1.16 Lakshya Related Activties</h5>
     <hr>
+{{#if result}}
+{{#each result}}
+    <div class="row" id=" Lakshya Related Activties">
+            <div class="row">
+                <div class="input-field col s6 md5">
+                    <input id="lakshya_activities" type="text" name="lakshya_activities" value="{{lakshya_activities}}" class="validate" required>
+                    <label for="lakshya_activities">Activties Conducted</label>
+                </div>
+                <div class="input-field col s6">
+                    <textarea name="lakshya_description" id="lakshya_description" aria-valuetext="{{lakshya_description}}" class="materialize-textarea validate"
+                        required></textarea>
+                    <label for="lakshya_description">Description</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <input id="class" type="text" name="lakshya_date" value="{{lakshya_date}}" class="datepicker validate" required>
+                    <label for="class">Date</label>
+
+                </div>
+
+                <div class="input-field col s6">
+                    <input id="lakshya-no-of-participants" type="number" name="lakshya_no_of_participants" value="{{lakshya_no_of_participants}}"
+                        class="validate" required>
+                    <label for="lakshya-no-of-participants">Number Of Students Participated</label>
+                </div>
+            </div>
+        <a href="/annexure-1/lakshya/edit/{{id}}" class="btn waves-effect waves-light red center mb-2">Edit</a>
+        <a href="/users/faculty/facultyOverview" class="btn waves-effect waves-light purple center mb-2">Back to
+            overview</a><br><br>
+        <form method="post" action="/annexure-1/lakshya/delete/{{id}}?_method=DELETE">
+            <input type="hidden" name="_method" value="DELETE">
+            <input type="submit" class="btn waves-effect waves-light center red white-text" value="Delete">
+        </form>
+        </div>
+    </div> 
+{{else}}
+{{/each}}
+{{else}}
+{{#if editResult}}
+<div class="row" id=" Lakshya Related Activties">
+        <form action="/annexure-1/lakshya/{{editResult.id}}?_method=PUT" method="post" class="col s12">
+            <input type="hidden" name="_method" value="PUT">
+            <div class="row">
+                <div class="input-field col s6 md5">
+                    <input id="lakshya_activities" type="text" name="lakshya_activities" value="{{editResult.lakshya_activities}}" class="validate" required>
+                    <label for="lakshya_activities">Activties Conducted</label>
+                </div>
+                <div class="input-field col s6">
+                    <textarea name="lakshya_description" id="lakshya_description" aria-valuetext="{{editResult.lakshya_description}}" class="materialize-textarea validate"
+                        required></textarea>
+                    <label for="lakshya_description">Description</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <input id="class" type="text" name="lakshya_date" value="{{editResult.lakshya_date}}" class="datepicker validate" required>
+                    <label for="class">Date</label>
+
+                </div>
+
+                <div class="input-field col s6">
+                    <input id="lakshya-no-of-participants" type="number" name="lakshya_no_of_participants" value="{{editResult.lakshya_no_of_participants}}" class="validate" required>
+                    <label for="lakshya-no-of-participants">Number Of Students Participated</label>
+                </div>
+            </div>
+            <div>
+                <p>
+                    <label>
+                        <input id="indeterminate-checkbox" type="checkbox" required />
+                        <span>I acknowledge that above filled information is verified and justified by me.</span>
+                    </label>
+                </p>
+            </div>
+            <button
+                class="btn waves-effect waves-dark" id="submit_btn" type="submit" disabled>Submit
+            </button>
+        </form>
+    </div>
+{{else}}
     <div class="row" id=" Lakshya Related Activties">
         <form action="/annexure-1/lakshya" method="post" class="col s12">
             <div class="row">
@@ -43,3 +123,5 @@
         </form>
     </div>
 </div>
+{{/if}}
+{{/if}}

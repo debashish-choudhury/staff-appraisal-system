@@ -48,6 +48,10 @@ const TeachingRecord = new Schema({
     Student_feedback: {
         type: Number,
         required: true
+    },
+    user: {
+        type: String,
+        required: true
     }
 });
 

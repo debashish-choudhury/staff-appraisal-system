@@ -19,6 +19,10 @@ const ResourcePerson = new Schema({
     numberofParticipants: {
         type: Number,
         required: true
+    },
+    user: {
+        type: String,
+        required: true
     }
 });
 

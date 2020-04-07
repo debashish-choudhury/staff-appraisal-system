@@ -33,7 +33,6 @@ module.exports = function (passport) {
     //     })
     // }));
 
-
     passport.use('faculty', new LocalStrategy({ usernameField: 'email' }, function(email, password, done){
         var query = {email: email};
         Faculty.findOne(query, function(err, faculty){

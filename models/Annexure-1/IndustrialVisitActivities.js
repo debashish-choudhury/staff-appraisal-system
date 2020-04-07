@@ -42,6 +42,10 @@ const IndustrialVisitActivities = new Schema({
     iv_end_date: {
         type: String,
         required: true
+    },
+    user: {
+        type: String,
+        required: true
     }
 });
 

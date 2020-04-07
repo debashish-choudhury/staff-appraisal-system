@@ -14,6 +14,10 @@ const DepartmentUGProjects = new Schema({
     project_no_of_students: {
         type: Number,
         required: true
+    },
+    user: {
+        type: String,
+        required: true
     }
 });
 

@@ -2,6 +2,110 @@
 <div class="container">
 <h5>1.7 Placement Activities</h5>
 <hr>
+{{#if result}}
+{{#each result}}
+<div class="row" id="placementActivities">
+        <div class="row">
+            <div class="input-field col s6 md5">
+                <select name="placement_role">
+                    <option value="{{placement_role}}" disabled selected>{{placement_role}}</option>
+                    <option value="tpo">TPO</option>
+                    <option value="dept coordinator">Dept Co-ordinator</option>
+                </select>
+                <label for="">Role</label>
+            </div>
+             <div class="input-field col s6 md5">
+                <input id="no-of-companies" type="number" name="no_of_companies" value="{{placement_role}}" class="validate" required>
+                <label for="no-of-companies">Number of Companies visited</label>
+            </div>
+        </div>
+
+        <div class="row">
+            
+            <div class="input-field col s6 md5">
+                <input id="no-of-placed-students" type="number" name="no_of_placed_students"  value="{{no_of_placed_students}}" class="validate" required>
+                <label for="no-of-placed-students">Number of students placed</label>
+            </div>
+           
+             
+            
+            <div class="input-field col s6">
+                <select name="department">
+                    <option value="{{department}}" disabled selected>{{department}}</option>
+                    <option value="Information Technology">Information Technology</option>
+                    <option value="Computer Engineering">Computer Engineering</option>
+                    <option value="Mechanical Engineering">Mechanical Engineering</option>
+                    <option value="Civil Engineering">Civil Engineering</option>
+                    <option value="EXTC Engineering">EXTC Engineering</option>
+                </select>
+                <label for="">Deprtment</label>
+            </div>
+        </div>
+        <a href="/annexure-1/placementActivities/edit/{{id}}" class="btn waves-effect waves-light red center mb-2">Edit</a>
+        <a href="/users/faculty/facultyOverview" class="btn waves-effect waves-light purple center mb-2">Back to
+            overview</a><br><br>
+        <form method="post" action="/annexure-1/placementActivities/delete/{{id}}?_method=DELETE">
+            <input type="hidden" name="_method" value="DELETE">
+            <input type="submit" class="btn waves-effect waves-light center red white-text" value="Delete">
+        </form>
+        </div>
+    </div> 
+{{else}}
+{{/each}}
+{{else}}
+{{#if editResult}}
+<div class="row" id="placementActivities">
+    <form action="/annexure-1/placementActivities/{{editResult.id}}?_method=PUT" method="post" class="col s12">
+        <input type="hidden" name="_method" value="PUT">
+        <div class="row">
+            <div class="input-field col s6 md5">
+                <select name="placement_role" class="validate" required>
+                    <option value="{{editResut.placement_role}}" disabled selected>{{editResut.placement_role}}</option>
+                    <option value="tpo">TPO</option>
+                    <option value="dept coordinator">Dept Co-ordinator</option>
+                </select>
+                <label for="">Role</label>
+            </div>
+             <div class="input-field col s6 md5">
+                <input id="no-of-companies" type="number" name="no_of_companies" value="{{editResult.no_of_companies}}" class="validate" required>
+                <label for="no-of-companies">Number of Companies visited</label>
+            </div>
+        </div>
+
+        <div class="row">
+            
+            <div class="input-field col s6 md5">
+                <input id="no-of-placed-students" type="number" name="no_of_placed_students" value="{{editResult.no_of_placed_students}}" class="validate" required>
+                <label for="no-of-placed-students">Number of students placed</label>
+            </div>
+           
+             
+            
+            <div class="input-field col s6">
+                <select name="department" required>
+                    <option value="{{editResult.department}}" disabled selected>{{editResult.department}}</option>
+                    <option value="Information Technology">Information Technology</option>
+                    <option value="Computer Engineering">Computer Engineering</option>
+                    <option value="Mechanical Engineering">Mechanical Engineering</option>
+                    <option value="Civil Engineering">Civil Engineering</option>
+                    <option value="EXTC Engineering">EXTC Engineering</option>
+                </select>
+                <label for="">Department</label>
+            </div>
+        </div>
+        <div>
+             <p>
+                 <label>
+                <input id="indeterminate-checkbox" type="checkbox" required/>
+                 <span>I acknowledge that above filled information is verified and justified by me.</span>
+                </label>
+            </p>
+        </div>
+        <button class="btn waves-effect waves-light" id="submit_btn" type="submit" disabled>Submit
+        </button>
+    </form>
+</div>
+{{else}}
 <div class="row" id="placementActivities">
     <form action="/annexure-1/placementActivities" method="post" class="col s12">
         <div class="row">
@@ -53,3 +157,5 @@
     </form>
 </div>
 </div>
+{{/if}}
+{{/if}}

@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const router = express.Router();
+const { ensureAuthenticated } = require('../helpers/auth');
 
 // Load teaching model
 require('../models/AcademicPerformance/TeachingLoad')
@@ -23,33 +24,113 @@ require('../models/AcademicPerformance/Innovation')
 const Innovation = mongoose.model('innovation');
 
 // Teaching load route
-router.get('/teachingLoad', (req, res) => {
-    res.render('academicPerformance/teachingLoad');
+router.get('/teachingLoad', ensureAuthenticated, (req, res) => {
+    TeachingLoad.find({ user: req.user.id })
+        .then(result => {
+            res.render('academicPerformance/teachingLoad', { result });
+        })
 });
 
-// Teaching load route
-router.get('/teachingAssistant', (req, res) => {
-    res.render('academicPerformance/teachingAssistant');
+// Teaching assistant route
+router.get('/teachingAssistant', ensureAuthenticated, (req, res) => {
+    TeachingAssistant.find({ user: req.user.id })
+        .then(result => {
+            res.render('academicPerformance/teachingAssistant', { result });
+        })
 });
 
 // new books load route
-router.get('/newBooks', (req, res) => {
-    res.render('academicPerformance/newBooks');
+router.get('/newBooks', ensureAuthenticated, (req, res) => {
+    NewBooks.find({ user: req.user.id })
+        .then(result => {
+            res.render('academicPerformance/newBooks', { result });
+        })
 });
 
 // added experiment load route
-router.get('/addedExp', (req, res) => {
-    res.render('academicPerformance/addedExp');
+router.get('/addedExp', ensureAuthenticated, (req, res) => {
+    AddedExp.find({ user: req.user.id })
+        .then(result => {
+            res.render('academicPerformance/addedExp', { result });
+        })
 });
 
 // innovative teaching technique load route
-router.get('/innovativeTeaching', (req, res) => {
-    res.render('academicPerformance/innovativeTeaching');
+router.get('/innovativeTeaching', ensureAuthenticated, (req, res) => {
+    Innovation.find({ user: req.user.id })
+        .then(result => {
+            res.render('academicPerformance/innovativeTeaching', { result });
+        })
+});
+
+// Load edit pages for teaching load
+router.get('/teachingLoad/edit/:id', ensureAuthenticated, (req, res) => {
+    TeachingLoad.findOne({ _id: req.params.id })
+        .then(result => {
+            if (result.user != req.user.id) {
+                req.flash('error_msg', 'Not Authorized');
+                res.redirect('/academicPerformance/teachingLoad');
+            } else {
+                res.render('academicPerformance/teachingLoad', { editResult: result });
+            }
+        })
+});
+
+// Load edit pages for teaching assistant
+router.get('/teachingAssistant/edit/:id', ensureAuthenticated, (req, res) => {
+    TeachingAssistant.findOne({ _id: req.params.id })
+        .then(result => {
+            if (result.user != req.user.id) {
+                req.flash('error_msg', 'Not Authorized');
+                res.redirect('/academicPerformance/teachingAssistant');
+            } else {
+                res.render('academicPerformance/teachingAssistant', { editResult: result });
+            }
+        })
+});
+
+// Load edit pages for new books
+router.get('/newBooks/edit/:id', ensureAuthenticated, (req, res) => {
+    NewBooks.findOne({ _id: req.params.id })
+        .then(result => {
+            if (result.user != req.user.id) {
+                req.flash('error_msg', 'Not Authorized');
+                res.redirect('/academicPerformance/newBooks');
+            } else {
+                res.render('academicPerformance/newBooks', { editResult: result });
+            }
+        })
+});
+
+// added experiment edit route
+router.get('/addedExp/edit/:id', ensureAuthenticated, (req, res) => {
+    AddedExp.findOne({ _id: req.params.id })
+        .then(result => {
+            if(result.user != req.user.id) { 
+                req.flash('error_msg', 'Not Authorized');
+                res.redirect('/academicPerformance/addedExp');
+            } else {
+            res.render('academicPerformance/addedExp', { editResult: result });
+            }
+        })
+});
+
+// innovative teaching technique edit route
+router.get('/innovativeTeaching/edit/:id', ensureAuthenticated, (req, res) => {
+    Innovation.findOne({ _id: req.params.id })
+        .then(result => {
+            if(result.user != req. user.id) {
+                req.flash('error_msg', 'Not authorized');
+                res.redirect('/academicPerformance/innovativeTeaching');
+            } else {
+                res.render('academicPerformance/innovativeTeaching', { editResult: result });
+            }
+        })
 });
 
 //process teaching form
 router.post('/teachingLoad', (req, res) => {
-    
+
     // add preleave data into db
     const TeachingRecord = {
         academic_year: req.body.academic_year,
@@ -62,7 +143,8 @@ router.post('/teachingLoad', (req, res) => {
         tutorials: req.body.tutorials,
         theory_session: req.body.theory_session,
         practical_session: req.body.practical_session,
-        Student_feedback: req.body.Student_feedback
+        Student_feedback: req.body.Student_feedback,
+        user: req.user.id
     }
     new TeachingLoad(TeachingRecord)
         .save()
@@ -79,7 +161,8 @@ router.post('/teachingAssistant', (req, res) => {
         faculty_name: req.body.faculty_name,
         class: req.body.class,
         semester: req.body.semester,
-        subject: req.body.subject
+        subject: req.body.subject,
+        user: req.user.id
     }
     new TeachingAssistant(teachingAssistantRecord)
         .save()
@@ -98,7 +181,8 @@ router.post('/newBooks', (req, res) => {
         semester: req.body.semester,
         class: req.body.class,
         publication: req.body.publication,
-        author: req.body.author
+        author: req.body.author,
+        user: req.user.id
     }
     new NewBooks(NewBooksRecord)
         .save()
@@ -115,7 +199,8 @@ router.post('/addedExp', (req, res) => {
         subject_name: req.body.subject_name,
         class: req.body.class,
         semester: req.body.semester,
-        exp_name: req.body.exp_name
+        exp_name: req.body.exp_name,
+        user: req.user.id
     }
     new AddedExp(AddedExpRecord)
         .save()
@@ -132,14 +217,147 @@ router.post('/innovation', (req, res) => {
         subject_name: req.body.subject_name,
         class_name: req.body.class_name,
         semester: req.body.semester,
-        technique: req.body.technique
+        technique: req.body.technique,
+        user: req.user.id
     }
     new Innovation(InnovationTeachingRecords)
         .save()
         .then(innovationrecords => {
             req.flash('success_msg', 'Data entered successfully');
-            res.redirect('/leaveForm');
+            res.redirect('/leave');
         });
 });
+
+// Put request (edit form)
+router.put('/teachingLoad/:id', (req, res) => {
+    TeachingLoad.findOne({ _id: req.params.id })
+        .then(result => {
+            result.academic_year = req.body.academic_year,
+                result.subject_name = req.body.subject_name,
+                result.class = req.body.class,
+                result.department = req.body.department,
+                result.semester = req.body.semester,
+                result.theory_subject = req.body.theory_subject,
+                result.lab_subject = req.body.lab_subject,
+                result.tutorials = req.body.tutorials,
+                result.theory_session = req.body.theory_session,
+                result.practical_session = req.body.practical_session,
+                result.Student_feedback = req.body.Student_feedback
+
+            result.save()
+                .then(result => {
+                    req.flash('success_msg', 'Data updated successfully');
+                    res.redirect('/academicPerformance/teachingLoad');
+                });
+        });
+});
+
+router.put('/teachingAssistant/:id', (req, res) => {
+    TeachingAssistant.findOne({ _id: req.params.id })
+        .then(result => {
+            result.faculty_name = req.body.faculty_name,
+            result.class = req.body.class,
+            result.semester = req.body.semester,
+            result.subject = req.body.subject
+
+            result.save()
+                .then(result => {
+                    req.flash('success_msg', 'Data updated successfully');
+                    res.redirect('/academicPerformance/teachingAssistant');
+                })
+        })
+});
+
+router.put('/newBooks/:id', (req, res) => {
+    NewBooks.findOne({ _id: req.params.id })
+        .then(result => {
+            result.subject_name = req.body.subject_name,
+                result.title = req.body.title,
+                result.semester = req.body.semester,
+                result.class = req.body.class,
+                result.publication = req.body.publication,
+                result.author = req.body.author,
+
+                result.save()
+                    .then(result => {
+                        req.flash('success_msg', 'Data updated successfully');
+                        res.redirect('/academicPerformance/newBooks');
+                    });
+        })
+});
+
+router.put('/addedExp/:id', (req, res) => {
+    AddedExp.findOne({_id: req.params.id})
+    .then(result => {
+        result.subject_name = req.body.subject_name,
+        result.class = req.body.class,
+        result.semester = req.body.semester,
+        result.exp_name = req.body.exp_name
+
+        result.save()
+        .then(result => {
+            req.flash('success_msg', 'Data updated successfully');
+            res.redirect('/academicPerformance/addedExp');
+        });
+    })
+});
+
+router.put('/innovativeTeaching/:id', (req, res) => {
+    Innovation.findOne({ _id: req.params.id })
+    .then(result => {
+        result.subject_name = req.body.subject_name,
+        result.class_name = req.body.class_name,
+        result.semester = req.body.semester,
+        result.technique = req.body.technique
+        
+        result.save()
+        .then(result => {
+            req.flash('success_msg', 'Data updated successfully');
+            res.redirect('/academicPerformance/innovativeTeaching');
+        });
+    })
+});
+
+//DELETE DATA
+//academic performance data delete
+router.delete('/teachingLoad/delete/:id', (req, res) => {
+    TeachingLoad.deleteOne({ _id: req.params.id })
+        .then(() => {
+            req.flash('success_msg', 'Data deleted successfully');
+            res.redirect('/academicPerformance/teachingLoad');
+        });
+});
+
+router.delete('/teachingAssistant/delete/:id', (req, res) => {
+    TeachingAssistant.deleteOne({ _id: req.params.id })
+        .then(() => {
+            req.flash('success_msg', 'Data deleted successfully');
+            res.redirect('/academicPerformance/teachingAssistant');
+        });
+});
+
+router.delete('/newBooks/delete/:id', (req, res) => {
+    NewBooks.deleteOne({ _id: req.params.id })
+        .then(() => {
+            req.flash('success_msg', 'Data deleted successfully');
+            res.redirect('/academicPerformance/newBooks');
+        });
+});
+
+router.delete('/addedExp/delete/:id', (req, res) => {
+    AddedExp.deleteOne({ _id: req.params.id })
+    .then(() => {
+        req.flash('success_msg', 'Data deleted successfully');
+        res.redirect('/academicPerformance/addedExp');
+    });
+})
+
+router.delete('/innovativeTeaching/delete/:id', (req, res) => {
+    Innovation.deleteOne({ _id: req.params.id })
+    .then(() => {
+        req.flash('success_msg', 'Data deleted successfully');
+        res.redirect('/academicPerformance/innovativeTeaching');
+    })
+})
 
 module.exports = router;

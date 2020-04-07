@@ -19,7 +19,6 @@ const FacultyProfile = new Schema({
         type: String,
         required: true
     },
-
     teaching_exp: {
         type: Number,
         required: true
@@ -38,6 +37,10 @@ const FacultyProfile = new Schema({
     },
     salary: {
         type: Number,
+        required: true
+    },
+    user: {
+        type: String,
         required: true
     }
 });

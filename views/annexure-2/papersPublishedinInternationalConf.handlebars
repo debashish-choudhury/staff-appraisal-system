@@ -2,6 +2,152 @@
 <div class="container">
     <h5>2.2 Papers Published International Conference</h5>
     <hr>
+{{#if result}}
+{{#each result}}
+<div class="row" id="Papers Published In International Conference">
+            <div class="row">
+                <div class="input-field col s6 md5">
+                    <input id="title_of_paper_published" type="text" name="title_of_paper_published" 
+                    value="{{title_of_paper_published}}" disabled class="validate " required>
+                    <label for="title_of_paper_published" class="">Title Of Paper Published</label>
+                </div>
+
+                <div class="input-field col s6">
+                    <input id="published_date" type="text" placeholder="march 2018" disabled name="published_date" value="{{published_date}}"
+                        class="validate" required>
+                    <label for="published_date">Month / Year</label>
+                </div>
+            </div>
+
+            <div class="row">
+
+                <div class="input-field col s6 md5">
+                    <input id="name_of_conference" type="text" name="name_of_conference" disabled value="{{name_of_conference}}" class="validate " required>
+                    <label for="name_of_conference" class="">Name of Conference</label>
+                </div>
+
+                <div class="input-field col s6">
+                    <input id="isbn_issn_number" type="number" name="isbn_issn_number" disabled value="{{isbn_issn_number}}" class="validate" required>
+                    <label for="isbn_issn_number">ISBN/ISSN NUMBER</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field col s6 md5">
+                    <input id="name_of_coauthor" type="text" name="name_of_coauthor" disabled value="{{name_of_coauthor}}" class="validate " required>
+                    <label for="name_of_coauthor" class="">Name Of The Co-authors</label>
+                </div>
+
+                <div class="input-field col s6">
+                    <input id="impact_factor" type="text" name="impact_factor" disabled value="{{impact_factor}}" class="validate" required>
+                    <label for="impact_factor">Impact Factor Of Conference</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field col s6 md5">
+                    <input id="no_of_citations" type="number" name="no_of_citations" disabled value="{{no_of_citations}}" class="validate " required>
+                    <label for="{{no_of_citations}}" class="">Number Of Citations</label>
+                </div>
+
+                <div class="input-field col s6">
+                    <input id="rating" type="number" name="rating" disabled value="{{rating}}" class="validate" required>
+                    <label for="rating">Rating</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="link" type="url" name="link" disabled value="{{link}}" class="validate" required>
+                    <label for="link">Online Link</label>
+                </div>
+            </div>
+            <a href="/annexure-2/papersPublishedinInternationalConf/edit/{{id}}" class="btn waves-effect waves-light red center mb-2">Edit</a>
+            <a href="/users/faculty/facultyOverview" class="btn waves-effect waves-light purple center mb-2">Back to
+                overview</a><br><br>
+            <form method="post" action="/annexure-2/papersPublishedinInternationalConf/delete/{{id}}?_method=DELETE">
+                <input type="hidden" name="_method" value="DELETE">
+                <a href=""><input type="submit" class="btn waves-effect waves-light center red white-text" value="Delete"></a>
+            </form>
+        </div>
+    </div>
+{{else}}
+{{/each}}
+{{else}}
+{{#if editResult}}
+<div class="row" id="Papers Published In International Conference">
+        <form action="/annexure-2/papersPublishedinInternationalConf/{{editResult.id}}?_method=PUT" method="post" class="col s12">
+        <input type="hidden" name="_method" value="PUT">
+            <div class="row">
+                <div class="input-field col s6 md5">
+                    <input id="title_of_paper_published" type="text" name="title_of_paper_published" value="{{editResult.title_of_paper_published}}" class="validate"
+                        required>
+                    <label for="title_of_paper_published" class="">Title Of Paper Published</label>
+                </div>
+
+                <div class="input-field col s6">
+                    <input id="published_date" type="text" placeholder="march 2018" name="published_date" value="{{editResult.published_date}}" class="validate" required>
+                    <label for="published_date">Month / Year</label>
+                </div>
+            </div>
+
+            <div class="row">
+
+                <div class="input-field col s6 md5">
+                    <input id="name_of_conference" type="text" name="name_of_conference" value="{{editResult.name_of_conference}}" class="validate " required>
+                    <label for="name_of_conference" class="">Name of Conference</label>
+                </div>
+
+                <div class="input-field col s6">
+                    <input id="isbn_issn_number" type="number" name="isbn_issn_number" value="{{editResult.isbn_issn_number}}" class="validate" required>
+                    <label for="isbn_issn_number">ISBN/ISSN NUMBER</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field col s6 md5">
+                    <input id="name_of_coauthor" type="text" name="name_of_coauthor" value="{{editResult.name_of_coauthor}}" class="validate " required>
+                    <label for="name_of_coauthor" class="">Name Of The Co-authors</label>
+                </div>
+
+                <div class="input-field col s6">
+                    <input id="impact_factor" type="text" name="impact_factor" value="{{editResult.impact_factor}}" class="validate" required>
+                    <label for="impact_factor">Impact Factor Of Conference</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field col s6 md5">
+                    <input id="no_of_citations" type="number" name="no_of_citations" value="{{editResult.no_of_citations}}" class="validate " required>
+                    <label for="no_of_citations" class="">Number Of Citations</label>
+                </div>
+
+                <div class="input-field col s6">
+                    <input id="rating" type="number" name="rating" value="{{editResult.rating}}" class="validate" required>
+                    <label for="rating">Rating</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="link" type="url" name="link" value="{{editResult.link}}" class="validate" required>
+                    <label for="link">Online Link</label>
+                </div>
+            </div>
+            <div>
+                <p>
+                    <label>
+                        <input id="indeterminate-checkbox" type="checkbox" required />
+                        <span>I acknowledge that above filled information is verified and justified by me.</span>
+                    </label>
+                </p>
+            </div>
+            <button class="btn waves-effect waves-light" id="submit_btn" type="submit" disabled>Submit
+            </button>
+        </form>
+    </div>
+</div>
+{{else}}
     <div class="row" id="Papers Published In International Conference">
         <form action="/annexure-2/papersPublishedinInternationalConf" method="post" class="col s12">
 
@@ -9,8 +155,7 @@
                 <div class="input-field col s6 md5">
                     <input id="title_of_paper_published" type="text" name="title_of_paper_published" class="validate "
                         required>
-                    <label for="title_of_paper_published" class="">Title Of Paper Published In Interational
-                        Conference</label>
+                    <label for="title_of_paper_published" class="">Title Of Paper Published</label>
                 </div>
 
                 <div class="input-field col s6">
@@ -78,3 +223,5 @@
         </form>
     </div>
 </div>
+{{/if}}
+{{/if}}

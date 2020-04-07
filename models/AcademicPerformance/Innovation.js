@@ -18,6 +18,10 @@ const Innovation = new Schema({
     technique: {
         type: String,
         required: true
+    },
+    user: {
+        type: String,
+        required: true
     }
 });
 

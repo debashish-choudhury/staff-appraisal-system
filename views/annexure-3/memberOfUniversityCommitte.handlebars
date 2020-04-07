@@ -2,6 +2,81 @@
 <div class="container">
 <h5>3.3 Member Of University Committe</h5>
 <hr>
+{{#if result}}
+{{#each result}}
+        <div class="row">
+            <div class="input-field col s6 md5">
+                <input id="nameofCommittee" type="text" name="nameofCommittee" value="{{nameofCommittee}}" disabled class="validate" required>
+                <label for="nameofCommittee">Name Of Committee</label>
+            </div>
+            
+            <div class="input-field col s6 md5">
+                <input id="rolesAndResponsibility" type="text" name="rolesAndResponsibility" value="{{rolesAndResponsibility}}" disabled class="validate" required>
+                <label for="rolesAndResponsibility">Roles And Responsibility</label>
+            </div>
+        </div>
+
+
+        <div class="row">
+            
+            <div class="input-field col s6 md5">
+                <input id="designation" type="text" name="designation" value="{{designation}}" disabled class="validate" required>
+                <label for="designation">Designation</label>
+            </div>
+            
+         </div>
+            <a href="/annexure-3/memberOfUniversityCommitte/edit/{{id}}" class="btn waves-effect waves-light red center mb-2">Edit</a>
+            <a href="/users/faculty/facultyOverview" class="btn waves-effect waves-light purple center mb-2">Back to
+                overview</a><br><br>
+            <form method="post" action="/annexure-3/memberOfUniversityCommitte/delete/{{id}}?_method=DELETE">
+                <input type="hidden" name="_method" value="DELETE">
+                <input type="submit" class="btn waves-effect waves-light center red white-text" value="Delete">
+            </form>
+        </div>
+    </div>
+    </div>
+{{else}}
+{{/each}}
+{{else}}
+{{#if editResult}}
+<form action="/annexure-3/memberOfUniversityCommitte/{{editResult.id}}?_method=PUT" method="post" class="col s12">
+    <input type="hidden" name="_method" value="PUT">
+        <div class="row">
+            <div class="input-field col s6 md5">
+                <input id="nameofCommittee" type="text" name="nameofCommittee" value="{{editResult.nameofCommittee}}"  class="validate" required>
+                <label for="nameofCommittee">Name Of Committee</label>
+            </div>
+            
+            <div class="input-field col s6 md5">
+                <input id="rolesAndResponsibility" type="text" name="rolesAndResponsibility" value="{{editResult.rolesAndResponsibility}}"  class="validate" required>
+                <label for="rolesAndResponsibility">Roles And Responsibility</label>
+            </div>
+        </div>
+
+
+        <div class="row">
+            
+            <div class="input-field col s6 md5">
+                <input id="designation" type="text" name="designation" value="{{editResult.designation}}"  class="validate" required>
+                <label for="{{designation}}" >Designation</label>
+            </div>
+            
+         </div>
+
+        <div>
+             <p>
+                 <label>
+                <input id="indeterminate-checkbox" type="checkbox" />
+                 <span>I acknowledge that above filled information is verified and justified by me.</span>
+                </label>
+            </p>
+        </div>
+
+ <a href="/annexure-3/consultancyAssignment" class="waves-effect waves-light btn center red">Not Applicable</a>
+        <button class="btn waves-effect waves-light" type="submit" id="submit_btn" disabled>Submit
+        </button>
+    </form>
+{{else}}
     <form action="/annexure-3/memberOfUniversityCommitte" method="post" class="col s12">
         <div class="row">
             
@@ -39,3 +114,5 @@
         <button class="btn waves-effect waves-light" type="submit" id="submit_btn" disabled>Submit
         </button>
     </form>
+{{/if}}
+{{/if}}

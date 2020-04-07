@@ -18,6 +18,10 @@ const Lakshya = new Schema({
     lakshya_no_of_participants: {
         type: Number,
         required: true
+    },
+    user: {
+        type: String,
+        required: true
     }
 });
 

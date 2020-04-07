@@ -2,6 +2,99 @@
 <div class="container">
 <h5>1.4 Cultural Activities</h5>
 <hr>
+{{#if result}}
+{{#each result}}
+<div class="row" id="culturalActivities">
+        <div class="row">
+            <div class="input-field col s6 md5">
+                <input id="cultural_name" type="text" name="cultural_name" value="{{cultural_name}}" class="validate" required>
+                <label for="cultural_name">Name of Cultural Activity &nbsp; <a href="#" class="tooltipped" data-tooltip="Enter the name of cultural activity performed"><i class="fa fa-info-circle"></i></a></label>
+            </div>
+             <div class="input-field col s6 md5">
+                <input id="cultural-category" type="text" name="cultural_category" value="{{cultural_category}}" class="validate" required>
+                <label for="cultural-category">Category &nbsp; <a href="#" class="tooltipped" data-tooltip="Enter the category of the event eg: social, politics, educational"><i class="fa fa-info-circle"></i></a></label>
+            </div>
+        </div>
+
+        <div class="row">
+           
+             <div class="input-field col s6 md5">
+                <select name="cultural_role">
+                    <option value="{{cultural_role}}" disabled selected>{{cultural_role}}</option>
+                    <option value="incharge">Incharge</option>
+                    <option value="coordinator">Co-orditors</option>
+                </select>
+                <label for="">Role</label>
+            </div>
+            
+            <div class="input-field col s6 md5">
+                <select name="cultural_ojus_or_other">
+                    <option value="{{cultural_ojus_or_other}}" disabled selected>{{cultural_ojus_or_other}}</option>
+                    <option value="sports-ojus">Ojus</option>
+                    <option value="other-ojus">Other College Activities</option>
+                </select>
+                <label for="">Ojus/Other College Activities</label>
+            </div>
+        </div>
+        <a href="/annexure-1/culturalActivities/edit/{{id}}" class="btn waves-effect waves-light red center mb-2">Edit</a>
+        <a href="/users/faculty/facultyOverview" class="btn waves-effect waves-light purple center mb-2">Back to overview</a><br><br>
+        <form method="post" action="/annexure-1/culturalActivities/delete/{{id}}?_method=DELETE">
+            <input type="hidden" name="_method" value="DELETE">
+            <input type="submit" class="btn waves-effect waves-light center red white-text" value="Delete">
+        </form>
+    </div>
+</div>
+{{else}}
+{{/each}}
+{{else}}
+{{#if editResult}}
+<div class="row" id="culturalActivities">
+    <form action="/annexure-1/culturalActivities/{{editResult.id}}_?method=PUT" method="post" class="col s12">
+        <input type="hidden" name="_method" value="PUT">
+        <div class="row">
+            <div class="input-field col s6 md5">
+                <input id="cultural_name" type="text" name="cultural_name" value="{{editResult.cultural_name}}" class="validate" required>
+                <label for="cultural_name">Name of Cultural Activity &nbsp; <a href="#" class="tooltipped" data-tooltip="Enter the name of cultural activity performed"><i class="fa fa-info-circle"></i></a></label>
+            </div>
+             <div class="input-field col s6 md5">
+                <input id="cultural-category" type="text" name="cultural_category" value="{{editResult.cultural_category}}" class="validate" required>
+                <label for="cultural-category">Category &nbsp; <a href="#" class="tooltipped" data-tooltip="Enter the category of the event eg: social, politics, educational"><i class="fa fa-info-circle"></i></a></label>
+            </div>
+        </div>
+
+        <div class="row">
+           
+             <div class="input-field col s6 md5">
+                <select name="cultural_role" required>
+                    <option value="{{editResult.cultural_role}}" selected>{{editResult.cultural_role}}</option>
+                    <option value="incharge">Incharge</option>
+                    <option value="coordinator">Co-orditors</option>
+                </select>
+                <label for="">Role</label>
+            </div>
+            
+            <div class="input-field col s6 md5">
+                <select name="cultural_ojus_or_other" required>
+                    <option value="{{editResult.cultural_ojus_or_other}}" selected>{{editResult.cultural_ojus_or_other}}</option>
+                    <option value="sports-ojus">Ojus</option>
+                    <option value="other-ojus">Other College Activities</option>
+                </select>
+                <label for="">Ojus/Other College Activities</label>
+            </div>
+        </div>
+        <div>
+             <p>
+                 <label>
+                <input id="indeterminate-checkbox" type="checkbox" required/>
+                 <span>I acknowledge that above filled information is verified and justified by me.</span>
+                </label>
+            </p>
+        </div>
+        <button class="btn waves-effect waves-light" type="submit" id="submit_btn" disabled>Submit
+        </button>
+    </form>
+</div>
+{{else}}
 <div class="row" id="culturalActivities">
     <form action="/annexure-1/culturalActivities" method="post" class="col s12">
         <div class="row">
@@ -49,3 +142,5 @@
     </form>
 </div>
 </div>
+{{/if}}
+{{/if}}

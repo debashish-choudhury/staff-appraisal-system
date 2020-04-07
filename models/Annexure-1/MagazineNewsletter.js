@@ -18,6 +18,10 @@ const MagazineNewsletter = new Schema({
     year_of_publication: {
         type: Number,
         required: true
+    },
+    user: {
+        type: String,
+        required: true
     }
 });
 

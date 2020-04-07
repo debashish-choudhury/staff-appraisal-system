@@ -2,6 +2,110 @@
 <div class="container">
 <h5>1.8 In-house Placement Activities(Trainings and Workshops)</h5>
 <hr>
+{{#if result}}
+{{#each result}}
+<div class="row" id="in-house-placementActivities">
+        <div class="row">
+            <div class="input-field col s6 md5">
+                <input id="trainings-and-workshops" type="text" name="trainings_and_workshops" value="{{trainings_and_workshops}}" class="validate" required>
+                <label for="trainings-and-workshops">Trainings and Workshops conducted</label>
+            </div>
+              <div class="input-field col s6">
+                <select name="class_name">
+                    <option value="{{class_name}}" disabled selected>{{class_name}}</option>
+                    <option value="FE">FE</option>
+                    <option value="SE">SE</option>
+                    <option value="TE">TE</option>
+                    <option value="BE">BE</option>
+                </select>
+                <label for="">Class</label>
+            </div>
+        </div>
+
+        <div class="row"> 
+            
+            <div class="input-field col s6">
+                <select name="department">
+                    <option value="{{department}}" disabled selected>{{department}}</option>
+                    <option value="Information Technology">Information Technology</option>
+                    <option value="Computer Engineering">Computer Engineering</option>
+                    <option value="Mechanical Engineering">Mechanical Engineering</option>
+                    <option value="Civil Engineering">Civil Engineering</option>
+                    <option value="EXTC Engineering">EXTC Engineering</option>
+                </select>
+                <label for="">Department</label>
+            </div>
+
+            <div class="input-field col s6 md5">
+                <input id="no-of-participants" type="number" name="no_of_participants" value="{{no_of_participants}}" class="validate" required>
+                <label for="no-of-participants">Number of students participated</label>
+            </div>
+        </div>
+        <a href="/annexure-1/inhousePlacement/edit/{{id}}" class="btn waves-effect waves-light red center mb-2">Edit</a>
+        <a href="/users/faculty/facultyOverview" class="btn waves-effect waves-light purple center mb-2">Back to
+            overview</a><br><br>
+        <form method="post" action="/annexure-1/inhousePlacement/delete/{{id}}?_method=DELETE">
+            <input type="hidden" name="_method" value="DELETE">
+            <input type="submit" class="btn waves-effect waves-light center red white-text" value="Delete">
+        </form>
+        </div>
+    </div> 
+{{else}}
+{{/each}}
+{{else}}
+{{#if editResult}}
+<div class="row" id="in-house-placementActivities">
+    <form action="/annexure-1/inhousePlacement/{{editResult.id}}?_method=PUT" method="post" class="col s12">
+        <input type="hidden" name="_method" value="PUT">
+        <div class="row">
+            <div class="input-field col s6 md5">
+                <input id="trainings-and-workshops" type="text" name="trainings_and_workshops" value="{{editResult.trainings_and_workshops}}" class="validate" required>
+                <label for="trainings-and-workshops">Trainings and Workshops conducted</label>
+            </div>
+              <div class="input-field col s6">
+                <select name="class_name" required>
+                    <option value="{{editResult.class_name}}" disabled selected>{{editResult.class_name}}</option>
+                    <option value="FE">FE</option>
+                    <option value="SE">SE</option>
+                    <option value="TE">TE</option>
+                    <option value="BE">BE</option>
+                </select>
+                <label for="">Class</label>
+            </div>
+        </div>
+
+        <div class="row"> 
+            
+            <div class="input-field col s6">
+                <select name="department" required>
+                    <option value="{{editResult.department}}" selected>{{editResult.department}}</option>
+                    <option value="Information Technology">Information Technology</option>
+                    <option value="Computer Engineering">Computer Engineering</option>
+                    <option value="Mechanical Engineering">Mechanical Engineering</option>
+                    <option value="Civil Engineering">Civil Engineering</option>
+                    <option value="EXTC Engineering">EXTC Engineering</option>
+                </select>
+                <label for="">Department</label>
+            </div>
+
+            <div class="input-field col s6 md5">
+                <input id="no-of-participants" type="number" name="no_of_participants" value="{{editResult.no_of_participants}}" class="validate" required>
+                <label for="no-of-participants">Number of students participated</label>
+            </div>
+        </div>
+        <div>
+             <p>
+                 <label>
+                <input id="indeterminate-checkbox" type="checkbox" required/>
+                 <span>I acknowledge that above filled information is verified and justified by me.</span>
+                </label>
+            </p>
+        </div>
+        <button class="btn waves-effect waves-light" id="submit_btn" type="submit" disabled>Submit
+        </button>
+    </form>
+</div>
+{{else}}
 <div class="row" id="in-house-placementActivities">
     <form action="/annexure-1/inhousePlacement" method="post" class="col s12">
         <div class="row">
@@ -53,3 +157,5 @@
     </form>
 </div>
 </div>
+{{/if}}
+{{/if}}

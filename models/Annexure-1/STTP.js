@@ -34,6 +34,10 @@ const STTP = new Schema({
     department: {
         type: String,
         required: true
+    },
+    user: {
+        type: String,
+        required: true
     }
 });
 

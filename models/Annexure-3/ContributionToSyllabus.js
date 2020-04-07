@@ -19,6 +19,10 @@ const ContributionToSyllabus = new Schema({
     otherDetails: {
         type: String,
         required: true
+    },
+    user: {
+        type: String,
+        required: true
     }
 });
 

@@ -27,6 +27,14 @@ const ShortTermTraining = new Schema({
     internal_external: {
         type: String,
         required: true
+    },
+    name_of_institue: {
+        type: String,
+        required: true
+    },
+    user: {
+        type: String,
+        required: true
     }
 });
 

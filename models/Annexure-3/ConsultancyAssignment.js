@@ -22,6 +22,10 @@ const ConsultancyAssignment = new Schema({
     numberofVisits: {
         type: Number,
         required: true
+    },
+    user: {
+        type: String,
+        required: true
     }
 });
 

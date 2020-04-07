@@ -14,6 +14,10 @@ const MemberOfUniversityCommite = new Schema({
     designation: {
         type: String,
         required: true
+    },
+    user: {
+        type: String,
+        required: true
     }
 });
 

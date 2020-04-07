@@ -18,6 +18,14 @@ const InhousePlacement = new Schema({
     no_of_participants: {
         type: Number,
         required: true
+    },
+    user: {
+        type: String,
+        required: true
+    },
+    user: {
+        type: String,
+        required: true
     }
 });
 

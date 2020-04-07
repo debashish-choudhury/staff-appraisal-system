@@ -22,6 +22,10 @@ const ExternalProjectsOrCompetition = new Schema({
     comments: {
         type: String,
         required: true
+    },
+    user: {
+        type: String,
+        required: true
     }
 });
 

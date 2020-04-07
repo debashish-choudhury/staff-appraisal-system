@@ -39,6 +39,10 @@ const PapersPublishedInternational = new Schema({
     link: {
         type: String,
         default: true
+    },
+    user: {
+        type: String,
+        required: true
     }
 });
 

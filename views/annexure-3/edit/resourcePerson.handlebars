@@ -1,0 +1,52 @@
+<h4>Annexure 3</h4><br>
+<div class="container">
+<h5>3.1 Resource Person in STTP/Training Course/Lecture Talks</h5>
+<hr>
+    <form action="/annexure-3/resourcePerson" method="post" class="col s12">
+        <div class="row">
+            
+            <div class="input-field col s6 md5">
+                <input id="topicName" type="text" name="topicName" class="validate" required>
+                <label for="topicName">Topic Name</label>
+            </div>
+            
+            <div class="input-field col s6 md5">
+                <select name="department">
+                    <option value="" disabled selected>Department</option>
+                    <option value="Information Technology">Information Technology</option>
+                    <option value="Computer Engineering">Computer Engineering</option>
+                    <option value="Mechanical Engineering">Mechanical Engineering</option>
+                    <option value="Civil Engineering">Civil Engineering</option>
+                    <option value="EXTC Engineering">EXTC Engineering</option>
+                </select>
+            </div>
+        </div>
+
+
+        <div class="row">
+            
+            <div class="input-field col s6 md5">
+                <input id="nameofInstitute" type="text" name="nameofInstitute" class="validate" required>
+                <label for="nameofInstitute">Name Of Institute</label>
+            </div>
+            
+             <div class="input-field col s6 md5">
+                <input id="numberofParticipants" type="number" name="numberofParticipants" class="validate" required>
+                <label for="numberofParticipants">Number Of Participants</label>
+            </div>
+
+        </div>
+
+        <div>
+             <p>
+                 <label>
+                <input id="indeterminate-checkbox" type="checkbox" required/>
+                 <span>I acknowledge that above filled information is verified and justified by me.</span>
+                </label>
+            </p>
+        </div>
+
+  <a href="/annexure-3/contributionToSyllabus" class="waves-effect waves-light btn center red">Not Applicable</a>
+        <button class="btn waves-effect waves-light" id="submit_btn" type="submit" disabled>Submit
+        </button>
+    </form>

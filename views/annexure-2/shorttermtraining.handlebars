@@ -2,6 +2,138 @@
 <div class="container">
     <h5>2.6 Short Term Training </h5>
     <hr>
+{{#if result}}
+{{#each result}}
+<div class="row" id=shorttermtraining>
+
+            <div class="row">
+                <div class="input-field col s6 md5">
+                    <input id="short_term_training" type="text" name="short_term_training" value="{{short_term_training}}" disabled class="validate " required>
+                    <label for="short_term_training" class="">Name Of STTP's Conducted</label>
+                </div>
+
+                <div class="input-field col s6">
+                    <input id="techonology" type="text" name="techonology" value="{{techonology}}" disabled class="validate" required>
+                    <label for="techonology">Techonology</label>
+                </div>
+            </div>
+
+            <div class="row">
+
+                <div class="input-field col s6 md5">
+                    <input id="short_term_training" type="number" name="duration_of_course" value="{{duration_of_course}}" disabled class="validate " required>
+                    <label for="short_term_training" class="">Duration Of Course (In Months)</label>
+                </div>
+
+                <div class="input-field col s6 md5">
+                    <input id="date" type="text" name="start_date" value="{{start_date}}" disabled class="datepicker validate " required>
+                    <label for="date" class="">Starting Date</label>
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="input-field col s6 md5">
+                    <input id="date" type="text" name="end_date" value="{{end_date}}" disabled class="datepicker validate " required>
+                    <label for="date" class="">Ending Date</label>
+                </div>
+
+                <div class="input-field col s6">
+                    <select name="internal_external">
+                        <option value="{{internal_external}}" selected>{{internal_external}}</option>
+                        <option value="Internal" disabled>Internal</option>
+                        <option value="External" disabled>External</option>
+                    </select>
+                    <label for="">Internal/External</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field col s6 md5">
+                    <input id="name_of_institue" type="text" name="name_of_institue" value="{{name_of_institue}}" disabled class="validate" required>
+                    <label for="name_of_institue">Name Of Institue where attended</label>
+                </div>
+            </div>
+            <a href="/annexure-2/shortTermTraining/edit/{{id}}" class="btn waves-effect waves-light red center mb-2">Edit</a>
+            <a href="/users/faculty/facultyOverview" class="btn waves-effect waves-light purple center mb-2">Back to
+                overview</a><br><br>
+            <form method="post" action="/annexure-2/shortTermTraining/delete/{{id}}?_method=DELETE">
+                <input type="hidden" name="_method" value="DELETE">
+                <input type="submit" class="btn waves-effect waves-light center red white-text" value="Delete">
+            </form>
+        </div>
+    </div>
+{{else}}
+{{/each}}
+{{else}}
+{{#if editResult}}
+<div class="row" id=shorttermtraining>
+        <form action="/annexure-2/shortTermTraining/{{editResult.id}}?_method=PUT" method="post" class="col s12">
+        <input type="hidden" name="_method" value="PUT">
+            <div class="row">
+                <div class="input-field col s6 md5">
+                    <input id="short_term_training" type="text" name="short_term_training" value="{{editResult.short_term_training}}"  class="validate " required>
+                    <label for="short_term_training" class="">Name Of STTP's Conducted</label>
+                </div>
+
+                <div class="input-field col s6">
+                    <input id="techonology" type="text" name="techonology" value="{{editResult.techonology}}"  class="validate" required>
+                    <label for="techonology">Techonology</label>
+                </div>
+            </div>
+
+            <div class="row">
+
+                <div class="input-field col s6 md5">
+                    <input id="short_term_training" type="number" name="duration_of_course" value="{{editResult.duration_of_course}}"  class="validate " required>
+                    <label for="short_term_training" class="">Duration Of Course (In Months)</label>
+                </div>
+
+                <div class="input-field col s6 md5">
+                    <input id="date" type="text" name="start_date" value="{{editResult.start_date}}"  class="datepicker validate " required>
+                    <label for="date" class="">Starting Date</label>
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="input-field col s6 md5">
+                    <input id="date" type="text" name="end_date" value="{{editResult.end_date}}"  class="datepicker validate " required>
+                    <label for="date" class="">Ending Date</label>
+                </div>
+
+                <div class="input-field col s6">
+                    <select name="internal_external">
+                        <option value="{{editResult.internal_external}}" selected>{{editResult.internal_external}}</option>
+                        <option value="Internal" >Internal</option>
+                        <option value="External" >External</option>
+                    </select>
+                    <label for="">Internal/External</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field col s6 md5">
+                    <input id="name_of_institue" type="text" name="name_of_institue" value="{{editResult.name_of_institue}}"  class="validate" required>
+                    <label for="name_of_institue">Name Of Institue where attended</label>
+                </div>
+            </div>
+            <div>
+                <p>
+                    <label>
+                        <input id="indeterminate-checkbox" type="checkbox" required />
+                        <span>I acknowledge that above filled information is verified and justified by me.</span>
+                    </label>
+                </p>
+            </div>
+            <button class="btn waves-effect waves-light" id="submit_btn" type="submit" disabled>Submit
+            </button>
+        </form>
+    </div>
+</div>
+{{else}}
     <div class="row" id=shorttermtraining>
         <form action="/annexure-2/shortTermTraining" method="post" class="col s12">
 
@@ -67,3 +199,5 @@
         </form>
     </div>
 </div>
+{{/if}}
+{{/if}}

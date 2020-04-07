@@ -1,525 +1,529 @@
 <h4>Faculty Overview</h4>
-<form>
-<ul class="collapsible popout" data-collapsible="accordion">
-    <li id="overview">
-        
-        <div class="input-field inline right">
-            <input id="score_inline" type="number" class="validate" style="border:none; ">
-            <label for="score_inline">Score(/40)</label>
-        
-        
-        </div><br>
-        <div class="collapsible-header">
-            
-        Academic Performance 
-        </div>
-        <div class="collapsible-body">
-            <ul class="collection">
-                <li class="collection-item">
-                    <p>
-                        <div>Teaching Load
+<form method="POST" action="/users/faculty/facultyOverview">
+    <ul class="collapsible popout" data-collapsible="accordion">
+        <li id="overview">
 
-                            <div class="right">
-                                <a class="btn-small" style="background-color: purple;">Edit</a>
-                                <a class="btn-small" style="background-color: purple;">View</a>
+            <div class="input-field inline right">
+                <input id="score_inline" name="academicPerformance" value="{{academicPerformance}}" type="number" class="validate"
+                    style="border:none;">
+                <label for="score_inline">Score(/40)</label>
+
+
+            </div><br>
+            <div class="collapsible-header">
+
+                Academic Performance
+            </div>
+            <div class="collapsible-body">
+                <ul class="collection">
+                    <li class="collection-item">
+                        <p>
+                            <div>Teaching Load
+
+                                <div class="right">
+                                    <a class="btn-small" style="background-color: purple;">Edit</a>
+                                    <a class="btn-small" style="background-color: purple;">View</a>
+                                </div>
+
                             </div>
-
-                        </div>
-                    </p>
-                </li>
+                        </p>
+                    </li>
 
 
-                <li class="collection-item">
-                    <p>
-                        <div>Teaching Assistant
+                    <li class="collection-item">
+                        <p>
+                            <div>Teaching Assistant
 
-                            <div class="right">
-                                <a class="btn-small" style="background-color: purple;">Edit</a>
-                                <a class="btn-small" style="background-color: purple;">View</a>
+                                <div class="right">
+                                    <a class="btn-small" style="background-color: purple;">Edit</a>
+                                    <a class="btn-small" style="background-color: purple;">View</a>
+                                </div>
                             </div>
-                        </div>
-                    </p>
-                </li>
+                        </p>
+                    </li>
 
 
-                <li class="collection-item">
-                    <p>
-                        <div>New Books Suggested To Library
+                    <li class="collection-item">
+                        <p>
+                            <div>New Books Suggested To Library
 
-                            <div class="right">
-                                <a class="btn-small" style="background-color: purple;">Edit</a>
-                                <a class="btn-small" style="background-color: purple;">View</a>
+                                <div class="right">
+                                    <a class="btn-small" style="background-color: purple;">Edit</a>
+                                    <a class="btn-small" style="background-color: purple;">View</a>
+                                </div>
                             </div>
-                        </div>
-                    </p>
-                </li>
+                        </p>
+                    </li>
 
 
-                <li class="collection-item">
-                    <p>
-                        <div>Additional Experiment Added To Lab Manual
+                    <li class="collection-item">
+                        <p>
+                            <div>Additional Experiment Added To Lab Manual
 
-                            <div class="right">
-                                <a class="btn-small" style="background-color: purple;">Edit</a>
-                                <a class="btn-small" style="background-color: purple;">View</a>
+                                <div class="right">
+                                    <a class="btn-small" style="background-color: purple;">Edit</a>
+                                    <a class="btn-small" style="background-color: purple;">View</a>
+                                </div>
                             </div>
-                        </div>
-                    </p>
-                </li>
+                        </p>
+                    </li>
 
 
-                <li class="collection-item">
-                    <p>
-                        <div>Innovative Teaching Technique Adapted
+                    <li class="collection-item">
+                        <p>
+                            <div>Innovative Teaching Technique Adapted
 
-                            <div class="right">
-                                <a class="btn-small" style="background-color: purple;">Edit</a>
-                                <a class="btn-small" style="background-color: purple;">View</a>
+                                <div class="right">
+                                    <a class="btn-small" style="background-color: purple;">Edit</a>
+                                    <a class="btn-small" style="background-color: purple;">View</a>
+                                </div>
                             </div>
-                        </div>
-                    </p>
-                </li>
-            </ul>
-        </div>
-    </li>
+                        </p>
+                    </li>
+                </ul>
+            </div>
+        </li>
 
-    <li id="overview">
-        <div class="input-field inline right">
-            <input id="leave_score_inline" type="number" class="validate" style="border:none;">
-            <label for="leave_score_inline">Score(/40)</label>
-        </div><br>
+        <li id="overview">
+            <div class="input-field inline right">
+                <input id="leave_score_inline" type="number" name="leaveRecord" value="{{leaveRecord}}" class="validate" style="border:none;">
+                <label for="leave_score_inline">Score(/40)</label>
+            </div><br>
 
-        <div class="collapsible-header">
-            Leave Record</div>
-        <div class="collapsible-body">
-            <ul class="collection">
-                <li class="collection-item">
-                    <p>
-                        <div>Leave Record
+            <div class="collapsible-header">
+                Leave Record</div>
+            <div class="collapsible-body">
+                <ul class="collection">
+                    <li class="collection-item">
+                        <p>
+                            <div>Leave Record
 
-                            <div class="right">
-                                <a class="btn-small" style="background-color: purple;">Edit</a>
-                                <a class="btn-small" style="background-color: purple;">View</a>
+                                <div class="right">
+                                    <a class="btn-small" style="background-color: purple;">Edit</a>
+                                    <a class="btn-small" style="background-color: purple;">View</a>
+                                </div>
                             </div>
-                        </div>
-                    </p>
-                </li>
-            </ul>
-        </div>
-    </li>
+                        </p>
+                    </li>
+                </ul>
+            </div>
+        </li>
 
-    <li id="overview">
-         <div class="input-field inline right">
-            <input id="annexure1_score_inline" type="number" class="validate" style="border:none;">
-            <label for="annexure1_score_inline">Score(/40)</label>
-        
-        
-        </div><br>
-        <div class="collapsible-header">
-            Annexure 1</div>
-        <div class="collapsible-body">
-            <ul class="collection">
-                <li class="collection-item">
-                    <p>
-                        <div>1.1 Timetable Related Activities
+        <li id="overview">
+            <div class="input-field inline right">
+                <input id="annexure1_score_inline" type="number" name="annexure_1" value="{{annexure_1}}" class="validate"
+                    style="border:none;">
+                <label for="annexure1_score_inline">Score(/40)</label>
 
-                            <div class="right">
-                                <a class="btn-small" style="background-color: purple;">Edit</a>
-                                <a class="btn-small" style="background-color: purple;">View</a>
+
+            </div><br>
+            <div class="collapsible-header">
+                Annexure 1</div>
+            <div class="collapsible-body">
+                <ul class="collection">
+                    <li class="collection-item">
+                        <p>
+                            <div>1.1 Timetable Related Activities
+
+                                <div class="right">
+                                    <a class="btn-small" style="background-color: purple;">Edit</a>
+                                    <a class="btn-small" style="background-color: purple;">View</a>
+                                </div>
                             </div>
-                        </div>
-                    </p>
-                </li>
+                        </p>
+                    </li>
 
-                <li class="collection-item">
-                    <p>
-                        <div>1.2 Class Advisor
+                    <li class="collection-item">
+                        <p>
+                            <div>1.2 Class Advisor
 
-                            <div class="right">
-                                <a class="btn-small" style="background-color: purple;">Edit</a>
-                                <a class="btn-small" style="background-color: purple;">View</a>
+                                <div class="right">
+                                    <a class="btn-small" style="background-color: purple;">Edit</a>
+                                    <a class="btn-small" style="background-color: purple;">View</a>
+                                </div>
                             </div>
-                        </div>
-                    </p>
-                </li>
+                        </p>
+                    </li>
 
-                <li class="collection-item">
-                    <p>
-                        <div>1.3 Sports Activities
+                    <li class="collection-item">
+                        <p>
+                            <div>1.3 Sports Activities
 
-                            <div class="right">
-                                <a class="btn-small" style="background-color: purple;">Edit</a>
-                                <a class="btn-small" style="background-color: purple;">View</a>
+                                <div class="right">
+                                    <a class="btn-small" style="background-color: purple;">Edit</a>
+                                    <a class="btn-small" style="background-color: purple;">View</a>
+                                </div>
                             </div>
-                        </div>
-                    </p>
-                </li>
+                        </p>
+                    </li>
 
-                <li class="collection-item">
-                    <p>
-                        <div>1.4 Cultural Activities
+                    <li class="collection-item">
+                        <p>
+                            <div>1.4 Cultural Activities
 
-                            <div class="right">
-                                <a class="btn-small" style="background-color: purple;">Edit</a>
-                                <a class="btn-small" style="background-color: purple;">View</a>
+                                <div class="right">
+                                    <a class="btn-small" style="background-color: purple;">Edit</a>
+                                    <a class="btn-small" style="background-color: purple;">View</a>
+                                </div>
                             </div>
-                        </div>
-                    </p>
-                </li>
+                        </p>
+                    </li>
 
-                <li class="collection-item">
-                    <p>
-                        <div>1.5 Project Based Learning
+                    <li class="collection-item">
+                        <p>
+                            <div>1.5 Project Based Learning
 
-                            <div class="right">
-                                <a class="btn-small" style="background-color: purple;">Edit</a>
-                                <a class="btn-small" style="background-color: purple;">View</a>
+                                <div class="right">
+                                    <a class="btn-small" style="background-color: purple;">Edit</a>
+                                    <a class="btn-small" style="background-color: purple;">View</a>
+                                </div>
                             </div>
-                        </div>
-                    </p>
-                </li>
+                        </p>
+                    </li>
 
-                <li class="collection-item">
-                    <p>
-                        <div>1.6 UDAAN Incubation Activities
+                    <li class="collection-item">
+                        <p>
+                            <div>1.6 UDAAN Incubation Activities
 
-                            <div class="right">
-                                <a class="btn-small" style="background-color: purple;">Edit</a>
-                                <a class="btn-small" style="background-color: purple;">View</a>
+                                <div class="right">
+                                    <a class="btn-small" style="background-color: purple;">Edit</a>
+                                    <a class="btn-small" style="background-color: purple;">View</a>
+                                </div>
                             </div>
-                        </div>
-                    </p>
-                </li>
+                        </p>
+                    </li>
 
-                <li class="collection-item">
-                    <p>
-                        <div>1.7 Placement Activities
+                    <li class="collection-item">
+                        <p>
+                            <div>1.7 Placement Activities
 
-                            <div class="right">
-                                <a class="btn-small" style="background-color: purple;">Edit</a>
-                                <a class="btn-small" style="background-color: purple;">View</a>
+                                <div class="right">
+                                    <a class="btn-small" style="background-color: purple;">Edit</a>
+                                    <a class="btn-small" style="background-color: purple;">View</a>
+                                </div>
                             </div>
-                        </div>
-                    </p>
-                </li>
+                        </p>
+                    </li>
 
-                <li class="collection-item">
-                    <p>
-                        <div>1.8 In-house Placement Activities(Trainings and Workshops)
+                    <li class="collection-item">
+                        <p>
+                            <div>1.8 In-house Placement Activities(Trainings and Workshops)
 
-                            <div class="right">
-                                <a class="btn-small" style="background-color: purple;">Edit</a>
-                                <a class="btn-small" style="background-color: purple;">View</a>
+                                <div class="right">
+                                    <a class="btn-small" style="background-color: purple;">Edit</a>
+                                    <a class="btn-small" style="background-color: purple;">View</a>
+                                </div>
                             </div>
-                        </div>
-                    </p>
-                </li>
+                        </p>
+                    </li>
 
 
-                <li class="collection-item">
-                    <p>
-                        <div>1.9 Student Organisation Activity
+                    <li class="collection-item">
+                        <p>
+                            <div>1.9 Student Organisation Activity
 
-                            <div class="right">
-                                <a class="btn-small" style="background-color: purple;">Edit</a>
-                                <a class="btn-small" style="background-color: purple;">View</a>
+                                <div class="right">
+                                    <a class="btn-small" style="background-color: purple;">Edit</a>
+                                    <a class="btn-small" style="background-color: purple;">View</a>
+                                </div>
                             </div>
-                        </div>
-                    </p>
-                </li>
+                        </p>
+                    </li>
 
-                <li class="collection-item">
-                    <p>
-                        <div>1.10 INdustrial Visit Activities
+                    <li class="collection-item">
+                        <p>
+                            <div>1.10 INdustrial Visit Activities
 
-                            <div class="right">
-                                <a class="btn-small" style="background-color: purple;">Edit</a>
-                                <a class="btn-small" style="background-color: purple;">View</a>
+                                <div class="right">
+                                    <a class="btn-small" style="background-color: purple;">Edit</a>
+                                    <a class="btn-small" style="background-color: purple;">View</a>
+                                </div>
                             </div>
-                        </div>
-                    </p>
-                </li>
+                        </p>
+                    </li>
 
-                <li class="collection-item">
-                    <p>
-                        <div>1.11 Admission Related Activities
+                    <li class="collection-item">
+                        <p>
+                            <div>1.11 Admission Related Activities
 
-                            <div class="right">
-                                <a class="btn-small" style="background-color: purple;">Edit</a>
-                                <a class="btn-small" style="background-color: purple;">View</a>
+                                <div class="right">
+                                    <a class="btn-small" style="background-color: purple;">Edit</a>
+                                    <a class="btn-small" style="background-color: purple;">View</a>
+                                </div>
                             </div>
-                        </div>
-                    </p>
-                </li>
+                        </p>
+                    </li>
 
-                <li class="collection-item">
-                    <p>
-                        <div>1.12 Exam related activities(University exams Supervision)
+                    <li class="collection-item">
+                        <p>
+                            <div>1.12 Exam related activities(University exams Supervision)
 
-                            <div class="right">
-                                <a class="btn-small" style="background-color: purple;">Edit</a>
-                                <a class="btn-small" style="background-color: purple;">View</a>
+                                <div class="right">
+                                    <a class="btn-small" style="background-color: purple;">Edit</a>
+                                    <a class="btn-small" style="background-color: purple;">View</a>
+                                </div>
                             </div>
-                        </div>
-                    </p>
-                </li>
+                        </p>
+                    </li>
 
-                <li class="collection-item">
-                    <p>
-                        <div>1.13 Exam related activities(External)
+                    <li class="collection-item">
+                        <p>
+                            <div>1.13 Exam related activities(External)
 
-                            <div class="right">
-                                <a class="btn-small" style="background-color: purple;">Edit</a>
-                                <a class="btn-small" style="background-color: purple;">View</a>
+                                <div class="right">
+                                    <a class="btn-small" style="background-color: purple;">Edit</a>
+                                    <a class="btn-small" style="background-color: purple;">View</a>
+                                </div>
                             </div>
-                        </div>
-                    </p>
-                </li>
+                        </p>
+                    </li>
 
-                <li class="collection-item">
-                    <p>
-                        <div>1.14 Exam related activities(Assessment/Oral/Practical Exams Conducted, college level)
+                    <li class="collection-item">
+                        <p>
+                            <div>1.14 Exam related activities(Assessment/Oral/Practical Exams Conducted, college level)
 
-                            <div class="right">
-                                <a class="btn-small" style="background-color: purple;">Edit</a>
-                                <a class="btn-small" style="background-color: purple;">View</a>
+                                <div class="right">
+                                    <a class="btn-small" style="background-color: purple;">Edit</a>
+                                    <a class="btn-small" style="background-color: purple;">View</a>
+                                </div>
                             </div>
-                        </div>
-                    </p>
-                </li>
+                        </p>
+                    </li>
 
-                <li class="collection-item">
-                    <p>
-                        <div>1.15 IT Maintenance
-                            <div class="right">
-                                <a class="btn-small" style="background-color: purple;">Edit</a>
-                                <a class="btn-small" style="background-color: purple;">View</a>
+                    <li class="collection-item">
+                        <p>
+                            <div>1.15 IT Maintenance
+                                <div class="right">
+                                    <a class="btn-small" style="background-color: purple;">Edit</a>
+                                    <a class="btn-small" style="background-color: purple;">View</a>
+                                </div>
                             </div>
-                        </div>
-                    </p>
-                </li>
+                        </p>
+                    </li>
 
-                <li class="collection-item">
-                    <p>
-                        <div>1.16 Lakshya Related Activities
-                            <div class="right">
-                                <a class="btn-small" style="background-color: purple;">Edit</a>
-                                <a class="btn-small" style="background-color: purple;">View</a>
+                    <li class="collection-item">
+                        <p>
+                            <div>1.16 Lakshya Related Activities
+                                <div class="right">
+                                    <a class="btn-small" style="background-color: purple;">Edit</a>
+                                    <a class="btn-small" style="background-color: purple;">View</a>
+                                </div>
                             </div>
-                        </div>
-                    </p>
-                </li>
+                        </p>
+                    </li>
 
-                <li class="collection-item">
-                    <p>
-                        <div>1.17 Magazine/Newsletter Related Activities
-                            <div class="right">
-                                <a class="btn-small" style="background-color: purple;">Edit</a>
-                                <a class="btn-small" style="background-color: purple;">View</a>
+                    <li class="collection-item">
+                        <p>
+                            <div>1.17 Magazine/Newsletter Related Activities
+                                <div class="right">
+                                    <a class="btn-small" style="background-color: purple;">Edit</a>
+                                    <a class="btn-small" style="background-color: purple;">View</a>
+                                </div>
                             </div>
-                        </div>
-                    </p>
-                </li>
+                        </p>
+                    </li>
 
-                <li class="collection-item">
-                    <p>
-                        <div>1.18 Conduct Of STTP
-                            <div class="right">
-                                <a class="btn-small" style="background-color: purple;">Edit</a>
-                                <a class="btn-small" style="background-color: purple;">View</a>
+                    <li class="collection-item">
+                        <p>
+                            <div>1.18 Conduct Of STTP
+                                <div class="right">
+                                    <a class="btn-small" style="background-color: purple;">Edit</a>
+                                    <a class="btn-small" style="background-color: purple;">View</a>
+                                </div>
                             </div>
-                        </div>
-                    </p>
-                </li>
+                        </p>
+                    </li>
 
-                <li class="collection-item">
-                    <p>
-                        <div>1.19 Department UG Projects Undertaken
-                            <div class="right">
-                                <a class="btn-small" style="background-color: purple;">Edit</a>
-                                <a class="btn-small" style="background-color: purple;">View</a>
+                    <li class="collection-item">
+                        <p>
+                            <div>1.19 Department UG Projects Undertaken
+                                <div class="right">
+                                    <a class="btn-small" style="background-color: purple;">Edit</a>
+                                    <a class="btn-small" style="background-color: purple;">View</a>
+                                </div>
                             </div>
-                        </div>
-                    </p>
-                </li>
-            </ul>
-        </div>
-    </li>
+                        </p>
+                    </li>
+                </ul>
+            </div>
+        </li>
 
-    <li id="overview">
-         <div class="input-field inline right">
-            <input id="annexure2_score_inline" type="number" class="validate" style="border:none;">
-            <label for="annexure2_score_inline">Score(/40)</label>
-        
-        </div><br>
-        <div class="collapsible-header">
-            Annexure 2</div>
-        <div class="collapsible-body">
-            <ul class="collection">
-                <li class="collection-item">
-                    <p>
-                        <div>2.1 Papers Published In National Conference
+        <li id="overview">
+            <div class="input-field inline right">
+                <input id="annexure2_score_inline" type="number" name="annexure_2" value="{{annexure_2}}" class="validate"
+                    style="border:none;">
+                <label for="annexure2_score_inline">Score(/40)</label>
 
-                            <div class="right">
-                                <a class="btn-small" style="background-color: purple;">Edit</a>
-                                <a class="btn-small" style="background-color: purple;">View</a>
+            </div><br>
+            <div class="collapsible-header">
+                Annexure 2</div>
+            <div class="collapsible-body">
+                <ul class="collection">
+                    <li class="collection-item">
+                        <p>
+                            <div>2.1 Papers Published In National Conference
+
+                                <div class="right">
+                                    <a class="btn-small" style="background-color: purple;">Edit</a>
+                                    <a class="btn-small" style="background-color: purple;">View</a>
+                                </div>
                             </div>
-                        </div>
-                    </p>
-                </li>
+                        </p>
+                    </li>
 
-                <li class="collection-item">
-                    <p>
-                        <div>2.2 Papers Published International Conference
+                    <li class="collection-item">
+                        <p>
+                            <div>2.2 Papers Published International Conference
 
-                            <div class="right">
-                                <a class="btn-small" style="background-color: purple;">Edit</a>
-                                <a class="btn-small" style="background-color: purple;">View</a>
+                                <div class="right">
+                                    <a class="btn-small" style="background-color: purple;">Edit</a>
+                                    <a class="btn-small" style="background-color: purple;">View</a>
+                                </div>
                             </div>
-                        </div>
-                    </p>
-                </li>
+                        </p>
+                    </li>
 
-                <li class="collection-item">
-                    <p>
-                        <div>2.3 Papers Published In Journals
+                    <li class="collection-item">
+                        <p>
+                            <div>2.3 Papers Published In Journals
 
-                            <div class="right">
-                                <a class="btn-small" style="background-color: purple;">Edit</a>
-                                <a class="btn-small" style="background-color: purple;">View</a>
+                                <div class="right">
+                                    <a class="btn-small" style="background-color: purple;">Edit</a>
+                                    <a class="btn-small" style="background-color: purple;">View</a>
+                                </div>
                             </div>
-                        </div>
-                    </p>
-                </li>
+                        </p>
+                    </li>
 
-                <li class="collection-item">
-                    <p>
-                        <div>2.4 MOOCS
+                    <li class="collection-item">
+                        <p>
+                            <div>2.4 MOOCS
 
-                            <div class="right">
-                                <a class="btn-small" style="background-color: purple;">Edit</a>
-                                <a class="btn-small" style="background-color: purple;">View</a>
+                                <div class="right">
+                                    <a class="btn-small" style="background-color: purple;">Edit</a>
+                                    <a class="btn-small" style="background-color: purple;">View</a>
+                                </div>
                             </div>
-                        </div>
-                    </p>
-                </li>
+                        </p>
+                    </li>
 
-                <li class="collection-item">
-                    <p>
-                        <div>2.5 Swayam
+                    <li class="collection-item">
+                        <p>
+                            <div>2.5 Swayam
 
-                            <div class="right">
-                                <a class="btn-small" style="background-color: purple;">Edit</a>
-                                <a class="btn-small" style="background-color: purple;">View</a>
+                                <div class="right">
+                                    <a class="btn-small" style="background-color: purple;">Edit</a>
+                                    <a class="btn-small" style="background-color: purple;">View</a>
+                                </div>
                             </div>
-                        </div>
-                    </p>
-                </li>
+                        </p>
+                    </li>
 
-                <li class="collection-item">
-                    <p>
-                        <div>2.6 Short-Term Traning
+                    <li class="collection-item">
+                        <p>
+                            <div>2.6 Short-Term Traning
 
-                            <div class="right">
-                                <a class="btn-small" style="background-color: purple;">Edit</a>
-                                <a class="btn-small" style="background-color: purple;">View</a>
+                                <div class="right">
+                                    <a class="btn-small" style="background-color: purple;">Edit</a>
+                                    <a class="btn-small" style="background-color: purple;">View</a>
+                                </div>
                             </div>
-                        </div>
-                    </p>
-                </li>
+                        </p>
+                    </li>
 
-                <li class="collection-item">
-                    <p>
-                        <div>2.8 Seminars
+                    <li class="collection-item">
+                        <p>
+                            <div>2.8 Seminars
 
-                            <div class="right">
-                                <a class="btn-small" style="background-color: purple;">Edit</a>
-                                <a class="btn-small" style="background-color: purple;">View</a>
+                                <div class="right">
+                                    <a class="btn-small" style="background-color: purple;">Edit</a>
+                                    <a class="btn-small" style="background-color: purple;">View</a>
+                                </div>
                             </div>
-                        </div>
-                    </p>
-                </li>
+                        </p>
+                    </li>
 
-            </ul>
-        </div>
-    </li>
+                </ul>
+            </div>
+        </li>
 
 
-    <li id="overview">
-        <div class="input-field inline right">
-            <input id="annexure3_score_inline" type="number" class="validate" style="border:none;">
-            <label for="annexure3_score_inline">Score(/40)</label>
-        
-        </div><br>
-        <div class="collapsible-header">
-            Annexure 3</div>
-        <div class="collapsible-body">
-            <ul class="collection">
-                <li class="collection-item">
-                    <p>
-                        <div>3.1Resource Person in STTP/Training Course/Lecture Talks
+        <li id="overview">
+            <div class="input-field inline right">
+                <input id="annexure3_score_inline" type="number" name="annexure_3" class="validate" value="{{annexure_3}}"
+                    style="border:none;">
+                <label for="annexure3_score_inline">Score(/40)</label>
 
-                            <div class="right">
-                                <a class="btn-small" style="background-color: purple;">Edit</a>
-                                <a class="btn-small" style="background-color: purple;">View</a>
+            </div><br>
+            <div class="collapsible-header">
+                Annexure 3</div>
+            <div class="collapsible-body">
+                <ul class="collection">
+                    <li class="collection-item">
+                        <p>
+                            <div>3.1Resource Person in STTP/Training Course/Lecture Talks
+
+                                <div class="right">
+                                    <a class="btn-small" style="background-color: purple;">Edit</a>
+                                    <a class="btn-small" style="background-color: purple;">View</a>
+                                </div>
                             </div>
-                        </div>
-                    </p>
-                </li>
+                        </p>
+                    </li>
 
-                 <li class="collection-item">
-                    <p>
-                        <div>3.2 Contribution To Syllabus Framing
+                    <li class="collection-item">
+                        <p>
+                            <div>3.2 Contribution To Syllabus Framing
 
-                            <div class="right">
-                                <a class="btn-small" style="background-color: purple;">Edit</a>
-                                <a class="btn-small" style="background-color: purple;">View</a>
+                                <div class="right">
+                                    <a class="btn-small" style="background-color: purple;">Edit</a>
+                                    <a class="btn-small" style="background-color: purple;">View</a>
+                                </div>
                             </div>
-                        </div>
-                    </p>
-                </li>
+                        </p>
+                    </li>
 
-                <li class="collection-item">
-                    <p>
-                        <div>3.3 Member Of University Committe
+                    <li class="collection-item">
+                        <p>
+                            <div>3.3 Member Of University Committe
 
-                            <div class="right">
-                                <a class="btn-small" style="background-color: purple;">Edit</a>
-                                <a class="btn-small" style="background-color: purple;">View</a>
+                                <div class="right">
+                                    <a class="btn-small" style="background-color: purple;">Edit</a>
+                                    <a class="btn-small" style="background-color: purple;">View</a>
+                                </div>
                             </div>
-                        </div>
-                    </p>
-                </li>
+                        </p>
+                    </li>
 
-                <li class="collection-item">
-                    <p>
-                        <div>3.4 Consultancy Assignment
+                    <li class="collection-item">
+                        <p>
+                            <div>3.4 Consultancy Assignment
 
-                            <div class="right">
-                                <a class="btn-small" style="background-color: purple;">Edit</a>
-                                <a class="btn-small" style="background-color: purple;">View</a>
+                                <div class="right">
+                                    <a class="btn-small" style="background-color: purple;">Edit</a>
+                                    <a class="btn-small" style="background-color: purple;">View</a>
+                                </div>
                             </div>
-                        </div>
-                    </p>
-                </li>
+                        </p>
+                    </li>
 
-                <li class="collection-item">
-                    <p>
-                        <div>3.5 External Projects Or Competitions Participations
+                    <li class="collection-item">
+                        <p>
+                            <div>3.5 External Projects Or Competitions Participations
 
-                            <div class="right">
-                                <a class="btn-small" style="background-color: purple;">Edit</a>
-                                <a class="btn-small" style="background-color: purple;">View</a>
+                                <div class="right">
+                                    <a class="btn-small" style="background-color: purple;">Edit</a>
+                                    <a class="btn-small" style="background-color: purple;">View</a>
+                                </div>
                             </div>
-                        </div>
-                    </p>
-                </li>
-            </ul>
-        </div>
-    </li>
-</ul>
+                        </p>
+                    </li>
+                </ul>
+            </div>
+        </li>
+    </ul>
 
-<button class="btn" type="submit" name="action">Submit
-    <i class="material-icons right">send</i>
-</button>
+    <button class="btn" type="submit" name="action">Submit
+        <i class="material-icons right">send</i>
+    </button>
 </form>

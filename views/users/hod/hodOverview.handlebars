@@ -1,16 +1,25 @@
 <h4>HoD's Overview</h4>
+{{#if marks}}
 <ul class="collapsible popout" data-collapsible="accordion">
-    <li>
+    <li id="overview">
+
+        <div class="input-field inline right">
+            <input id="score_inline" name="academicPerformance" type="number" value="{{marks.academicPerformance}}" style="border:none;" disabled>
+            <label for="score_inline">Score(/40)</label>
+
+
+        </div><br>
         <div class="collapsible-header">
-            Academic Performance</div>
+
+            Academic Performance
+        </div>
         <div class="collapsible-body">
             <ul class="collection">
                 <li class="collection-item">
                     <p>
-                        <div>Teaching Assistant
+                        <div>Teaching Load
 
                             <div class="right">
-
                                 <a class="btn-small" style="background-color: purple;">View</a>
                             </div>
 
@@ -24,7 +33,6 @@
                         <div>Teaching Assistant
 
                             <div class="right">
-
                                 <a class="btn-small" style="background-color: purple;">View</a>
                             </div>
                         </div>
@@ -37,7 +45,6 @@
                         <div>New Books Suggested To Library
 
                             <div class="right">
-
                                 <a class="btn-small" style="background-color: purple;">View</a>
                             </div>
                         </div>
@@ -50,7 +57,6 @@
                         <div>Additional Experiment Added To Lab Manual
 
                             <div class="right">
-
                                 <a class="btn-small" style="background-color: purple;">View</a>
                             </div>
                         </div>
@@ -63,7 +69,6 @@
                         <div>Innovative Teaching Technique Adapted
 
                             <div class="right">
-
                                 <a class="btn-small" style="background-color: purple;">View</a>
                             </div>
                         </div>
@@ -73,7 +78,12 @@
         </div>
     </li>
 
-    <li>
+    <li id="overview">
+        <div class="input-field inline right">
+            <input id="leave_score_inline" type="number" name="leaveRecord" value="{{marks.leaveRecord}}" style="border:none;" disabled>
+            <label for="leave_score_inline">Score(/40)</label>
+        </div><br>
+
         <div class="collapsible-header">
             Leave Record</div>
         <div class="collapsible-body">
@@ -83,7 +93,6 @@
                         <div>Leave Record
 
                             <div class="right">
-
                                 <a class="btn-small" style="background-color: purple;">View</a>
                             </div>
                         </div>
@@ -93,7 +102,13 @@
         </div>
     </li>
 
-    <li>
+    <li id="overview">
+        <div class="input-field inline right">
+            <input id="annexure1_score_inline" type="number" name="annexure_1" value="{{marks.annexure_1}}" style="border:none;" disabled>
+            <label for="annexure1_score_inline">Score(/40)</label>
+
+
+        </div><br>
         <div class="collapsible-header">
             Annexure 1</div>
         <div class="collapsible-body">
@@ -103,7 +118,6 @@
                         <div>1.1 Timetable Related Activities
 
                             <div class="right">
-
                                 <a class="btn-small" style="background-color: purple;">View</a>
                             </div>
                         </div>
@@ -115,7 +129,6 @@
                         <div>1.2 Class Advisor
 
                             <div class="right">
-
                                 <a class="btn-small" style="background-color: purple;">View</a>
                             </div>
                         </div>
@@ -127,7 +140,6 @@
                         <div>1.3 Sports Activities
 
                             <div class="right">
-
                                 <a class="btn-small" style="background-color: purple;">View</a>
                             </div>
                         </div>
@@ -139,7 +151,6 @@
                         <div>1.4 Cultural Activities
 
                             <div class="right">
-
                                 <a class="btn-small" style="background-color: purple;">View</a>
                             </div>
                         </div>
@@ -151,7 +162,6 @@
                         <div>1.5 Project Based Learning
 
                             <div class="right">
-
                                 <a class="btn-small" style="background-color: purple;">View</a>
                             </div>
                         </div>
@@ -163,7 +173,6 @@
                         <div>1.6 UDAAN Incubation Activities
 
                             <div class="right">
-
                                 <a class="btn-small" style="background-color: purple;">View</a>
                             </div>
                         </div>
@@ -175,7 +184,6 @@
                         <div>1.7 Placement Activities
 
                             <div class="right">
-
                                 <a class="btn-small" style="background-color: purple;">View</a>
                             </div>
                         </div>
@@ -187,7 +195,6 @@
                         <div>1.8 In-house Placement Activities(Trainings and Workshops)
 
                             <div class="right">
-
                                 <a class="btn-small" style="background-color: purple;">View</a>
                             </div>
                         </div>
@@ -200,7 +207,6 @@
                         <div>1.9 Student Organisation Activity
 
                             <div class="right">
-
                                 <a class="btn-small" style="background-color: purple;">View</a>
                             </div>
                         </div>
@@ -212,7 +218,6 @@
                         <div>1.10 INdustrial Visit Activities
 
                             <div class="right">
-
                                 <a class="btn-small" style="background-color: purple;">View</a>
                             </div>
                         </div>
@@ -224,7 +229,6 @@
                         <div>1.11 Admission Related Activities
 
                             <div class="right">
-
                                 <a class="btn-small" style="background-color: purple;">View</a>
                             </div>
                         </div>
@@ -236,7 +240,6 @@
                         <div>1.12 Exam related activities(University exams Supervision)
 
                             <div class="right">
-
                                 <a class="btn-small" style="background-color: purple;">View</a>
                             </div>
                         </div>
@@ -248,7 +251,6 @@
                         <div>1.13 Exam related activities(External)
 
                             <div class="right">
-
                                 <a class="btn-small" style="background-color: purple;">View</a>
                             </div>
                         </div>
@@ -260,7 +262,6 @@
                         <div>1.14 Exam related activities(Assessment/Oral/Practical Exams Conducted, college level)
 
                             <div class="right">
-
                                 <a class="btn-small" style="background-color: purple;">View</a>
                             </div>
                         </div>
@@ -271,7 +272,6 @@
                     <p>
                         <div>1.15 IT Maintenance
                             <div class="right">
-
                                 <a class="btn-small" style="background-color: purple;">View</a>
                             </div>
                         </div>
@@ -282,7 +282,6 @@
                     <p>
                         <div>1.16 Lakshya Related Activities
                             <div class="right">
-
                                 <a class="btn-small" style="background-color: purple;">View</a>
                             </div>
                         </div>
@@ -293,7 +292,6 @@
                     <p>
                         <div>1.17 Magazine/Newsletter Related Activities
                             <div class="right">
-
                                 <a class="btn-small" style="background-color: purple;">View</a>
                             </div>
                         </div>
@@ -304,7 +302,6 @@
                     <p>
                         <div>1.18 Conduct Of STTP
                             <div class="right">
-
                                 <a class="btn-small" style="background-color: purple;">View</a>
                             </div>
                         </div>
@@ -315,7 +312,6 @@
                     <p>
                         <div>1.19 Department UG Projects Undertaken
                             <div class="right">
-
                                 <a class="btn-small" style="background-color: purple;">View</a>
                             </div>
                         </div>
@@ -325,7 +321,12 @@
         </div>
     </li>
 
-    <li>
+    <li id="overview">
+        <div class="input-field inline right">
+            <input id="annexure2_score_inline" type="number" name="annexure_2" value="{{marks.annexure_2}}" style="border:none;" disabled>
+            <label for="annexure2_score_inline">Score(/40)</label>
+
+        </div><br>
         <div class="collapsible-header">
             Annexure 2</div>
         <div class="collapsible-body">
@@ -335,7 +336,6 @@
                         <div>2.1 Papers Published In National Conference
 
                             <div class="right">
-
                                 <a class="btn-small" style="background-color: purple;">View</a>
                             </div>
                         </div>
@@ -347,7 +347,6 @@
                         <div>2.2 Papers Published International Conference
 
                             <div class="right">
-
                                 <a class="btn-small" style="background-color: purple;">View</a>
                             </div>
                         </div>
@@ -359,7 +358,6 @@
                         <div>2.3 Papers Published In Journals
 
                             <div class="right">
-
                                 <a class="btn-small" style="background-color: purple;">View</a>
                             </div>
                         </div>
@@ -382,7 +380,6 @@
                         <div>2.5 Swayam
 
                             <div class="right">
-
                                 <a class="btn-small" style="background-color: purple;">View</a>
                             </div>
                         </div>
@@ -394,7 +391,6 @@
                         <div>2.6 Short-Term Traning
 
                             <div class="right">
-
                                 <a class="btn-small" style="background-color: purple;">View</a>
                             </div>
                         </div>
@@ -406,7 +402,6 @@
                         <div>2.8 Seminars
 
                             <div class="right">
-
                                 <a class="btn-small" style="background-color: purple;">View</a>
                             </div>
                         </div>
@@ -418,7 +413,12 @@
     </li>
 
 
-    <li>
+    <li id="overview">
+        <div class="input-field inline right">
+            <input id="annexure3_score_inline" type="number" name="annexure_3" value="{{marks.annexure_3}}" style="border:none;" disabled>
+            <label for="annexure3_score_inline">Score(/40)</label>
+
+        </div><br>
         <div class="collapsible-header">
             Annexure 3</div>
         <div class="collapsible-body">
@@ -428,7 +428,6 @@
                         <div>3.1Resource Person in STTP/Training Course/Lecture Talks
 
                             <div class="right">
-
                                 <a class="btn-small" style="background-color: purple;">View</a>
                             </div>
                         </div>
@@ -440,7 +439,6 @@
                         <div>3.2 Contribution To Syllabus Framing
 
                             <div class="right">
-
                                 <a class="btn-small" style="background-color: purple;">View</a>
                             </div>
                         </div>
@@ -452,7 +450,6 @@
                         <div>3.3 Member Of University Committe
 
                             <div class="right">
-
                                 <a class="btn-small" style="background-color: purple;">View</a>
                             </div>
                         </div>
@@ -464,7 +461,6 @@
                         <div>3.4 Consultancy Assignment
 
                             <div class="right">
-
                                 <a class="btn-small" style="background-color: purple;">View</a>
                             </div>
                         </div>
@@ -476,7 +472,6 @@
                         <div>3.5 External Projects Or Competitions Participations
 
                             <div class="right">
-
                                 <a class="btn-small" style="background-color: purple;">View</a>
                             </div>
                         </div>
@@ -490,3 +485,7 @@
 <button class="btn waves-effect waves-light" type="submit" name="action">Submit
     <i class="material-icons right">send</i>
 </button>
+
+{{else}}
+<h2>Marks not submitted yet.</h2>
+{{/if}}

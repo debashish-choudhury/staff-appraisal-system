@@ -18,6 +18,10 @@ const AddedExp = new Schema({
     exp_name: {
         type: String,
         required: true
+    },
+    user: {
+        type: String,
+        required: true
     }
 });
 

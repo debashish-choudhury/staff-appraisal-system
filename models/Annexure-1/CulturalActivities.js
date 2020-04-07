@@ -18,6 +18,10 @@ const CulturalActivities = new Schema({
     cultural_ojus_or_other: {
         type: String,
         required: true
+    },
+    user: {
+        type: String,
+        required: true
     }
 });
 

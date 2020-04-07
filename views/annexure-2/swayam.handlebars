@@ -2,6 +2,93 @@
 <div class="container">
 <h5>2.5 Swayam</h5>
 <hr>
+{{#if result}}
+{{#each result}}
+<div class="row" id="swayam">
+        <div class="row">
+            <div class="input-field col s6 md5">
+                <input id="name_of_swayam_undertaken" type="text" name="name_of_swayam_undertaken" value="{{name_of_swayam_undertaken}}" disabled class="validate " required>
+                <label for="name_of_swayam_undertaken" class="">Name Of SWAYAM course undertaken</label>
+            </div>
+
+            <div class="input-field col s6">
+                <input id="swayam_date" type="text" name="swayam_date" value="{{swayam_date}}" disabled class="validate" required>
+                <label for="swayam_date">Month / Year</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s6 md5">
+                <input id="swayam_duartion" type="number" name="swayam_duartion" value="{{swayam_duartion}}" disabled class="validate " required>
+                <label for="swayam_duartion" class="">Duration Of Course</label>
+            </div>
+
+             <div class="input-field col s6">
+                <select name="certification_status">
+                    <option value="{{certification_status}}" selected>{{certification_status}}</option>
+                    <option value="YES" disabled>YES</option>
+                    <option value="NO" disabled>NO</option>
+                </select>
+                <label for="">Certification Completed</label>
+            </div>
+        </div>
+        <a href="/annexure-2/swayam/edit/{{id}}" class="btn waves-effect waves-light red center mb-2">Edit</a>
+            <a href="/users/faculty/facultyOverview" class="btn waves-effect waves-light purple center mb-2">Back to
+                overview</a><br><br>
+            <form method="post" action="/annexure-2/swayam/delete/{{id}}?_method=DELETE">
+                <input type="hidden" name="_method" value="DELETE">
+                <input type="submit" class="btn waves-effect waves-light center red white-text" value="Delete">
+            </form>
+        </div>
+    </div>
+{{else}}
+{{/each}}
+{{else}}
+{{#if editResult}}
+<div class="row" id="swayam">
+    <form action="/annexure-2/swayam/{{editResult.id}}?_method=PUT" method="post" class="col s12">
+    <input type="hidden" name="_method" value="PUT">
+        <div class="row">
+            <div class="input-field col s6 md5">
+                <input id="name_of_swayam_undertaken" type="text" name="name_of_swayam_undertaken" value="{{editResult.name_of_swayam_undertaken}}" class="validate " required>
+                <label for="name_of_swayam_undertaken" class="">Name Of SWAYAM course undertaken</label>
+            </div>
+
+            <div class="input-field col s6">
+                <input id="swayam_date" type="text" name="swayam_date" value="{{editResult.swayam_date}}" class="validate" required>
+                <label for="swayam_date">Month / Year</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s6 md5">
+                <input id="swayam_duartion" type="number" name="swayam_duartion" value="{{editResult.swayam_duartion}}" class="validate " required>
+                <label for="swayam_duartion" class="">Duration Of Course</label>
+            </div>
+
+             <div class="input-field col s6">
+                <select name="certification_status">
+                    <option value="{{editResult.certification_status}}" selected>{{editResult.certification_status}}</option>
+                    <option value="YES">YES</option>
+                    <option value="NO">NO</option>
+                </select>
+                <label for="">Certification Completed</label>
+            </div>
+        </div>
+        <div>
+             <p>
+                 <label>
+                <input id="indeterminate-checkbox" type="checkbox" required/>
+                 <span>I acknowledge that above filled information is verified and justified by me.</span>
+                </label>
+            </p>
+        </div>
+        <button class="btn waves-effect waves-light" id="submit_btn" type="submit" disabled>Submit
+        </button>
+    </form>
+</div>
+</div>
+{{else}}
 <div class="row" id="swayam">
     <form action="/annexure-2/swayam" method="post" class="col s12">
 
@@ -45,3 +132,5 @@
     </form>
 </div>
 </div>
+{{/if}}
+{{/if}}

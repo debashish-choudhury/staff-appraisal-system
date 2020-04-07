@@ -26,6 +26,14 @@ const ExamAssessmentExternal = new Schema({
     papers_revaluated: {
         type: Number,
         required: true
+    },
+    user: {
+        type: String,
+        required: true
+    },
+    user: {
+        type: String,
+        required: true
     }
 });
 

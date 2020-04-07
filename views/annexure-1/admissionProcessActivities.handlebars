@@ -1,7 +1,123 @@
 <h4>Annexure 1</h4><br>
 <div class="container">
-<h5>1.11 Admission Process Related Activities</h5>
-<hr>
+    <h5>1.11 Admission Process Related Activities</h5>
+    <hr>
+{{#if result}}
+{{#each result}}
+    <div class="row" id="udaan">
+        <div class="row">
+            <div class="input-field col s6 md5">
+                <select name="admission_role">
+                    <option value="{{admission_role}}">{{admission_role}}</option>
+                    <option value="incharge" disabled>Incharge</option>
+                    <option value="coordinator" disabled>Co-orditors</option>
+
+                </select>
+            </div>
+            <div class="input-field col s6 md5">
+                <select name="admission_duties">
+                    <option value="{{admission_duties}}">{{admission_duties}}</option>
+                    <option value="confirmation" disabled>Confirmation</option>
+                    <option value="verification" disabled>Verification</option>
+
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12 md5">
+                <select name="admission_class">
+                    <option value="{{admission_class}}">{{admission_class}}</option>
+                    <option value="FE" disabled>First Year</option>
+                    <option value="DSE" disabled>Direct Second Year</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="input-field col s6 md5">
+                <input id="admission-start-date" type="text" name="admission_start_date" value="{{admission_start_date}}" class="datepicker validate"
+                    disabled>
+                <label for="admission-start-date">Start Date</label>
+            </div>
+
+            <div class="input-field col s6 md5">
+                <input id="admission-end-date" type="text" name="admission_end_date" value="{{admission_end_date}}" class="datepicker validate" disabled>
+                <label for="admission-end-date">End Date</label>
+            </div>
+        </div>
+        <a href="/annexure-1/admissionProcessActivities/edit/{{id}}" class="btn waves-effect waves-light red center mb-2">Edit</a>
+        <a href="/users/faculty/facultyOverview" class="btn waves-effect waves-light purple center mb-2">Back to overview</a><br><br>
+        <form method="post" action="/annexure-1/admissionProcessActivities/delete/{{id}}?_method=DELETE">
+            <input type="hidden" name="_method" value="DELETE">
+            <input type="submit" class="btn waves-effect waves-light center red white-text" value="Delete">
+        </form>
+    </div>
+</div>
+{{else}}
+{{/each}}
+{{else}}
+    {{#if editResult}}
+    <div class="row" id="udaan">
+        <form action="/annexure-1/admissionProcessActivities/{{editResult.id}}?_method=PUT" method="post" class="col s12">
+        <input type="hidden" name="_method" value="PUT">
+            <div class="row">
+                <div class="input-field col s6 md5">
+                    <select name="admission_role">
+                        <option value="{{editResult.admission_role}}" disabled selected>{{editResult.admission_role}}</option>
+                        <option value="incharge">Incharge</option>
+                        <option value="coordinator">Co-orditors</option>
+                    </select>
+                    <label for="">Role</label>
+                </div>
+                <div class="input-field col s6 md5">
+                    <select name="admission_duties">
+                        <option value="{{editResult.admission_duties}}" disabled selected>{{editResult.admission_duties}}</option>
+                        <option value="confirmation">Confirmation</option>
+                        <option value="verification">Verification</option>
+                    </select>
+                    <label for="">Category</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12 md5">
+                    <select name="admission_class">
+                        <option value="{{editResult.admission_class}}" disabled selected>{{editResult.admission_class}}</option>
+                        <option value="FE">First Year</option>
+                        <option value="DSE">Direct Second Year</option>
+                    </select>
+                    <label for="">Class(whichever is applicable)</label>
+                </div>
+                
+            </div>
+
+            <div class="row">
+            
+                <div class="input-field col s6 md5">
+                    <input id="admission-start-date" type="text" name="admission_start_date" value="{{editResult.admission_start_date}}" class="datepicker validate" required>
+                    <label for="admission-start-date">Start Date</label>
+                </div>
+                
+                <div class="input-field col s6 md5">
+                    <input id="admission-end-date" type="text" name="admission_end_date" value="{{editResult.admission_end_date}}" class="datepicker validate" required>
+                    <label for="admission-end-date">End Date</label>
+                </div>
+            </div>
+            <div>
+                <p>
+                    <label>
+                    <input id="indeterminate-checkbox" class="validate" type="checkbox" required/>
+                    <span>I acknowledge that above filled information is verified and justified by me.</span>
+                    </label>
+                </p>
+            </div>
+            <button class="btn waves-effect waves-light" type="submit" id="submit_btn" disabled>Submit
+            </button>
+        </form>
+    </div>
+    </div>
+    {{else}}
+    
 <div class="row" id="udaan">
     <form action="/annexure-1/admissionProcessActivities" method="post" class="col s12">
         <div class="row">
@@ -10,59 +126,59 @@
                     <option value="" disabled selected>Role</option>
                     <option value="incharge">Incharge</option>
                     <option value="coordinator">Co-orditors</option>
-                  
                 </select>
             </div>
-             <div class="input-field col s6 md5">
+            <div class="input-field col s6 md5">
                 <select name="admission_duties">
                     <option value="" disabled selected>Category</option>
                     <option value="confirmation">Confirmation</option>
                     <option value="verification">Verification</option>
-        
+
                 </select>
             </div>
         </div>
         <div class="row">
-            {{!-- <div>
-                <input type="checkbox" name="fe" value="FE"> First Year
-                <input type="checkbox" name="dse" value="DSE"> Direct Second Year<br>
-                <label>Select the applicable class</label>
-            </div> --}}
 
             <div class="input-field col s12 md5">
                 <select name="admission_class">
                     <option value="" disabled selected>Class(whichever is applicable)</option>
                     <option value="FE">First Year</option>
                     <option value="DSE">Direct Second Year</option>
-        
+
                 </select>
             </div>
-            
+
         </div>
 
         <div class="row">
-           
-             <div class="input-field col s6 md5">
-                <input id="admission-start-date" type="text" name="admission_start_date" class="datepicker validate" required>
+
+            <div class="input-field col s6 md5">
+                <input id="admission-start-date" type="text" name="admission_start_date" class="datepicker validate"
+                    required>
                 <label for="admission-start-date">Start Date</label>
             </div>
-            
+
             <div class="input-field col s6 md5">
-                <input id="admission-end-date" type="text" name="admission_end_date" class="datepicker validate" required>
+                <input id="admission-end-date" type="text" name="admission_end_date" class="datepicker validate"
+                    required>
                 <label for="admission-end-date">End Date</label>
             </div>
         </div>
         <div>
-             <p>
-                 <label>
-                <input id="indeterminate-checkbox" type="checkbox" required/>
-                 <span>I acknowledge that above filled information is verified and justified by me.</span>
+            <p>
+                <label>
+                    <input id="indeterminate-checkbox" type="checkbox" required />
+                    <span>I acknowledge that above filled information is verified and justified by me.</span>
                 </label>
             </p>
         </div>
-        <a href="/annexure-1/examActivitiesSupervision" class="waves-effect waves-light btn red center">Not Applicable</a>
+        <a href="/annexure-1/examActivitiesSupervision" class="waves-effect waves-light btn red center">Not
+            Applicable</a>
         <button class="btn waves-effect waves-light" type="submit" id="submit_btn" disabled>Submit
         </button>
     </form>
 </div>
 </div>
+{{/if}}
+{{/if}}
+

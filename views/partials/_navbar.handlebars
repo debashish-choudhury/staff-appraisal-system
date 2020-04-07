@@ -11,7 +11,7 @@
           <li><a href="/">Home</a></li>
           <li><a class="dropdown-trigger" href="" data-target="academic-web">Academic<i
                 class="material-icons right">arrow_drop_down</i></a></li>
-          <li><a href="/leaveform">Leave</a></li>
+          <li><a href="/leave">Leave</a></li>
           <li><a class="dropdown-trigger" href="" data-target="annexure-1-web">Annexure 1<i
                 class="material-icons right">arrow_drop_down</i></a></li>
           <li><a class="dropdown-trigger" href="" data-target="annexure-2-web">Annexure 2<i
@@ -26,6 +26,7 @@
 
           {{#if_eq user.type 'hod'}}
           <li><a href="/users/hod/home">Home</a></li>
+          <li><a href="/users/hod/appraisalList">Appraisal List</a></li>
           <li><a class="dropdown-trigger" href="" data-target="profile-hod"><i
                 class="material-icons">account_box</i></a>
           </li>
@@ -138,7 +139,7 @@
       </li>
     </ul>
   </li>
-  <li><a class="sideNavPadding" href="/leaveForm">Leave</a></li>
+  <li><a class="sideNavPadding" href="/leave">Leave</a></li>
   <li class="no-padding">
     <ul class="collapsible collapsible-accordion">
       <li>
@@ -220,6 +221,7 @@
 
   {{#if_eq user.type 'hod'}}
   <li><a href="/">Home</a></li>
+  <li><a href="/users/hod/appraisalList">Appraisal List</a></li>
   <li><a class="dropdown-trigger" href="" data-target="profile"></a>
   </li>
   {{else}}
