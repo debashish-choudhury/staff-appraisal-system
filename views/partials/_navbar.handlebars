@@ -220,10 +220,10 @@
   {{/if_eq}}
 
   {{#if_eq user.type 'hod'}}
-  <li><a href="/">Home</a></li>
+  <li><a href="/users/hod/home">Home</a></li>
   <li><a href="/users/hod/appraisalList">Appraisal List</a></li>
-  <li><a class="dropdown-trigger" href="" data-target="profile"></a>
-  </li>
+  <li><a class="dropdown-trigger" href="/profile/hod/index" data-target="profile">Profile</a></li>
+  <li><a href="/users/logout" class="black-text">Logout</a></li>
   {{else}}
   {{/if_eq}}
 
