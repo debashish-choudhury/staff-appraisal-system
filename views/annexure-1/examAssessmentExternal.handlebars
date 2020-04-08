@@ -72,7 +72,7 @@
 {{else}}
 {{/each}}
 {{else}}
-{{/if editResult}}
+{{#if editResult}}
 <div class="row" id="examAssessmentExternal">
         <form action="/annexure-1/examAssessmentExternal/{{editResult.id}}?_method=PUT" method="post" class="col s12">
             <input type="hidden" name="_method" value="PUT">
