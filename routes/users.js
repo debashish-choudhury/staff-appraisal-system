@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
 const router = express.Router();
-const {ensureAuthenticated} = require('../helpers/auth');
+const { ensureAuthenticated } = require('../helpers/auth');
 
 
 // Load faculty model
@@ -37,11 +37,15 @@ router.get('/faculty/login', (req, res) => {
 });
 
 router.get('/faculty/facultyOverview', ensureAuthenticated, (req, res) => {
-    res.render('users/faculty/facultyOverview');
+    FacultyMarks.find({ user: req.user.id })
+        .then(result => {
+            res.render('users/faculty/facultyOverview', { result });
+        })
 });
 
 // Faculty final overview submission with marks
 router.post('/faculty/facultyOverview', (req, res) => {
+
     let errors = [];
 
     if (!req.body.academicPerformance || req.body.academicPerformance > 40 || req.body.academicPerformance < 0) {
@@ -72,13 +76,14 @@ router.post('/faculty/facultyOverview', (req, res) => {
             leaveRecord: req.body.leaveRecord,
             annexure_1: req.body.annexure_1,
             annexure_2: req.body.annexure_2,
-            annexure_3: req.body.annexure_3
+            annexure_3: req.body.annexure_3,
+            user: req.user.id
         }
         new FacultyMarks(marks)
             .save()
             .then(faculty_marks => {
                 req.flash('success_msg', 'Successfully added marks for evaluation');
-                res.render('users/faculty/facultyOverview')
+                res.redirect('/users/faculty/facultyOverview');
             })
     }
 });

@@ -2,16 +2,12 @@
 {{#if marks}}
 <ul class="collapsible popout" data-collapsible="accordion">
     <li id="overview">
-
-        <div class="input-field inline right">
-            <input id="score_inline" name="academicPerformance" type="number" value="{{marks.academicPerformance}}" style="border:none;" disabled>
-            <label for="score_inline">Score(/40)</label>
-
-
-        </div><br>
-        <div class="collapsible-header">
-
-            Academic Performance
+        <div class="collapsible-header"><i class="material-icons">book</i><b>Academic Performance</b>
+            <div class="right inline col s12 m4 l2">
+                <input id="score_inline" placeholder="Score ( /40)" name="academicPerformance" disabled
+                    value="{{marks.academicPerformance}}" type="number" class="validate">
+            </div>
+            <br><br><br>
         </div>
         <div class="collapsible-body">
             <ul class="collection">
@@ -79,13 +75,14 @@
     </li>
 
     <li id="overview">
-        <div class="input-field inline right">
-            <input id="leave_score_inline" type="number" name="leaveRecord" value="{{marks.leaveRecord}}" style="border:none;" disabled>
-            <label for="leave_score_inline">Score(/40)</label>
-        </div><br>
 
-        <div class="collapsible-header">
-            Leave Record</div>
+        <div class="collapsible-header"><i class="material-icons">book</i><b>Leave Form</b>
+            <div class="right inline col s12 m4 l2">
+                <input id="score_inline" placeholder="Score ( /40)" name="leaveRecord" disabled
+                    value="{{marks.leaveRecord}}" type="number" class="validate">
+            </div>
+            <br><br><br>
+        </div>
         <div class="collapsible-body">
             <ul class="collection">
                 <li class="collection-item">
@@ -103,14 +100,13 @@
     </li>
 
     <li id="overview">
-        <div class="input-field inline right">
-            <input id="annexure1_score_inline" type="number" name="annexure_1" value="{{marks.annexure_1}}" style="border:none;" disabled>
-            <label for="annexure1_score_inline">Score(/40)</label>
-
-
-        </div><br>
-        <div class="collapsible-header">
-            Annexure 1</div>
+        <div class="collapsible-header"><i class="material-icons">book</i><b>Annexure 1</b>
+            <div class="right inline col s12 m4 l2">
+                <input id="score_inline" placeholder="Score ( /40)" name="annexure_1" disabled
+                    value="{{marks.annexure_1}}" type="number" class="validate">
+            </div>
+            <br><br><br>
+        </div>
         <div class="collapsible-body">
             <ul class="collection">
                 <li class="collection-item">
@@ -322,13 +318,13 @@
     </li>
 
     <li id="overview">
-        <div class="input-field inline right">
-            <input id="annexure2_score_inline" type="number" name="annexure_2" value="{{marks.annexure_2}}" style="border:none;" disabled>
-            <label for="annexure2_score_inline">Score(/40)</label>
-
-        </div><br>
-        <div class="collapsible-header">
-            Annexure 2</div>
+        <div class="collapsible-header"><i class="material-icons">book</i><b>Annexure 2</b>
+            <div class="right inline col s12 m4 l2">
+                <input id="score_inline" placeholder="Score ( /40)" name="annexure_2" disabled
+                    value="{{marks.annexure_2}}" type="number" class="validate">
+            </div>
+            <br><br><br>
+        </div>
         <div class="collapsible-body">
             <ul class="collection">
                 <li class="collection-item">
@@ -414,13 +410,13 @@
 
 
     <li id="overview">
-        <div class="input-field inline right">
-            <input id="annexure3_score_inline" type="number" name="annexure_3" value="{{marks.annexure_3}}" style="border:none;" disabled>
-            <label for="annexure3_score_inline">Score(/40)</label>
-
-        </div><br>
-        <div class="collapsible-header">
-            Annexure 3</div>
+        <div class="collapsible-header"><i class="material-icons">book</i><b>Annexure 3</b>
+            <div class="right inline col s12 m4 l2">
+                <input id="score_inline" placeholder="Score ( /40)" name="annexure_3" disabled
+                    value="{{marks.annexure_3}}" type="number" class="validate">
+            </div>
+            <br><br><br>
+        </div>
         <div class="collapsible-body">
             <ul class="collection">
                 <li class="collection-item">
@@ -482,10 +478,10 @@
     </li>
 </ul>
 
-<button class="btn waves-effect waves-light" type="submit" name="action">Submit
+<button class="btn waves-effect waves-light" type="submit" name="action" disabled>Submit
     <i class="material-icons right">send</i>
 </button>
-
+<br><br><br>
 {{else}}
 <h2>Marks not submitted yet.</h2>
 {{/if}}
