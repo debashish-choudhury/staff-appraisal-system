@@ -50,7 +50,7 @@ router.get('/papersPublishedinInternationalConf', ensureAuthenticated, (req, res
 router.get('/papersPublishedinJournals', ensureAuthenticated, (req, res) => {
     PapersPublishedJournals.find({user: req.user.id})
     .then(result => {
-        res.render('annexure-2/papersPublishedinJournals', { result: result });
+        res.render('annexure-2/paperspublishedinjournals', { result: result });
     });
 });
 
@@ -74,7 +74,7 @@ router.get('/swayam', ensureAuthenticated, (req, res) => {
 router.get('/shortTermTraining', ensureAuthenticated, (req, res) => {
     ShortTermTraining.find({user: req.user.id})
     .then(result => {
-        res.render('annexure-2/shortTermTraining', { result: result });
+        res.render('annexure-2/shorttermtraining', { result: result });
     });
 });
 
@@ -127,9 +127,9 @@ router.get('/papersPublishedinJournals/edit/:id', ensureAuthenticated, (req, res
     .then(result => {
         if(result.user != req.user.id) {
             req.flash('error_msg', 'Not Authorized');
-            res.redirect('/annexure-2/papersPublishedinNationalConf');
+            res.redirect('/annexure-2/paperspublishedinjournals');
         } else {
-            res.render('annexure-2/papersPublishedinJournals', { editResult: result });
+            res.render('annexure-2/paperspublishedinjournals', { editResult: result });
         }
     });
 });
@@ -166,9 +166,9 @@ router.get('/shortTermTraining/edit/:id', ensureAuthenticated, (req, res) => {
     .then(result => {
         if(result.user != req.user.id) {
             req.flash('error_msg', 'Not Authorized');
-            res.redirect('/annexure-2/shortTermTraining');
+            res.redirect('/annexure-2/shorttermtraining');
         } else {
-            res.render('annexure-2/shortTermTraining', { editResult: result });
+            res.render('annexure-2/shorttermtraining', { editResult: result });
         }
     });
 });
@@ -236,7 +236,7 @@ router.post('/papersPublishedinInternationalConf', (req, res) => {
         .save()
         .then(papersPublishedInternational => {
             req.flash('success_msg', 'Data entered successfully');
-            res.redirect('/annexure-2/papersPublishedinJournals');
+            res.redirect('/annexure-2/paperspublishedinjournals');
         });
 });
 
@@ -295,7 +295,7 @@ router.post('/swayam', (req, res) => {
         .save()
         .then(swayam => {
             req.flash('success_msg', 'Data entered successfully');
-            res.redirect('/annexure-2/shortTermTraining');
+            res.redirect('/annexure-2/shorttermtraining');
         });
 });
 
@@ -400,7 +400,7 @@ router.put('/papersPublishedinJournals/:id', (req, res) => {
         result.save()
         .then(() => {
             req.flash('success_msg', 'Data updated successfully');
-            res.redirect('/annexure-2/papersPublishedinJournals');
+            res.redirect('/annexure-2/paperspublishedinjournals');
         })
     })
 });
@@ -451,7 +451,7 @@ router.put('/shortTermTraining/:id', (req, res) => {
         result.save()
         .then(() => {
             req.flash('success_msg', 'Data updated successfully');
-            res.redirect('/annexure-2/shortTermTraining');
+            res.redirect('/annexure-2/shorttermtraining');
         })
     })
 });
@@ -495,7 +495,7 @@ router.delete('/paperPublishedinJournals/delete/:id', (req, res) => {
     PapersPublishedJournals.deleteOne({ _id: req.params.id })
     .then(() => {
         req.flash('success_msg', 'Data deleted successully');
-        res.redirect('/annexure-2/paperPublishedinJournals');
+        res.redirect('/annexure-2/paperspublishedinjournals');
     })
 });
 
@@ -519,7 +519,7 @@ router.delete('/shortTermTraining/delete/:id', (req, res) => {
     ShortTermTraining.deleteOne({ _id: req.params.id })
     .then(() => {
         req.flash('success_msg', 'Data deleted successully');
-        res.redirect('/annexure-2/shortTermTraining');
+        res.redirect('/annexure-2/shorttermtraining');
     })
 });
 

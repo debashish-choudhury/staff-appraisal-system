@@ -147,7 +147,7 @@ router.get('/inhousePlacement', ensureAuthenticated, (req, res) => {
 router.get('/studentOrganizations', ensureAuthenticated, (req, res) => {
     StudentOrganizations.find({ user: req.user.id })
         .then(result => {
-            res.render('annexure-1/studentOrganizations', { result });
+            res.render('annexure-1/studentorganizations', { result });
         })
 });
 
@@ -354,7 +354,7 @@ router.get('/studentOrganizations/edit/:id', ensureAuthenticated, (req, res) => 
                 req.flash('error_msg', 'Not Authorized');
                 res.redirect('/annexure-1/studentOrganizations');
             } else {
-                res.render('annexure-1/studentOrganizations', { editResult: result });
+                res.render('annexure-1/studentorganizations', { editResult: result });
             }
         })
 });
@@ -634,7 +634,7 @@ router.post('/inhousePlacement', (req, res) => {
         .save()
         .then(inhousePlacement => {
             req.flash('success_msg', 'Data entered successfully');
-            res.redirect('/annexure-1/studentOrganizations');
+            res.redirect('/annexure-1/studentorganizations');
         });
 });
 
@@ -1006,7 +1006,7 @@ router.put('/studentOrganization/:id', (req, res) => {
         result.save()
         .then(() => {
             req.flash('success_msg', 'Data updated successfully');
-            res.redirect('/annexure-1/studentOrganization');
+            res.redirect('/annexure-1/studentorganization');
         })
     })
 });
@@ -1252,7 +1252,7 @@ router.delete('/studentOrganization/delete/:id', (req, res) => {
     StudentOrganizations.deleteOne({ _id: req.params.id })
     .then(() => {
         req.flash('success_msg', 'Data deleted successfully');
-        res.redirect('/annexure-1/studentOrganization');
+        res.redirect('/annexure-1/studentorganization');
     })
 });
 
