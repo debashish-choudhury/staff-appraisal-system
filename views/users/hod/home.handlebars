@@ -1,13 +1,13 @@
 <h4>Welcome {{user.name}} to the HOD page</h4><br>
 <h3>List of faculties</h3>
-
-{{#each faculty}}
 <div class="row">
+{{#each faculty}}
+
   <div class="col s12 m4 l3">
     <div class="card grey lighten-3">
       <div class="card-content black-text">
         <span class="card-title">{{name}}</span>
-        <p>Email ID: {{email}}</p>
+        <p>{{email}}</p>
         <p>Employee Type: {{type}}</p>
       </div>
       <div class="card-action">
@@ -16,8 +16,8 @@
     </div>
   </div>
 
-
 {{else}}
+</div>
 {{/each}}
 </div>
 </div>
