@@ -5,6 +5,9 @@ const passport = require('passport');
 const router = express.Router();
 const { ensureAuthenticated } = require('../helpers/auth');
 
+var modules = require('../config/modules');
+
+let facultID;
 
 // Load faculty model
 require('../models/Users/Faculty');
@@ -37,9 +40,65 @@ router.get('/faculty/login', (req, res) => {
 });
 
 router.get('/faculty/facultyOverview', ensureAuthenticated, (req, res) => {
+    let finalResult;
     FacultyMarks.find({ user: req.user.id })
         .then(result => {
-            res.render('users/faculty/facultyOverview', { result });
+
+            finalResult = result;
+            var loads = [modules.TeachingLoad.findOne({ user: req.user.id }).exec(),
+            modules.TeachingAssistant.findOne({ user: req.user.id }).exec(),
+            modules.NewBooks.findOne({ user: req.user.id }).exec(),
+            modules.AddedExp.findOne({ user: req.user.id }).exec(),
+            modules.Innovation.findOne({ user: req.user.id }).exec(),
+
+            modules.Leave.findOne({ user: req.user.id }).exec(),
+
+            modules.TimeTable.findOne({ user: req.user.id }).exec(),
+            modules.ClassAdvisor.findOne({ user: req.user.id }).exec(),
+            modules.SportsActivities.findOne({ user: req.user.id }).exec(),
+            modules.CulturalActivities.findOne({ user: req.user.id }).exec(),
+            modules.ProjectBasedLearning.findOne({ user: req.user.id }).exec(),
+            modules.Udaan.findOne({ user: req.user.id }).exec(),
+            modules.PlacementActivities.findOne({ user: req.user.id }).exec(),
+            modules.InhousePlacement.findOne({ user: req.user.id }).exec(),
+            modules.StudentOrganizations.findOne({ user: req.user.id }).exec(),
+            modules.IndustrialVisitActivities.findOne({ user: req.user.id }).exec(),
+            modules.AdmissionProcessActivities.findOne({ user: req.user.id }).exec(),
+            modules.ExamAssessmentExternal.findOne({ user: req.user.id }).exec(),
+            modules.ExamActivitiesSupervision.findOne({ user: req.user.id }).exec(),
+            modules.ExamActivitiesCollegeLevel.findOne({ user: req.user.id }).exec(),
+            modules.ITMaintenance.findOne({ user: req.user.id }).exec(),
+            modules.Lakshya.findOne({ user: req.user.id }).exec(),
+            modules.MagazineNewsletter.findOne({ user: req.user.id }).exec(),
+            modules.STTP.findOne({ user: req.user.id }).exec(),
+            modules.DepartmentUGProjects.findOne({ user: req.user.id }).exec(),
+
+            modules.PapersPublishedNationalConf.findOne({ user: req.user.id }).exec(),
+            modules.PapersPublishedInternationalConf.findOne({ user: req.user.id }).exec(),
+            modules.PapersPublishedJournals.findOne({ user: req.user.id }).exec(),
+            modules.Moocs.findOne({ user: req.user.id }).exec(),
+            modules.Swayam.findOne({ user: req.user.id }).exec(),
+            modules.ShortTermTraining.findOne({ user: req.user.id }).exec(),
+            modules.Seminars.findOne({ user: req.user.id }).exec(),
+
+            modules.ResourcePerson.findOne({ user: req.user.id }).exec(),
+            modules.ContributionToSyllabus.findOne({ user: req.user.id }).exec(),
+            modules.MemberOfUniversityCommitte.findOne({ user: req.user.id }).exec(),
+            modules.ConsultancyAssignment.findOne({ user: req.user.id }).exec(),
+            modules.ExternalProjectsOrCompetition.findOne({ user: req.user.id }).exec()
+            ];
+            Promise.all(loads)
+                .then(result => {
+                    return Promise.all(result);
+                })
+                .then(([teachingLoad, teachingAssistant, newBooks, addedExp, innovation,
+                    leave,
+                    timeTable, classAdvisor, sportsActivities, culturalActivities, projectBasedLearning, udaan, placementActivities, inhousePlacement, studentOrganizations, industrialVisitActivities, admissionProcessActivities, examAssessmentExternal, examActivitiesSupervision, examActivitiesCollegeLevel, itMaintenance, lakshya, magazineNewsletter, sttp, departmentUGProjects,
+                    papersPublishedNationalConf, papersPublishedInternationalConf, papersPublishedJournals, moocs, swayam, shortTermTraining, seminars,
+                    resourcePerson, contributionToSyllabus, memberOfUniversityCommitte, consultancyAssignment, externalProjectsOrCompetition]) => {
+
+                    res.render('users/faculty/facultyOverview', { finalResult, teachingLoad, teachingAssistant, newBooks, addedExp, innovation, leave, timeTable, classAdvisor, sportsActivities, culturalActivities, projectBasedLearning, udaan, placementActivities, inhousePlacement, studentOrganizations, industrialVisitActivities, admissionProcessActivities, examAssessmentExternal, examActivitiesSupervision, examActivitiesCollegeLevel, itMaintenance, lakshya, magazineNewsletter, sttp, departmentUGProjects, papersPublishedNationalConf, papersPublishedInternationalConf, papersPublishedJournals, moocs, swayam, shortTermTraining, seminars, resourcePerson, contributionToSyllabus, memberOfUniversityCommitte, consultancyAssignment, externalProjectsOrCompetition });
+                })
         })
 });
 
@@ -81,7 +140,7 @@ router.post('/faculty/facultyOverview', (req, res) => {
         }
         new FacultyMarks(marks)
             .save()
-            .then(faculty_marks => {
+            .then(() => {
                 req.flash('success_msg', 'Successfully added marks for evaluation');
                 res.redirect('/users/faculty/facultyOverview');
             })
@@ -99,13 +158,76 @@ router.get('/hod/confidential', ensureAuthenticated, (req, res) => {
 });
 
 // hod overview form
-router.get('/hod/hodOverview', ensureAuthenticated, (req, res) => {
-    FacultyMarks.findOne({})
+router.get('/hod/hodOverview/:id', ensureAuthenticated, (req, res) => {
+    let finalResult;
+    FacultyMarks.find({user: req.params.id})
         .then(marks => {
-            console.log(marks);
-            res.render('users/hod/hodOverview', {
-                marks: marks
-            });
+            finalResult = marks;
+            facultID = marks[0].user;
+
+            console.log(facultID);
+            console.log(finalResult);
+            var loads = [modules.TeachingLoad.findOne({ user: facultID }).exec(),
+            modules.TeachingAssistant.findOne({ user: facultID }).exec(),
+            modules.NewBooks.findOne({ user: facultID }).exec(),
+            modules.AddedExp.findOne({ user: facultID }).exec(),
+            modules.Innovation.findOne({ user: facultID }).exec(),
+
+            modules.Leave.findOne({ user: facultID }).exec(),
+
+            modules.TimeTable.findOne({ user: facultID }).exec(),
+            modules.ClassAdvisor.findOne({ user: facultID }).exec(),
+            modules.SportsActivities.findOne({ user: facultID }).exec(),
+            modules.CulturalActivities.findOne({ user: facultID }).exec(),
+            modules.ProjectBasedLearning.findOne({ user: facultID }).exec(),
+            modules.Udaan.findOne({ user: facultID }).exec(),
+            modules.PlacementActivities.findOne({ user: facultID }).exec(),
+            modules.InhousePlacement.findOne({ user: facultID }).exec(),
+            modules.StudentOrganizations.findOne({ user: facultID }).exec(),
+            modules.IndustrialVisitActivities.findOne({ user: facultID }).exec(),
+            modules.AdmissionProcessActivities.findOne({ user: facultID }).exec(),
+            modules.ExamAssessmentExternal.findOne({ user: facultID }).exec(),
+            modules.ExamActivitiesSupervision.findOne({ user: facultID }).exec(),
+            modules.ExamActivitiesCollegeLevel.findOne({ user: facultID }).exec(),
+            modules.ITMaintenance.findOne({ user: facultID }).exec(),
+            modules.Lakshya.findOne({ user: facultID }).exec(),
+            modules.MagazineNewsletter.findOne({ user: facultID }).exec(),
+            modules.STTP.findOne({ user: facultID }).exec(),
+            modules.DepartmentUGProjects.findOne({ user: facultID }).exec(),
+
+            modules.PapersPublishedNationalConf.findOne({ user: facultID }).exec(),
+            modules.PapersPublishedInternationalConf.findOne({ user: facultID }).exec(),
+            modules.PapersPublishedJournals.findOne({ user: facultID }).exec(),
+            modules.Moocs.findOne({ user: facultID }).exec(),
+            modules.Swayam.findOne({ user: facultID }).exec(),
+            modules.ShortTermTraining.findOne({ user: facultID }).exec(),
+            modules.Seminars.findOne({ user: facultID }).exec(),
+
+            modules.ResourcePerson.findOne({ user: facultID }).exec(),
+            modules.ContributionToSyllabus.findOne({ user: facultID }).exec(),
+            modules.MemberOfUniversityCommitte.findOne({ user: facultID }).exec(),
+            modules.ConsultancyAssignment.findOne({ user: facultID }).exec(),
+            modules.ExternalProjectsOrCompetition.findOne({ user: facultID }).exec()
+            ];
+            Promise.all(loads)
+                .then(result => {
+                    return Promise.all(result);
+                })
+                .then(([teachingLoad, teachingAssistant, newBooks, addedExp, innovation,
+                    leave,
+                    timeTable, classAdvisor, sportsActivities, culturalActivities, projectBasedLearning, udaan, placementActivities, inhousePlacement, studentOrganizations, industrialVisitActivities, admissionProcessActivities, examAssessmentExternal, examActivitiesSupervision, examActivitiesCollegeLevel, itMaintenance, lakshya, magazineNewsletter, sttp, departmentUGProjects,
+                    papersPublishedNationalConf, papersPublishedInternationalConf, papersPublishedJournals, moocs, swayam, shortTermTraining, seminars,
+                    resourcePerson, contributionToSyllabus, memberOfUniversityCommitte, consultancyAssignment, externalProjectsOrCompetition]) => {
+
+                    res.render('users/hod/hodOverview', { finalResult, teachingLoad, teachingAssistant, newBooks, addedExp, innovation, leave, timeTable, classAdvisor, sportsActivities, culturalActivities, projectBasedLearning, udaan, placementActivities, inhousePlacement, studentOrganizations, industrialVisitActivities, admissionProcessActivities, examAssessmentExternal, examActivitiesSupervision, examActivitiesCollegeLevel, itMaintenance, lakshya, magazineNewsletter, sttp, departmentUGProjects, papersPublishedNationalConf, papersPublishedInternationalConf, papersPublishedJournals, moocs, swayam, shortTermTraining, seminars, resourcePerson, contributionToSyllabus, memberOfUniversityCommitte, consultancyAssignment, externalProjectsOrCompetition });
+                })
+
+        })
+        .catch(err => {
+            if (err) {
+                req.flash('error_msg', 'not submitted the form');
+                res.redirect('/users/hod/home');
+            }
         })
 });
 
@@ -129,6 +251,7 @@ router.get('/hod/home', ensureAuthenticated, (req, res) => {
     }).then(([faculty, marks]) => {
         console.log(faculty);
         console.log(marks);
+        // facultID = marks[0].user;
         res.render('users/hod/home', {
             faculty: faculty
         });

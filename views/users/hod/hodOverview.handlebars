@@ -1,11 +1,11 @@
 <h4>HoD's Overview</h4>
-{{#if marks}}
+{{#each finalResult}}
 <ul class="collapsible popout" data-collapsible="accordion">
     <li id="overview">
         <div class="collapsible-header"><i class="material-icons">book</i><b>Academic Performance</b>
             <div class="right inline col s12 m4 l2">
-                <input id="score_inline" placeholder="Score ( /40)" name="academicPerformance" disabled
-                    value="{{marks.academicPerformance}}" type="number" class="validate">
+                <input id="score_inline" placeholder="Score ( /40)" name="academicPerformance"
+                    value="{{academicPerformance}}" type="number" class="validate">
             </div>
             <br><br><br>
         </div>
@@ -13,10 +13,15 @@
             <ul class="collection">
                 <li class="collection-item">
                     <p>
-                        <div>Teaching Load
-
+                        <div>
+                            {{#if ../teachingLoad}}
+                            <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
+                            {{else}}
+                            <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
+                            {{/if}}
+                            Teaching Load
                             <div class="right">
-                                <a class="btn-small" style="background-color: purple;">View</a>
+                                <a class="btn-small" href="" style="background-color: purple;">View</a>
                             </div>
 
                         </div>
@@ -26,31 +31,13 @@
 
                 <li class="collection-item">
                     <p>
-                        <div>Teaching Assistant
-
-                            <div class="right">
-                                <a class="btn-small" style="background-color: purple;">View</a>
-                            </div>
-                        </div>
-                    </p>
-                </li>
-
-
-                <li class="collection-item">
-                    <p>
-                        <div>New Books Suggested To Library
-
-                            <div class="right">
-                                <a class="btn-small" style="background-color: purple;">View</a>
-                            </div>
-                        </div>
-                    </p>
-                </li>
-
-
-                <li class="collection-item">
-                    <p>
-                        <div>Additional Experiment Added To Lab Manual
+                        <div>
+                            {{#if ../teachingAssistant}}
+                                        <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
+                                    {{else}}
+                                        <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
+                                    {{/if}}
+                                    Teaching Assistant
 
                             <div class="right">
                                 <a class="btn-small" style="background-color: purple;">View</a>
@@ -62,7 +49,49 @@
 
                 <li class="collection-item">
                     <p>
-                        <div>Innovative Teaching Technique Adapted
+                        <div>
+                            {{#if ../newBooks}}
+                                    <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
+                                    {{else}}
+                                    <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
+                                    {{/if}}
+                                    New Books Suggested To Library
+
+                            <div class="right">
+                                <a class="btn-small" style="background-color: purple;">View</a>
+                            </div>
+                        </div>
+                    </p>
+                </li>
+
+
+                <li class="collection-item">
+                    <p>
+                        <div>
+                            {{#if ../addedExp}}
+                                    <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
+                                    {{else}}
+                                    <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
+                                    {{/if}}
+                                    Additional Experiment Added To Lab Manual
+
+                            <div class="right">
+                                <a class="btn-small" style="background-color: purple;">View</a>
+                            </div>
+                        </div>
+                    </p>
+                </li>
+
+
+                <li class="collection-item">
+                    <p>
+                        <div>
+                            {{#if ../innovation}}
+                                    <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
+                                    {{else}}
+                                    <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
+                                    {{/if}}
+                                    Innovative Teaching Technique Adapted
 
                             <div class="right">
                                 <a class="btn-small" style="background-color: purple;">View</a>
@@ -78,8 +107,8 @@
 
         <div class="collapsible-header"><i class="material-icons">book</i><b>Leave Form</b>
             <div class="right inline col s12 m4 l2">
-                <input id="score_inline" placeholder="Score ( /40)" name="leaveRecord" disabled
-                    value="{{marks.leaveRecord}}" type="number" class="validate">
+                <input id="score_inline" placeholder="Score ( /40)" name="leaveRecord"
+                    value="{{leaveRecord}}" type="number" class="validate">
             </div>
             <br><br><br>
         </div>
@@ -87,7 +116,12 @@
             <ul class="collection">
                 <li class="collection-item">
                     <p>
-                        <div>Leave Record
+                        <div>{{#if ../leave}}
+                                    <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
+                                    {{else}}
+                                    <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
+                                    {{/if}}
+                                    Leave Record
 
                             <div class="right">
                                 <a class="btn-small" style="background-color: purple;">View</a>
@@ -102,8 +136,8 @@
     <li id="overview">
         <div class="collapsible-header"><i class="material-icons">book</i><b>Annexure 1</b>
             <div class="right inline col s12 m4 l2">
-                <input id="score_inline" placeholder="Score ( /40)" name="annexure_1" disabled
-                    value="{{marks.annexure_1}}" type="number" class="validate">
+                <input id="score_inline" placeholder="Score ( /40)" name="annexure_1"
+                    value="{{annexure_1}}" type="number" class="validate">
             </div>
             <br><br><br>
         </div>
@@ -111,7 +145,13 @@
             <ul class="collection">
                 <li class="collection-item">
                     <p>
-                        <div>1.1 Timetable Related Activities
+                        <div>
+                            {{#if ../timeTable}}
+                                    <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
+                                    {{else}}
+                                    <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
+                                    {{/if}}
+                                    1.1 Timetable Related Activities
 
                             <div class="right">
                                 <a class="btn-small" style="background-color: purple;">View</a>
@@ -122,7 +162,13 @@
 
                 <li class="collection-item">
                     <p>
-                        <div>1.2 Class Advisor
+                        <div>
+                            {{#if ../classAdvisor}}
+                                    <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
+                                    {{else}}
+                                    <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
+                                    {{/if}}
+                                    1.2 Class Advisor
 
                             <div class="right">
                                 <a class="btn-small" style="background-color: purple;">View</a>
@@ -133,7 +179,13 @@
 
                 <li class="collection-item">
                     <p>
-                        <div>1.3 Sports Activities
+                        <div>
+                            {{#if ../sportsActivities}}
+                                    <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
+                                    {{else}}
+                                    <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
+                                    {{/if}}
+                                    1.3 Sports Activities
 
                             <div class="right">
                                 <a class="btn-small" style="background-color: purple;">View</a>
@@ -144,7 +196,13 @@
 
                 <li class="collection-item">
                     <p>
-                        <div>1.4 Cultural Activities
+                        <div>
+                            {{#if ../culturalActivities}}
+                                    <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
+                                    {{else}}
+                                    <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
+                                    {{/if}}
+                                    1.4 Cultural Activities
 
                             <div class="right">
                                 <a class="btn-small" style="background-color: purple;">View</a>
@@ -155,7 +213,13 @@
 
                 <li class="collection-item">
                     <p>
-                        <div>1.5 Project Based Learning
+                        <div>
+                            {{#if ../projectBasedLearning}}
+                                    <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
+                                    {{else}}
+                                    <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
+                                    {{/if}}
+                                    1.5 Project Based Learning
 
                             <div class="right">
                                 <a class="btn-small" style="background-color: purple;">View</a>
@@ -166,7 +230,12 @@
 
                 <li class="collection-item">
                     <p>
-                        <div>1.6 UDAAN Incubation Activities
+                        <div>
+                            {{#if ../uddan}}
+                                    <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
+                                    {{else}}
+                                    <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
+                                    {{/if}}1.6 UDAAN Incubation Activities
 
                             <div class="right">
                                 <a class="btn-small" style="background-color: purple;">View</a>
@@ -177,7 +246,13 @@
 
                 <li class="collection-item">
                     <p>
-                        <div>1.7 Placement Activities
+                        <div>
+                            {{#if ../placementActivities}}
+                                    <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
+                                    {{else}}
+                                    <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
+                                    {{/if}}
+                                    1.7 Placement Activities
 
                             <div class="right">
                                 <a class="btn-small" style="background-color: purple;">View</a>
@@ -188,7 +263,13 @@
 
                 <li class="collection-item">
                     <p>
-                        <div>1.8 In-house Placement Activities(Trainings and Workshops)
+                        <div>
+                            {{#if ../inhousePlacement}}
+                                    <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
+                                    {{else}}
+                                    <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
+                                    {{/if}}
+                                    1.8 In-house Placement Activities(Trainings and Workshops)
 
                             <div class="right">
                                 <a class="btn-small" style="background-color: purple;">View</a>
@@ -200,7 +281,13 @@
 
                 <li class="collection-item">
                     <p>
-                        <div>1.9 Student Organisation Activity
+                        <div>
+                            {{#if ../studentOrganization}}
+                                    <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
+                                    {{else}}
+                                    <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
+                                    {{/if}}
+                                    1.9 Student Organisation Activity
 
                             <div class="right">
                                 <a class="btn-small" style="background-color: purple;">View</a>
@@ -211,7 +298,13 @@
 
                 <li class="collection-item">
                     <p>
-                        <div>1.10 INdustrial Visit Activities
+                        <div>
+                            {{#if ../industrialVisitActivities}}
+                                    <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
+                                    {{else}}
+                                    <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
+                                    {{/if}}
+                                    1.10 Industrial Visit Activities
 
                             <div class="right">
                                 <a class="btn-small" style="background-color: purple;">View</a>
@@ -222,7 +315,13 @@
 
                 <li class="collection-item">
                     <p>
-                        <div>1.11 Admission Related Activities
+                        <div>
+                            {{#if ../admissionProcessActivities}}
+                                    <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
+                                    {{else}}
+                                    <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
+                                    {{/if}}
+                                    1.11 Admission Related Activities
 
                             <div class="right">
                                 <a class="btn-small" style="background-color: purple;">View</a>
@@ -233,7 +332,13 @@
 
                 <li class="collection-item">
                     <p>
-                        <div>1.12 Exam related activities(University exams Supervision)
+                        <div>
+                            {{#if ../examActivitiesSupervision}}
+                                    <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
+                                    {{else}}
+                                    <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
+                                    {{/if}}
+                                    1.12 Exam related activities(University exams Supervision)
 
                             <div class="right">
                                 <a class="btn-small" style="background-color: purple;">View</a>
@@ -244,7 +349,13 @@
 
                 <li class="collection-item">
                     <p>
-                        <div>1.13 Exam related activities(External)
+                        <div>
+                            {{#if ../examAssessmentExternal}}
+                                    <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
+                                    {{else}}
+                                    <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
+                                    {{/if}}
+                                    1.13 Exam related activities(External)
 
                             <div class="right">
                                 <a class="btn-small" style="background-color: purple;">View</a>
@@ -255,7 +366,13 @@
 
                 <li class="collection-item">
                     <p>
-                        <div>1.14 Exam related activities(Assessment/Oral/Practical Exams Conducted, college level)
+                        <div>
+                            {{#if ../examActivitiesCollegeLevel}}
+                                    <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
+                                    {{else}}
+                                    <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
+                                    {{/if}}
+                                    1.14 Exam related activities(Assessment/Oral/Practical Exams Conducted, college level)
 
                             <div class="right">
                                 <a class="btn-small" style="background-color: purple;">View</a>
@@ -266,7 +383,13 @@
 
                 <li class="collection-item">
                     <p>
-                        <div>1.15 IT Maintenance
+                        <div>
+                            {{#if ../itMaintenance}}
+                                    <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
+                                    {{else}}
+                                    <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
+                                    {{/if}}
+                                    1.15 IT Maintenance
                             <div class="right">
                                 <a class="btn-small" style="background-color: purple;">View</a>
                             </div>
@@ -276,7 +399,13 @@
 
                 <li class="collection-item">
                     <p>
-                        <div>1.16 Lakshya Related Activities
+                        <div>
+                            {{#if ../lakshya}}
+                                    <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
+                                    {{else}}
+                                    <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
+                                    {{/if}}
+                                    1.16 Lakshya Related Activities
                             <div class="right">
                                 <a class="btn-small" style="background-color: purple;">View</a>
                             </div>
@@ -286,7 +415,13 @@
 
                 <li class="collection-item">
                     <p>
-                        <div>1.17 Magazine/Newsletter Related Activities
+                        <div>
+                            {{#if ../magazineNewsletter}}
+                                    <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
+                                    {{else}}
+                                    <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
+                                    {{/if}}
+                                    1.17 Magazine/Newsletter Related Activities
                             <div class="right">
                                 <a class="btn-small" style="background-color: purple;">View</a>
                             </div>
@@ -296,7 +431,13 @@
 
                 <li class="collection-item">
                     <p>
-                        <div>1.18 Conduct Of STTP
+                        <div>
+                            {{#if ../sttp}}
+                                    <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
+                                    {{else}}
+                                    <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
+                                    {{/if}}
+                                    1.18 Conduct Of STTP
                             <div class="right">
                                 <a class="btn-small" style="background-color: purple;">View</a>
                             </div>
@@ -306,7 +447,13 @@
 
                 <li class="collection-item">
                     <p>
-                        <div>1.19 Department UG Projects Undertaken
+                        <div>
+                            {{#if ../departmentUGProjects}}
+                                    <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
+                                    {{else}}
+                                    <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
+                                    {{/if}}
+                                    1.19 Department UG Projects Undertaken
                             <div class="right">
                                 <a class="btn-small" style="background-color: purple;">View</a>
                             </div>
@@ -320,8 +467,8 @@
     <li id="overview">
         <div class="collapsible-header"><i class="material-icons">book</i><b>Annexure 2</b>
             <div class="right inline col s12 m4 l2">
-                <input id="score_inline" placeholder="Score ( /40)" name="annexure_2" disabled
-                    value="{{marks.annexure_2}}" type="number" class="validate">
+                <input id="score_inline" placeholder="Score ( /40)" name="annexure_2" 
+                    value="{{annexure_2}}" type="number" class="validate">
             </div>
             <br><br><br>
         </div>
@@ -329,7 +476,13 @@
             <ul class="collection">
                 <li class="collection-item">
                     <p>
-                        <div>2.1 Papers Published In National Conference
+                        <div>
+                            {{#if ../papersPublishedNationalConf}}
+                                    <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
+                                    {{else}}
+                                    <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
+                                    {{/if}}
+                                    2.1 Papers Published In National Conference
 
                             <div class="right">
                                 <a class="btn-small" style="background-color: purple;">View</a>
@@ -340,7 +493,13 @@
 
                 <li class="collection-item">
                     <p>
-                        <div>2.2 Papers Published International Conference
+                        <div>
+                            {{#if ../papersPublishedInternationalConf}}
+                                    <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
+                                    {{else}}
+                                    <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
+                                    {{/if}}
+                                    2.2 Papers Published International Conference
 
                             <div class="right">
                                 <a class="btn-small" style="background-color: purple;">View</a>
@@ -351,7 +510,13 @@
 
                 <li class="collection-item">
                     <p>
-                        <div>2.3 Papers Published In Journals
+                        <div>
+                            {{#if ../papersPublishedJournals}}
+                                    <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
+                                    {{else}}
+                                    <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
+                                    {{/if}}
+                                    2.3 Papers Published In Journals
 
                             <div class="right">
                                 <a class="btn-small" style="background-color: purple;">View</a>
@@ -362,7 +527,13 @@
 
                 <li class="collection-item">
                     <p>
-                        <div>2.4 MOOCS
+                        <div>
+                            {{#if ../moocs}}
+                                    <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
+                                    {{else}}
+                                    <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
+                                    {{/if}}
+                                    2.4 MOOCS
 
                             <div class="right">
                                 <a class="btn-small" style="background-color: purple;">View</a>
@@ -373,7 +544,13 @@
 
                 <li class="collection-item">
                     <p>
-                        <div>2.5 Swayam
+                        <div>
+                            {{#if ../swayam}}
+                                    <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
+                                    {{else}}
+                                    <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
+                                    {{/if}}
+                                    2.5 Swayam
 
                             <div class="right">
                                 <a class="btn-small" style="background-color: purple;">View</a>
@@ -384,7 +561,13 @@
 
                 <li class="collection-item">
                     <p>
-                        <div>2.6 Short-Term Traning
+                        <div>
+                            {{#if ../shortTermTraining}}
+                                        <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
+                                    {{else}}
+                                        <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
+                                    {{/if}}
+                                    2.6 Short-Term Traning
 
                             <div class="right">
                                 <a class="btn-small" style="background-color: purple;">View</a>
@@ -395,7 +578,13 @@
 
                 <li class="collection-item">
                     <p>
-                        <div>2.8 Seminars
+                        <div>
+                            {{#if ../seminars}}
+                                    <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
+                                    {{else}}
+                                    <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
+                                    {{/if}}
+                                    2.8 Seminars
 
                             <div class="right">
                                 <a class="btn-small" style="background-color: purple;">View</a>
@@ -412,8 +601,8 @@
     <li id="overview">
         <div class="collapsible-header"><i class="material-icons">book</i><b>Annexure 3</b>
             <div class="right inline col s12 m4 l2">
-                <input id="score_inline" placeholder="Score ( /40)" name="annexure_3" disabled
-                    value="{{marks.annexure_3}}" type="number" class="validate">
+                <input id="score_inline" placeholder="Score ( /40)" name="annexure_3"
+                    value="{{annexure_3}}" type="number" class="validate">
             </div>
             <br><br><br>
         </div>
@@ -421,7 +610,13 @@
             <ul class="collection">
                 <li class="collection-item">
                     <p>
-                        <div>3.1Resource Person in STTP/Training Course/Lecture Talks
+                        <div>
+                            {{#if ../resourcePerson}}
+                                    <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
+                                    {{else}}
+                                    <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
+                                    {{/if}}
+                                    3.1Resource Person in STTP/Training Course/Lecture Talks
 
                             <div class="right">
                                 <a class="btn-small" style="background-color: purple;">View</a>
@@ -432,7 +627,12 @@
 
                 <li class="collection-item">
                     <p>
-                        <div>3.2 Contribution To Syllabus Framing
+                        <div>{{#if ../contributionToSyllabus}}
+                                    <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
+                                    {{else}}
+                                    <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
+                                    {{/if}}
+                                    3.2 Contribution To Syllabus Framing
 
                             <div class="right">
                                 <a class="btn-small" style="background-color: purple;">View</a>
@@ -443,7 +643,13 @@
 
                 <li class="collection-item">
                     <p>
-                        <div>3.3 Member Of University Committe
+                        <div>
+                            {{#if ../memberOfUniversityCommitte}}
+                                    <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
+                                    {{else}}
+                                    <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
+                                    {{/if}}
+                                    3.3 Member Of University Committe
 
                             <div class="right">
                                 <a class="btn-small" style="background-color: purple;">View</a>
@@ -454,7 +660,13 @@
 
                 <li class="collection-item">
                     <p>
-                        <div>3.4 Consultancy Assignment
+                        <div>
+                            {{#if ../consultancyAssignment}}
+                                    <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
+                                    {{else}}
+                                    <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
+                                    {{/if}}
+                                    3.4 Consultancy Assignment
 
                             <div class="right">
                                 <a class="btn-small" style="background-color: purple;">View</a>
@@ -465,7 +677,12 @@
 
                 <li class="collection-item">
                     <p>
-                        <div>3.5 External Projects Or Competitions Participations
+                        <div>
+                            {{#if ../externalProjectsOrCompetition}}
+                                    <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
+                                    {{else}}
+                                    <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
+                                    {{/if}} 3.5 External Projects Or Competitions Participations
 
                             <div class="right">
                                 <a class="btn-small" style="background-color: purple;">View</a>
@@ -484,4 +701,4 @@
 <br><br><br>
 {{else}}
 <h2>Marks not submitted yet.</h2>
-{{/if}}
+{{/each}}
