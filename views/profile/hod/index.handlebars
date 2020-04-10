@@ -1,8 +1,9 @@
 {{#if_eq user.type 'hod'}}
-{{#each hod_profile}}
 <h3>HoD Profile Page</h3>
 <hr>
 <div class="row">
+  {{#each hod_profile}}
+
   <div class="col s12 m12">
     <div class="card darken-1">
       <table class="striped">
@@ -52,8 +53,10 @@
   </div>
 </div>
 {{else}}
-<p>Profile not added.</p>
-<a href="/profile/hod/addProfile" class="waves-effect waves-light btn btn-large center">Add Profile</a>
+<div class="container">
+  <p>Profile not added.</p>
+  <a href="/profile/hod/addProfile" class="waves-effect waves-light btn btn-large center">Add Profile</a>
+</div>
 {{/each}}
 
 {{else}}
@@ -63,3 +66,4 @@
 {{else}}
 {{/if_eq}}
 {{/if_eq}}
+</div>

@@ -19,7 +19,11 @@ const FacultyProfile = mongoose.model('faculty_profile');
 
 // Load faculty marks model
 require('../models/Users/FacultyMarks');
-const FacultyMarks = mongoose.model('faculty-marks')
+const FacultyMarks = mongoose.model('faculty-marks');
+
+// Load Hod marks
+require('../models/Users/HodMarks');
+const HodMarks = mongoose.model('hod-marks');
 
 // Load HOD model
 require('../models/Users/Hod');
@@ -207,7 +211,9 @@ router.get('/hod/hodOverview/:id', ensureAuthenticated, (req, res) => {
             modules.ContributionToSyllabus.findOne({ user: facultID }).exec(),
             modules.MemberOfUniversityCommitte.findOne({ user: facultID }).exec(),
             modules.ConsultancyAssignment.findOne({ user: facultID }).exec(),
-            modules.ExternalProjectsOrCompetition.findOne({ user: facultID }).exec()
+            modules.ExternalProjectsOrCompetition.findOne({ user: facultID }).exec(),
+
+            HodMarks.findOne({ user: facultID }).exec()
             ];
             Promise.all(loads)
                 .then(result => {
@@ -217,9 +223,10 @@ router.get('/hod/hodOverview/:id', ensureAuthenticated, (req, res) => {
                     leave,
                     timeTable, classAdvisor, sportsActivities, culturalActivities, projectBasedLearning, udaan, placementActivities, inhousePlacement, studentOrganizations, industrialVisitActivities, admissionProcessActivities, examAssessmentExternal, examActivitiesSupervision, examActivitiesCollegeLevel, itMaintenance, lakshya, magazineNewsletter, sttp, departmentUGProjects,
                     papersPublishedNationalConf, papersPublishedInternationalConf, papersPublishedJournals, moocs, swayam, shortTermTraining, seminars,
-                    resourcePerson, contributionToSyllabus, memberOfUniversityCommitte, consultancyAssignment, externalProjectsOrCompetition]) => {
+                    resourcePerson, contributionToSyllabus, memberOfUniversityCommitte, consultancyAssignment, externalProjectsOrCompetition,
+                hodMarks]) => {
 
-                    res.render('users/hod/hodOverview', { finalResult, teachingLoad, teachingAssistant, newBooks, addedExp, innovation, leave, timeTable, classAdvisor, sportsActivities, culturalActivities, projectBasedLearning, udaan, placementActivities, inhousePlacement, studentOrganizations, industrialVisitActivities, admissionProcessActivities, examAssessmentExternal, examActivitiesSupervision, examActivitiesCollegeLevel, itMaintenance, lakshya, magazineNewsletter, sttp, departmentUGProjects, papersPublishedNationalConf, papersPublishedInternationalConf, papersPublishedJournals, moocs, swayam, shortTermTraining, seminars, resourcePerson, contributionToSyllabus, memberOfUniversityCommitte, consultancyAssignment, externalProjectsOrCompetition });
+                    res.render('users/hod/hodOverview', { finalResult, teachingLoad, teachingAssistant, newBooks, addedExp, innovation, leave, timeTable, classAdvisor, sportsActivities, culturalActivities, projectBasedLearning, udaan, placementActivities, inhousePlacement, studentOrganizations, industrialVisitActivities, admissionProcessActivities, examAssessmentExternal, examActivitiesSupervision, examActivitiesCollegeLevel, itMaintenance, lakshya, magazineNewsletter, sttp, departmentUGProjects, papersPublishedNationalConf, papersPublishedInternationalConf, papersPublishedJournals, moocs, swayam, shortTermTraining, seminars, resourcePerson, contributionToSyllabus, memberOfUniversityCommitte, consultancyAssignment, externalProjectsOrCompetition, hodMarks });
                 })
 
         })
@@ -258,19 +265,23 @@ router.get('/hod/home', ensureAuthenticated, (req, res) => {
     });
 });
 
-router.post('/hod/confidential', (req, res) => {
+router.post('/hod/finalSubmit', (req, res) => {
     let errors = [];
     if (req.body.value1 == '' || req.body.value2 == '' || req.body.value3 == '' || req.body.value4 == '' || req.body.value5 == '') {
         errors.push({ text: 'Please mark all the buttons' });
     } else {
-        const confidentialForm = {
-            value1: req.body.value1,
-            value2: req.body.value2,
-            value3: req.body.value3,
-            value4: req.body.value4,
-            value5: req.body.value5
+        let fianlValue = +req.body.value1 + +req.body.value2 + +req.body.value3 + +req.body.value4 + +req.body.value5
+
+        const finalSubmitData = {
+            academicPerformance: req.body.academicPerformance,
+            leaveRecord: req.body.leaveRecord,
+            annexure_1: req.body.annexure_1,
+            annexure_2: req.body.annexure_2,
+            annexure_3: req.body.annexure_3,
+            confidential: fianlValue,
+            user: facultID
         }
-        new Confidential(confidentialForm)
+        new HodMarks(finalSubmitData)
             .save()
             .then(confidential_form => {
                 req.flash('success_msg', 'Marks added successfully');
