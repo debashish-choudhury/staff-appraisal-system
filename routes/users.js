@@ -249,6 +249,10 @@ router.get('/hod/hodOverview/:id', ensureAuthenticated, (req, res) => {
                 })
 
         })
+        .catch(err => {
+            req.flash('error_msg', 'No submissions yet.');
+            res.redirect('/users/hod/home');
+        })
 });
 
 // User register form
