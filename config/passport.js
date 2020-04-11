@@ -124,6 +124,9 @@ module.exports = function (passport) {
                         } else {
                             done(new Error('user id not found:' + obj.id, null));
                         }
+                    })
+                    .catch(err => {
+                        console.log(err);
                     });
                 break;
             case 'manager':
