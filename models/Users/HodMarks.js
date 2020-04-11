@@ -3,6 +3,14 @@ const Schema = mongoose.Schema;
 
 //create Schema
 const HodMarks = new Schema({
+    faculty_name: {
+        type: String,
+        required: true
+    },
+    faculty_email: {
+        type: String,
+        required: true
+    },
     academicPerformance: {
         type: Number,
         required: true

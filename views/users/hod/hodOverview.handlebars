@@ -1,4 +1,5 @@
-<h4>HoD's Overview</h4>
+<h4>HoD's Overview: Part-A</h4>
+<hr>
 <div class="row">
 {{#each finalResult}}
 {{#if ../hodMarks}}
@@ -697,9 +698,9 @@
             </div>
         </li>
     </ul>
-
-    <h4>HOD FORM: Part-B </h4><br>
-    <div class="container">
+    <br>
+    <h4>HOD FORM: Part-B </h4>
+    <div>
 
         <h5>HOD's Confidential Form : {{../hodMarks.confidential}}/20</h5>
         <hr>
@@ -873,7 +874,7 @@
 </form>
 </div>
 {{else}}
-<form action="/users/hod/finalSubmit" method="post">
+<form action="/users/hod/finalSubmit/{{user}}" method="post">
     <ul class="collapsible popout" data-collapsible="accordion">
         <li id="overview">
             <div class="collapsible-header"><i class="material-icons">book</i><b>Academic Performance</b>
@@ -1570,7 +1571,7 @@
     </ul>
 
     <h4>HOD FORM: Part-B </h4><br>
-    <div class="container">
+    <div>
 
         <h5>HOD's Feedback Form</h5>
         <hr>

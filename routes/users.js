@@ -7,7 +7,11 @@ const { ensureAuthenticated } = require('../helpers/auth');
 
 var modules = require('../config/modules');
 
+mongoose.Promise = global.Promise;
+
 let facultID;
+let facultyName;
+let facultyEmail;
 
 // Load faculty model
 require('../models/Users/Faculty');
@@ -33,6 +37,10 @@ const Hod = mongoose.model('hod');
 require('../models/Users/Confidential');
 const Confidential = mongoose.model('confidential_form');
 
+// Load Manager model
+require('../models/Users/ManagerDB');
+const Manager = mongoose.model('management_user');
+
 // User register form
 router.get('/register', (req, res) => {
     res.render('users/register');
@@ -41,6 +49,10 @@ router.get('/register', (req, res) => {
 // faculty user login form
 router.get('/faculty/login', (req, res) => {
     res.render('users/faculty/login');
+});
+
+router.get('/management/login', (req, res) => {
+    res.render('users/management/login');
 });
 
 router.get('/faculty/facultyOverview', ensureAuthenticated, (req, res) => {
@@ -148,6 +160,9 @@ router.post('/faculty/facultyOverview', (req, res) => {
                 req.flash('success_msg', 'Successfully added marks for evaluation');
                 res.redirect('/users/faculty/facultyOverview');
             })
+            .catch(err => {
+                if (err) throw err;
+            })
     }
 });
 
@@ -164,13 +179,13 @@ router.get('/hod/confidential', ensureAuthenticated, (req, res) => {
 // hod overview form
 router.get('/hod/hodOverview/:id', ensureAuthenticated, (req, res) => {
     let finalResult;
-    FacultyMarks.find({user: req.params.id})
+    FacultyMarks.find({ user: req.params.id })
         .then(marks => {
             finalResult = marks;
             facultID = marks[0].user;
 
-            console.log(facultID);
-            console.log(finalResult);
+            //console.log(facultID);
+            //console.log(finalResult);
             var loads = [modules.TeachingLoad.findOne({ user: facultID }).exec(),
             modules.TeachingAssistant.findOne({ user: facultID }).exec(),
             modules.NewBooks.findOne({ user: facultID }).exec(),
@@ -224,7 +239,8 @@ router.get('/hod/hodOverview/:id', ensureAuthenticated, (req, res) => {
                     timeTable, classAdvisor, sportsActivities, culturalActivities, projectBasedLearning, udaan, placementActivities, inhousePlacement, studentOrganizations, industrialVisitActivities, admissionProcessActivities, examAssessmentExternal, examActivitiesSupervision, examActivitiesCollegeLevel, itMaintenance, lakshya, magazineNewsletter, sttp, departmentUGProjects,
                     papersPublishedNationalConf, papersPublishedInternationalConf, papersPublishedJournals, moocs, swayam, shortTermTraining, seminars,
                     resourcePerson, contributionToSyllabus, memberOfUniversityCommitte, consultancyAssignment, externalProjectsOrCompetition,
-                hodMarks]) => {
+                    hodMarks,
+                ]) => {
 
                     res.render('users/hod/hodOverview', { finalResult, teachingLoad, teachingAssistant, newBooks, addedExp, innovation, leave, timeTable, classAdvisor, sportsActivities, culturalActivities, projectBasedLearning, udaan, placementActivities, inhousePlacement, studentOrganizations, industrialVisitActivities, admissionProcessActivities, examAssessmentExternal, examActivitiesSupervision, examActivitiesCollegeLevel, itMaintenance, lakshya, magazineNewsletter, sttp, departmentUGProjects, papersPublishedNationalConf, papersPublishedInternationalConf, papersPublishedJournals, moocs, swayam, shortTermTraining, seminars, resourcePerson, contributionToSyllabus, memberOfUniversityCommitte, consultancyAssignment, externalProjectsOrCompetition, hodMarks });
                 })
@@ -249,6 +265,9 @@ router.post('/faculty/login',
 router.post('/hod/login',
     passport.authenticate('hod', { successRedirect: '/users/hod/home', failureRedirect: '/users/hod/login', failureFlash: true }));
 
+router.post('/management/login',
+    passport.authenticate('management_user', { successRedirect: '/users/management/home', failureRedirect: '/users/management/login', failureFlash: true }));
+
 router.get('/hod/home', ensureAuthenticated, (req, res) => {
     const facultyRegistered = Faculty.find({}).exec();
     const facultyMarks = FacultyMarks.find({}).limit(1).exec();
@@ -256,37 +275,77 @@ router.get('/hod/home', ensureAuthenticated, (req, res) => {
         // return Promise.all(result.map(r => JSON.stringify(r)));
         return Promise.all(result);
     }).then(([faculty, marks]) => {
-        console.log(faculty);
-        console.log(marks);
-        // facultID = marks[0].user;
+        // console.log(faculty);
+        // console.log(marks);
+        facultID = marks[0].user;
         res.render('users/hod/home', {
             faculty: faculty
         });
     });
 });
 
-router.post('/hod/finalSubmit', (req, res) => {
+router.get('/management/home', ensureAuthenticated, (req, res) => {
+    HodMarks.find({})
+    .sort({date: 'desc'})
+    .then(result => {
+        if(!result) {
+            req.flash('error_msg', 'No submissions yet.');
+            res.redirect('/users/management/home');
+        } else {
+            res.render('users/management/home', {result});
+        }
+    })
+});
+
+router.get('/hod/appraisalList', (req, res) => {
+    HodMarks.find({})
+    .sort({date: 'desc'})
+    .then(result => {
+        if(!result) {
+            req.flash('error_msg', 'No submissions yet.');
+            res.redirect('/users/hod/home');
+        } else {
+            res.render('users/hod/appraisalList', {result});
+        }
+    })
+});
+
+router.post('/hod/finalSubmit/:id', (req, res) => {
     let errors = [];
     if (req.body.value1 == '' || req.body.value2 == '' || req.body.value3 == '' || req.body.value4 == '' || req.body.value5 == '') {
         errors.push({ text: 'Please mark all the buttons' });
     } else {
-        let fianlValue = +req.body.value1 + +req.body.value2 + +req.body.value3 + +req.body.value4 + +req.body.value5
-
-        const finalSubmitData = {
-            academicPerformance: req.body.academicPerformance,
-            leaveRecord: req.body.leaveRecord,
-            annexure_1: req.body.annexure_1,
-            annexure_2: req.body.annexure_2,
-            annexure_3: req.body.annexure_3,
-            confidential: fianlValue,
-            user: facultID
-        }
-        new HodMarks(finalSubmitData)
-            .save()
-            .then(confidential_form => {
-                req.flash('success_msg', 'Marks added successfully');
-                res.redirect('/users/hod/home');
+        Faculty.find({ _id: req.params.id }).exec()
+            .then(result => {
+                facultyName = result[0].name;
+                facultyEmail = result[0].email;
+                let fianlValue = +req.body.value1 + +req.body.value2 + +req.body.value3 + +req.body.value4 + +req.body.value5
+                // console.log(facultyName);
+                // console.log(facultyEmail);
+                const finalSubmitData = {
+                    faculty_name: facultyName,
+                    faculty_email: facultyEmail,
+                    academicPerformance: req.body.academicPerformance,
+                    leaveRecord: req.body.leaveRecord,
+                    annexure_1: req.body.annexure_1,
+                    annexure_2: req.body.annexure_2,
+                    annexure_3: req.body.annexure_3,
+                    confidential: fianlValue,
+                    user: facultID
+                }
+                new HodMarks(finalSubmitData)
+                    .save()
+                    .then(confidential_form => {
+                        req.flash('success_msg', 'Marks added successfully');
+                        res.redirect('/users/hod/home');
+                    })
+                    .catch(err => {
+                        if (err) throw err;
+                    })
             })
+            .catch(err => {
+                if (err) throw err;
+            });
     }
 });
 

@@ -6,6 +6,7 @@ const bcrypt = require('bcryptjs');
 // const User = mongoose.model('users');
 const Faculty = mongoose.model('users');
 const Hod = mongoose.model('hod');
+const Manager = mongoose.model('management_user');
 
 module.exports = function (passport) {
     // passport.use(new LocalStrategy({ usernameField: 'email' }, (email, password, done) => {
@@ -29,42 +30,60 @@ module.exports = function (passport) {
     //         } else {
     //             return done(null, false, { message: 'User not found' });
     //         }
-            
+
     //     })
     // }));
 
-    passport.use('faculty', new LocalStrategy({ usernameField: 'email' }, function(email, password, done){
-        var query = {email: email};
-        Faculty.findOne(query, function(err, faculty){
-            if(err) throw err;
-            if(!faculty){
-                return done(null, false, {message: 'User Not found'});
+    passport.use('faculty', new LocalStrategy({ usernameField: 'email' }, function (email, password, done) {
+        var query = { email: email };
+        Faculty.findOne(query, function (err, faculty) {
+            if (err) throw err;
+            if (!faculty) {
+                return done(null, false, { message: 'User Not found' });
             }
-            bcrypt.compare(password, faculty.password, function(err, isMatch){
-                if(err) throw err;
-                if(isMatch)
+            bcrypt.compare(password, faculty.password, function (err, isMatch) {
+                if (err) throw err;
+                if (isMatch)
                     return done(null, faculty);
                 else
-                    return done(null, false, {message: 'Password do not match'});
+                    return done(null, false, { message: 'Password do not match' });
             })
         })
     }));
 
 
-    passport.use('hod', new LocalStrategy({ usernameField: 'email' }, function(email, password, done){
-        var query = {email: email};
-        Hod.findOne(query, function(err, hod){
-            if(err) throw err;
-            if(!hod){
+    passport.use('hod', new LocalStrategy({ usernameField: 'email' }, function (email, password, done) {
+        var query = { email: email };
+        Hod.findOne(query, function (err, hod) {
+            if (err) throw err;
+            if (!hod) {
                 console.log("no hod")
-                return done(null, false, {message: 'User not found'});
+                return done(null, false, { message: 'User not found' });
             }
-            bcrypt.compare(password, hod.password, function(err, isMatch){
-                if(err) throw err;
-                if(isMatch)
+            bcrypt.compare(password, hod.password, function (err, isMatch) {
+                if (err) throw err;
+                if (isMatch)
                     return done(null, hod);
                 else
-                    return done(null, false, {message: 'Password do not match'});
+                    return done(null, false, { message: 'Password do not match' });
+            })
+        })
+    }))
+
+    passport.use('management_user', new LocalStrategy({ usernameField: 'email' }, function (email, password, done) {
+        var query = { email: email };
+        Manager.findOne(query, function (err, manager) {
+            if (err) throw err;
+            if (!manager) {
+                console.log("no manager")
+                return done(null, false, { message: 'User not found' });
+            }
+            bcrypt.compare(password, manager.password, function (err, isMatch) {
+                if (err) throw err;
+                if (isMatch)
+                    return done(null, manager);
+                else
+                    return done(null, false, { message: 'Password do not match' });
             })
         })
     }))
@@ -83,7 +102,7 @@ module.exports = function (passport) {
     passport.serializeUser(function (entity, done) {
         done(null, { id: entity.id, type: entity.type });
     });
-    
+
     passport.deserializeUser(function (obj, done) {
         switch (obj.type) {
             case 'faculty':
@@ -103,6 +122,17 @@ module.exports = function (passport) {
                         if (user) {
                             done(null, user);
                         } else {
+                            done(new Error('user id not found:' + obj.id, null));
+                        }
+                    });
+                break;
+            case 'manager':
+                Manager.findById(obj.id)
+                    .then(user => {
+                        if (user) {
+                            done(null, user);
+                        }
+                        else {
                             done(new Error('user id not found:' + obj.id, null));
                         }
                     });

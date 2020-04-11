@@ -33,6 +33,13 @@
           {{else}}
           {{/if_eq}}
 
+          {{#if_eq user.type 'manager'}}
+          <li><a href="/users/management/home">Home</a></li>
+          <li><a href="/users/logout" class="white-text">Logout</a></li>
+          </li>
+          {{else}}
+          {{/if_eq}}
+
           {{#unless user}}
           <li><a href="/">Home</a></li>
           {{/unless}}
@@ -121,6 +128,7 @@
 {{!-- side bar content for mobile view --}}
 <ul id="mobile-demo" class="sidenav">
   {{#if_eq user.type 'faculty'}}
+  <li><h4 class="center purple-text">Appraisal System</h4></li>
   <li><a class="sideNavPadding" href="/">Home</a></li>
   <li class="no-padding">
     <ul class="collapsible collapsible-accordion">
@@ -214,20 +222,30 @@
   </li>
   <li><a class="sideNavPadding" href="/profile/faculty/index">Profile</a></li>
   <li><a class="sideNavPadding" href="/users/faculty/facultyOverview" class="black-text">Faculty Overview</a></li>
-  <li class="divider"></li>
+  <li class="divider"></li><hr>
   <li><a class="sideNavPadding" href="/users/logout" class="black-text">Logout</a></li>
   {{else}}
   {{/if_eq}}
 
   {{#if_eq user.type 'hod'}}
+  <li><h4 class="center purple-text">Appraisal System</h4></li>
   <li><a href="/users/hod/home">Home</a></li>
   <li><a href="/users/hod/appraisalList">Appraisal List</a></li>
-  <li><a class="dropdown-trigger" href="/profile/hod/index" data-target="profile">Profile</a></li>
+  <li><a class="dropdown-trigger" href="/profile/hod/index" data-target="profile">Profile</a></li><hr>
+  <li><a href="/users/logout" class="black-text">Logout</a></li>
+  {{else}}
+  {{/if_eq}}
+
+  {{#if_eq user.type 'manager'}}
+  <li><h4 class="center purple-text">Appraisal System</h4></li>
+  <li><a href="/users/management/home">Home</a></li>
+  <hr>
   <li><a href="/users/logout" class="black-text">Logout</a></li>
   {{else}}
   {{/if_eq}}
 
   {{#unless user}}
+  <li><h4 class="center purple-text">Appraisal System</h4></li>
   <li><a href="/">Home</a></li>
   {{/unless}}
 </ul>
