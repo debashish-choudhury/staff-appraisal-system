@@ -48,7 +48,7 @@ module.exports = function (passport) {
                 else
                     return done(null, false, { message: 'Password do not match' });
             })
-        })
+        });
     }));
 
 
@@ -67,7 +67,7 @@ module.exports = function (passport) {
                 else
                     return done(null, false, { message: 'Password do not match' });
             })
-        })
+        });
     }))
 
     passport.use('management_user', new LocalStrategy({ usernameField: 'email' }, function (email, password, done) {
@@ -85,7 +85,7 @@ module.exports = function (passport) {
                 else
                     return done(null, false, { message: 'Password do not match' });
             })
-        })
+        });
     }))
 
 
