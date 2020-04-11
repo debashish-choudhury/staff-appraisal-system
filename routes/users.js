@@ -297,7 +297,7 @@ router.get('/management/home', ensureAuthenticated, (req, res) => {
     })
 });
 
-router.get('/hod/appraisalList', (req, res) => {
+router.get('/hod/appraisalList', ensureAuthenticated, (req, res) => {
     HodMarks.find({})
     .sort({date: 'desc'})
     .then(result => {
