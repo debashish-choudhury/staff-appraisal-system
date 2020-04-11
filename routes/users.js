@@ -247,16 +247,7 @@ router.get('/hod/hodOverview/:id', ensureAuthenticated, (req, res) => {
 
                     res.render('users/hod/hodOverview', { finalResult, teachingLoad, teachingAssistant, newBooks, addedExp, innovation, leave, timeTable, classAdvisor, sportsActivities, culturalActivities, projectBasedLearning, udaan, placementActivities, inhousePlacement, studentOrganizations, industrialVisitActivities, admissionProcessActivities, examAssessmentExternal, examActivitiesSupervision, examActivitiesCollegeLevel, itMaintenance, lakshya, magazineNewsletter, sttp, departmentUGProjects, papersPublishedNationalConf, papersPublishedInternationalConf, papersPublishedJournals, moocs, swayam, shortTermTraining, seminars, resourcePerson, contributionToSyllabus, memberOfUniversityCommitte, consultancyAssignment, externalProjectsOrCompetition, hodMarks });
                 })
-                .catch(err => {
-                    if(err) throw err;
-                })
 
-        })
-        .catch(err => {
-            if (err) {
-                req.flash('error_msg', 'not submitted the form');
-                res.redirect('/users/hod/home');
-            }
         })
 });
 
@@ -275,24 +266,11 @@ router.post('/management/login',
     passport.authenticate('management_user', { successRedirect: '/users/management/home', failureRedirect: '/users/management/login', failureFlash: true }));
 
 router.get('/hod/home', ensureAuthenticated, (req, res) => {
-    const facultyRegistered = Faculty.find({}).exec();
-    const facultyMarks = FacultyMarks.find({}).limit(1).exec();
-    Promise.all([facultyRegistered, facultyMarks]).then(result => {
-        // return Promise.all(result.map(r => JSON.stringify(r)));
-        return Promise.all(result);
-    }).then(([faculty, marks]) => {
-        // console.log(faculty);
-        // console.log(marks);
-        facultID = marks[0].user;
+    Faculty.find({})
+    .then(result => {
         res.render('users/hod/home', {
-            faculty: faculty
+            faculty: result
         })
-        .catch(err => {
-            if(err) throw err;
-        })
-    })
-    .catch(err => {
-        if (err) throw err;
     })
 });
 
@@ -307,9 +285,6 @@ router.get('/management/home', ensureAuthenticated, (req, res) => {
             res.render('users/management/home', {result});
         }
     })
-    .catch(err => {
-        if(err) throw err;
-    })
 });
 
 router.get('/hod/appraisalList', ensureAuthenticated, (req, res) => {
@@ -322,9 +297,6 @@ router.get('/hod/appraisalList', ensureAuthenticated, (req, res) => {
         } else {
             res.render('users/hod/appraisalList', {result});
         }
-    })
-    .catch(err => {
-        if(err) throw err;
     })
 });
 
@@ -357,13 +329,7 @@ router.post('/hod/finalSubmit/:id', (req, res) => {
                         req.flash('success_msg', 'Marks added successfully');
                         res.redirect('/users/hod/home');
                     })
-                    .catch(err => {
-                        if (err) throw err;
-                    })
             })
-            .catch(err => {
-                if (err) throw err;
-            });
     }
 });
 
@@ -408,10 +374,6 @@ router.post('/register', (req, res) => {
                                     .then(user => {
                                         req.flash('success_msg', 'You are now registered and can login');
                                         res.redirect('/users/faculty/login')
-                                    })
-                                    .catch(err => {
-                                        console.log(err);
-                                        return;
                                     });
                             });
                         });
@@ -464,7 +426,7 @@ router.post('/register', (req, res) => {
                             });
                         });
                     }
-                })
+                });
         }
     }
 
