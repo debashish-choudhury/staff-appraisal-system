@@ -116,6 +116,9 @@ router.get('/faculty/facultyOverview', ensureAuthenticated, (req, res) => {
                     res.render('users/faculty/facultyOverview', { finalResult, teachingLoad, teachingAssistant, newBooks, addedExp, innovation, leave, timeTable, classAdvisor, sportsActivities, culturalActivities, projectBasedLearning, udaan, placementActivities, inhousePlacement, studentOrganizations, industrialVisitActivities, admissionProcessActivities, examAssessmentExternal, examActivitiesSupervision, examActivitiesCollegeLevel, itMaintenance, lakshya, magazineNewsletter, sttp, departmentUGProjects, papersPublishedNationalConf, papersPublishedInternationalConf, papersPublishedJournals, moocs, swayam, shortTermTraining, seminars, resourcePerson, contributionToSyllabus, memberOfUniversityCommitte, consultancyAssignment, externalProjectsOrCompetition });
                 })
         })
+        .catch(err => {
+            if(err) throw err;
+        })
 });
 
 // Faculty final overview submission with marks
@@ -280,8 +283,14 @@ router.get('/hod/home', ensureAuthenticated, (req, res) => {
         facultID = marks[0].user;
         res.render('users/hod/home', {
             faculty: faculty
-        });
-    });
+        })
+        .catch(err => {
+            if(err) throw err;
+        })
+    })
+    .catch(err => {
+        if (err) throw err;
+    })
 });
 
 router.get('/management/home', ensureAuthenticated, (req, res) => {
@@ -295,6 +304,9 @@ router.get('/management/home', ensureAuthenticated, (req, res) => {
             res.render('users/management/home', {result});
         }
     })
+    .catch(err => {
+        if(err) throw err;
+    })
 });
 
 router.get('/hod/appraisalList', ensureAuthenticated, (req, res) => {
@@ -307,6 +319,9 @@ router.get('/hod/appraisalList', ensureAuthenticated, (req, res) => {
         } else {
             res.render('users/hod/appraisalList', {result});
         }
+    })
+    .catch(err => {
+        if(err) throw err;
     })
 });
 
