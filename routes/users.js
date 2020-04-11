@@ -270,7 +270,7 @@ router.get('/hod/home', ensureAuthenticated, (req, res) => {
     .then(result => {
         res.render('users/hod/home', {
             faculty: result
-        })
+        });
     })
 });
 
