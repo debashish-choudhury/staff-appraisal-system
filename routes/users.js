@@ -55,6 +55,17 @@ router.get('/management/login', (req, res) => {
     res.render('users/management/login');
 });
 
+// hod user login form
+router.get('/hod/login', (req, res) => {
+    res.render('users/hod/login');
+});
+
+// hod Confidential form
+router.get('/hod/confidential', ensureAuthenticated, (req, res) => {
+    res.render('users/hod/confidential');
+});
+
+// Faculty Overview form
 router.get('/faculty/facultyOverview', ensureAuthenticated, (req, res) => {
     let finalResult;
     FacultyMarks.find({ user: req.user.id })
@@ -121,62 +132,32 @@ router.get('/faculty/facultyOverview', ensureAuthenticated, (req, res) => {
         })
 });
 
-// Faculty final overview submission with marks
-router.post('/faculty/facultyOverview', (req, res) => {
-
-    let errors = [];
-
-    if (!req.body.academicPerformance || req.body.academicPerformance > 40 || req.body.academicPerformance < 0) {
-        errors.push({ text: 'Please enter marks between 0 to 40' });
-    } else if (!req.body.leaveRecord || req.body.leaveRecord > 40 || req.body.leaveRecord < 0) {
-        errors.push({ text: 'Please enter marks between 0 to 40' });
-    } else if (!req.body.annexure_1 || req.body.annexure_1 > 40 || req.body.annexure_1 < 0) {
-        errors.push({ text: 'Please enter marks between 0 to 40' });
-    } else if (!req.body.annexure_2 || req.body.annexure_2 > 40 || req.body.annexure_2 < 0) {
-        errors.push({ text: 'Please enter marks between 0 to 40' });
-    } else if (!req.body.annexure_3 || req.body.annexure_3 > 40 || req.body.annexure_3 < 0) {
-        errors.push({ text: 'Please enter marks between 0 to 40' });
-    }
-
-    if (errors.length > 0) {
-        res.render('users/faculty/facultyOverview', {
-            errors: errors,
-            academicPerformance: req.body.academicPerformance,
-            leaveRecord: req.body.leaveRecord,
-            annexure_1: req.body.annexure_1,
-            annexure_2: req.body.annexure_2,
-            annexure_3: req.body.annexure_3
-        });
-    }
-    else {
-        const marks = {
-            academicPerformance: req.body.academicPerformance,
-            leaveRecord: req.body.leaveRecord,
-            annexure_1: req.body.annexure_1,
-            annexure_2: req.body.annexure_2,
-            annexure_3: req.body.annexure_3,
-            user: req.user.id
+// Management route
+router.get('/management/home', ensureAuthenticated, (req, res) => {
+    HodMarks.find({})
+    .sort({date: 'desc'})
+    .then(result => {
+        if(!result) {
+            req.flash('error_msg', 'No submissions yet.');
+            res.redirect('/users/management/home');
+        } else {
+            res.render('users/management/home', {result});
         }
-        new FacultyMarks(marks)
-            .save()
-            .then(() => {
-                req.flash('success_msg', 'Successfully added marks for evaluation');
-                res.redirect('/users/faculty/facultyOverview');
-            })
-            .catch(err => {
-                if (err) throw err;
-            })
-    }
+    })
 });
 
-// hod user login form
-router.get('/hod/login', (req, res) => {
-    res.render('users/hod/login');
-});
-
-// hod Confidential form
-router.get('/hod/confidential', ensureAuthenticated, (req, res) => {
-    res.render('users/hod/confidential');
+// HoD Appraisal List route
+router.get('/hod/appraisalList', ensureAuthenticated, (req, res) => {
+    HodMarks.find({})
+    .sort({date: 'desc'})
+    .then(result => {
+        if(!result) {
+            req.flash('error_msg', 'No submissions yet.');
+            res.redirect('/users/hod/home');
+        } else {
+            res.render('users/hod/appraisalList', {result});
+        }
+    })
 });
 
 // hod overview form
@@ -260,6 +241,54 @@ router.get('/register', (req, res) => {
     res.render('users/register');
 });
 
+// Faculty final overview submission with marks
+router.post('/faculty/facultyOverview', (req, res) => {
+
+    let errors = [];
+
+    if (!req.body.academicPerformance || req.body.academicPerformance > 40 || req.body.academicPerformance < 0) {
+        errors.push({ text: 'Please enter marks between 0 to 40' });
+    } else if (!req.body.leaveRecord || req.body.leaveRecord > 40 || req.body.leaveRecord < 0) {
+        errors.push({ text: 'Please enter marks between 0 to 40' });
+    } else if (!req.body.annexure_1 || req.body.annexure_1 > 40 || req.body.annexure_1 < 0) {
+        errors.push({ text: 'Please enter marks between 0 to 40' });
+    } else if (!req.body.annexure_2 || req.body.annexure_2 > 40 || req.body.annexure_2 < 0) {
+        errors.push({ text: 'Please enter marks between 0 to 40' });
+    } else if (!req.body.annexure_3 || req.body.annexure_3 > 40 || req.body.annexure_3 < 0) {
+        errors.push({ text: 'Please enter marks between 0 to 40' });
+    }
+
+    if (errors.length > 0) {
+        res.render('users/faculty/facultyOverview', {
+            errors: errors,
+            academicPerformance: req.body.academicPerformance,
+            leaveRecord: req.body.leaveRecord,
+            annexure_1: req.body.annexure_1,
+            annexure_2: req.body.annexure_2,
+            annexure_3: req.body.annexure_3
+        });
+    }
+    else {
+        const marks = {
+            academicPerformance: req.body.academicPerformance,
+            leaveRecord: req.body.leaveRecord,
+            annexure_1: req.body.annexure_1,
+            annexure_2: req.body.annexure_2,
+            annexure_3: req.body.annexure_3,
+            user: req.user.id
+        }
+        new FacultyMarks(marks)
+            .save()
+            .then(() => {
+                req.flash('success_msg', 'Successfully added marks for evaluation');
+                res.redirect('/users/faculty/facultyOverview');
+            })
+            .catch(err => {
+                if (err) throw err;
+            })
+    }
+});
+
 router.post('/faculty/login',
     passport.authenticate('faculty', { successRedirect: '/', failureRedirect: '/users/faculty/login', failureFlash: true }));
 
@@ -275,32 +304,6 @@ router.get('/hod/home', ensureAuthenticated, (req, res) => {
         res.render('users/hod/home', {
             faculty: result
         });
-    })
-});
-
-router.get('/management/home', ensureAuthenticated, (req, res) => {
-    HodMarks.find({})
-    .sort({date: 'desc'})
-    .then(result => {
-        if(!result) {
-            req.flash('error_msg', 'No submissions yet.');
-            res.redirect('/users/management/home');
-        } else {
-            res.render('users/management/home', {result});
-        }
-    })
-});
-
-router.get('/hod/appraisalList', ensureAuthenticated, (req, res) => {
-    HodMarks.find({})
-    .sort({date: 'desc'})
-    .then(result => {
-        if(!result) {
-            req.flash('error_msg', 'No submissions yet.');
-            res.redirect('/users/hod/home');
-        } else {
-            res.render('users/hod/appraisalList', {result});
-        }
     })
 });
 
