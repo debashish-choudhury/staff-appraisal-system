@@ -1,5 +1,6 @@
 const express = require('express');
 const exphbs = require('express-handlebars');
+const path = require('path');
 const methodOverride = require('method-override');
 const flash = require('connect-flash');
 const session = require('express-session');
@@ -16,6 +17,9 @@ const annexure_2 = require('./routes/annexure-2');
 const annexure_3 = require('./routes/annexure-3');
 const profile = require('./routes/profile');
 const users = require('./routes/users');
+
+// Static folder
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Load helpers
 const {

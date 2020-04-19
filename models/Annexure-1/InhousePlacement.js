@@ -22,10 +22,6 @@ const InhousePlacement = new Schema({
     user: {
         type: String,
         required: true
-    },
-    user: {
-        type: String,
-        required: true
     }
 });
 

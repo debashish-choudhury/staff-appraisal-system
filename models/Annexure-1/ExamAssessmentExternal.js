@@ -27,8 +27,8 @@ const ExamAssessmentExternal = new Schema({
         type: Number,
         required: true
     },
-    user: {
-        type: String,
+    papers_moderated: {
+        type:Number,
         required: true
     },
     user: {

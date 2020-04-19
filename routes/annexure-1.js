@@ -713,6 +713,7 @@ router.post('/examAssessmentExternal', (req, res) => {
         exam_subject_external: req.body.exam_subject_external,
         outdoor_activities: req.body.outdoor_activities,
         papers_revaluated: req.body.papers_revaluated,
+        papers_moderated: req.body.papers_moderated,
         user: req.user.id
     }
     new ExamAssessmentExternal(examAssessmentRecords)
@@ -1058,7 +1059,8 @@ router.put('/examAssessmentExternal/:id', (req, res) => {
         result.name_of_college_university = req.body.name_of_college_university,
         result.exam_subject_external = req.body.exam_subject_external,
         result.outdoor_activities = req.body.outdoor_activities,
-        result.papers_revaluated = req.body.papers_revaluated
+        result.papers_revaluated = req.body.papers_revaluated,
+        result.papers_moderated = req.body.papers_moderated
 
         result.save()
         .then(() => {
