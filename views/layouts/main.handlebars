@@ -58,8 +58,18 @@
             min-height: 41vh;
             flex-direction: column;
         }
+
         main {
             flex: 1 0 auto;
+        }
+
+        @media only screen and (max-width: 992px) {
+
+            table.responsive-table thead,
+            table.responsive-table thead tr {
+                display: block;
+                float: left;
+            }
         }
     </style>
 
@@ -74,7 +84,7 @@
         {{{body}}}
         <br>
     </div>
-    
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
@@ -132,9 +142,8 @@
             });
         });
 
-
     </script>
-{{> _footer}}
+    {{> _footer}}
 </body>
 
 </html>

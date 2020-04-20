@@ -18,10 +18,6 @@ let facultyEmail;
 require('../models/Users/Faculty');
 const Faculty = mongoose.model('users');
 
-// Load faculty model
-require('../models/Users/FacultyProfile');
-const FacultyProfile = mongoose.model('faculty_profile');
-
 // Load faculty marks model
 require('../models/Users/FacultyMarks');
 const FacultyMarks = mongoose.model('faculty-marks');
@@ -402,7 +398,7 @@ router.post('/faculty/pdf', ensureAuthenticated, (req, res) => {
                     document = {
                         content: [
                             { text: 'Self Appraisal Report', style: 'header' },
-                            { text: 'Academic Year: '+teachingLoad.academic_year, style: 'header' },
+                            { text: 'Academic Year: ' + teachingLoad.academic_year, style: 'header' },
 
                             'Name: ' + facultyName + '\n',
                             'Email ID: ' + facultyEmail + '\n',
@@ -1007,7 +1003,7 @@ router.post('/hod/pdf/:id', (req, res) => {
                     document = {
                         content: [
                             { text: 'Self Appraisal Report', style: 'header' },
-                            { text: 'Academic Year: '+teachingLoad.academic_year, style: 'header' },
+                            { text: 'Academic Year: ' + teachingLoad.academic_year, style: 'header' },
 
                             'Name: ' + facultyName + '\n',
                             'Email ID: ' + facultyEmail + '\n',
@@ -1523,36 +1519,52 @@ router.get('/hod/home', ensureAuthenticated, (req, res) => {
         })
 });
 
+var facultyAP, facultyLeave, facultyA1, facultyA2, facultyA3;
 router.post('/hod/finalSubmit/:id', (req, res) => {
+    
     let errors = [];
     if (req.body.value1 == '' || req.body.value2 == '' || req.body.value3 == '' || req.body.value4 == '' || req.body.value5 == '') {
         errors.push({ text: 'Please mark all the buttons' });
     } else {
-        Faculty.find({ _id: req.params.id }).exec()
-            .then(result => {
-                facultyName = result[0].name;
-                facultyEmail = result[0].email;
-                let fianlValue = +req.body.value1 + +req.body.value2 + +req.body.value3 + +req.body.value4 + +req.body.value5
-                // console.log(facultyName);
-                // console.log(facultyEmail);
-                const finalSubmitData = {
-                    faculty_name: facultyName,
-                    faculty_email: facultyEmail,
-                    academicPerformance: req.body.academicPerformance,
-                    leaveRecord: req.body.leaveRecord,
-                    annexure_1: req.body.annexure_1,
-                    annexure_2: req.body.annexure_2,
-                    annexure_3: req.body.annexure_3,
-                    confidential: fianlValue,
-                    user: facultID
-                }
-                new HodMarks(finalSubmitData)
-                    .save()
-                    .then(confidential_form => {
-                        req.flash('success_msg', 'Marks added successfully');
-                        res.redirect('/users/hod/home');
-                    })
-            })
+        const faculty = Faculty.find({ _id: req.params.id }).exec();
+        const facultymarks = FacultyMarks.find({ user: req.params.id }).exec();
+        Promise.all([faculty, facultymarks]).then(result => {
+            return Promise.all(result);
+        }).then(([result, facultymarks]) => {
+            facultyName = result[0].name;
+            facultyEmail = result[0].email;
+            facultyAP = facultymarks[0].academicPerformance;
+            facultyLeave = facultymarks[0].leaveRecord;
+            facultyA1 = facultymarks[0].annexure_1;
+            facultyA2 = facultymarks[0].annexure_2;
+            facultyA3 = facultymarks[0].annexure_3;
+
+            let fianlValue = +req.body.value1 + +req.body.value2 + +req.body.value3 + +req.body.value4 + +req.body.value5
+            // console.log(facultyName);
+            // console.log(facultyEmail);
+            const finalSubmitData = {
+                faculty_name: facultyName,
+                faculty_email: facultyEmail,
+                academicPerformance: req.body.academicPerformance,
+                leaveRecord: req.body.leaveRecord,
+                annexure_1: req.body.annexure_1,
+                annexure_2: req.body.annexure_2,
+                annexure_3: req.body.annexure_3,
+                confidential: fianlValue,
+                facultyAP: facultyAP,
+                facultyLeave: facultyLeave,
+                facultyA1: facultyA1,
+                facultyA2: facultyA2,
+                facultyA3: facultyA3,
+                user: facultID
+            }
+            new HodMarks(finalSubmitData)
+                .save()
+                .then(confidential_form => {
+                    req.flash('success_msg', 'Marks added successfully');
+                    res.redirect('/users/hod/home');
+                })
+        })
     }
 });
 
