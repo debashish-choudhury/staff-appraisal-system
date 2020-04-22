@@ -130,8 +130,38 @@ router.get('/innovativeTeaching/edit/:id', ensureAuthenticated, (req, res) => {
 
 //process teaching form
 router.post('/teachingLoad', (req, res) => {
+    let errors = [];
 
-    // add preleave data into db
+    if (!req.body.theory_subject || req.body.theory_subject > 40 || req.body.theory_subject < 0) {
+        errors.push({ text: 'Please enter value between 0 to 40 for theory load' });
+    } else if (!req.body.lab_subject || req.body.lab_subject > 40 || req.body.lab_subject < 0) {
+        errors.push({ text: 'Please enter value between 0 to 40 for lab load' });
+    } else if (!req.body.tutorials || req.body.tutorials > 40 || req.body.tutorials < 0) {
+        errors.push({ text: 'Please enter value between 0 to 40 for tutorials load' });
+    } else if (!req.body.theory_session || req.body.theory_session > 40 || req.body.theory_session < 0) {
+        errors.push({ text: 'Please enter value between 0 to 40 for theory session' });
+    } else if (!req.body.practical_session || req.body.practical_session > 40 || req.body.practical_session < 0) {
+        errors.push({ text: 'Please enter value between 0 to 40 for practical session' });
+    }
+if (errors.length > 0) {
+        res.render('academicPerformance/teachingLoad', {
+            errors: errors,
+            academic_year: req.body.academic_year,
+            subject_name: req.body.subject_name,
+            class: req.body.class,
+            department: req.body.department,
+            semester: req.body.semester,
+            theory_subject: req.body.theory_subject,
+            lab_subject: req.body.lab_subject,
+            tutorials: req.body.tutorials,
+            theory_session: req.body.theory_session,
+            practical_session: req.body.practical_session,
+            Student_feedback: req.body.Student_feedback,
+                    
+        });
+    }
+    else {
+     // add preleave data into db
     const TeachingRecord = {
         academic_year: req.body.academic_year,
         subject_name: req.body.subject_name,
@@ -145,13 +175,18 @@ router.post('/teachingLoad', (req, res) => {
         practical_session: req.body.practical_session,
         Student_feedback: req.body.Student_feedback,
         user: req.user.id
+        
     }
     new TeachingLoad(TeachingRecord)
         .save()
         .then(teaching => {
             req.flash('success_msg', 'Data entered successfully');
             res.redirect('/academicPerformance/teachingAssistant');
-        });
+        })
+        .catch(err => {
+            if (err) throw err;
+        })
+    }
 });
 
 //process teaching form
@@ -230,6 +265,28 @@ router.post('/innovation', (req, res) => {
 
 // Put request (edit form)
 router.put('/teachingLoad/:id', (req, res) => {
+    let errors = [];
+
+    if (!req.body.theory_subject || req.body.theory_subject > 40 || req.body.theory_subject < 0) {
+        errors.push({ text: 'Please enter value between 0 to 40 for theory load' });
+    } else if (!req.body.lab_subject || req.body.lab_subject > 40 || req.body.lab_subject < 0) {
+        errors.push({ text: 'Please enter value between 0 to 40 for lab load' });
+    } else if (!req.body.tutorials || req.body.tutorials > 40 || req.body.tutorials < 0) {
+        errors.push({ text: 'Please enter value between 0 to 40 for tutorials load' });
+    } else if (!req.body.theory_session || req.body.theory_session > 40 || req.body.theory_session < 0) {
+        errors.push({ text: 'Please enter value between 0 to 40 for theory session' });
+    } else if (!req.body.practical_session || req.body.practical_session > 40 || req.body.practical_session < 0) {
+        errors.push({ text: 'Please enter value between 0 to 40 for practical session' });
+    }
+
+    if (errors.length > 0) {
+        res.render('academicPerformance/teachingLoad', {
+            errors: errors,
+            
+        });
+    }
+    else {
+  
     TeachingLoad.findOne({ _id: req.params.id })
         .then(result => {
             result.academic_year = req.body.academic_year,
@@ -244,12 +301,14 @@ router.put('/teachingLoad/:id', (req, res) => {
                 result.practical_session = req.body.practical_session,
                 result.Student_feedback = req.body.Student_feedback
 
+
             result.save()
                 .then(result => {
                     req.flash('success_msg', 'Data updated successfully');
                     res.redirect('/academicPerformance/teachingLoad');
                 });
         });
+    }
 });
 
 router.put('/teachingAssistant/:id', (req, res) => {
