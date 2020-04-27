@@ -143,6 +143,9 @@ router.post('/teachingLoad', (req, res) => {
     } else if (!req.body.practical_session || req.body.practical_session > 40 || req.body.practical_session < 0) {
         errors.push({ text: 'Please enter value between 0 to 40 for practical session' });
     }
+    else if (!req.body.Student_feedback || req.body.Student_feedback > 5 || req.body.Student_feedback < 0) {
+        errors.push({ text: 'Please enter feedback value between 0 and 5' });
+    }
 if (errors.length > 0) {
         res.render('academicPerformance/teachingLoad', {
             errors: errors,
@@ -278,12 +281,28 @@ router.put('/teachingLoad/:id', (req, res) => {
     } else if (!req.body.practical_session || req.body.practical_session > 40 || req.body.practical_session < 0) {
         errors.push({ text: 'Please enter value between 0 to 40 for practical session' });
     }
+      else if (!req.body.Student_feedback || req.body.Student_feedback > 5 || req.body.Student_feedback < 0) {
+        errors.push({ text: 'Please enter feedback value between 0 and 5' });
+    }
 
     if (errors.length > 0) {
-        res.render('academicPerformance/teachingLoad', {
-            errors: errors,
-            
-        });
+        if (!req.body.theory_subject || req.body.theory_subject > 40 || req.body.theory_subject < 0) {
+            req.flash('error_msg', 'Please enter value between 0 to 40 for theory load');
+        } else if (!req.body.lab_subject || req.body.lab_subject > 40 || req.body.lab_subject < 0) {
+            req.flash('error_msg', 'Please enter value between 0 to 40 for lab load');
+        } else if (!req.body.tutorials || req.body.tutorials > 40 || req.body.tutorials < 0) {
+            req.flash('error_msg', 'Please enter value between 0 to 40 for tutorials');
+        } else if (!req.body.theory_session || req.body.theory_session > 40 || req.body.theory_session < 0) {
+            req.flash('error_msg', 'Please enter value between 0 to 40 for theory sessions');
+        } else if (!req.body.practical_session || req.body.practical_session > 40 || req.body.practical_session < 0) {
+            req.flash('error_msg', 'Please enter value between 0 to 40 for practical sessions');
+        }
+        else if (!req.body.Student_feedback || req.body.Student_feedback > 5 || req.body.Student_feedback < 0) {
+            req.flash('error_msg', 'Please enter feedback value between 0 to 5');
+        }
+        
+        
+        res.redirect('/academicPerformance/teachingLoad');
     }
     else {
   
