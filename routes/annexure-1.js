@@ -567,6 +567,23 @@ router.post('/culturalActivities', (req, res) => {
 
 //process PBL activities form
 router.post('/projectBasedLearning', (req, res) => {
+    let errors = [];
+
+    if (req.body.pbl_start_date > req.body.pbl_end_date) {
+        errors.push({ text: 'End Date should not be before start date' });
+    }
+    if (errors.length > 0) {
+        res.render('annexure-1/projectBasedLearning', {
+                errors: errors,
+                pbl_subject: req.body.pbl_subject,
+                pbl_role: req.body.pbl_role,
+                pbl_start_date: req.body.pbl_start_date,
+                pbl_end_date: req.body.pbl_end_date,
+                pbl_description: req.body.pbl_description,
+                        
+            });
+        }
+    else{
     // add preleave data into db
     const projectBasedLearningRecords = {
         pbl_subject: req.body.pbl_subject,
@@ -582,10 +599,26 @@ router.post('/projectBasedLearning', (req, res) => {
             req.flash('success_msg', 'Data entered successfully');
             res.redirect('/annexure-1/udaan');
         });
+    }
 });
 
 //process Udaan activities form
 router.post('/udaan', (req, res) => {
+    let errors = [];
+
+    if (req.body.udaan_start_date > req.body.udaan_end_date) {
+        errors.push({ text: 'End Date should not be before start date' });
+    }
+    if (errors.length > 0) {
+        res.render('annexure-1/udaan', {
+                errors: errors,
+                udaan_subject: req.body.udaan_subject,
+                udaan_contribution: req.body.udaan_contribution,
+                udaan_start_date: req.body.udaan_start_date,
+                udaan_end_date: req.body.udaan_end_date,
+        }
+        )}
+    else{
     // add preleave data into db
     const udaanRecords = {
         udaan_subject: req.body.udaan_subject,
@@ -600,6 +633,7 @@ router.post('/udaan', (req, res) => {
             req.flash('success_msg', 'Data entered successfully');
             res.redirect('/annexure-1/placementActivities');
         });
+    }
 });
 
 //process placement activities form
@@ -686,6 +720,22 @@ router.post('/industrialVisitActivities', (req, res) => {
 
 //process admission process activities form
 router.post('/admissionProcessActivities', (req, res) => {
+    let errors = [];
+
+    if (req.body.admission_start_date > req.body.admission_end_date) {
+        errors.push({ text: 'End Date should not be before start date' });
+    }
+    if (errors.length > 0) {
+        res.render('annexure-1/admissionProcessActivities', {
+                errors: errors,
+                admission_role: req.body.admission_role,
+                admission_duties: req.body.admission_duties,
+                admission_class: req.body.admission_class,
+                admission_start_date: req.body.admission_start_date,
+                admission_end_date: req.body.admission_end_date,
+        }
+    )}
+    else{
     // add preleave data into db
     const admissionProcessRecords = {
         admission_role: req.body.admission_role,
@@ -695,12 +745,15 @@ router.post('/admissionProcessActivities', (req, res) => {
         admission_end_date: req.body.admission_end_date,
         user: req.user.id
     }
+
     new AdmissionProcessActivities(admissionProcessRecords)
         .save()
         .then(industrialVisit => {
             req.flash('success_msg', 'Data entered successfully');
             res.redirect('/annexure-1/examAssessmentExternal');
         });
+    }
+
 });
 
 //process exam assessment external form
@@ -857,13 +910,6 @@ router.post('/departmentUGProjects', (req, res) => {
 
 
 
-
-
-
-
-
-
-
 router.put('/timeTable/:id', (req, res) => {
     TimeTable.findOne({ _id: req.params.id })
     .then(result => {
@@ -928,7 +974,18 @@ router.put('/culturalActivities/:id', (req, res) => {
 });
 
 router.put('/projectBasedLearning/:id', (req, res) => {
-    TimeTable.findOne({ _id: req.params.id })
+    let errors = [];
+    if (req.body.pbl_start_date > req.body.pbl_end_date) {
+        errors.push({ text: 'End Date should not be before start date' });
+    }
+    if (errors.length > 0) {
+        if (req.body.pbl_start_date > req.body.pbl_end_date) {
+            req.flash( 'error_msg', 'End Date should not be before start date' );
+            res.redirect('/annexure-1/projectBasedLearning');
+        }
+    }
+    else{
+    ProjectBasedLearning.findOne({ _id: req.params.id })
     .then(result => {
         result.pbl_subject = req.body.pbl_subject,
         result.pbl_role = req.body.pbl_role,
@@ -939,12 +996,24 @@ router.put('/projectBasedLearning/:id', (req, res) => {
         result.save()
         .then(() => {
             req.flash('success_msg', 'Data updated successfully');
-            res.redirect('/annexure-1/projecBasedLearning');
+            res.redirect('/annexure-1/projectBasedLearning');
         })
     })
+}
 });
 
 router.put('/udaan/:id', (req, res) => {
+    let errors = [];
+    if (req.body.udaan_start_date > req.body.udaan_end_date) {
+        errors.push({ text: 'End Date should not be before start date' });
+    }
+    if (errors.length > 0) {
+        if (req.body.udaan_start_date > req.body.udaan_end_date) {
+            req.flash( 'error_msg', 'End Date should not be before start date' );
+            res.redirect('/annexure-1/udaan');
+        }
+    }
+    else{
     Udaan.findOne({ _id: req.params.id })
     .then(result => {
         result.udaan_subject = req.body.udaan_subject,
@@ -958,6 +1027,7 @@ router.put('/udaan/:id', (req, res) => {
             res.redirect('/annexure-1/udaan');
         })
     })
+}
 });
 
 router.put('/placementActivities/:id', (req, res) => {
@@ -1035,6 +1105,17 @@ router.put('/industrialVisitActivities/:id', (req, res) => {
 });
 
 router.put('/admissionProcessActivities/:id', (req, res) => {
+    let errors = [];
+    if (req.body.admission_start_date > req.body.admission_end_date) {
+        errors.push({ text: 'End Date should not be before start date' });
+    }
+    if (errors.length > 0) {
+        if (req.body.admission_start_date > req.body.admission_end_date) {
+            req.flash( 'error_msg', 'End Date should not be before start date' );
+            res.redirect('/annexure-1/admissionProcessActivities');
+        }
+    }
+    else{
     AdmissionProcessActivities.findOne({ _id: req.params.id })
     .then(result => {
         result.admission_role = req.body.admission_role,
@@ -1049,6 +1130,7 @@ router.put('/admissionProcessActivities/:id', (req, res) => {
             res.redirect('/annexure-1/admissionProcessActivities');
         })
     })
+}
 });
 
 router.put('/examAssessmentExternal/:id', (req, res) => {
