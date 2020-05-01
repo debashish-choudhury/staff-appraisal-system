@@ -15,7 +15,7 @@
                 <label for="">Role</label>
             </div>
              <div class="input-field col s6 md5">
-                <input id="no-of-companies" type="number" name="no_of_companies" value="{{placement_role}}" class="validate" required>
+                <input id="no-of-companies" type="number" name="no_of_companies" value="{{no_of_companies}}" class="validate" required>
                 <label for="no-of-companies">Number of Companies visited</label>
             </div>
         </div>
@@ -59,8 +59,8 @@
         <input type="hidden" name="_method" value="PUT">
         <div class="row">
             <div class="input-field col s6 md5">
-                <select name="placement_role" class="validate" required>
-                    <option value="{{editResut.placement_role}}" disabled selected>{{editResut.placement_role}}</option>
+                <select name="placement_role">
+                    <option value="{{editResult.placement_role}}" selected>{{editResult.placement_role}}</option>
                     <option value="tpo">TPO</option>
                     <option value="dept coordinator">Dept Co-ordinator</option>
                 </select>
@@ -82,8 +82,8 @@
              
             
             <div class="input-field col s6">
-                <select name="department" required>
-                    <option value="{{editResult.department}}" disabled selected>{{editResult.department}}</option>
+                <select name="department">
+                    <option value="{{editResult.department}}" selected>{{editResult.department}}</option>
                     <option value="Information Technology">Information Technology</option>
                     <option value="Computer Engineering">Computer Engineering</option>
                     <option value="Mechanical Engineering">Mechanical Engineering</option>
