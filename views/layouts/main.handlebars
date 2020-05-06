@@ -113,6 +113,14 @@
         // Date format initialization
         $(document).ready(function () {
             $('.datepicker').datepicker();
+            $('#datepicker').datepicker({
+                yearRange: 10,
+                format: 'yyyy'
+                //setDate: new Date()
+            });
+            //var datepicker = document.getElementById('datepicker');
+            //var instance = M.Datepicker.getInstance(datepicker);
+            //instance.setDate(new Date());
         });
         $('.tooltipped').tooltip();
         $('button').addClass('purple');
