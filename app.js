@@ -78,19 +78,20 @@ app.use((req, res, next) => {
     res.locals.error_msg = req.flash('error_msg');
     res.locals.error = req.flash('error');
     res.locals.user = req.user || null;
-    res.locals.year = academicYear || null;
+    res.locals.year = academicYear || autoYear || null;
     next();
 });
 
 // Require academic year model
 require('./models/AcademicYear');
 const AcademicYear = mongoose.model('academic_year');
-
+var autoYear;
 //index route
 app.get('/', (req, res) => {
     if (req.user) {
         AcademicYear.find({ user: req.user.id })
             .then(result => {
+                autoYear = result[0].academic_year;
                 res.render('index', {
                     result: result
                 });
