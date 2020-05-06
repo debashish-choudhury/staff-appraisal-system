@@ -196,6 +196,33 @@ router.get('/seminars/edit/:id', ensureAuthenticated, (req, res) => {
 
 //process paper published in national conference form
 router.post('/papersPublishedinNationalConf', (req, res) => {
+    let errors = [];
+
+    if (!req.body.isbn_issn_number || req.body.isbn_issn_number < 0) {
+        errors.push({ text: 'ISSN/ISBN cannot be less than 0' });
+    }
+    else if (!req.body.no_of_citations || req.body.no_of_citations < 0){
+        errors.push({ text: 'No. of citations cannot be less than 0' });
+    }
+    else if (!req.body.rating || req.body.rating < 0){
+        errors.push({ text: 'Rating cannot be less than 0' });
+
+    }
+    if (errors.length > 0) {
+        res.render('annexure-2/papersPublishedinNationalConf', {
+                errors: errors,
+                title_of_paper_published: req.body.title_of_paper_published,
+                published_date: req.body.published_date,
+                name_of_conference: req.body.name_of_conference,
+                isbn_issn_number: req.body.isbn_issn_number,
+                name_of_coauthor: req.body.name_of_coauthor,
+                impact_factor: req.body.impact_factor,
+                no_of_citations: req.body.no_of_citations,
+                rating: req.body.rating,
+                link: req.body.link
+        }
+    )}
+    else{
     // add preleave data into db
     const papersPublishedNationalRecords = {
         title_of_paper_published: req.body.title_of_paper_published,
@@ -215,10 +242,38 @@ router.post('/papersPublishedinNationalConf', (req, res) => {
             req.flash('success_msg', 'Data entered successfully');
             res.redirect('/annexure-2/papersPublishedinInternationalConf');
         });
+    }
 });
 
 //process paper published in international conference form
 router.post('/papersPublishedinInternationalConf', (req, res) => {
+    let errors = [];
+
+    if (!req.body.isbn_issn_number || req.body.isbn_issn_number < 0) {
+        errors.push({ text: 'ISSN/ISBN cannot be less than 0' });
+    }
+    else if (!req.body.no_of_citations || req.body.no_of_citations < 0){
+        errors.push({ text: 'No. of citations cannot be less than 0' });
+    }
+    else if (!req.body.rating || req.body.rating < 0){
+        errors.push({ text: 'Rating cannot be less than 0' });
+
+    }
+    if (errors.length > 0) {
+        res.render('annexure-2/papersPublishedinJournals', {
+                errors: errors,
+                title_of_paper_published: req.body.title_of_paper_published,
+                published_date: req.body.published_date,
+                name_of_conference: req.body.name_of_conference,
+                isbn_issn_number: req.body.isbn_issn_number,
+                name_of_coauthor: req.body.name_of_coauthor,
+                impact_factor: req.body.impact_factor,
+                no_of_citations: req.body.no_of_citations,
+                rating: req.body.rating,
+                link: req.body.link
+        }
+    )}
+    else{
     // add preleave data into db
     const papersPublishedInternationalRecords = {
         title_of_paper_published: req.body.title_of_paper_published,
@@ -238,10 +293,38 @@ router.post('/papersPublishedinInternationalConf', (req, res) => {
             req.flash('success_msg', 'Data entered successfully');
             res.redirect('/annexure-2/paperspublishedinjournals');
         });
+    }
 });
 
 //process paper published in journals form
 router.post('/papersPublishedinJournals', (req, res) => {
+    let errors = [];
+
+    if (!req.body.isbn_issn_number || req.body.isbn_issn_number < 0) {
+        errors.push({ text: 'ISSN/ISBN cannot be less than 0' });
+    }
+    else if (!req.body.no_of_citations || req.body.no_of_citations < 0){
+        errors.push({ text: 'No. of citations cannot be less than 0' });
+    }
+    else if (!req.body.rating || req.body.rating < 0){
+        errors.push({ text: 'Rating cannot be less than 0' });
+
+    }
+    if (errors.length > 0) {
+        res.render('annexure-2/papersPublishedinJournals', {
+                errors: errors,
+                title_of_paper_published: req.body.title_of_paper_published,
+                published_date: req.body.published_date,
+                name_of_conference: req.body.name_of_conference,
+                isbn_issn_number: req.body.isbn_issn_number,
+                name_of_coauthor: req.body.name_of_coauthor,
+                impact_factor: req.body.impact_factor,
+                no_of_citations: req.body.no_of_citations,
+                rating: req.body.rating,
+                link: req.body.link
+        }
+    )}
+    else{
     // add preleave data into db
     const papersPublishedJournalsRecords = {
         title_of_paper_published: req.body.title_of_paper_published,
@@ -261,10 +344,26 @@ router.post('/papersPublishedinJournals', (req, res) => {
             req.flash('success_msg', 'Data entered successfully');
             res.redirect('/annexure-2/moocs');
         });
+    }
 });
 
 //process moocs form
 router.post('/moocs', (req, res) => {
+    let errors = [];
+
+    if (!req.body.moocs_duartion || req.body.moocs_duartion < 0) {
+        errors.push({ text: 'Duration cannot be less than 0' });
+    }
+    if (errors.length > 0) {
+        res.render('annexure-2/moocs', {
+                errors: errors,
+                name_of_moocs_undertaken: req.body.name_of_moocs_undertaken,
+                moocs_date: req.body.moocs_date,
+                moocs_duartion: req.body.moocs_duartion,
+                certification_status: req.body.certification_status
+        }
+    )}
+    else{
     // add preleave data into db
     const moocsRecords = {
         name_of_moocs_undertaken: req.body.name_of_moocs_undertaken,
@@ -279,10 +378,26 @@ router.post('/moocs', (req, res) => {
             req.flash('success_msg', 'Data entered successfully');
             res.redirect('/annexure-2/swayam');
         });
+    }
 });
 
 //process swayam form
 router.post('/swayam', (req, res) => {
+    let errors = [];
+
+    if (!req.body.swayam_duartion || req.body.swayam_duartion < 0) {
+        errors.push({ text: 'Duration cannot be less than 0' });
+    }
+    if (errors.length > 0) {
+        res.render('annexure-2/swayam', {
+                errors: errors,
+                name_of_swayam_undertaken: req.body.name_of_swayam_undertaken,
+                swayam_date: req.body.swayam_date,
+                swayam_duartion: req.body.swayam_duartion,
+                certification_status: req.body.certification_status
+        }
+    )}
+    else{
     // add preleave data into db
     const swayamRecords = {
         name_of_swayam_undertaken: req.body.name_of_swayam_undertaken,
@@ -297,10 +412,32 @@ router.post('/swayam', (req, res) => {
             req.flash('success_msg', 'Data entered successfully');
             res.redirect('/annexure-2/shorttermtraining');
         });
+    }
 });
 
 //process short term training form
 router.post('/shortTermTraining', (req, res) => {
+    let errors = [];
+
+    if (req.body.start_date > req.body.end_date) {
+        errors.push({ text: 'End Date should not be before start date' });
+    }
+    else if (!req.body.duration_of_course || req.body.duration_of_course < 0) {
+        errors.push({ text: 'Duration of course cannot be less than 0' });
+    }
+    if (errors.length > 0) {
+        res.render('annexure-2/shortTermTraining', {
+                errors: errors,
+                short_term_training: req.body.short_term_training,
+                techonology: req.body.techonology,
+                duration_of_course: req.body.duration_of_course,
+                start_date: req.body.start_date,
+                end_date: req.body.end_date,
+                internal_external: req.body.internal_external,
+                name_of_institue: req.body.name_of_institue
+        }
+    )}
+    else{
     // add preleave data into db
     const shortTermTrainingRecords = {
         short_term_training: req.body.short_term_training,
@@ -318,10 +455,32 @@ router.post('/shortTermTraining', (req, res) => {
             req.flash('success_msg', 'Data entered successfully');
             res.redirect('/annexure-2/seminars');
         });
+    }
 });
 
 //process seminars form
 router.post('/seminars', (req, res) => {
+    let errors = [];
+
+    if (req.body.start_date > req.body.end_date) {
+        errors.push({ text: 'End Date should not be before start date' });
+    }
+    else if (!req.body.duration_of_course || req.body.duration_of_course < 0) {
+        errors.push({ text: 'Duration of course cannot be less than 0' });
+    }
+    if (errors.length > 0) {
+        res.render('annexure-2/seminars', {
+                errors: errors,
+                name_of_seminar: req.body.name_of_seminar,
+                techonology: req.body.techonology,
+                duration_of_course: req.body.duration_of_course,
+                start_date: req.body.start_date,
+                end_date: req.body.end_date,
+                internal_external: req.body.internal_external,
+                name_of_institue: req.body.name_of_institue
+        }
+        )}
+    else{
     // add preleave data into db
     const seminarsRecords = {
         name_of_seminar: req.body.name_of_seminar,
@@ -339,10 +498,39 @@ router.post('/seminars', (req, res) => {
             req.flash('success_msg', 'Data entered successfully');
             res.redirect('/annexure-3/resourcePerson');
         });
+    }
 });
 
 // PUT request
 router.put('/papersPublishedinNationalConf/:id', (req, res) => {
+    let errors = [];
+    if (!req.body.isbn_issn_number || req.body.isbn_issn_number < 0) {
+        errors.push({ text: 'ISSN/ISBN cannot be less than 0' });
+    }
+    else if (!req.body.no_of_citations || req.body.no_of_citations < 0){
+        errors.push({ text: 'No. of citations cannot be less than 0' });
+    }
+    else if (!req.body.rating || req.body.rating < 0){
+        errors.push({ text: 'Rating cannot be less than 0' });
+
+    }
+    if (errors.length > 0) {
+        
+        if (!req.body.isbn_issn_number || req.body.isbn_issn_number < 0) {
+            req.flash( 'error_msg', 'ISSN/ISBN cannot be less than 0' );
+            res.redirect('/annexure-2/papersPublishedinNationalConf');
+        }
+        else if (!req.body.no_of_citations || req.body.no_of_citations < 0){
+            req.flash( 'error_msg', 'No. of citations cannot be less than 0' );
+            res.redirect('/annexure-2/papersPublishedinNationalConf');
+        }
+        else if (!req.body.rating || req.body.rating < 0){
+            req.flash( 'error_msg', 'Rating cannot be less than 0' );
+            res.redirect('/annexure-2/papersPublishedinNationalConf');
+    
+        }
+    }
+    else{
     PapersPublishedNationalConf.findOne({ _id: req.params.id })
     .then(result => {
         result.title_of_paper_published = req.body.title_of_paper_published,
@@ -361,9 +549,38 @@ router.put('/papersPublishedinNationalConf/:id', (req, res) => {
             res.redirect('/annexure-2/papersPublishedinNationalConf');
         })
     })
+}
 });
 
 router.put('/papersPublishedinInternationalConf/:id', (req, res) => {
+    let errors = [];
+    if (!req.body.isbn_issn_number || req.body.isbn_issn_number < 0) {
+        errors.push({ text: 'ISSN/ISBN cannot be less than 0' });
+    }
+    else if (!req.body.no_of_citations || req.body.no_of_citations < 0){
+        errors.push({ text: 'No. of citations cannot be less than 0' });
+    }
+    else if (!req.body.rating || req.body.rating < 0){
+        errors.push({ text: 'Rating cannot be less than 0' });
+
+    }
+    if (errors.length > 0) {
+        
+        if (!req.body.isbn_issn_number || req.body.isbn_issn_number < 0) {
+            req.flash( 'error_msg', 'ISSN/ISBN cannot be less than 0' );
+            res.redirect('/annexure-2/papersPublishedinInternationalConf');
+        }
+        else if (!req.body.no_of_citations || req.body.no_of_citations < 0){
+            req.flash( 'error_msg', 'No. of citations cannot be less than 0' );
+            res.redirect('/annexure-2/papersPublishedinInternationalConf');
+        }
+        else if (!req.body.rating || req.body.rating < 0){
+            req.flash( 'error_msg', 'Rating cannot be less than 0' );
+            res.redirect('/annexure-2/papersPublishedinInternationalConf');
+    
+        }
+    }
+    else{
     PapersPublishedInternationalConf.findOne({ _id: req.params.id })
     .then(result => {
         result.title_of_paper_published = req.body.title_of_paper_published,
@@ -382,9 +599,38 @@ router.put('/papersPublishedinInternationalConf/:id', (req, res) => {
             res.redirect('/annexure-2/papersPublishedinInternationalConf');
         })
     })
+}
 });
 
 router.put('/papersPublishedinJournals/:id', (req, res) => {
+    let errors = [];
+    if (!req.body.isbn_issn_number || req.body.isbn_issn_number < 0) {
+        errors.push({ text: 'ISSN/ISBN cannot be less than 0' });
+    }
+    else if (!req.body.no_of_citations || req.body.no_of_citations < 0){
+        errors.push({ text: 'No. of citations cannot be less than 0' });
+    }
+    else if (!req.body.rating || req.body.rating < 0){
+        errors.push({ text: 'Rating cannot be less than 0' });
+
+    }
+    if (errors.length > 0) {
+        
+        if (!req.body.isbn_issn_number || req.body.isbn_issn_number < 0) {
+            req.flash( 'error_msg', 'ISSN/ISBN cannot be less than 0' );
+            res.redirect('/annexure-2/paperspublishedinjournals');
+        }
+        else if (!req.body.no_of_citations || req.body.no_of_citations < 0){
+            req.flash( 'error_msg', 'No. of citations cannot be less than 0' );
+            res.redirect('/annexure-2/paperspublishedinjournals');
+        }
+        else if (!req.body.rating || req.body.rating < 0){
+            req.flash( 'error_msg', 'Rating cannot be less than 0' );
+            res.redirect('/annexure-2/paperspublishedinjournals');
+    
+        }
+    }
+    else{
     PapersPublishedJournals.findOne({ _id: req.params.id })
     .then(result => {
         result.title_of_paper_published = req.body.title_of_paper_published,
@@ -403,9 +649,22 @@ router.put('/papersPublishedinJournals/:id', (req, res) => {
             res.redirect('/annexure-2/paperspublishedinjournals');
         })
     })
+}
 });
 
 router.put('/moocs/:id', (req, res) => {
+    let errors = [];
+    if (!req.body.moocs_duartion || req.body.moocs_duartion < 0) {
+        errors.push({ text: 'Duration cannot be less than 0' });
+    }
+    if (errors.length > 0) {
+        
+        if (!req.body.moocs_duartion || req.body.moocs_duartion < 0) {
+            req.flash( 'error_msg', 'Duration cannot be less than 0' );
+            res.redirect('/annexure-2/moocs');
+        }
+    }
+    else{
     Moocs.findOne({ _id: req.params.id })
     .then(result => {
         result.name_of_moocs_undertaken = req.body.name_of_moocs_undertaken,
@@ -419,9 +678,22 @@ router.put('/moocs/:id', (req, res) => {
             res.redirect('/annexure-2/moocs');
         })
     })
+}
 });
 
 router.put('/swayam/:id', (req, res) => {
+    let errors = [];
+    if (!req.body.swayam_duartion || req.body.swayam_duartion < 0) {
+        errors.push({ text: 'Duration cannot be less than 0' });
+    }
+    if (errors.length > 0) {
+        
+        if (!req.body.swayam_duartion || req.body.swayam_duartion < 0) {
+            req.flash( 'error_msg', 'Duration cannot be less than 0' );
+            res.redirect('/annexure-2/swayam');
+        }
+    }
+    else{
     Swayam.findOne({ _id: req.params.id })
     .then(result => {
         result.name_of_swayam_undertaken = req.body.name_of_swayam_undertaken,
@@ -435,9 +707,29 @@ router.put('/swayam/:id', (req, res) => {
             res.redirect('/annexure-2/swayam');
         })
     })
+}
 });
 
 router.put('/shortTermTraining/:id', (req, res) => {
+    let errors = [];
+    if (req.body.start_date > req.body.end_date) {
+        errors.push({ text: 'End Date should not be before start date' });
+    }
+    else if (!req.body.duration_of_course || req.body.duration_of_course < 0) {
+        errors.push({ text: 'Duration of course cannot be less than 0' });
+    }
+    if (errors.length > 0) {
+    
+        if (req.body.start_date > req.body.end_date) {
+            req.flash( 'error_msg', 'End Date should not be before start date' );
+            res.redirect('/annexure-2/shortTermTraining');
+        }
+        else if (!req.body.duration_of_course || req.body.duration_of_course < 0) {
+            req.flash( 'error_msg','Duration of course cannot be less than 0' );
+            res.redirect('/annexure-2/shortTermTraining');
+        }
+    }
+    else{
     ShortTermTraining.findOne({ _id: req.params.id })
     .then(result => {
         result.short_term_training = req.body.short_term_training,
@@ -454,9 +746,29 @@ router.put('/shortTermTraining/:id', (req, res) => {
             res.redirect('/annexure-2/shorttermtraining');
         })
     })
+}
 });
 
 router.put('/seminars/:id', (req, res) => {
+    let errors = [];
+    if (req.body.start_date > req.body.end_date) {
+        errors.push({ text: 'End Date should not be before start date' });
+    }
+    else if (!req.body.duration_of_course || req.body.duration_of_course < 0) {
+        errors.push({ text: 'Duration of course cannot be less than 0' });
+    }
+    if (errors.length > 0) {
+    
+        if (req.body.start_date > req.body.end_date) {
+            req.flash( 'error_msg', 'End Date should not be before start date' );
+            res.redirect('/annexure-2/seminars');
+        }
+        else if (!req.body.duration_of_course || req.body.duration_of_course < 0) {
+            req.flash( 'error_msg','Duration of course cannot be less than 0' );
+            res.redirect('/annexure-2/seminars');
+        }
+    }
+    else{
     Seminars.findOne({ _id: req.params.id })
     .then(result => {
         result.short_term_training = req.body.short_term_training,
@@ -472,6 +784,7 @@ router.put('/seminars/:id', (req, res) => {
             res.redirect('/annexure-2/seminars');
         })
     })
+}
 });
 
 // DELETE route

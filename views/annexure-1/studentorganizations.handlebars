@@ -8,11 +8,11 @@
         <div class="row">
             <div class="input-field col s6 md5">
                 <input id="student-organizations-trainings" type="text" name="student_organizations_trainings" value="{{student_organizations_trainings}}" class="validate" required>
-                <label for="student-organizations-trainings">Events/Trainings/Workshops conducted</label>
+                <label for="student-organizations-trainings">Activities conducted</label>
             </div>
               <div class="input-field col s6">
                 <select name="class_name">
-                    <option value="{{class_name}}" disabled selected>{{class_name}}</option>
+                    <option value="{{class_name}}" selected>{{class_name}}</option>
                     <option value="FE">FE</option>
                     <option value="SE">SE</option>
                     <option value="TE">TE</option>
@@ -26,7 +26,7 @@
 
             <div class="input-field col s6">
                 <select name="department">
-                    <option value="{{department}}" disabled selected>{{department}}</option>
+                    <option value="{{department}}" selected>{{department}}</option>
                     <option value="Information Technology">Information Technology</option>
                     <option value="Computer Engineering">Computer Engineering</option>
                     <option value="Mechanical Engineering">Mechanical Engineering</option>
@@ -38,7 +38,8 @@
             
             <div class="input-field col s6 md5">
                 <input id="no-of-participants" type="number" name="no_of_participants" value="{{no_of_participants}}" class="validate" required>
-                <label for="no-of-participants">Number of students participated</label>
+                <label for="no-of-participants">Students Participants  &nbsp; <a href="#" class="tooltipped"
+                            data-tooltip="Enter the number of Students Placed"><i class="fa fa-info-circle"></i></a></label>
             </div>   
             
         </div>
@@ -74,7 +75,7 @@
         <a href="/annexure-1/studentOrganizations/edit/{{id}}" class="btn waves-effect waves-light red center mb-2">Edit</a>
             <a href="/users/faculty/facultyOverview" class="btn waves-effect waves-light purple center mb-2">Back to
                 overview</a><br><br>
-            <form method="post" action="/annexure-1/studentOrganizations/delete/{{id}}?_method=DELETE">
+            <form method="post" action="/annexure-1/studentorganizations/delete/{{id}}?_method=DELETE">
                 <input type="hidden" name="_method" value="DELETE">
                 <input type="submit" class="btn waves-effect waves-light center red white-text" value="Delete">
             </form>
@@ -85,16 +86,16 @@
 {{else}}
 {{#if editResult}}
 <div class="row" id="studentOrganizations">
-    <form action="/annexure-1/studentOrganizations/{{editResult.id}}?_method==PUT" method="post" class="col s12">
+    <form action="/annexure-1/studentorganizations/{{editResult.id}}?_method=PUT" method="post" class="col s12">
         <input type="hidden" name="_method" value="PUT">
         <div class="row">
             <div class="input-field col s6 md5">
                 <input id="student-organizations-trainings" type="text" name="student_organizations_trainings" value="{{editResult.student_organizations_trainings}}" class="validate" required>
-                <label for="student-organizations-trainings">Events/Trainings/Workshops conducted</label>
+                <label for="student-organizations-trainings">Activities conducted</label>
             </div>
               <div class="input-field col s6">
-                <select name="class_name" class="validate" required>
-                    <option value="{{editResult.class_name}}" disabled selected>{{editResult.class_name}}</option>
+                <select name="class_name" class="validate" >
+                    <option value="{{editResult.class_name}}" selected>{{editResult.class_name}}</option>
                     <option value="FE">FE</option>
                     <option value="SE">SE</option>
                     <option value="TE">TE</option>
@@ -107,7 +108,7 @@
         <div class="row">
 
             <div class="input-field col s6">
-                <select name="department" required>
+                <select name="department">
                     <option value="{{editResult.department}}" selected>{{editResult.department}}</option>
                     <option value="Information Technology">Information Technology</option>
                     <option value="Computer Engineering">Computer Engineering</option>
@@ -120,15 +121,16 @@
             
             <div class="input-field col s6 md5">
                 <input id="no-of-participants" type="number" name="no_of_participants" value="{{editResult.no_of_participants}}" class="validate" required>
-                <label for="no-of-participants">Number of students participated</label>
+               <label for="no-of-participants">Students Participants  &nbsp; <a href="#" class="tooltipped"
+                            data-tooltip="Enter the number of Students Placed"><i class="fa fa-info-circle"></i></a></label>
             </div>   
             
         </div>
         <div class="row">
 
            <div class="input-field col s6 md5">
-                <select name="student_organization_role" class="validate" required>
-                    <option value="{{editResult.student_organization_role}}" disabled selected>{{editResult.student_organization_role}}</option>
+                <select name="student_organization_role" >
+                    <option value="{{editResult.student_organization_role}}" selected>{{editResult.student_organization_role}}</option>
                     <option value="incharge">Incharge</option>
                     <option value="co-ordintor">Co-ordinator</option>
                 </select>
@@ -173,7 +175,7 @@
         <div class="row">
             <div class="input-field col s6 md5">
                 <input id="student-organizations-trainings" type="text" name="student_organizations_trainings" class="validate" required>
-                <label for="student-organizations-trainings">Events/Trainings/Workshops conducted</label>
+                <label for="student-organizations-trainings">Activities conducted</label>
             </div>
               <div class="input-field col s6">
                 <select name="class_name">
@@ -202,7 +204,8 @@
             
             <div class="input-field col s6 md5">
                 <input id="no-of-participants" type="number" name="no_of_participants" class="validate" required>
-                <label for="no-of-participants">Number of students participated</label>
+               <label for="no-of-participants">Students Participants  &nbsp; <a href="#" class="tooltipped"
+                            data-tooltip="Enter the number of Students Placed"><i class="fa fa-info-circle"></i></a></label>
             </div>   
             
         </div>

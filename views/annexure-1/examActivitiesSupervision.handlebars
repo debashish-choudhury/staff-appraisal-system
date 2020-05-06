@@ -26,11 +26,15 @@
             <div class="row">
                 <div class="input-field col s6">
                     <input id="morning_sessions" type="number" name="morning_sessions" value="{{morning_sessions}}" class="validate" required>
-                    <label for="morning_sessions">Number Of Morning sessions</label>
+                
+                    <label for="morning_sessions">Morning sessions  &nbsp; <a href="#" class="tooltipped"
+                            data-tooltip="Enter the number of Morning sessions"><i class="fa fa-info-circle"></i></a></label>
                 </div>
                 <div class="input-field col s6">
                     <input id="evening_sessions" type="number" name="evening_sessions" value="{{evening_sessions}}" class="validate" required>
-                    <label for="evening_sessions">Number Of Evening sessions</label>
+                   
+                    <label for="evening_sessions">Evening sessions  &nbsp; <a href="#" class="tooltipped"
+                            data-tooltip="Enter the number of Evening sessions"><i class="fa fa-info-circle"></i></a></label>
                 </div>
 
             </div>
@@ -56,7 +60,7 @@
 
 {{#if editResult}}
 <div class="row" id="examActivitiesSupervision">
-        <form action="/annexure-1/examActivitiesSupervision/{{editResult.id}}?_mehtod=PUT" method="post" class="col s12">
+        <form action="/annexure-1/examActivitiesSupervision/{{editResult.id}}?_method=PUT" method="post" class="col s12">
             <input type="hidden" name="_method" value="PUT">
             <div class="row">
                 <div class="input-field col s6 md5">
@@ -79,11 +83,13 @@
             <div class="row">
                 <div class="input-field col s6">
                     <input id="morning_sessions" type="number" name="morning_sessions" value="{{editResult.morning_sessions}}" class="validate" required>
-                    <label for="morning_sessions">Number Of Morning sessions</label>
+                     <label for="morning_sessions">Morning sessions  &nbsp; <a href="#" class="tooltipped"
+                            data-tooltip="Enter the number of Morning sessions"><i class="fa fa-info-circle"></i></a></label>
                 </div>
                 <div class="input-field col s6">
                     <input id="evening_sessions" type="number" name="evening_sessions" value="{{editResult.evening_sessions}}" class="validate" required>
-                    <label for="evening_sessions">Number Of Evening sessions</label>
+                     <label for="evening_sessions">Evening sessions  &nbsp; <a href="#" class="tooltipped"
+                            data-tooltip="Enter the number of Evening sessions"><i class="fa fa-info-circle"></i></a></label>
                 </div>
 
             </div>
@@ -101,7 +107,7 @@
                 </label>
             </p>
         </div>
-                class="btn waves-effect waves-dark" id="submit_btn" type="submit" disabled>Submit
+                <button class="btn waves-effect waves-dark" id="submit_btn" type="submit" disabled>Submit
             </button>
         </form>
     </div>
@@ -132,11 +138,13 @@
             <div class="row">
                 <div class="input-field col s6">
                     <input id="morning_sessions" type="number" name="morning_sessions" class="validate" required>
-                    <label for="morning_sessions">Number Of Morning sessions</label>
+                     <label for="morning_sessions">Morning sessions  &nbsp; <a href="#" class="tooltipped"
+                            data-tooltip="Enter the number of Morning sessions"><i class="fa fa-info-circle"></i></a></label>
                 </div>
                 <div class="input-field col s6">
                     <input id="evening_sessions" type="number" name="evening_sessions" class="validate" required>
-                    <label for="evening_sessions">Number Of Evening sessions</label>
+                     <label for="evening_sessions">Evening sessions  &nbsp; <a href="#" class="tooltipped"
+                            data-tooltip="Enter the number of Evening sessions"><i class="fa fa-info-circle"></i></a></label>
                 </div>
 
             </div>

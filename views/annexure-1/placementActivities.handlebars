@@ -16,7 +16,8 @@
             </div>
              <div class="input-field col s6 md5">
                 <input id="no-of-companies" type="number" name="no_of_companies" value="{{no_of_companies}}" class="validate" required>
-                <label for="no-of-companies">Number of Companies visited</label>
+                <label for="no-of-companies">Companies visited &nbsp; <a href="#" class="tooltipped"
+                            data-tooltip="Enter the number of Companies visited"><i class="fa fa-info-circle"></i></a></label>
             </div>
         </div>
 
@@ -24,7 +25,8 @@
             
             <div class="input-field col s6 md5">
                 <input id="no-of-placed-students" type="number" name="no_of_placed_students"  value="{{no_of_placed_students}}" class="validate" required>
-                <label for="no-of-placed-students">Number of students placed</label>
+                <label for="no-of-placed-students">Students placed  &nbsp; <a href="#" class="tooltipped"
+                            data-tooltip="Enter the number of Students Placed"><i class="fa fa-info-circle"></i></a></label>
             </div>
            
              
@@ -38,7 +40,7 @@
                     <option value="Civil Engineering">Civil Engineering</option>
                     <option value="EXTC Engineering">EXTC Engineering</option>
                 </select>
-                <label for="">Deprtment</label>
+                <label for="">Department</label>
             </div>
         </div>
         <a href="/annexure-1/placementActivities/edit/{{id}}" class="btn waves-effect waves-light red center mb-2">Edit</a>
@@ -59,8 +61,8 @@
         <input type="hidden" name="_method" value="PUT">
         <div class="row">
             <div class="input-field col s6 md5">
-                <select name="placement_role">
-                    <option value="{{editResult.placement_role}}" selected>{{editResult.placement_role}}</option>
+                <select name="placement_role" class="validate">
+                    <option value="{{editResult.placement_role}}">{{editResult.placement_role}}</option>
                     <option value="tpo">TPO</option>
                     <option value="dept coordinator">Dept Co-ordinator</option>
                 </select>
@@ -68,7 +70,8 @@
             </div>
              <div class="input-field col s6 md5">
                 <input id="no-of-companies" type="number" name="no_of_companies" value="{{editResult.no_of_companies}}" class="validate" required>
-                <label for="no-of-companies">Number of Companies visited</label>
+                <label for="no-of-companies">Companies visited &nbsp; <a href="#" class="tooltipped"
+                            data-tooltip="Enter the number of Companies visited"><i class="fa fa-info-circle"></i></a></label>
             </div>
         </div>
 
@@ -76,14 +79,14 @@
             
             <div class="input-field col s6 md5">
                 <input id="no-of-placed-students" type="number" name="no_of_placed_students" value="{{editResult.no_of_placed_students}}" class="validate" required>
-                <label for="no-of-placed-students">Number of students placed</label>
-            </div>
+                <label for="no-of-placed-students">Students placed  &nbsp; <a href="#" class="tooltipped"
+                            data-tooltip="Enter the number of Students Placed"><i class="fa fa-info-circle"></i></a></label>
            
              
             
             <div class="input-field col s6">
                 <select name="department">
-                    <option value="{{editResult.department}}" selected>{{editResult.department}}</option>
+                    <option value="{{editResult.department}}" >{{editResult.department}}</option>
                     <option value="Information Technology">Information Technology</option>
                     <option value="Computer Engineering">Computer Engineering</option>
                     <option value="Mechanical Engineering">Mechanical Engineering</option>
@@ -121,7 +124,8 @@
             </div>
              <div class="input-field col s6 md5">
                 <input id="no-of-companies" type="number" name="no_of_companies" class="validate" required>
-                <label for="no-of-companies">Number of Companies visited</label>
+                <label for="no-of-companies">Companies visited &nbsp; <a href="#" class="tooltipped"
+                            data-tooltip="Enter the number of Companies visited"><i class="fa fa-info-circle"></i></a></label>
             </div>
         </div>
 
@@ -129,7 +133,8 @@
             
             <div class="input-field col s6 md5">
                 <input id="no-of-placed-students" type="number" name="no_of_placed_students" class="validate" required>
-                <label for="no-of-placed-students">Number of students placed</label>
+                <label for="no-of-placed-students">Students Placed  &nbsp; <a href="#" class="tooltipped"
+                            data-tooltip="Enter the number of Students Placed"><i class="fa fa-info-circle"></i></a></label>
             </div>
            
              

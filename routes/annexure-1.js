@@ -144,7 +144,7 @@ router.get('/inhousePlacement', ensureAuthenticated, (req, res) => {
 });
 
 // student organization load route
-router.get('/studentOrganizations', ensureAuthenticated, (req, res) => {
+router.get('/studentorganizations', ensureAuthenticated, (req, res) => {
     StudentOrganizations.find({ user: req.user.id })
         .then(result => {
             res.render('annexure-1/studentorganizations', { result });
@@ -400,7 +400,7 @@ router.get('/examAssessmentExternal/edit/:id', ensureAuthenticated, (req, res) =
 
 // exam activities supervision route
 router.get('/examActivitiesSupervision/edit/:id', ensureAuthenticated, (req, res) => {
-    ExamActivitiesSupervision.findone({ _id: req.params.id })
+    ExamActivitiesSupervision.findOne({ _id: req.params.id })
         .then(result => {
             if (result.user != req.user.id) {
                 req.flash('error_msg', 'Not Authorized');
@@ -567,6 +567,23 @@ router.post('/culturalActivities', (req, res) => {
 
 //process PBL activities form
 router.post('/projectBasedLearning', (req, res) => {
+    let errors = [];
+
+    if (req.body.pbl_start_date > req.body.pbl_end_date) {
+        errors.push({ text: 'End Date should not be before start date' });
+    }
+    if (errors.length > 0) {
+        res.render('annexure-1/projectBasedLearning', {
+                errors: errors,
+                pbl_subject: req.body.pbl_subject,
+                pbl_role: req.body.pbl_role,
+                pbl_start_date: req.body.pbl_start_date,
+                pbl_end_date: req.body.pbl_end_date,
+                pbl_description: req.body.pbl_description,
+                        
+            });
+        }
+    else{
     // add preleave data into db
     const projectBasedLearningRecords = {
         pbl_subject: req.body.pbl_subject,
@@ -582,10 +599,26 @@ router.post('/projectBasedLearning', (req, res) => {
             req.flash('success_msg', 'Data entered successfully');
             res.redirect('/annexure-1/udaan');
         });
+    }
 });
 
 //process Udaan activities form
 router.post('/udaan', (req, res) => {
+    let errors = [];
+
+    if (req.body.udaan_start_date > req.body.udaan_end_date) {
+        errors.push({ text: 'End Date should not be before start date' });
+    }
+    if (errors.length > 0) {
+        res.render('annexure-1/udaan', {
+                errors: errors,
+                udaan_subject: req.body.udaan_subject,
+                udaan_contribution: req.body.udaan_contribution,
+                udaan_start_date: req.body.udaan_start_date,
+                udaan_end_date: req.body.udaan_end_date,
+        }
+        )}
+    else{
     // add preleave data into db
     const udaanRecords = {
         udaan_subject: req.body.udaan_subject,
@@ -600,10 +633,29 @@ router.post('/udaan', (req, res) => {
             req.flash('success_msg', 'Data entered successfully');
             res.redirect('/annexure-1/placementActivities');
         });
+    }
 });
 
 //process placement activities form
 router.post('/placementActivities', (req, res) => {
+    let errors = [];
+
+    if (!req.body.no_of_companies || req.body.no_of_companies < 0) {
+        errors.push({ text: 'Number of companies cannot be less than 0' });
+    }
+    else if (!req.body.no_of_placed_students || req.body.no_of_placed_students < 0) {
+        errors.push({ text: 'Number of placed students cannot be less than 0' });
+    }
+    if (errors.length > 0) {
+        res.render('annexure-1//placementActivities', {
+                errors: errors,
+                placement_role: req.body.placement_role,
+                no_of_companies: req.body.no_of_companies,
+                no_of_placed_students: req.body.no_of_placed_students,
+                department: req.body.department
+        }
+    )}
+    else{
     // add preleave data into db
     const placementActivitiesRecords = {
         placement_role: req.body.placement_role,
@@ -618,10 +670,26 @@ router.post('/placementActivities', (req, res) => {
             req.flash('success_msg', 'Data entered successfully');
             res.redirect('/annexure-1/inhousePlacement');
         });
+    }
 });
 
 //process inhouse placement form
 router.post('/inhousePlacement', (req, res) => {
+    let errors = [];
+
+    if (!req.body.no_of_participants || req.body.no_of_participants < 0) {
+        errors.push({ text: 'Number of participants cannot be less than 0' });
+    }
+    if (errors.length > 0) {
+        res.render('annexure-1/inhousePlacement', {
+                errors: errors,
+                trainings_and_workshops: req.body.trainings_and_workshops,
+                class_name: req.body.class_name,
+                department: req.body.department,
+                no_of_participants: req.body.no_of_participants
+        }
+    )}
+    else{
     // add preleave data into db
     const inhousePlacementRecords = {
         trainings_and_workshops: req.body.trainings_and_workshops,
@@ -636,10 +704,36 @@ router.post('/inhousePlacement', (req, res) => {
             req.flash('success_msg', 'Data entered successfully');
             res.redirect('/annexure-1/studentorganizations');
         });
+    }
 });
 
 //process student organizations form
-router.post('/studentOrganizations', (req, res) => {
+router.post('/studentorganizations', (req, res) => {
+    let errors = [];
+
+    if (req.body.student_event_start_date > req.body.student_event_end_date) {
+        errors.push({ text: 'End Date should not be before start date' });
+    }
+    else if (!req.body.no_of_participants || req.body.no_of_participants < 0) {
+        errors.push({ text: 'Number of participants cannot be less than 0' });
+    }
+    else if (!req.body.student_event_duration || req.body.student_event_duration < 0) {
+        errors.push({ text: 'Event Duration cannot be less than 0' });
+    }
+    if (errors.length > 0) {
+        res.render('annexure-1/studentorganizations', {
+                errors: errors,
+                student_organizations_trainings: req.body.student_organizations_trainings,
+                class_name: req.body.class_name,
+                department: req.body.department,
+                no_of_participants: req.body.no_of_participants,
+                student_organization_role: req.body.student_organization_role,
+                student_event_duration: req.body.student_event_duration,
+                student_event_start_date: req.body.student_event_start_date,
+                student_event_end_date: req.body.student_event_end_date
+        }
+        )}
+        else{
     // add preleave data into db
     const studentOrganizationRecords = {
         student_organizations_trainings: req.body.student_organizations_trainings,
@@ -658,10 +752,38 @@ router.post('/studentOrganizations', (req, res) => {
             req.flash('success_msg', 'Data entered successfully');
             res.redirect('/annexure-1/industrialVisitActivities');
         });
+        }
 });
 
 //process Industrial visit activities form
 router.post('/industrialVisitActivities', (req, res) => {
+    let errors = [];
+
+    if (req.body.iv_start_date > req.body.iv_end_date) {
+        errors.push({ text: 'End Date should not be before start date' });
+    }
+    else if (!req.body.industrial_visit_days || req.body.industrial_visit_days < 0) {
+        errors.push({ text: 'Number of days cannot be less than 0' });
+    }
+    else if (!req.body.industrial_visit_hrs || req.body.industrial_visit_hrs < 0) {
+        errors.push({ text: 'Number of hours cannot be less than 0' });
+    }
+    if (errors.length > 0) {
+        res.render('annexure-1/industrialVisitActivities', {
+                errors: errors,
+                industrial_visit_role: req.body.industrial_visit_role,
+                class_name: req.body.class_name,
+                department: req.body.department,
+                industrial_visit_days: req.body.industrial_visit_days,
+                industrial_visit_organizer: req.body.industrial_visit_organizer,
+                name_of_company: req.body.name_of_company,
+                iv_description: req.body.iv_description,
+                industrial_visit_hrs: req.body.industrial_visit_hrs,
+                iv_start_date: req.body.iv_start_date,
+                iv_end_date: req.body.iv_end_date
+        }
+        )}
+        else{
     // add preleave data into db
     const industrialVisitRecords = {
         industrial_visit_role: req.body.industrial_visit_role,
@@ -682,10 +804,27 @@ router.post('/industrialVisitActivities', (req, res) => {
             req.flash('success_msg', 'Data entered successfully');
             res.redirect('/annexure-1/admissionProcessActivities');
         });
+    }
 });
 
 //process admission process activities form
 router.post('/admissionProcessActivities', (req, res) => {
+    let errors = [];
+
+    if (req.body.admission_start_date > req.body.admission_end_date) {
+        errors.push({ text: 'End Date should not be before start date' });
+    }
+    if (errors.length > 0) {
+        res.render('annexure-1/admissionProcessActivities', {
+                errors: errors,
+                admission_role: req.body.admission_role,
+                admission_duties: req.body.admission_duties,
+                admission_class: req.body.admission_class,
+                admission_start_date: req.body.admission_start_date,
+                admission_end_date: req.body.admission_end_date,
+        }
+    )}
+    else{
     // add preleave data into db
     const admissionProcessRecords = {
         admission_role: req.body.admission_role,
@@ -695,16 +834,40 @@ router.post('/admissionProcessActivities', (req, res) => {
         admission_end_date: req.body.admission_end_date,
         user: req.user.id
     }
+
     new AdmissionProcessActivities(admissionProcessRecords)
         .save()
         .then(industrialVisit => {
             req.flash('success_msg', 'Data entered successfully');
             res.redirect('/annexure-1/examAssessmentExternal');
         });
+    }
+
 });
 
 //process exam assessment external form
 router.post('/examAssessmentExternal', (req, res) => {
+    let errors = [];
+
+    if (!req.body.papers_revaluated || req.body.papers_revaluated < 0) {
+        errors.push({ text: 'Number of papers evaluated cannot be less than 0' });
+    }
+    if (!req.body.papers_moderated || req.body.papers_moderated < 0) {
+        errors.push({ text: 'Number of papers moderated cannot be less than 0' });
+    }
+    if (errors.length > 0) {
+        res.render('annexure-1/examAssessmentExternal', {
+                errors: errors,
+                exam_role_external: req.body.exam_role_external,
+                semester: req.body.semester,
+                name_of_college_university: req.body.name_of_college_university,
+                exam_subject_external: req.body.exam_subject_external,
+                outdoor_activities: req.body.outdoor_activities,
+                papers_revaluated: req.body.papers_revaluated,
+                papers_moderated: req.body.papers_moderated
+        }
+    )}
+    else{
     // add preleave data into db
     const examAssessmentRecords = {
         exam_role_external: req.body.exam_role_external,
@@ -722,10 +885,33 @@ router.post('/examAssessmentExternal', (req, res) => {
             req.flash('success_msg', 'Data entered successfully');
             res.redirect('/annexure-1/examActivitiesSupervision');
         });
+    }
 });
 
 //process exam assessment external form
 router.post('/examActivitiesSupervision', (req, res) => {
+    let errors = [];
+
+    if (!req.body.morning_sessions || req.body.morning_sessions < 0) {
+        errors.push({ text: 'Number of morning sessions cannot be less than 0' });
+    }
+    else if (!req.body.evening_sessions || req.body.evening_sessions < 0) {
+        errors.push({ text: 'Number of evening sessions cannot be less than 0'});
+    }
+    else if (!req.body.no_of_supervision_days || req.body.no_of_supervision_days < 0) {
+        errors.push({ text: 'Number of supervision days cannot be less than 0' });
+    }
+    if (errors.length > 0) {
+        res.render('annexure-1/examActivitiesSupervision', {
+                errors: errors,
+                exam_role: req.body.exam_role,
+                exam_name: req.body.exam_name,
+                morning_sessions: req.body.morning_sessions,
+                evening_sessions: req.body.evening_sessions,
+                no_of_supervision_days: req.body.no_of_supervision_days
+        }
+    )}
+    else{
     // add preleave data into db
     const examActivitiesSupervisionRecords = {
         exam_role: req.body.exam_role,
@@ -741,6 +927,7 @@ router.post('/examActivitiesSupervision', (req, res) => {
             req.flash('success_msg', 'Data entered successfully');
             res.redirect('/annexure-1/examActivitiesCollegeLevel');
         });
+    }
 });
 
 //process exam activities college level form
@@ -780,6 +967,21 @@ router.post('/ITmaintenance', (req, res) => {
 
 //process lakshya form
 router.post('/lakshya', (req, res) => {
+    let errors = [];
+
+    if (!req.body.lakshya_no_of_participants || req.body.lakshya_no_of_participants < 0) {
+        errors.push({ text: 'Number of participants cannot be less than 0' });
+    }
+    if (errors.length > 0) {
+        res.render('annexure-1/lakshya', {
+                errors: errors,
+                lakshya_activities: req.body.lakshya_activities,
+                lakshya_description: req.body.lakshya_description,
+                lakshya_date: req.body.lakshya_date,
+                lakshya_no_of_participants: req.body.lakshya_no_of_participants
+        }
+    )}
+    else{
     // add preleave data into db
     const lakshyaRecords = {
         lakshya_activities: req.body.lakshya_activities,
@@ -794,6 +996,7 @@ router.post('/lakshya', (req, res) => {
             req.flash('success_msg', 'Data entered successfully');
             res.redirect('/annexure-1/magazineNewsletter');
         });
+    }
 });
 
 //process magazine/newsletter form
@@ -816,6 +1019,34 @@ router.post('/magazineNewsletter', (req, res) => {
 
 //process student organizations form
 router.post('/conductOfSTTP', (req, res) => {
+    let errors = [];
+
+    if (req.body.sttp_start_date > req.body.sttp_end_date) {
+        errors.push({ text: 'End Date should not be before start date' });
+    }
+    else if (!req.body.no_of_sttp || req.body.no_of_sttp < 0) {
+        errors.push({ text: 'Number of STTP cannot be less than 0' });
+    }
+    else if (!req.body.sttp_duration || req.body.sttp_duration < 0) {
+        errors.push({ text: 'Duration cannot be less than 0' });
+    }
+    else if (!req.body.sttp_participants || req.body.sttp_participants < 0) {
+        errors.push({ text: 'Number of participants cannot be less than 0' });
+    }
+    if (errors.length > 0) {
+        res.render('annexure-1/conductOfSTTP', {
+                errors: errors,
+                sttp_role: req.body.sttp_role,
+                no_of_sttp: req.body.no_of_sttp,
+                sttp_technology: req.body.sttp_technology,
+                sttp_duration: req.body.sttp_duration,
+                sttp_start_date: req.body.sttp_start_date,
+                sttp_end_date: req.body.sttp_end_date,
+                sttp_participants: req.body.sttp_participants,
+                department: req.body.department
+        }
+        )}
+    else{
     // add preleave data into db
     const conductOfSTTPRecords = {
         sttp_role: req.body.sttp_role,
@@ -834,10 +1065,25 @@ router.post('/conductOfSTTP', (req, res) => {
             req.flash('success_msg', 'Data entered successfully');
             res.redirect('/annexure-1/departmentUGProjects');
         });
+    }
 });
 
 //process class advisor form
 router.post('/departmentUGProjects', (req, res) => {
+    let errors = [];
+
+    if (!req.body.project_no_of_students || req.body.project_no_of_students < 0) {
+        errors.push({ text: 'Number of students cannot be less than 0' });
+    }
+    if (errors.length > 0) {
+        res.render('annexure-1/departmentUGProjects', {
+                errors: errors,
+                dept_project_role: req.body.dept_project_role,
+                project_title: req.body.project_title,
+                project_no_of_students: req.body.project_no_of_students
+        }
+    )}
+    else{
     // add preleave data into db
     const departmentUGProjectRecords = {
         dept_project_role: req.body.dept_project_role,
@@ -851,16 +1097,10 @@ router.post('/departmentUGProjects', (req, res) => {
             req.flash('success_msg', 'Data entered successfully');
             res.redirect('/annexure-2/papersPublishedinNationalConf');
         });
+    }
 });
 
 // Edit request (PUT request)
-
-
-
-
-
-
-
 
 
 
@@ -928,7 +1168,18 @@ router.put('/culturalActivities/:id', (req, res) => {
 });
 
 router.put('/projectBasedLearning/:id', (req, res) => {
-    TimeTable.findOne({ _id: req.params.id })
+    let errors = [];
+    if (req.body.pbl_start_date > req.body.pbl_end_date) {
+        errors.push({ text: 'End Date should not be before start date' });
+    }
+    if (errors.length > 0) {
+        if (req.body.pbl_start_date > req.body.pbl_end_date) {
+            req.flash( 'error_msg', 'End Date should not be before start date' );
+            res.redirect('/annexure-1/projectBasedLearning');
+        }
+    }
+    else{
+    ProjectBasedLearning.findOne({ _id: req.params.id })
     .then(result => {
         result.pbl_subject = req.body.pbl_subject,
         result.pbl_role = req.body.pbl_role,
@@ -939,12 +1190,24 @@ router.put('/projectBasedLearning/:id', (req, res) => {
         result.save()
         .then(() => {
             req.flash('success_msg', 'Data updated successfully');
-            res.redirect('/annexure-1/projecBasedLearning');
+            res.redirect('/annexure-1/projectBasedLearning');
         })
     })
+}
 });
 
 router.put('/udaan/:id', (req, res) => {
+    let errors = [];
+    if (req.body.udaan_start_date > req.body.udaan_end_date) {
+        errors.push({ text: 'End Date should not be before start date' });
+    }
+    if (errors.length > 0) {
+        if (req.body.udaan_start_date > req.body.udaan_end_date) {
+            req.flash( 'error_msg', 'End Date should not be before start date' );
+            res.redirect('/annexure-1/udaan');
+        }
+    }
+    else{
     Udaan.findOne({ _id: req.params.id })
     .then(result => {
         result.udaan_subject = req.body.udaan_subject,
@@ -958,9 +1221,29 @@ router.put('/udaan/:id', (req, res) => {
             res.redirect('/annexure-1/udaan');
         })
     })
+}
 });
 
 router.put('/placementActivities/:id', (req, res) => {
+    let errors = [];
+    if (!req.body.no_of_companies || req.body.no_of_companies < 0) {
+        errors.push({ text: 'Number of companies cannot be less than 0' });
+    }
+    else if (!req.body.no_of_placed_students || req.body.no_of_placed_students < 0) {
+        errors.push({ text: 'Number of placed students cannot be less than 0' });
+    }
+    if (errors.length > 0) {
+        if (!req.body.no_of_companies || req.body.no_of_companies < 0) {
+            req.flash( 'error_msg', 'Number of companies cannot be less than 0' );
+            res.redirect('/annexure-1/placementActivities');
+        }
+        else if (!req.body.no_of_placed_students || req.body.no_of_placed_students < 0) {
+            req.flash( 'error_msg', 'Number of placed students cannot be less than 0' );
+            res.redirect('/annexure-1/placementActivities');
+        }
+
+    }
+    else{
     PlacementActivities.findOne({ _id: req.params.id })
     .then(result => {
         result.placement_role = req.body.placement_role,
@@ -974,9 +1257,21 @@ router.put('/placementActivities/:id', (req, res) => {
             res.redirect('/annexure-1/placementActivities');
         })
     })
+    }
 });
 
 router.put('/inhousePlacement/:id', (req, res) => {
+    let errors = [];
+    if (!req.body.no_of_participants || req.body.no_of_participants < 0) {
+        errors.push({ text: 'Number of participants cannot be less than 0' });
+    }
+    if (errors.length > 0) {
+        if (!req.body.no_of_participants || req.body.no_of_participants < 0) {
+            req.flash( 'error_msg', 'Number of participants cannot be less than 0' );
+            res.redirect('/annexure-1/inhousePlacement');
+        }
+    }
+    else{
     InhousePlacement.findOne({ _id: req.params.id })
     .then(result => {
         result.trainings_and_workshops = req.body.trainings_and_workshops,
@@ -990,9 +1285,35 @@ router.put('/inhousePlacement/:id', (req, res) => {
             res.redirect('/annexure-1/inhousePlacement');
         })
     })
+    }
 });
 
-router.put('/studentOrganization/:id', (req, res) => {
+router.put('/studentorganizations/:id', (req, res) => {
+    let errors = [];
+    if (req.body.student_event_start_date > req.body.student_event_end_date) {
+        errors.push({ text: 'End Date should not be before start date' });
+    }
+    else if (!req.body.no_of_participants || req.body.no_of_participants < 0) {
+        errors.push({ text: 'Number of participants cannot be less than 0' });
+    }
+    else if (!req.body.student_event_duration || req.body.student_event_duration < 0) {
+        errors.push({ text: 'Event Duration cannot be less than 0' });
+    }
+    if (errors.length > 0) {
+        if (req.body.student_event_start_date > req.body.student_event_end_date) {
+            req.flash( 'error_msg', 'End Date should not be before start date' );
+            res.redirect('/annexure-1/studentorganizations');
+        }
+        else if (!req.body.no_of_participants || req.body.no_of_participants < 0) {
+            req.flash( 'error_msg', 'Number of participants cannot be less than 0' );
+            res.redirect('/annexure-1/studentorganizations');
+        }
+        else if (!req.body.student_event_duration || req.body.student_event_duration < 0) {
+            req.flash( 'error_msg','Event Duration cannot be less than 0' );
+            res.redirect('/annexure-1/studentorganizations');
+        }
+    }
+    else{
     StudentOrganizations.findOne({ _id: req.params.id })
     .then(result => {
         result.student_organizations_trainings = req.body.student_organizations_trainings,
@@ -1007,12 +1328,37 @@ router.put('/studentOrganization/:id', (req, res) => {
         result.save()
         .then(() => {
             req.flash('success_msg', 'Data updated successfully');
-            res.redirect('/annexure-1/studentorganization');
+            res.redirect('/annexure-1/studentorganizations');
         })
     })
+}
 });
 
 router.put('/industrialVisitActivities/:id', (req, res) => {
+    let errors = [];
+    if (req.body.iv_start_date > req.body.iv_end_date) {
+        errors.push({ text: 'End Date should not be before start date' });
+    }
+    else if (!req.body.industrial_visit_days || req.body.industrial_visit_days < 0) {
+        errors.push({ text: 'Number of days cannot be less than 0' });
+    }
+    else if (!req.body.industrial_visit_hrs || req.body.industrial_visit_hrs < 0) {
+        errors.push({ text: 'Number of hours cannot be less than 0' });
+    }
+    if (errors.length > 0) {
+        if (req.body.iv_start_date > req.body.iv_end_date) {
+            req.flash( 'error_msg', 'End Date should not be before start date' );
+            res.redirect('/annexure-1/industrialVisitActivities');
+        }
+        else if (!req.body.industrial_visit_days || req.body.industrial_visit_days < 0) {
+            req.flash( 'error_msg', 'Number of days cannot be less than 0' );
+            res.redirect('/annexure-1/industrialVisitActivities');
+        }
+        else if (!req.body.industrial_visit_hrs || req.body.industrial_visit_hrs < 0) {
+            req.flash( 'error_msg', 'Number of hours cannot be less than 0' );
+            res.redirect('/annexure-1/industrialVisitActivities');
+        }
+    }
     IndustrialVisitActivities.findOne({ _id: req.params.id })
     .then(result => {
         result.industrial_visit_role = req.body.industrial_visit_role,
@@ -1035,6 +1381,17 @@ router.put('/industrialVisitActivities/:id', (req, res) => {
 });
 
 router.put('/admissionProcessActivities/:id', (req, res) => {
+    let errors = [];
+    if (req.body.admission_start_date > req.body.admission_end_date) {
+        errors.push({ text: 'End Date should not be before start date' });
+    }
+    if (errors.length > 0) {
+        if (req.body.admission_start_date > req.body.admission_end_date) {
+            req.flash( 'error_msg', 'End Date should not be before start date' );
+            res.redirect('/annexure-1/admissionProcessActivities');
+        }
+    }
+    else{
     AdmissionProcessActivities.findOne({ _id: req.params.id })
     .then(result => {
         result.admission_role = req.body.admission_role,
@@ -1049,9 +1406,28 @@ router.put('/admissionProcessActivities/:id', (req, res) => {
             res.redirect('/annexure-1/admissionProcessActivities');
         })
     })
+}
 });
 
 router.put('/examAssessmentExternal/:id', (req, res) => {
+    let errors = [];
+    if (!req.body.papers_revaluated || req.body.papers_revaluated < 0) {
+        errors.push({ text: 'Number of papers evaluated cannot be less than 0' });
+    }
+    if (!req.body.papers_moderated || req.body.papers_moderated < 0) {
+        errors.push({ text: 'Number of papers moderated cannot be less than 0' });
+    }
+    if (errors.length > 0) {
+        if (!req.body.papers_revaluated || req.body.papers_revaluated < 0) {
+            req.flash( 'error_msg', 'Number of papers evaluated cannot be less than 0' );
+            res.redirect('/annexure-1/examAssessmentExternal');
+        }
+        if (!req.body.papers_moderated || req.body.papers_moderated < 0) {
+            req.flash( 'error_msg', 'Number of papers moderated cannot be less than 0' );
+            res.redirect('/annexure-1/examAssessmentExternal');
+        }
+    }
+    else{
     ExamAssessmentExternal.findOne({ _id: req.params.id })
     .then(result => {
         result.exam_role_external = req.body.exam_role_external,
@@ -1068,9 +1444,42 @@ router.put('/examAssessmentExternal/:id', (req, res) => {
             res.redirect('/annexure-1/examAssessmentExternal');
         })
     })
+    }
 });
 
 router.put('/examActivitiesSupervision/:id', (req, res) => {
+    let errors = [];
+    if (!req.body.morning_sessions || req.body.morning_sessions < 0) {
+        errors.push({ text: 'Number of morning sessions cannot be less than 0' });
+    }
+    else if (!req.body.evening_sessions || req.body.evening_sessions < 0) {
+        errors.push({ text: 'Number of evening sessions cannot be less than 0'});
+        
+
+    }
+    else if (!req.body.no_of_supervision_days || req.body.no_of_supervision_days < 0) {
+        errors.push({ text: 'Number of supervision days cannot be less than 0' });
+
+    }
+    if (errors.length > 0) {
+        if (!req.body.morning_sessions || req.body.morning_sessions < 0) {
+            req.flash( 'error_msg', 'Number of morning sessions cannot be less than 0' );
+            res.redirect('/annexure-1/examActivitiesSupervision');
+
+        }
+        else if (!req.body.evening_sessions || req.body.evening_sessions < 0) {
+            req.flash( 'error_msg','Number of evening sessions cannot be less than 0');
+            res.redirect('/annexure-1/examActivitiesSupervision');
+
+        }
+        else if (!req.body.no_of_supervision_days || req.body.no_of_supervision_days < 0) {
+            req.flash( 'error_msg', 'Number of supervision days cannot be less than 0' );
+            res.redirect('/annexure-1/examActivitiesSupervision');
+
+        }
+        
+    }
+    else{
     ExamActivitiesSupervision.findOne({ _id: req.params.id })
     .then(result => {
         result.exam_role = req.body.exam_role,
@@ -1085,6 +1494,7 @@ router.put('/examActivitiesSupervision/:id', (req, res) => {
             res.redirect('/annexure-1/examActivitiesSupervision');
         })
     })
+    }
 });
 
 router.put('/examActivitiesCollegeLevel/:id', (req, res) => {
@@ -1119,6 +1529,17 @@ router.put('/ITmaintenance/:id', (req, res) => {
 });
 
 router.put('/lakshya/:id', (req, res) => {
+    let errors = [];
+    if (!req.body.lakshya_no_of_participants || req.body.lakshya_no_of_participants < 0) {
+        errors.push({ text: 'Number of participants cannot be less than 0' });
+    }
+    if (errors.length > 0) {
+        if (!req.body.lakshya_no_of_participants || req.body.lakshya_no_of_participants < 0) {
+            req.flash( 'error_msg', 'Number of participants cannot be less than 0' );
+            res.redirect('/annexure-1/lakshya');
+        }
+    }
+    else{
     Lakshya.findOne({ _id: req.params.id })
     .then(result => {
         result.lakshya_activities = req.body.lakshya_activities,
@@ -1132,9 +1553,10 @@ router.put('/lakshya/:id', (req, res) => {
             res.redirect('/annexure-1/Lakshya');
         })
     })
+    }
 });
 
-router.put('/magazinNewsletter/:id', (req, res) => {
+router.put('/magazineNewsletter/:id', (req, res) => {
     MagazineNewsletter.findOne({ _id: req.params.id })
     .then(result => {
         result.class_name = req.body.class_name,
@@ -1145,12 +1567,47 @@ router.put('/magazinNewsletter/:id', (req, res) => {
         result.save()
         .then(() => {
             req.flash('success_msg', 'Data updated successfully');
-            res.redirect('/annexure-1/magazinNewsletter');
+            res.redirect('/annexure-1/magazineNewsletter');
         })
     })
 });
 
-router.put('/conductOfSTTP/:id', (req, res) => {
+router.put('//:id', (req, res) => {
+    let errors = [];
+    if (req.body.sttp_start_date > req.body.sttp_end_date) {
+        errors.push({ text: 'End Date should not be before start date' });
+    }
+    else if (!req.body.no_of_sttp || req.body.no_of_sttp < 0) {
+        errors.push({ text: 'Number of STTP cannot be less than 0' });
+    }
+    else if (!req.body.sttp_duration || req.body.sttp_duration < 0) {
+        errors.push({ text: 'Duration cannot be less than 0' });
+    }
+    else if (!req.body.sttp_participants || req.body.sttp_participants < 0) {
+        errors.push({ text: 'Number of participants cannot be less than 0' });
+    }
+    if (errors.length > 0) {
+        if (req.body.udaan_start_date > req.body.udaan_end_date) {
+            req.flash( 'error_msg', 'End Date should not be before start date' );
+            res.redirect('/annexure-1/conductOfSTTP');
+        }
+        if (req.body.sttp_start_date > req.body.sttp_end_date) {
+            req.flash( 'error_msg', 'End Date should not be before start date' );
+            res.redirect('/annexure-1/conductOfSTTP');
+        }
+        else if (!req.body.no_of_sttp || req.body.no_of_sttp < 0) {
+            req.flash( 'error_msg', 'Number of STTP cannot be less than 0' );
+            res.redirect('/annexure-1/conductOfSTTP');
+        }
+        else if (!req.body.sttp_duration || req.body.sttp_duration < 0) {
+            req.flash( 'error_msg', 'Duration cannot be less than 0' );
+            res.redirect('/annexure-1/conductOfSTTP');
+        }
+        else if (!req.body.sttp_participants || req.body.sttp_participants < 0) {
+            req.flash( 'error_msg', 'Number of participants cannot be less than 0' );
+        }
+    }
+    else{
     STTP.findOne({ _id: req.params.id })
     .then(result => {
         result.sttp_role = req.body.sttp_role,
@@ -1168,9 +1625,21 @@ router.put('/conductOfSTTP/:id', (req, res) => {
             res.redirect('/annexure-1/conductOfSTTP');
         })
     })
+}
 });
 
 router.put('/departmentUGProjects/:id', (req, res) => {
+    let errors = [];
+    if (!req.body.project_no_of_students || req.body.project_no_of_students < 0) {
+        errors.push({ text: 'Number of students cannot be less than 0' });
+    }
+    if (errors.length > 0) {
+        if (!req.body.project_no_of_students || req.body.project_no_of_students < 0) {
+            req.flash( 'error_msg', 'Number of students cannot be less than 0' );
+            res.redirect('/annexure-1/departmentUGProjects');
+        }
+    }
+    else{
     DepartmentUGProjects.findOne({ _id: req.params.id })
     .then(result => {
         result.dept_project_role = req.body.dept_project_role,
@@ -1183,6 +1652,7 @@ router.put('/departmentUGProjects/:id', (req, res) => {
             res.redirect('/annexure-1/departmentUGProjects');
         })
     })
+    }
 });
 
 // Delete data of annexure-1 forms
@@ -1250,11 +1720,11 @@ router.delete('/inhousePlacement/delete/:id', (req, res) => {
     })
 });
 
-router.delete('/studentOrganization/delete/:id', (req, res) => {
+router.delete('/studentorganizations/delete/:id', (req, res) => {
     StudentOrganizations.deleteOne({ _id: req.params.id })
     .then(() => {
         req.flash('success_msg', 'Data deleted successfully');
-        res.redirect('/annexure-1/studentorganization');
+        res.redirect('/annexure-1/studentorganizations');
     })
 });
 
@@ -1314,11 +1784,11 @@ router.delete('/lakshya/delete/:id', (req, res) => {
     })
 });
 
-router.delete('/magazinNewsletter/delete/:id', (req, res) => {
+router.delete('/magazineNewsletter/delete/:id', (req, res) => {
     MagazineNewsletter.deleteOne({ _id: req.params.id })
     .then(() => {
         req.flash('success_msg', 'Data deleted successfully');
-        res.redirect('/annexure-1/magazinNewsletter');
+        res.redirect('/annexure-1/magazineNewsletter');
     })
 });
 
