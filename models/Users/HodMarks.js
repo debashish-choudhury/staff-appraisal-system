@@ -35,6 +35,26 @@ const HodMarks = new Schema({
         type: Number,
         require: true
     },
+    facultyAP: {
+        type: Number,
+        required: true
+    },
+    facultyLeave: {
+        type: Number,
+        required: true
+    },
+    facultyA1: {
+        type: Number,
+        required: true
+    },
+    facultyA2: {
+        type: Number,
+        required: true
+    },
+    facultyA3: {
+        type: Number,
+        required: true
+    },
     user: {
         type: String,
         required: true

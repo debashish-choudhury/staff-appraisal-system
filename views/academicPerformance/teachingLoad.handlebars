@@ -1,23 +1,14 @@
-<h4> Academic Performance</h4><br>
+<h4> Academic Performance ({{year}})</h4><br>
 <div class="container">
 <h5> Teaching Load</h5>
 <hr>
-
 {{#if result}}
 {{#each result}}
     <div class="row" id="leaveform">
         <div class="row">
-            <div class="input-field col s6">
-                <select name="academic_year">
-                    <option value="{{academic_year}}">{{academic_year}}</option>
-                    <option value="2014-15" disabled>2014-15</option>
-                    <option value="2015-16" disabled>2015-16</option>
-                    <option value="2016-17" disabled>2016-17</option>
-                    <option value="2017-18" disabled>2017-18</option>
-                    <option value="2018-19" disabled>2018-19</option>
-                    <option value="2019-20" disabled>2019-20</option>
-                </select>
-                <label for="">Academic Year</label>
+            <div class="input-field col s6 md5">
+                <input id="academic_year" type="text" name="academic_year" value="{{../year}}" disabled>
+                <label for="academic_year" class="">Academic Year</label>
             </div>
         </div>
         <div class="row">
@@ -122,18 +113,10 @@
         <form method="post" action="/academicPerformance/teachingLoad/{{editResult.id}}?_method=PUT" class="col s12">
         <input type="hidden" name="_method" value="PUT">
             <div class="row">
-                <div class="input-field col s6">
-                    <select name="academic_year">
-                        <option value="{{editResult.academic_year}}">{{editResult.academic_year}}</option>
-                        <option value="2014-15">2014-15</option>
-                        <option value="2015-16">2015-16</option>
-                        <option value="2016-17">2016-17</option>
-                        <option value="2017-18">2017-18</option>
-                        <option value="2018-19">2018-19</option>
-                        <option value="2019-20">2019-20</option>
-                    </select>
-                    <label for="">Academic Year</label>
-                </div>
+                <div class="input-field col s6 md5">
+                <input id="academic_year" type="text" name="academic_year" value="{{year}}" disabled>
+                <label for="academic_year" class="">Academic Year</label>
+            </div>
             </div>
             <div class="row">
                 <div class="input-field col s6 md5">
@@ -245,18 +228,9 @@
     <form action="/academicPerformance/teachingLoad" method="post" class="col s12">
 
         <div class="row">
-            
-            <div class="input-field col s6">
-                <select name="academic_year">
-                    <option value="" disabled selected>Academic Year</option>
-                    <option value="2014-15">2014-15</option>
-                    <option value="2015-16">2015-16</option>
-                    <option value="2016-17">2016-17</option>
-                    <option value="2017-18">2017-18</option>
-                    <option value="2018-19">2018-19</option>
-                    <option value="2019-20">2019-20</option>
-                    
-                </select>
+            <div class="input-field col s6 md5">
+                <input id="academic_year" type="text" name="academic_year" value="{{year}}" disabled>
+                <label for="academic_year" class="">Academic Year</label>
             </div>
         </div>
         <div class="row">

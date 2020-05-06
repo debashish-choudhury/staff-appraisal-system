@@ -1,5 +1,5 @@
 {{#if_eq user.type 'faculty'}}
-<h4>{{title}} {{user.name}} to APSIT appraisal system</h4><br>
+<h4>Welcome {{user.name}} to APSIT appraisal system</h4><br>
 <div class="row">
   <div class="col s12 m12">
     <div class="card white darken-4">
@@ -7,6 +7,45 @@
         <span class="card-title">A P Shah Institute of Technology</span>
         <p>This website is for APSIT staff or faculties. It is an online appraisal and evaluation system developed by
           APSIT to observe the performance and quality of teaching.</p>
+        {{#if result}}
+        {{#each result}}
+        <div class="row center"><br>
+        <form method="post" action="/">
+            <p><b>Please select the academic year before proceeding &nbsp; <a href="#" class="tooltipped"
+                  data-tooltip="Select the specific year with random date and month."><i
+                    class="fa fa-info-circle"></i></a></b></p>
+            <div class="input-field md5">
+              <input type="text" id="datepicker" name="academic_year" value="{{academic_year}}" disabled
+                class="datepicker">
+              <label for="academic_year">Academic Year</label>
+            </div>
+            <a href="/edit/{{id}}" class="btn waves-effect waves-light red center mb-2">Edit</a>
+            <button class="btn waves-effect waves-light" type="submit" disabled>submit</button>
+        </form>
+        </div>
+        {{/each}}
+        {{else}}
+        {{#if editResult}}
+        <div class="row center"><br>
+        <form method="post" action="/{{editResult.id}}?_method=PUT" class="col s12">
+            <input type="hidden" name="_method" value="PUT">
+            
+            <p><b>Please select the academic year before proceeding &nbsp; <a href="#" class="tooltipped"
+                  data-tooltip="Select the specific year with random date and month."><i
+                    class="fa fa-info-circle"></i></a></b></p>
+            <div class="input-field md5">
+              <input type="text" id="datepicker" name="academic_year" value="{{editResult.academic_year}}" required
+                class="datepicker validate">
+              <label for="academic_year">Academic Year</label>
+            </div>
+            <a href="/edit/{{id}}" class="btn waves-effect waves-light red center mb-2 disabled">Edit</a>
+            <button class="btn waves-effect waves-light" type="submit">submit</button>
+            </form>
+            </div>
+        {{else}}
+
+        {{/if}}
+        {{/if}}
       </div>
     </div>
   </div>
@@ -32,7 +71,8 @@
           <a class="waves-effect waves-light btn purple" href="/users/hod/login">HOD Login</a>
         </div>
         <br>
-        <div class="center"><a class="waves-effect waves-light btn purple" href="/users/management/login">Management Login</a></div>
+        <div class="center"><a class="waves-effect waves-light btn purple" href="/users/management/login">Management
+            Login</a></div>
       </div>
     </div>
   </div>
@@ -43,6 +83,4 @@
   <h5>New User..?</h5>
   <a class="waves-effect waves-light btn purple" href="/users/register">Register Here</a>
 </div>
-
-
 {{/unless}}

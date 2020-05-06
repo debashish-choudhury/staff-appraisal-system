@@ -166,7 +166,6 @@ if (errors.length > 0) {
     else {
      // add preleave data into db
     const TeachingRecord = {
-        academic_year: req.body.academic_year,
         subject_name: req.body.subject_name,
         class: req.body.class,
         department: req.body.department,
@@ -308,7 +307,6 @@ router.put('/teachingLoad/:id', (req, res) => {
   
     TeachingLoad.findOne({ _id: req.params.id })
         .then(result => {
-            result.academic_year = req.body.academic_year,
                 result.subject_name = req.body.subject_name,
                 result.class = req.body.class,
                 result.department = req.body.department,
