@@ -270,7 +270,7 @@ router.get('/classAdvisor/edit/:id', ensureAuthenticated, (req, res) => {
 
 // Sports activity load route
 router.get('/sportsActivities/edit/:id', ensureAuthenticated, (req, res) => {
-    SportsActivities.findONe({ _id: req.params.id })
+    SportsActivities.findOne({ _id: req.params.id })
         .then(result => {
             if (result.user != req.user.id) {
                 req.flash('error_msg', 'Not Authorized');
@@ -559,7 +559,7 @@ router.post('/culturalActivities', (req, res) => {
     }
     new CulturalActivities(culturalActivitiesRecords)
         .save()
-        .then(culturalsactivities => {
+        .then(culturalactivities => {
             req.flash('success_msg', 'Data entered successfully');
             res.redirect('/annexure-1/projectBasedLearning');
         });
