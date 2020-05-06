@@ -137,6 +137,21 @@ router.get('/externalProjectsOrCompetition/edit/:id', ensureAuthenticated, (req,
 
 // Processing resource person form
 router.post('/resourcePerson', (req, res) => {
+    let errors = [];
+
+    if (!req.body.numberofParticipants || req.body.numberofParticipants < 0) {
+        errors.push({ text: 'Participants cannot be less than 0' });
+    }
+    if (errors.length > 0) {
+        res.render('annexure-3/resourcePerson', {
+                errors: errors,
+                topicName: req.body.topicName,
+                department: req.body.department,
+                nameofInstitute: req.body.nameofInstitute,
+                numberofParticipants: req.body.numberofParticipants
+        }
+    )}
+    else{
     // add preleave data into db
     const resourcePerson = {
         topicName: req.body.topicName,
@@ -151,10 +166,12 @@ router.post('/resourcePerson', (req, res) => {
             req.flash('success_msg', 'Data entered successfully');
             res.redirect('/annexure-3/contributionToSyllabus');
         });
+    }
 });
 
 // Processing contribution to syllabus form
 router.post('/contributionToSyllabus', (req, res) => {
+
     // add preleave data into db
     const contributionToSyllabus = {
         nameofSub: req.body.nameofSub,
@@ -190,6 +207,25 @@ router.post('/memberOfUniversityCommitte', (req, res) => {
 
 // Processing consultancy assignment form
 router.post('/consultancyAssignment', (req, res) => {
+    let errors = [];
+
+    if (!req.body.duration || req.body.duration < 0) {
+        errors.push({ text: 'Duration cannot be less than 0' });
+    }
+    else if (!req.body.numberofVisits || req.body.numberofVisits < 0) {
+        errors.push({ text: 'Number of visit cannot be less than 0' });
+    }
+    if (errors.length > 0) {
+        res.render('annexure-3/consultancyAssignment', {
+                errors: errors,
+                rolesAndResponsilbilty: req.body.rolesAndResponsilbilty,
+                typeOfWorkorDomain: req.body.typeOfWorkorDomain,
+                organization: req.body.organization,
+                duration: req.body.duration,
+                numberofVisits: req.body.numberofVisits,
+        }
+    )}
+    else{
     // add preleave data into db
     const consultancyAssignment = {
         rolesAndResponsilbilty: req.body.rolesAndResponsilbilty,
@@ -205,10 +241,27 @@ router.post('/consultancyAssignment', (req, res) => {
             req.flash('success_msg', 'Data entered successfully');
             res.redirect('/annexure-3/externalProjectsOrCompetition');
         });
+    }
 });
 
 // Processing external projects or competitions form
 router.post('/externalProjectsOrCompetition', (req, res) => {
+    let errors = [];
+
+    if (!req.body.duration || req.body.duration < 0) {
+        errors.push({ text: 'Duration cannot be less than 0' });
+    }
+    if (errors.length > 0) {
+        res.render('annexure-3/externalProjectsOrCompetition', {
+                errors: errors,
+                description: req.body.description,
+                contribution: req.body.contribution,
+                university: req.body.university,
+                duration: req.body.duration,
+                comments: req.body.comments
+        }
+    )}
+    else{
     // add preleave data into db
     const externalProjectsOrCompetition = {
         description: req.body.description,
@@ -224,11 +277,24 @@ router.post('/externalProjectsOrCompetition', (req, res) => {
             req.flash('success_msg', 'Data entered successfully');
             res.redirect('/annexure-3/externalProjectsOrCompetition');
         });
+    }
 });
 
 // PUT request Route
 
 router.put('/resourcePerson/:id', (req, res) => {
+    let errors = [];
+    if (!req.body.numberofParticipants || req.body.numberofParticipants < 0) {
+        errors.push({ text: 'Participants cannot be less than 0' });
+    }
+    if (errors.length > 0) {
+        
+        if (!req.body.numberofParticipants || req.body.numberofParticipants < 0) {
+            req.flash( 'error_msg', 'Participants cannot be less than 0' );
+            res.redirect('/annexure-3/resourcePerson');
+        }
+    }
+    else{
     ResourcePerson.findOne({ _id: req.params.id })
     .then(result => {
         result.topicName = req.body.topicName,
@@ -242,6 +308,7 @@ router.put('/resourcePerson/:id', (req, res) => {
             res.redirect('/annexure-3/resourcePerson');
         })
     })
+}
 });
 
 router.put('/contributionToSyllabus/:id', (req, res) => {
@@ -276,6 +343,25 @@ router.put('/memberOfUniversityCommitte/:id', (req, res) => {
 });
 
 router.put('/consultancyAssignment/:id', (req, res) => {
+    let errors = [];
+    if (!req.body.duration || req.body.duration < 0) {
+        errors.push({ text: 'Duration cannot be less than 0' });
+    }
+    else if (!req.body.numberofVisits || req.body.numberofVisits < 0) {
+        errors.push({ text: 'Number of visit cannot be less than 0' });
+    }
+    if (errors.length > 0) {
+    
+        if (!req.body.duration || req.body.duration < 0) {
+            req.flash( 'error_msg',  'Duration cannot be less than 0' );
+            res.redirect('/annexure-3/consultancyAssignment');
+        }
+        else if (!req.body.numberofVisits || req.body.numberofVisits < 0) {
+            req.flash( 'error_msg',  'Number of visit cannot be less than 0' );
+            res.redirect('/annexure-3/consultancyAssignment');
+        }
+    }
+    else{
     ConsultancyAssignment.findOne({ _id: req.params.id })
     .then(result => {
         result.rolesAndResponsilbilty = req.body.rolesAndResponsilbilty,
@@ -290,9 +376,22 @@ router.put('/consultancyAssignment/:id', (req, res) => {
             res.redirect('/annexure-3/consultancyAssignment');
         })
     })
+}
 });
 
 router.put('/externalProjectsOrCompetition/:id', (req, res) => {
+    let errors = [];
+    if (!req.body.duration || req.body.duration < 0) {
+        errors.push({ text: 'Duration cannot be less than 0' });
+    }
+    if (errors.length > 0) {
+
+        if (!req.body.duration || req.body.duration < 0) {
+            req.flash( 'error_msg', 'Duration cannot be less than 0' );
+            res.redirect('/annexure-3/externalProjectsOrCompetition');
+        }
+    }
+    else{
     ExternalProjectsOrCompetition.findOne({ _id: req.params.id })
     .then(result => {
         result.description = req.body.description,
@@ -307,6 +406,7 @@ router.put('/externalProjectsOrCompetition/:id', (req, res) => {
             res.redirect('/annexure-3/externalProjectsOrCompetition');
         })
     })
+}
 });
 
 // Delete Route

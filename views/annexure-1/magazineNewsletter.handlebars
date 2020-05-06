@@ -32,9 +32,9 @@
                 </div>
 
                 <div class="input-field col s6">
-                    <input id="year_of_publication" type="number" placeholder="eg: 2019" name="year_of_publication" value="{{year_of_publication}}"
+                    <input id="year_of_publication" type="number" name="year_of_publication" value="{{year_of_publication}}"
                         class="validate" required>
-                    <label for="year_of_publication">Year OF publication</label>
+                    <label for="year_of_publication">Year of publication</label>
 
                 </div>
             </div>
@@ -60,8 +60,8 @@
                     <label for="class_name">Title</label>
                 </div>
                 <div class="input-field col s6 md5">
-                    <select name="magazine_role" class="validate" required>
-                        <option value="{{editResult.magazine_role}}" disabled selected>{{editResult.magazine_role}}</option>
+                    <select name="magazine_role">
+                        <option value="{{editResult.magazine_role}}" selected>{{editResult.magazine_role}}</option>
                         <option value="incharge">Incharge</option>
                         <option value="coordinator">Co-orditors</option>
                     </select>
@@ -71,11 +71,11 @@
             <div class="row">
 
                 <div class="input-field col s6 md5">
-                    <select name="magazineNewsletter_type" class="validate" required>
-                        <option value="{{magazineNewsletter_type}}" disabled selected>{{magazineNewsletter_type}}</option>
-                        <option value="incharge">Magazine</option>
-                        <option value="coordinator">Newsletter</option>
-                        <option value="coordinator">Other</option>
+                    <select name="magazineNewsletter_type">
+                        <option value="{{editResult.magazineNewsletter_type}}" selected>{{editResult.magazineNewsletter_type}}</option>
+                        <option value="Magazine">Magazine</option>
+                        <option value="Newsletter">Newsletter</option>
+                        <option value="Other">Other</option>
                     </select>
                     <label for="">Type</label>
                 </div>
@@ -132,9 +132,9 @@
                 </div>
 
                 <div class="input-field col s6">
-                    <input id="year_of_publication" type="number" placeholder="eg: 2019" name="year_of_publication"
+                    <input id="year_of_publication" type="number" name="year_of_publication"
                         class="validate" required>
-                    <label for="year_of_publication">Year OF publication</label>
+                    <label for="year_of_publication">Year of publication</label>
 
                 </div>
             </div>

@@ -10,9 +10,18 @@
                 <input id="industrial-visit-role" type="text" name="industrial_visit_role" value="{{industrial_visit_role}}" class="validate" required>
                 <label for="industrial-visit-role">Role</label>
             </div>
-             <div class="input-field col s6 md5">
-                <input id="class_name" type="text" name="class_name" value="{{class_name}}" class="validate" required>
-                <label for="class_name">Class</label>
+            
+                <div class="input-field col s6">
+                <select name="class_name">
+                    <option value="{{class_name}}" disabled selected>{{class_name}}</option>
+                    <option value="FE">FE</option>
+                    <option value="SE">SE</option>
+                    <option value="TE">TE</option>
+                    <option value="BE">BE</option>
+                    
+                </select>
+                <label for="">Class</label>
+
             </div>
         </div>
 
@@ -57,7 +66,7 @@
         </div>
         <div class="row">
             <div class="input-field col s6">
-                    <textarea id="iv-description" name="iv_description" aria-valuetext="{{iv_description}}" class="materialize-textarea"></textarea>
+                    <textarea id="iv-description" name="iv_description" aria-valuetext="{{iv_description}}" class="materialize-textarea">{{iv_description}}</textarea>
                     <label for="iv-description">Description</label>
                 </div>
             <div class="input-field col s6 md5">
@@ -102,17 +111,23 @@
                     <label for="industrial-visit-role">Role</label>
                 </div>
                 <div class="input-field col s6 md5">
-                    <input id="class_name" type="text" name="class_name" value="{{editResult.class_name}}" class="validate"
-                        required>
-                    <label for="class_name">Class</label>
+                    <select name="class_name" class="validate">
+                    <option value="{{editResult.class_name}}">{{editResult.class_name}}</option>
+                    <option value="FE">FE</option>
+                    <option value="SE">SE</option>
+                    <option value="TE">TE</option>
+                    <option value="BE">BE</option>
+                    
+                </select>
+                <label for="">Class</label>
                 </div>
             </div>
 
             <div class="row">
 
                 <div class="input-field col s6">
-                    <select name="department" class="validate" required>
-                        <option value="{{editResult.department}}" disabled selected>{{editResult.department}}</option>
+                    <select name="department">
+                        <option value="{{editResult.department}}" >{{editResult.department}}</option>
                         <option value="Information Technology">Information Technology</option>
                         <option value="Computer Engineering">Computer Engineering</option>
                         <option value="Mechanical Engineering">Mechanical Engineering</option>
@@ -132,9 +147,8 @@
             <div class="row">
 
                 <div class="input-field col s6 md5">
-                    <select name="industrial_visit_organizer" required>
-                        <option value="{{editResult.industrial_visit_organizer}}" disabled selected>
-                            {{editResult.industrial_visit_organizer}}</option>
+                    <select name="industrial_visit_organizer">
+                        <option value="{{editResult.industrial_visit_organizer}}">{{editResult.industrial_visit_organizer}}</option>
                         <option value="IEEE">IEEE</option>
                         <option value="ITSA">ITSA</option>
                         <option value="TPO">TPO</option>
@@ -152,8 +166,8 @@
             </div>
             <div class="row">
                 <div class="input-field col s6">
-                    <textarea id="iv-description" name="iv_description" value="{{editResult.iv_description}}"
-                        class="materialize-textarea"></textarea>
+                    <textarea id="iv-description" name="iv_description" aria-valuetext="{{editResult.iv_description}}"
+                        class="materialize-textarea">{{editResult.iv_description}}</textarea>
                     <label for="iv-description">Description</label>
                 </div>
                 <div class="input-field col s6 md5">
@@ -201,8 +215,14 @@
                 <label for="industrial-visit-role">Role</label>
             </div>
              <div class="input-field col s6 md5">
-                <input id="class_name" type="text" name="class_name" class="validate" required>
-                <label for="class_name">Class</label>
+                <select name="class_name" required>
+                    <option value="" disabled selected>Class</option>
+                    <option value="FE">FE</option>
+                    <option value="SE">SE</option>
+                    <option value="TE">TE</option>
+                    <option value="BE">BE</option>
+                    
+                </select>
             </div>
         </div>
 

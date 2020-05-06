@@ -56,7 +56,7 @@
 
 {{#if editResult}}
 <div class="row" id="examActivitiesSupervision">
-        <form action="/annexure-1/examActivitiesSupervision/{{editResult.id}}?_mehtod=PUT" method="post" class="col s12">
+        <form action="/annexure-1/examActivitiesSupervision/{{editResult.id}}?_method=PUT" method="post" class="col s12">
             <input type="hidden" name="_method" value="PUT">
             <div class="row">
                 <div class="input-field col s6 md5">
@@ -101,7 +101,7 @@
                 </label>
             </p>
         </div>
-                class="btn waves-effect waves-dark" id="submit_btn" type="submit" disabled>Submit
+                <button class="btn waves-effect waves-dark" id="submit_btn" type="submit" disabled>Submit
             </button>
         </form>
     </div>
