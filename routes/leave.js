@@ -29,6 +29,25 @@ router.get('/edit/:id', ensureAuthenticated, (req, res) => {
 
 //process leave form
 router.post('/', (req, res) => {
+    let errors = [];
+
+    if (!req.body.pre_casual_leave || req.body.pre_casual_leave < 0 || !req.body.pre_outdoor_leave|| req.body.pre_outdoor_leave< 0 || !req.body.pre_medical_leave || req.body.pre_medical_leave < 0 || !req.body.pre_special_leave || req.body.pre_special_leave < 0 || !req.body.post_casual_leave || req.body.post_casual_leave < 0 || !req.body.post_outdoor_leave || req.body.post_outdoor_leave < 0 || !req.body.post_medical_leave || req.body.post_medical_leave < 0 || !req.body.post_special_leave || req.body.post_special_leave < 0  ) {
+        errors.push({ text: 'Number of Leaves cannot be less than 0' });
+    }
+    if (errors.length > 0) {
+        res.render('leave', {
+                errors: errors,
+                pre_casual_leave: req.body.pre_casual_leave,
+                pre_outdoor_leave: req.body.pre_outdoor_leave,
+                pre_medical_leave: req.body.pre_medical_leave,
+                pre_special_leave: req.body.pre_special_leave,
+                post_casual_leave: req.body.post_casual_leave,
+                post_outdoor_leave: req.body.post_outdoor_leave,
+                post_medical_leave: req.body.post_medical_leave,
+                post_special_leave: req.body.post_special_leave
+        }
+    )}
+    else{
     // add preleave data into db
     const LeaveRecord = {
         pre_casual_leave: req.body.pre_casual_leave,
@@ -47,10 +66,23 @@ router.post('/', (req, res) => {
             req.flash('success_msg', 'Data entered successfully');
             res.redirect('/annexure-1/timeTable');
         });
+    }
 });
 
 // Update Leave form
 router.put('/:id', (req, res) => {
+    let errors = [];
+    if (!req.body.pre_casual_leave || req.body.pre_casual_leave < 0 || !req.body.pre_outdoor_leave|| req.body.pre_outdoor_leave< 0 || !req.body.pre_medical_leave || req.body.pre_medical_leave < 0 || !req.body.pre_special_leave || req.body.pre_special_leave < 0 || !req.body.post_casual_leave || req.body.post_casual_leave < 0 || !req.body.post_outdoor_leave || req.body.post_outdoor_leave < 0 || !req.body.post_medical_leave || req.body.post_medical_leave < 0 || !req.body.post_special_leave || req.body.post_special_leave < 0  ) {
+        errors.push({ text: 'Number of Leaves cannot be less than 0' });
+    }
+    if (errors.length > 0) {
+        
+        if (!req.body.pre_casual_leave || req.body.pre_casual_leave < 0 || !req.body.pre_outdoor_leave|| req.body.pre_outdoor_leave < 0 || !req.body.pre_medical_leave || req.body.pre_medical_leave < 0 || !req.body.pre_special_leave || req.body.pre_special_leave < 0 || !req.body.post_casual_leave || req.body.post_casual_leave < 0 || !req.body.post_outdoor_leave || req.body.post_outdoor_leave < 0 || !req.body.post_medical_leave || req.body.post_medical_leave < 0 || !req.body.post_special_leave || req.body.post_special_leave < 0  ) {
+            req.flash( 'error_msg', 'Number of Leaves cannot be less than 0' );
+            res.redirect('/leave');
+        }
+    }
+    else{
     Leave.findOne({ _id: req.params.id })
     .then(result => {
         result.pre_casual_leave =req.body.pre_casual_leave,
@@ -68,6 +100,7 @@ router.put('/:id', (req, res) => {
             res.redirect('/leave');
         })
     })
+}
 });
 
 //DELETE leave form
