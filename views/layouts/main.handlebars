@@ -136,6 +136,16 @@
                 $('#submit_btn').attr('disabled', true); //disable input
             }
         });
+        $('#indeterminate-checkbox-overview').click(function () {
+            //check if checkbox is checked
+            if ($(this).is(':checked')) {
+
+                $('#submit_btn_overview').removeAttr('disabled'); //enable input
+
+            } else {
+                $('#submit_btn_overview').attr('disabled', true); //disable input
+            }
+        });
 
         $(document).ready(function () {
             $('.tabs').tabs();

@@ -33,7 +33,7 @@
             
             <div class="input-field col s6 md5">
                 <select name="sports_ojus_or_other">
-                    <option value="{{sports_ojus_or_other}}" disabled selected>{{editResult.sports_ojus_or_other}}</option>
+                    <option value="{{sports_ojus_or_other}}" disabled selected>{{sports_ojus_or_other}}</option>
                     <option value="sports-ojus">Ojus</option>
                     <option value="other-ojus">Other College Activities</option>
                 </select>
@@ -63,7 +63,7 @@
             </div>
              <div class="input-field col s6 md5">
                 <select name="sports_category">
-                    <option value="{{editResult.sports_category}}" disabled selected>{{editResult.sports_category}}</option>
+                    <option value="{{editResult.sports_category}}" selected>{{editResult.sports_category}}</option>
                     <option value="indoor">Indoor</option>
                     <option value="outdoor">Outdoor</option>
                 </select>
@@ -74,8 +74,8 @@
         <div class="row">
            
              <div class="input-field col s6 md5">
-                <select name="sports_role" class="validate" required>
-                    <option value="{{sports_role}}" disabled selected>{{sports_role}}</option>
+                <select name="sports_role" class="validate">
+                    <option value="{{editResult.sports_role}}" selected>{{editResult.sports_role}}</option>
                     <option value="incharge">Incharge</option>
                     <option value="coordinator">Co-orditors</option>
                 </select>
@@ -84,7 +84,7 @@
             
             <div class="input-field col s6 md5">
                 <select name="sports_ojus_or_other" class="validate" required>
-                    <option value="{{editResult.sports_ojus_or_other}}" disabled selected>{{editResult.sports_ojus_or_other}}</option>
+                    <option value="{{editResult.sports_ojus_or_other}}" selected>{{editResult.sports_ojus_or_other}}</option>
                     <option value="sports-ojus">Ojus</option>
                     <option value="other-ojus">Other College Activities</option>
                 </select>
