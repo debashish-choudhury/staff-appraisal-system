@@ -96,6 +96,11 @@ app.get('/', (req, res) => {
                     result: result
                 });
             })
+            .catch(err => {
+                if (err) {
+                    res.render('index');
+                }
+            })
     } else {
         res.render('index');
     }

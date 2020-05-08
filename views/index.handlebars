@@ -46,6 +46,21 @@
 
         {{/if}}
         {{/if}}
+        {{#unless result}}
+          <div class="row center"><br>
+        <form method="post" action="/" class="col s12">
+            <input type="hidden" name="_method" value="PUT">
+            <p><b>Please select the academic year before proceeding &nbsp; <a href="#" class="tooltipped"
+                  data-tooltip="Select the specific year with random date and month."><i
+                    class="fa fa-info-circle"></i></a></b></p>
+            <div class="input-field md5">
+              <input type="text" id="datepicker" name="academic_year" required class="datepicker validate">
+              <label for="academic_year">Academic Year</label>
+            </div>
+            <button class="btn waves-effect waves-light" type="submit">submit</button>
+            </form>
+            </div>
+        {{/unless}}
       </div>
     </div>
   </div>

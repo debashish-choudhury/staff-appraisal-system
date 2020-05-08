@@ -7,11 +7,11 @@
 <div class="row" id="culturalActivities">
         <div class="row">
             <div class="input-field col s6 md5">
-                <input id="cultural_name" type="text" name="cultural_name" value="{{cultural_name}}" class="validate" required>
+                <input id="cultural_name" type="text" name="cultural_name" value="{{cultural_name}}" disabled class="validate">
                 <label for="cultural_name">Name of Activity &nbsp; <a href="#" class="tooltipped" data-tooltip="Enter the name of cultural activity performed"><i class="fa fa-info-circle"></i></a></label>
             </div>
              <div class="input-field col s6 md5">
-                <input id="cultural-category" type="text" name="cultural_category" value="{{cultural_category}}" class="validate" required>
+                <input id="cultural-category" type="text" name="cultural_category" value="{{cultural_category}}" class="validate" disabled>
                 <label for="cultural-category">Category &nbsp; <a href="#" class="tooltipped" data-tooltip="Enter the category of the event eg: social, politics, educational"><i class="fa fa-info-circle"></i></a></label>
             </div>
         </div>
@@ -20,9 +20,9 @@
            
              <div class="input-field col s6 md5">
                 <select name="cultural_role">
-                    <option value="{{cultural_role}}" disabled selected>{{cultural_role}}</option>
-                    <option value="incharge">Incharge</option>
-                    <option value="coordinator">Co-orditors</option>
+                    <option value="{{cultural_role}}" selected>{{cultural_role}}</option>
+                    <option value="incharge" disabled>Incharge</option>
+                    <option value="coordinator" disabled>Co-orditors</option>
                 </select>
                 <label for="">Role</label>
             </div>
@@ -30,8 +30,8 @@
             <div class="input-field col s6 md5">
                 <select name="cultural_ojus_or_other">
                     <option value="{{cultural_ojus_or_other}}" disabled selected>{{cultural_ojus_or_other}}</option>
-                    <option value="sports-ojus">Ojus</option>
-                    <option value="other-ojus">Other College Activities</option>
+                    <option value="sports-ojus" disabled>Ojus</option>
+                    <option value="other-ojus"disabled>Other College Activities</option>
                 </select>
                 <label for="">Ojus/Other College Activities</label>
             </div>
@@ -49,7 +49,7 @@
 {{else}}
 {{#if editResult}}
 <div class="row" id="culturalActivities">
-    <form action="/annexure-1/culturalActivities/{{editResult.id}}_?method=PUT" method="post" class="col s12">
+    <form action="/annexure-1/culturalActivities/{{editResult.id}}?_method=PUT" method="post" class="col s12">
         <input type="hidden" name="_method" value="PUT">
         <div class="row">
             <div class="input-field col s6 md5">

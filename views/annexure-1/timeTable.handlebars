@@ -7,18 +7,18 @@
 <div class="row" id="timetable">
             <div class="row">
                 <div class="input-field col s6 md5">
-                    <input id="role" type="text" name="role" value="{{role}}" class="validate" required>
+                    <input id="role" type="text" name="role" value="{{role}}" class="validate" disabled>
                     <label for="role">Role &nbsp; <a href="#" class="tooltipped"
                             data-tooltip="Enter the type of role given to you in time table related activities"><i class="fa fa-info-circle"></i></a></label>
                 </div>
                 <div class="input-field col s6">
                     <select name="department">
-                        <option value="{{department}}" disabled selected>{{department}}</option>
-                        <option value="Information Technology">Information Technology</option>
-                        <option value="Computer Engineering">Computer Engineering</option>
-                        <option value="Mechanical Engineering">Mechanical Engineering</option>
-                        <option value="Civil Engineering">Civil Engineering</option>
-                        <option value="EXTC Engineering">EXTC Engineering</option>
+                        <option value="{{department}}" selected>{{department}}</option>
+                        <option value="Information Technology" disabled>Information Technology</option>
+                        <option value="Computer Engineering" disabled>Computer Engineering</option>
+                        <option value="Mechanical Engineering" disabled>Mechanical Engineering</option>
+                        <option value="Civil Engineering" disabled>Civil Engineering</option>
+                        <option value="EXTC Engineering" disabled>EXTC Engineering</option>
                     </select>
                     <label for="">Department</label>
                 </div>
@@ -26,15 +26,15 @@
             <div class="row">
                 <div class="input-field col s6 md5">
                     <select name="semester">
-                        <option value="{{semester}}" disabled selected>{{semester}}</option>
-                        <option value="sem 1">Sem 1</option>
-                        <option value="sem 2">Sem 2</option>
-                        <option value="sem 3">Sem 3</option>
-                        <option value="sem 4">Sem 4</option>
-                        <option value="sem 5">Sem 5</option>
-                        <option value="sem 6">Sem 6</option>
-                        <option value="sem 7">Sem 7</option>
-                        <option value="sem 8">Sem 8</option>
+                        <option value="{{semester}}" selected>{{semester}}</option>
+                        <option value="sem 1"disabled>Sem 1</option>
+                        <option value="sem 2"disabled>Sem 2</option>
+                        <option value="sem 3"disabled>Sem 3</option>
+                        <option value="sem 4"disabled>Sem 4</option>
+                        <option value="sem 5"disabled>Sem 5</option>
+                        <option value="sem 6"disabled>Sem 6</option>
+                        <option value="sem 7"disabled>Sem 7</option>
+                        <option value="sem 8"disabled>Sem 8</option>
                     </select>
                     <label for="">Semester</label>
                 </div>
