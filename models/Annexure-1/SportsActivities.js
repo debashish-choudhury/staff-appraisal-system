@@ -3,6 +3,10 @@ const Schema = mongoose.Schema;
 
 //create Schema
 const SportsActivities = new Schema({
+    academic_year: {
+        type: Number,
+        required: true
+    },
     sports_name: {
         type: String,
         required: true

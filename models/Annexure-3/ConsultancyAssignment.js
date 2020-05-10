@@ -3,6 +3,10 @@ const Schema = mongoose.Schema;
 
 //create Schema
 const ConsultancyAssignment = new Schema({
+    academic_year: {
+        type: Number,
+        required: true
+    },
     rolesAndResponsilbilty: {
         type: String,
         required: true

@@ -3,6 +3,10 @@ const Schema = mongoose.Schema;
 
 //create Schema
 const TeachingRecord = new Schema({
+    academic_year: {
+        type: Number,
+        required: true
+    },
     subject_name: {
         type: String,
         required: true

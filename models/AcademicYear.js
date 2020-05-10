@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 //create Schema
 const AcademicYear = new Schema({
     academic_year: {
-        type: String,
+        type: Number,
         required: true
     },
     user: {

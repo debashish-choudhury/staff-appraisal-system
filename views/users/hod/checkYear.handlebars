@@ -1,20 +1,19 @@
-{{#if_eq user.type 'manager'}}
-<h2>Management Page</h2>
-<h4>Marks of each faculty assessed by HoD (module wise)</h4>
+
+<h2>HoD Page</h2>
+<h4>Academic Year of submitted by {{facultyName}}</h4>
 <br><br>
 
 <table class="highlight centered responsive-table">
     <thead>
         <tr>
-            <th>Name</th>
-            <th>Email ID</th>
+            <th>Faculty Email ID</th>
             <th>Academic</th>
-            <th>Leave</th>
+            <th>Leave Record</th>
             <th>annexure 1</th>
             <th>Academic 2</th>
             <th>Academic 3</th>
-            <th>Confidential</th>
             <th>Academic Year</th>
+            <th>HoD Feedback</th>
         </tr>
     </thead>
     <tbody>
@@ -22,15 +21,14 @@
     {{#each result}}
     
         <tr>
-            <td>{{faculty_name}}</td>
-            <td>{{faculty_email}}</td>
+            <td>{{../facultyEmail}}</td>
             <td>{{academicPerformance}}</td>
             <td>{{leaveRecord}}</td>
             <td>{{annexure_1}}</td>
             <td>{{annexure_2}}</td>
             <td>{{annexure_3}}</td>
-            <td>{{confidential}}</td>
             <td>{{academic_year}}</td>
+            <td><a href="/users/hod/hodOverview/{{../facultID}}/{{academic_year}}" class="red-text">Click Here</a></td>
         </tr>
     
     {{/each}}
@@ -41,7 +39,3 @@
 </table>
 {{/if}}
 <br><br><br><br><br>
-
-{{else}}
-
-{{/if_eq}}

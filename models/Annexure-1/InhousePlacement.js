@@ -3,6 +3,10 @@ const Schema = mongoose.Schema;
 
 //create Schema
 const InhousePlacement = new Schema({
+    academic_year: {
+        type: Number,
+        required: true
+    },
     trainings_and_workshops: {
         type: String,
         required: true

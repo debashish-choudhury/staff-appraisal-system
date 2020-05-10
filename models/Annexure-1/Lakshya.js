@@ -3,6 +3,10 @@ const Schema = mongoose.Schema;
 
 //create Schema
 const Lakshya = new Schema({
+    academic_year: {
+        type: Number,
+        required: true
+    },
     lakshya_activities: {
         type: String,
         required: true

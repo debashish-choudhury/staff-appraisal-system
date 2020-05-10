@@ -3,6 +3,10 @@ const Schema = mongoose.Schema;
 
 //create Schema
 const ShortTermTraining = new Schema({
+    academic_year: {
+        type: Number,
+        required: true
+    },
     short_term_training: {
         type: String,
         required: true

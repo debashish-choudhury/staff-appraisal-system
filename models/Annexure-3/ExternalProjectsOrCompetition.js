@@ -3,6 +3,10 @@ const Schema = mongoose.Schema;
 
 //create Schema
 const ExternalProjectsOrCompetition = new Schema({
+    academic_year: {
+        type: Number,
+        required: true
+    },
     description: {
         type: String,
         required: true

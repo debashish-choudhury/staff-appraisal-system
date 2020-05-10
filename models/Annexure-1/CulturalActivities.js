@@ -3,6 +3,10 @@ const Schema = mongoose.Schema;
 
 //create Schema
 const CulturalActivities = new Schema({
+    academic_year: {
+        type: Number,
+        required: true
+    },
     cultural_name: {
         type: String,
         required: true

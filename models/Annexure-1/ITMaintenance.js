@@ -3,6 +3,10 @@ const Schema = mongoose.Schema;
 
 //create Schema
 const ITMaintenance = new Schema({
+    academic_year: {
+        type: Number,
+        required: true
+    },
     class_name: {
         type: String,
         required: true

@@ -3,6 +3,10 @@ const Schema = mongoose.Schema;
 
 //create Schema
 const TimeTable = new Schema({
+    academic_year: {
+        type: Number,
+        required: true
+    },
     role: {
         type: String,
         required: true

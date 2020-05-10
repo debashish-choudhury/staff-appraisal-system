@@ -3,6 +3,10 @@ const Schema = mongoose.Schema;
 
 //create Schema
 const ExamActivitiesSupervision = new Schema({
+    academic_year: {
+        type: Number,
+        required: true
+    },
     exam_role: {
         type: String,
         required: true

@@ -3,6 +3,10 @@ const Schema = mongoose.Schema;
 
 //create Schema
 const Moocs = new Schema({
+    academic_year: {
+        type: Number,
+        required: true
+    },
     name_of_moocs_undertaken: {
         type: String,
         required: true

@@ -3,6 +3,10 @@ const Schema = mongoose.Schema;
 
 //create Schema
 const LeaveRecord = new Schema({
+    academic_year: {
+        type: Number,
+        required: true
+    },
     pre_casual_leave: {
         type: Number,
         required: true

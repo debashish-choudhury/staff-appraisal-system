@@ -807,13 +807,14 @@
                 </label>
             </p>
         </div> --}}
+        <p>Marks already submitted.</p>
             <button class="btn waves-effect waves-light" type="submit" id="submit_btn" disabled>Submit
             </button><br><br><br>
         </div>
     </form>
 </div>
 {{else}}
-<form action="/users/hod/finalSubmit/{{user}}" method="post">
+<form action="/users/hod/finalSubmit/{{user}}/{{../year}}" method="post">
     <ul class="collapsible popout" data-collapsible="accordion">
         <li id="overview">
             <div class="collapsible-header"><i class="material-icons">book</i><b>Academic Performance</b>

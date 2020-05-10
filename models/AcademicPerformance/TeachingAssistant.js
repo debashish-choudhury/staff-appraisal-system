@@ -3,6 +3,10 @@ const Schema = mongoose.Schema;
 
 //create Schema
 const TeachingAssistant = new Schema({
+    academic_year: {
+        type: Number,
+        required: true
+    },
     faculty_name: {
         type: String,
         required: true
@@ -22,6 +26,10 @@ const TeachingAssistant = new Schema({
     user: {
         type: String,
         required: true
+    },
+    year_check: {
+        type: Schema.Types.ObjectId,
+        ref: 'academic_year'
     }
 });
 

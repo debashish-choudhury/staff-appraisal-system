@@ -3,6 +3,10 @@ const Schema = mongoose.Schema;
 
 //create Schema
 const HodMarks = new Schema({
+    academic_year: {
+        type: Number,
+        required: true
+    },
     faculty_name: {
         type: String,
         required: true

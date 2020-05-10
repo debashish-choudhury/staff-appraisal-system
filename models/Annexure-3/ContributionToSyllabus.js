@@ -3,6 +3,10 @@ const Schema = mongoose.Schema;
 
 //create Schema
 const ContributionToSyllabus = new Schema({
+    academic_year: {
+        type: Number,
+        required: true
+    },
     nameofSub: {
         type: String,
         required: true

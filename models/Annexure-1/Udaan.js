@@ -3,6 +3,10 @@ const Schema = mongoose.Schema;
 
 //create Schema
 const Udaan = new Schema({
+    academic_year: {
+        type: Number,
+        required: true
+    },
     udaan_subject: {
         type: String,
         required: true
