@@ -38,10 +38,10 @@ router.get('/resourcePerson', ensureAuthenticated, (req, res) => {
                 .then(result => {
                     res.render('annexure-3/resourcePerson', { result });
                 })
-                .catch(() => {
-                    req.flash('error_msg', 'Academic year not selected');
-                    res.redirect('/');
-                })
+        })
+        .catch(() => {
+            req.flash('error_msg', 'Select the academic year before proceeding.');
+            res.redirect('/');
         })
 });
 
@@ -58,10 +58,10 @@ router.get('/contributionToSyllabus', ensureAuthenticated, (req, res) => {
                 .then(result => {
                     res.render('annexure-3/contributionToSyllabus', { result });
                 })
-                .catch(() => {
-                    req.flash('error_msg', 'Academic year not selected');
-                    res.redirect('/');
-                })
+        })
+        .catch(() => {
+            req.flash('error_msg', 'Select the academic year before proceeding.');
+            res.redirect('/');
         })
 });
 
@@ -78,10 +78,10 @@ router.get('/memberOfUniversityCommitte', ensureAuthenticated, (req, res) => {
                 .then(result => {
                     res.render('annexure-3/memberOfUniversityCommitte', { result });
                 })
-                .catch(() => {
-                    req.flash('error_msg', 'Academic year not selected');
-                    res.redirect('/');
-                })
+        })
+        .catch(() => {
+            req.flash('error_msg', 'Select the academic year before proceeding.');
+            res.redirect('/');
         })
 });
 
@@ -98,10 +98,10 @@ router.get('/consultancyAssignment', ensureAuthenticated, (req, res) => {
                 .then(result => {
                     res.render('annexure-3/consultancyAssignment', { result })
                 })
-                .catch(() => {
-                    req.flash('error_msg', 'Academic year not selected');
-                    res.redirect('/');
-                })
+        })
+        .catch(() => {
+            req.flash('error_msg', 'Select the academic year before proceeding.');
+            res.redirect('/');
         })
 });
 
@@ -118,10 +118,10 @@ router.get('/externalProjectsOrCompetition', ensureAuthenticated, (req, res) => 
                 .then(result => {
                     res.render('annexure-3/externalProjectsOrCompetition', { result });
                 })
-                .catch(() => {
-                    req.flash('error_msg', 'Academic year not selected');
-                    res.redirect('/');
-                })
+        })
+        .catch(() => {
+            req.flash('error_msg', 'Select the academic year before proceeding.');
+            res.redirect('/');
         })
 });
 

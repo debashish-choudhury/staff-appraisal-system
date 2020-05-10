@@ -46,6 +46,10 @@ router.get('/teachingLoad', ensureAuthenticated, (req, res) => {
                     res.redirect('/');
                 })
         })
+        .catch(() => {
+            req.flash('error_msg', 'Select the academic year before proceeding.');
+            res.redirect('/');
+        })
 });
 
 // Teaching assistant route
@@ -66,6 +70,10 @@ router.get('/teachingAssistant', ensureAuthenticated, (req, res) => {
                     res.redirect('/');
                 })
         })
+        .catch(() => {
+            req.flash('error_msg', 'Select the academic year before proceeding.');
+            res.redirect('/');
+        })
 });
 
 // new books load route
@@ -85,6 +93,10 @@ router.get('/newBooks', ensureAuthenticated, (req, res) => {
                     req.flash('error_msg', 'Academic year not selected');
                     res.redirect('/');
                 })
+        })
+        .catch(() => {
+            req.flash('error_msg', 'Select the academic year before proceeding.');
+            res.redirect('/');
         })
 
 });
@@ -107,6 +119,10 @@ router.get('/addedExp', ensureAuthenticated, (req, res) => {
                     res.redirect('/');
                 })
         })
+        .catch(() => {
+            req.flash('error_msg', 'Select the academic year before proceeding.');
+            res.redirect('/');
+        })
 
 });
 
@@ -127,6 +143,10 @@ router.get('/innovativeTeaching', ensureAuthenticated, (req, res) => {
                     req.flash('error_msg', 'Academic year not selected');
                     res.redirect('/');
                 })
+        })
+        .catch(() => {
+            req.flash('error_msg', 'Select the academic year before proceeding.');
+            res.redirect('/');
         })
 });
 

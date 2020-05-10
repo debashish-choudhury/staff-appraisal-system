@@ -21,10 +21,10 @@ router.get('/', ensureAuthenticated, (req, res) => {
                 .then(result => {
                     res.render('leaveForm', { result });
                 })
-                .catch(() => {
-                    req.flash('error_msg', 'Academic year not selected');
-                    res.redirect('/');
-                })
+        })
+        .catch(() => {
+            req.flash('error_msg', 'Select the academic year before proceeding.');
+            res.redirect('/');
         })
 });
 
