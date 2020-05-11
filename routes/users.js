@@ -5,6 +5,8 @@ const passport = require('passport');
 const router = express.Router();
 const pdfMake = require('pdfmake/build/pdfmake.js');
 const pdfFonts = require('pdfmake/build/vfs_fonts.js');
+var fs = require('fs');
+// var Chart = require('chart.js');
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 const { ensureAuthenticated } = require('../helpers/auth');
 
@@ -154,10 +156,10 @@ router.post('/management/search', (req, res) => {
     var fltEmail = req.body.filterEmail;
     var academicYear = req.body.academic_year;
     if (fltEmail != '' && academicYear != '') {
-        var filterParameter = { $and: [{faculty_email: fltEmail}, {academic_year: academicYear}] }
-    } else if(fltEmail == '' && academicYear != '') {
+        var filterParameter = { $and: [{ faculty_email: fltEmail }, { academic_year: academicYear }] }
+    } else if (fltEmail == '' && academicYear != '') {
         var filterParameter = { academic_year: academicYear }
-    }else if(fltEmail != '' && academicYear != '') {
+    } else if (fltEmail != '' && academicYear != '') {
         var filterParameter = { faculty_email: fltEmail }
     } else {
         var filterParameter = {};
@@ -169,7 +171,18 @@ router.post('/management/search', (req, res) => {
                 req.flash('error_msg', 'No submissions yet.');
                 res.redirect('/users/management/home');
             } else {
-                res.render('users/management/home', { result, fltEmail, academicYear });
+                var facultyName=[];
+                var marks = [];
+                var totalYear = [];
+                result.forEach(function (arrayItem) {
+                    facultyName.push(arrayItem.faculty_name);
+                    marks.push(arrayItem.academicPerformance);
+                    totalYear.push(arrayItem.academic_year);
+                });
+                let name = {facultyName};
+                let finalMarks = {marks};
+                let year = {totalYear};
+                res.render('users/management/home', { result, fltEmail, academicYear, name, finalMarks, year });
             }
         })
 });
@@ -186,6 +199,7 @@ router.get('/hod/appraisalList', ensureAuthenticated, (req, res) => {
                 res.render('users/hod/appraisalList', { result });
             }
         })
+
 });
 
 // Post route for HoD search
@@ -193,10 +207,10 @@ router.post('/hod/search', (req, res) => {
     var fltEmail = req.body.filterEmail;
     var academicYear = req.body.academic_year;
     if (fltEmail != '' && academicYear != '') {
-        var filterParameter = { $and: [{faculty_email: fltEmail}, {academic_year: academicYear}] }
-    } else if(fltEmail == '' && academicYear != '') {
+        var filterParameter = { $and: [{ faculty_email: fltEmail }, { academic_year: academicYear }] }
+    } else if (fltEmail == '' && academicYear != '') {
         var filterParameter = { academic_year: academicYear }
-    }else if(fltEmail != '' && academicYear != '') {
+    } else if (fltEmail != '' && academicYear != '') {
         var filterParameter = { faculty_email: fltEmail }
     } else {
         var filterParameter = {};
