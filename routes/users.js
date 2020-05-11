@@ -149,6 +149,31 @@ router.get('/management/home', ensureAuthenticated, (req, res) => {
         })
 });
 
+// Post search route for management user
+router.post('/management/search', (req, res) => {
+    var fltEmail = req.body.filterEmail;
+    var academicYear = req.body.academic_year;
+    if (fltEmail != '' && academicYear != '') {
+        var filterParameter = { $and: [{faculty_email: fltEmail}, {academic_year: academicYear}] }
+    } else if(fltEmail == '' && academicYear != '') {
+        var filterParameter = { academic_year: academicYear }
+    }else if(fltEmail != '' && academicYear != '') {
+        var filterParameter = { faculty_email: fltEmail }
+    } else {
+        var filterParameter = {};
+    }
+    HodMarks.find(filterParameter)
+        .sort({ date: 'desc' })
+        .then(result => {
+            if (!result) {
+                req.flash('error_msg', 'No submissions yet.');
+                res.redirect('/users/management/home');
+            } else {
+                res.render('users/management/home', { result, fltEmail, academicYear });
+            }
+        })
+});
+
 // HoD Appraisal List route
 router.get('/hod/appraisalList', ensureAuthenticated, (req, res) => {
     HodMarks.find({})
@@ -159,6 +184,31 @@ router.get('/hod/appraisalList', ensureAuthenticated, (req, res) => {
                 res.redirect('/users/hod/home');
             } else {
                 res.render('users/hod/appraisalList', { result });
+            }
+        })
+});
+
+// Post route for HoD search
+router.post('/hod/search', (req, res) => {
+    var fltEmail = req.body.filterEmail;
+    var academicYear = req.body.academic_year;
+    if (fltEmail != '' && academicYear != '') {
+        var filterParameter = { $and: [{faculty_email: fltEmail}, {academic_year: academicYear}] }
+    } else if(fltEmail == '' && academicYear != '') {
+        var filterParameter = { academic_year: academicYear }
+    }else if(fltEmail != '' && academicYear != '') {
+        var filterParameter = { faculty_email: fltEmail }
+    } else {
+        var filterParameter = {};
+    }
+    HodMarks.find(filterParameter)
+        .sort({ date: 'desc' })
+        .then(result => {
+            if (!result) {
+                req.flash('error_msg', 'No submissions yet.');
+                res.redirect('/users/hod/home');
+            } else {
+                res.render('users/hod/appraisalList', { result, fltEmail, academicYear });
             }
         })
 });
@@ -300,7 +350,7 @@ router.post('/faculty/facultyOverview/:year', (req, res) => {
         });
     }
     else {
-        modules.TeachingLoad.findOne({ $and:[{ user: req.user.id }, {academic_year: req.params.year}] }).then(result => {
+        modules.TeachingLoad.findOne({ $and: [{ user: req.user.id }, { academic_year: req.params.year }] }).then(result => {
             if (!result) {
                 req.flash('error_msg', 'Teaching load form is compulsory');
                 res.redirect('/users/faculty/facultyOverview');
@@ -1561,7 +1611,7 @@ router.post('/hod/finalSubmit/:id/:year', (req, res) => {
         errors.push({ text: 'Please mark all the buttons' });
     } else {
         const faculty = Faculty.find({ _id: req.params.id }).exec();
-        const facultymarks = FacultyMarks.find({ $and: [{ user: req.params.id }, {academic_year: req.params.year}] }).exec();
+        const facultymarks = FacultyMarks.find({ $and: [{ user: req.params.id }, { academic_year: req.params.year }] }).exec();
         Promise.all([faculty, facultymarks]).then(result => {
             return Promise.all(result);
         }).then(([result, facultymarks]) => {

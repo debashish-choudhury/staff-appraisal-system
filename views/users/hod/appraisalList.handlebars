@@ -3,6 +3,26 @@
 <h4>Marks of each faculty assessed by HoD(module wise)</h4>
 <br><br>
 
+<form action="/users/hod/search" method="post">
+    <div class="row">
+        <form class="col s12">
+            <div class="row">
+                <div class="input-field col s5">
+                    <input id="email" name="filterEmail" value="{{fltEmail}}" type="text">
+                    <label for="email">Email ID</label>
+                </div>
+                <div class="input-field col s5">
+                    <input id="academic_year" name="academic_year" value="{{academicYear}}" type="text">
+                    <label for="academic_year">Academic Year</label>
+                </div>
+                <div class="input-field col s2">
+                    <button class="btn waves-effect waves-light purple" type="submit"><i class="fa fa-search white-text" aria-hidden="true"></i>&nbsp; Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</form>
+
 <table class="highlight centered responsive-table">
     <thead>
         <tr>
