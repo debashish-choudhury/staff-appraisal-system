@@ -159,7 +159,7 @@ router.post('/management/search', (req, res) => {
         var filterParameter = { $and: [{ faculty_email: fltEmail }, { academic_year: academicYear }] }
     } else if (fltEmail == '' && academicYear != '') {
         var filterParameter = { academic_year: academicYear }
-    } else if (fltEmail != '' && academicYear != '') {
+    } else if (fltEmail != '' && academicYear == '') {
         var filterParameter = { faculty_email: fltEmail }
     } else {
         var filterParameter = {};
