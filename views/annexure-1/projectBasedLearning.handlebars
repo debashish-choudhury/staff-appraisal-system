@@ -100,11 +100,11 @@
         <form action="/annexure-1/projectBasedLearning" method="post" class="col s12">
             <div class="row">
                 <div class="input-field col s6 md5">
-                    <input id="pbl-subject" type="text" name="pbl_subject" class="validate" required>
+                    <input id="pbl-subject" type="text" name="pbl_subject" value="{{pbl_subject}}" class="validate" required>
                     <label for="pbl-subject">Name of Subject</label>
                 </div>
                 <div class="input-field col s6 md5">
-                    <input id="pbl-role" type="text" name="pbl_role" class="validate" required>
+                    <input id="pbl-role" type="text" name="pbl_role" value="{{pbl_role}}" class="validate" required>
                     <label for="pbl-role">Role &nbsp; <a href="#" class="tooltipped" data-tooltip="role performed by the staff in that PBL activity. eg: co-author, guide, co-guide, etc"><i class="fa fa-info-circle"></i></a></label>
                 </div>
             </div>
@@ -112,12 +112,12 @@
             <div class="row">
 
                 <div class="input-field col s6 md5">
-                    <input id="pbl-start-date" type="text" name="pbl_start_date" class="datepicker validate" required>
+                    <input id="pbl-start-date" type="text" name="pbl_start_date" value="{{pbl_start_date}}" class="datepicker validate" required>
                     <label for="pbl-start-date">Start Date</label>
                 </div>
 
                 <div class="input-field col s6 md5">
-                    <input id="pbl-end-date" type="text" name="pbl_end_date" class="datepicker validate" required>
+                    <input id="pbl-end-date" type="text" name="pbl_end_date" value="{{pbl_end_date}}" class="datepicker validate" required>
                     <label for="pbl-end-date">End Date</label>
                 </div>
             </div>

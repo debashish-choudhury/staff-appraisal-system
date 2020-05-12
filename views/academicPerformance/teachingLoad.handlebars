@@ -224,6 +224,7 @@
 </div>
 </div>
 {{else}}
+{{#if errors}}
 <div class="row" id="leaveform">
     <form action="/academicPerformance/teachingLoad" method="post" class="col s12">
 
@@ -235,7 +236,113 @@
         </div> --}}
         <div class="row">
             <div class="input-field col s6 md5">
-                <input id="subject_name" type="text" name="subject_name" class="validate " required>
+                <input id="subject_name" type="text" name="subject_name" value="{{subject_name}}" class="validate " required>
+                
+                <label for="subject_name" class="">Subject Name</label>
+                
+            </div>
+            <div class="input-field col s6">
+                <select name="class">
+                    <option value="{{class}}" selected>{{class}}</option>
+                    <option value="FE">FE</option>
+                    <option value="SE">SE</option>
+                    <option value="TE">TE</option>
+                    <option value="BE">BE</option>
+                    
+                </select>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s6">
+                <select name="department">
+                    <option value="{{department}}" selected>{{department}}</option>
+                    <option value="Information Technology">Information Technology</option>
+                    <option value="Computer Engineering">Computer Engineering</option>
+                    <option value="Mechanical Engineering">Mechanical Engineering</option>
+                    <option value="Civil Engineering">Civil Engineering</option>
+                    <option value="EXTC Engineering">EXTC Engineering</option>
+                </select>
+            </div>
+            <div class="input-field col s6 md5">
+                <select name="semester">
+                    <option value="{{semester}}" selected>{{semester}}</option>
+                    <option value="sem 1">Sem 1</option>
+                    <option value="sem 2">Sem 2</option>
+                    <option value="sem 3">Sem 3</option>
+                    <option value="sem 4">Sem 4</option>
+                    <option value="sem 5">Sem 5</option>
+                    <option value="sem 6">Sem 6</option>
+                    <option value="sem 7">Sem 7</option>
+                    <option value="sem 8">Sem 8</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s6 md5">
+                <input id="theory" type="number" name="theory_subject" value="{{theory_subject}}" class="validate" required>
+                <label for="theory">Theory Load &nbsp; <a href="#" class="tooltipped"
+                            data-tooltip="Enter the Thoery Teaching Load per week"><i class="fa fa-info-circle"></i></a></label>
+            </div>
+            <div class="input-field col s6">
+                <input id="lab" type="number" name="lab_subject" value="{{lab_subject}}" class="validate" required>
+                <label for="lab">Lab Load &nbsp; <a href="#" class="tooltipped"
+                            data-tooltip="Enter the Lab Teaching Load per week"><i class="fa fa-info-circle"></i></a></label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s6">
+                <input id="tutorials" type="number" name="tutorials" value="{{tutorials}}" class="validate" required>
+                <label for="tutorials">Tutorials Load &nbsp; <a href="#" class="tooltipped"
+                            data-tooltip="Enter the Tutorials Teaching Load per week"><i class="fa fa-info-circle"></i></a></label>
+            </div>
+            <div class="input-field col s6">
+                <input id="theory_session" type="number" name="theory_session" value="{{theory_session}}" class="validate" required>
+                <label for="theory_session">Theory sessions  &nbsp; <a href="#" class="tooltipped"
+                            data-tooltip="Enter the Total hours of Thoery Sessions"><i class="fa fa-info-circle"></i></a></label>
+                
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s6">
+                <input id="practical_session" type="number" name="practical_session" value="{{practical_session}}" class="validate" required>
+                <label for="practical_session">Practical sessions  &nbsp; <a href="#" class="tooltipped"
+                            data-tooltip="Enter the Total hours of Practical Sessions"><i class="fa fa-info-circle"></i></a></label>
+            </div>
+            <div class="input-field col s6">
+                <input id="Student_feedback" type="number" name="Student_feedback" value="{{Student_feedback}}" class="validate" required>
+                <label for="Student_feedback">Students Feedback &nbsp; <a href="#" class="tooltipped"
+                            data-tooltip="Enter the Online Students Feedback (1-5)"><i class="fa fa-info-circle"></i></a></label>
+                
+            </div>
+        </div>
+       <div>
+             <p>
+                 <label>
+                <input id="indeterminate-checkbox" type="checkbox" required/>
+                 <span>I acknowledge that above filled information is verified and justified by me.</span>
+                </label>
+            </p>
+        </div>
+        <button class="btn waves-effect waves-light" type="submit" id="submit_btn" disabled>Submit
+        </button>
+    </form>
+</div>
+</div>
+{{else}}
+<div class="row" id="leaveform">
+    <form action="/academicPerformance/teachingLoad" method="post" class="col s12">
+
+        {{!-- <div class="row">
+            <div class="input-field col s6 md5">
+                <input id="academic_year" type="text" name="academic_year" value="{{year}}" disabled>
+                <label for="academic_year" class="">Academic Year</label>
+            </div>
+        </div> --}}
+        <div class="row">
+            <div class="input-field col s6 md5">
+                <input id="subject_name" type="text" name="subject_name" value="{{subject_name}}" class="validate " required>
                 
                 <label for="subject_name" class="">Subject Name</label>
                 
@@ -329,5 +436,6 @@
     </form>
 </div>
 </div>
+{{/if}}
 {{/if}}
 {{/if}}

@@ -7,25 +7,24 @@
     <div class="row" id=" Lakshya Related Activties">
             <div class="row">
                 <div class="input-field col s6 md5">
-                    <input id="lakshya_activities" type="text" name="lakshya_activities" value="{{lakshya_activities}}" class="validate" required>
+                    <input id="lakshya_activities" type="text" name="lakshya_activities" disabled value="{{lakshya_activities}}" class="validate" required>
                     <label for="lakshya_activities">Activties Conducted</label>
                 </div>
                 <div class="input-field col s6">
-                    <textarea name="lakshya_description" id="lakshya_description" aria-valuetext="{{lakshya_description}}" class="materialize-textarea validate"
+                    <textarea name="lakshya_description" id="lakshya_description" disabled aria-valuetext="{{lakshya_description}}" class="materialize-textarea validate"
                         required>{{lakshya_description}}</textarea>
                     <label for="lakshya_description">Description</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s6">
-                    <input id="class" type="text" name="lakshya_date" value="{{lakshya_date}}" class="datepicker validate" required>
+                    <input id="class" type="text" name="lakshya_date" disabled value="{{lakshya_date}}" class="datepicker validate">
                     <label for="class">Date</label>
 
                 </div>
 
                 <div class="input-field col s6">
-                    <input id="lakshya-no-of-participants" type="number" name="lakshya_no_of_participants" value="{{lakshya_no_of_participants}}"
-                        class="validate" required>
+                    <input id="lakshya-no-of-participants" type="number" name="lakshya_no_of_participants" value="{{lakshya_no_of_participants}}" class="validate" disabled>
                     <label for="lakshya-no-of-participants">No. of Participants  &nbsp; <a href="#" class="tooltipped"
                             data-tooltip="Enter the number of Students Participated"><i class="fa fa-info-circle"></i></a></label>
                 </div>
@@ -90,24 +89,23 @@
         <form action="/annexure-1/lakshya" method="post" class="col s12">
             <div class="row">
                 <div class="input-field col s6 md5">
-                    <input id="lakshya_activities" type="text" name="lakshya_activities" class="validate" required>
+                    <input id="lakshya_activities" type="text" name="lakshya_activities" value="{{lakshya_activities}}" class="validate" required>
                     <label for="lakshya_activities">Activties Conducted</label>
                 </div>
                 <div class="input-field col s6">
-                    <textarea name="lakshya_description" id="lakshya_description" class="materialize-textarea validate"
-                        required></textarea>
+                    <textarea name="lakshya_description" id="lakshya_description" class="materialize-textarea validate"required>{{lakshya_description}}</textarea>
                     <label for="lakshya_description">Description</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s6">
-                    <input id="class" type="text" name="lakshya_date" class="datepicker validate" required>
+                    <input id="class" type="text" name="lakshya_date" value="{{lakshya_date}}" class="datepicker validate" required>
                     <label for="class">Date</label>
 
                 </div>
 
                 <div class="input-field col s6">
-                    <input id="lakshya-no-of-participants" type="number" name="lakshya_no_of_participants"
+                    <input id="lakshya-no-of-participants" type="number" name="lakshya_no_of_participants" value="{{lakshya_no_of_participants}}"
                         class="validate" required>
                      <label for="lakshya-no-of-participants">No. of Participants  &nbsp; <a href="#" class="tooltipped"
                             data-tooltip="Enter the number of Students Participated"><i class="fa fa-info-circle"></i></a></label>

@@ -170,6 +170,90 @@
 </div>
 </div>
 {{else}}
+{{#if errors}}
+<div class="row" id="studentOrganizations">
+    <form action="/annexure-1/studentOrganizations" method="post" class="col s12">
+        <div class="row">
+            <div class="input-field col s6 md5">
+                <input id="student-organizations-trainings" type="text" name="student_organizations_trainings" value="{{student_organizations_trainings}}" class="validate" required>
+                <label for="student-organizations-trainings">Activities conducted</label>
+            </div>
+              <div class="input-field col s6">
+                <select name="class_name">
+                    <option value="{{class_name}}" selected>{{class_name}}</option>
+                    <option value="FE">FE</option>
+                    <option value="SE">SE</option>
+                    <option value="TE">TE</option>
+                    <option value="BE">BE</option>
+                    
+                </select>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="input-field col s6">
+                <select name="department">
+                    <option value="{{department}}" selected>{{department}}</option>
+                    <option value="Information Technology">Information Technology</option>
+                    <option value="Computer Engineering">Computer Engineering</option>
+                    <option value="Mechanical Engineering">Mechanical Engineering</option>
+                    <option value="Civil Engineering">Civil Engineering</option>
+                    <option value="EXTC Engineering">EXTC Engineering</option>
+                </select>
+            </div>
+            
+            <div class="input-field col s6 md5">
+                <input id="no-of-participants" type="number" name="no_of_participants" value="{{no_of_participants}}" class="validate" required>
+               <label for="no-of-participants">Students Participants  &nbsp; <a href="#" class="tooltipped"
+                            data-tooltip="Enter the number of Students Placed"><i class="fa fa-info-circle"></i></a></label>
+            </div>   
+            
+        </div>
+        <div class="row">
+
+           <div class="input-field col s6 md5">
+                <select name="student_organization_role">
+                    <option value="{{student_organization_role}}" selected>{{student_organization_role}}</option>
+                    <option value="incharge">Incharge</option>
+                    <option value="co-ordintor">Co-ordinator</option>
+                  
+                </select>
+            </div>
+            
+            <div class="input-field col s6 md5">
+                <input id="student-event-duration" type="number" name="student_event_duration" value="{{student_event_duration}}" class="validate" required>
+                <label for="student-event-duration">Duration(hours)</label>
+            </div>   
+            
+        </div>
+        <div class="row">
+           
+             <div class="input-field col s6 md5">
+                <input id="student-event-start-date" type="text" name="student_event_start_date" value="{{student_event_start_date}}" class="datepicker validate" required>
+                <label for="student-event-start-date">Start Date</label>
+            </div>
+            
+            <div class="input-field col s6 md5">
+                <input id="student-event-end-date" type="text" name="student_event_end_date" value="{{student_event_end_date}}" class="datepicker validate" required>
+                <label for="student-event-end-date">End Date</label>
+            </div>
+        </div>
+        <div>
+             <p>
+                 <label>
+                <input id="indeterminate-checkbox" type="checkbox" required/>
+                 <span>I acknowledge that above filled information is verified and justified by me.</span>
+                </label>
+            </p>
+        </div>
+        <a href="/annexure-1/industrialVisitActivities" class="waves-effect waves-light btn red center">Not Applicable</a>
+        <button class="btn waves-effect waves-light" id="submit_btn" type="submit" disabled>Submit
+        </button>
+    </form>
+</div>
+</div>
+{{else}}
 <div class="row" id="studentOrganizations">
     <form action="/annexure-1/studentOrganizations" method="post" class="col s12">
         <div class="row">
@@ -252,5 +336,6 @@
     </form>
 </div>
 </div>
+{{/if}}
 {{/if}}
 {{/if}}
