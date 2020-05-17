@@ -9,7 +9,7 @@ const { ensureAuthenticated } = require('./helpers/auth');
 const passport = require('passport');
 const mongoose = require('mongoose');
 const app = express();
-
+require('dotenv').config();
 // Load routes
 const academicPerformance = require('./routes/academicPerformance');
 const leave = require('./routes/leave');
@@ -18,6 +18,7 @@ const annexure_2 = require('./routes/annexure-2');
 const annexure_3 = require('./routes/annexure-3');
 const profile = require('./routes/profile');
 const users = require('./routes/users');
+const reset = require('./routes/reset');
 
 // Static folder
 app.use(express.static(path.join(__dirname, 'public')));
@@ -40,6 +41,7 @@ mongoose.connect(db.mongoURI, {
     .then(() => { console.log('Connected to MongoDB...') })
     .catch(err => console.log(err));
 
+mongoose.set('useCreateIndex', true);
 //load leave model
 require('./models/Leave');
 const Leave = mongoose.model('leaves');
@@ -161,6 +163,7 @@ app.use('/annexure-2', annexure_2);
 app.use('/annexure-3', annexure_3);
 app.use('/profile', profile);
 app.use('/users', users);
+app.use('/forgot', reset);
 
 port = process.env.PORT || 5000;
 app.listen(port, () => console.log(`Server running on port ${port}`));

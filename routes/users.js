@@ -171,7 +171,7 @@ router.post('/management/search', (req, res) => {
                 req.flash('error_msg', 'No submissions yet.');
                 res.redirect('/users/management/home');
             } else {
-                var facultyName=[];
+                var facultyName = [];
                 var marks = [];
                 var totalYear = [];
                 result.forEach(function (arrayItem) {
@@ -179,9 +179,9 @@ router.post('/management/search', (req, res) => {
                     marks.push(arrayItem.academicPerformance);
                     totalYear.push(arrayItem.academic_year);
                 });
-                let name = {facultyName};
-                let finalMarks = {marks};
-                let year = {totalYear};
+                let name = { facultyName };
+                let finalMarks = { marks };
+                let year = { totalYear };
                 res.render('users/management/home', { result, fltEmail, academicYear, name, finalMarks, year });
             }
         })
@@ -1763,6 +1763,33 @@ router.post('/register', (req, res) => {
                 });
         }
     }
+});
+
+// reset route faculty
+router.get('/faculty/forgot', (req, res) => {
+    res.render('users/faculty/forgot');
+});
+
+router.get('/faculty/reset', (req, res) => {
+    res.render('users/faculty/reset');
+});
+
+// reset route hod
+router.get('/hod/forgot', (req, res) => {
+    res.render('users/hod/forgot');
+});
+
+router.get('/hod/reset', (req, res) => {
+    res.render('users/hod/reset');
+});
+
+// reset route management
+router.get('/manager/forgot', (req, res) => {
+    res.render('users/management/forgot');
+});
+
+router.get('/manager/reset', (req, res) => {
+    res.render('users/management/reset');
 });
 
 // Logout user
