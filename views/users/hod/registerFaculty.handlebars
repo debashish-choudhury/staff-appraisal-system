@@ -8,7 +8,7 @@
                         <h5>Register as new user</h5>
 
                     </span>
-                    <form action="/users/register" method="post" class="container">
+                    <form action="/users/registerFaculty" method="post" class="container">
                         <div class="row">
                             <div class="input-field s12 m4 l8">
                                 <input id="name" name="name" type="text" class="validate" value="{{name}}" required>
@@ -22,10 +22,9 @@
                             </div>
                             <div class="input-field col s12 m6">
                                 <select name="type" required>
-                                    <option disabled selected>Select User</option>
-                                    <option value="faculty">Faculty</option>
-                                    <option value="hod">HoD</option>
+                                    <option value="faculty" selected>Faculty</option>
                                 </select>
+                                <label for="type">User Type</label>
                             </div>
                         </div>
                         <div class="row">

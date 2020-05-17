@@ -42,11 +42,6 @@ const Confidential = mongoose.model('confidential_form');
 require('../models/Users/ManagerDB');
 const Manager = mongoose.model('management_user');
 
-// User register form
-router.get('/register', (req, res) => {
-    res.render('users/register');
-});
-
 // faculty user login form
 router.get('/faculty/login', (req, res) => {
     res.render('users/faculty/login');
@@ -64,89 +59,105 @@ router.get('/hod/login', (req, res) => {
 // Faculty Overview form
 router.get('/faculty/facultyOverview', ensureAuthenticated, (req, res) => {
     let finalResult;
-    AcademicYear.find({ user: req.user.id })
+    Faculty.findOne({ _id: req.user.id })
         .then(result => {
             if (!result) {
-                req.flash('error_msg', 'Select the academic year before proceeding');
-                res.redirect('/');
+                req.flash('error_msg', 'Not Authorized');
+                res.redirect('back');
+            } else {
+                AcademicYear.find({ user: req.user.id })
+                    .then(result => {
+                        if (!result) {
+                            req.flash('error_msg', 'Select the academic year before proceeding');
+                            res.redirect('/');
+                        }
+                        // academic_year_id = result[0].user;
+                        year = result[0].academic_year;
+                        FacultyMarks.find({ $and: [{ user: req.user.id }, { academic_year: year }] })
+                            .then(result => {
+
+                                finalResult = result;
+                                var loads = [modules.TeachingLoad.findOne({ $and: [{ user: req.user.id }, { academic_year: year }] }).exec(),
+                                modules.TeachingAssistant.findOne({ $and: [{ user: req.user.id }, { academic_year: year }] }).exec(),
+                                modules.NewBooks.findOne({ $and: [{ user: req.user.id }, { academic_year: year }] }).exec(),
+                                modules.AddedExp.findOne({ $and: [{ user: req.user.id }, { academic_year: year }] }).exec(),
+                                modules.Innovation.findOne({ $and: [{ user: req.user.id }, { academic_year: year }] }).exec(),
+
+                                modules.Leave.findOne({ $and: [{ user: req.user.id }, { academic_year: year }] }).exec(),
+
+                                modules.TimeTable.findOne({ $and: [{ user: req.user.id }, { academic_year: year }] }).exec(),
+                                modules.ClassAdvisor.findOne({ $and: [{ user: req.user.id }, { academic_year: year }] }).exec(),
+                                modules.SportsActivities.findOne({ $and: [{ user: req.user.id }, { academic_year: year }] }).exec(),
+                                modules.CulturalActivities.findOne({ $and: [{ user: req.user.id }, { academic_year: year }] }).exec(),
+                                modules.ProjectBasedLearning.findOne({ $and: [{ user: req.user.id }, { academic_year: year }] }).exec(),
+                                modules.Udaan.findOne({ $and: [{ user: req.user.id }, { academic_year: year }] }).exec(),
+                                modules.PlacementActivities.findOne({ $and: [{ user: req.user.id }, { academic_year: year }] }).exec(),
+                                modules.InhousePlacement.findOne({ $and: [{ user: req.user.id }, { academic_year: year }] }).exec(),
+                                modules.StudentOrganizations.findOne({ $and: [{ user: req.user.id }, { academic_year: year }] }).exec(),
+                                modules.IndustrialVisitActivities.findOne({ $and: [{ user: req.user.id }, { academic_year: year }] }).exec(),
+                                modules.AdmissionProcessActivities.findOne({ $and: [{ user: req.user.id }, { academic_year: year }] }).exec(),
+                                modules.ExamAssessmentExternal.findOne({ $and: [{ user: req.user.id }, { academic_year: year }] }).exec(),
+                                modules.ExamActivitiesSupervision.findOne({ $and: [{ user: req.user.id }, { academic_year: year }] }).exec(),
+                                modules.ExamActivitiesCollegeLevel.findOne({ $and: [{ user: req.user.id }, { academic_year: year }] }).exec(),
+                                modules.ITMaintenance.findOne({ $and: [{ user: req.user.id }, { academic_year: year }] }).exec(),
+                                modules.Lakshya.findOne({ $and: [{ user: req.user.id }, { academic_year: year }] }).exec(),
+                                modules.MagazineNewsletter.findOne({ $and: [{ user: req.user.id }, { academic_year: year }] }).exec(),
+                                modules.STTP.findOne({ $and: [{ user: req.user.id }, { academic_year: year }] }).exec(),
+                                modules.DepartmentUGProjects.findOne({ $and: [{ user: req.user.id }, { academic_year: year }] }).exec(),
+
+                                modules.PapersPublishedNationalConf.findOne({ $and: [{ user: req.user.id }, { academic_year: year }] }).exec(),
+                                modules.PapersPublishedInternationalConf.findOne({ $and: [{ user: req.user.id }, { academic_year: year }] }).exec(),
+                                modules.PapersPublishedJournals.findOne({ $and: [{ user: req.user.id }, { academic_year: year }] }).exec(),
+                                modules.Moocs.findOne({ $and: [{ user: req.user.id }, { academic_year: year }] }).exec(),
+                                modules.Swayam.findOne({ $and: [{ user: req.user.id }, { academic_year: year }] }).exec(),
+                                modules.ShortTermTraining.findOne({ $and: [{ user: req.user.id }, { academic_year: year }] }).exec(),
+                                modules.Seminars.findOne({ $and: [{ user: req.user.id }, { academic_year: year }] }).exec(),
+
+                                modules.ResourcePerson.findOne({ $and: [{ user: req.user.id }, { academic_year: year }] }).exec(),
+                                modules.ContributionToSyllabus.findOne({ $and: [{ user: req.user.id }, { academic_year: year }] }).exec(),
+                                modules.MemberOfUniversityCommitte.findOne({ $and: [{ user: req.user.id }, { academic_year: year }] }).exec(),
+                                modules.ConsultancyAssignment.findOne({ $and: [{ user: req.user.id }, { academic_year: year }] }).exec(),
+                                modules.ExternalProjectsOrCompetition.findOne({ $and: [{ user: req.user.id }, { academic_year: year }] }).exec()
+                                ];
+                                Promise.all(loads)
+                                    .then(result => {
+                                        return Promise.all(result);
+                                    })
+                                    .then(([teachingLoad, teachingAssistant, newBooks, addedExp, innovation,
+                                        leave,
+                                        timeTable, classAdvisor, sportsActivities, culturalActivities, projectBasedLearning, udaan, placementActivities, inhousePlacement, studentOrganizations, industrialVisitActivities, admissionProcessActivities, examAssessmentExternal, examActivitiesSupervision, examActivitiesCollegeLevel, itMaintenance, lakshya, magazineNewsletter, sttp, departmentUGProjects,
+                                        papersPublishedNationalConf, papersPublishedInternationalConf, papersPublishedJournals, moocs, swayam, shortTermTraining, seminars,
+                                        resourcePerson, contributionToSyllabus, memberOfUniversityCommitte, consultancyAssignment, externalProjectsOrCompetition]) => {
+
+                                        res.render('users/faculty/facultyOverview', { finalResult, teachingLoad, teachingAssistant, newBooks, addedExp, innovation, leave, timeTable, classAdvisor, sportsActivities, culturalActivities, projectBasedLearning, udaan, placementActivities, inhousePlacement, studentOrganizations, industrialVisitActivities, admissionProcessActivities, examAssessmentExternal, examActivitiesSupervision, examActivitiesCollegeLevel, itMaintenance, lakshya, magazineNewsletter, sttp, departmentUGProjects, papersPublishedNationalConf, papersPublishedInternationalConf, papersPublishedJournals, moocs, swayam, shortTermTraining, seminars, resourcePerson, contributionToSyllabus, memberOfUniversityCommitte, consultancyAssignment, externalProjectsOrCompetition });
+                                    })
+                            })
+                            .catch(err => {
+                                if (err) throw err;
+                            })
+                    })
             }
-            // academic_year_id = result[0].user;
-            year = result[0].academic_year;
-            FacultyMarks.find({ $and: [{ user: req.user.id }, { academic_year: year }] })
-                .then(result => {
-
-                    finalResult = result;
-                    var loads = [modules.TeachingLoad.findOne({ $and: [{ user: req.user.id }, { academic_year: year }] }).exec(),
-                    modules.TeachingAssistant.findOne({ $and: [{ user: req.user.id }, { academic_year: year }] }).exec(),
-                    modules.NewBooks.findOne({ $and: [{ user: req.user.id }, { academic_year: year }] }).exec(),
-                    modules.AddedExp.findOne({ $and: [{ user: req.user.id }, { academic_year: year }] }).exec(),
-                    modules.Innovation.findOne({ $and: [{ user: req.user.id }, { academic_year: year }] }).exec(),
-
-                    modules.Leave.findOne({ $and: [{ user: req.user.id }, { academic_year: year }] }).exec(),
-
-                    modules.TimeTable.findOne({ $and: [{ user: req.user.id }, { academic_year: year }] }).exec(),
-                    modules.ClassAdvisor.findOne({ $and: [{ user: req.user.id }, { academic_year: year }] }).exec(),
-                    modules.SportsActivities.findOne({ $and: [{ user: req.user.id }, { academic_year: year }] }).exec(),
-                    modules.CulturalActivities.findOne({ $and: [{ user: req.user.id }, { academic_year: year }] }).exec(),
-                    modules.ProjectBasedLearning.findOne({ $and: [{ user: req.user.id }, { academic_year: year }] }).exec(),
-                    modules.Udaan.findOne({ $and: [{ user: req.user.id }, { academic_year: year }] }).exec(),
-                    modules.PlacementActivities.findOne({ $and: [{ user: req.user.id }, { academic_year: year }] }).exec(),
-                    modules.InhousePlacement.findOne({ $and: [{ user: req.user.id }, { academic_year: year }] }).exec(),
-                    modules.StudentOrganizations.findOne({ $and: [{ user: req.user.id }, { academic_year: year }] }).exec(),
-                    modules.IndustrialVisitActivities.findOne({ $and: [{ user: req.user.id }, { academic_year: year }] }).exec(),
-                    modules.AdmissionProcessActivities.findOne({ $and: [{ user: req.user.id }, { academic_year: year }] }).exec(),
-                    modules.ExamAssessmentExternal.findOne({ $and: [{ user: req.user.id }, { academic_year: year }] }).exec(),
-                    modules.ExamActivitiesSupervision.findOne({ $and: [{ user: req.user.id }, { academic_year: year }] }).exec(),
-                    modules.ExamActivitiesCollegeLevel.findOne({ $and: [{ user: req.user.id }, { academic_year: year }] }).exec(),
-                    modules.ITMaintenance.findOne({ $and: [{ user: req.user.id }, { academic_year: year }] }).exec(),
-                    modules.Lakshya.findOne({ $and: [{ user: req.user.id }, { academic_year: year }] }).exec(),
-                    modules.MagazineNewsletter.findOne({ $and: [{ user: req.user.id }, { academic_year: year }] }).exec(),
-                    modules.STTP.findOne({ $and: [{ user: req.user.id }, { academic_year: year }] }).exec(),
-                    modules.DepartmentUGProjects.findOne({ $and: [{ user: req.user.id }, { academic_year: year }] }).exec(),
-
-                    modules.PapersPublishedNationalConf.findOne({ $and: [{ user: req.user.id }, { academic_year: year }] }).exec(),
-                    modules.PapersPublishedInternationalConf.findOne({ $and: [{ user: req.user.id }, { academic_year: year }] }).exec(),
-                    modules.PapersPublishedJournals.findOne({ $and: [{ user: req.user.id }, { academic_year: year }] }).exec(),
-                    modules.Moocs.findOne({ $and: [{ user: req.user.id }, { academic_year: year }] }).exec(),
-                    modules.Swayam.findOne({ $and: [{ user: req.user.id }, { academic_year: year }] }).exec(),
-                    modules.ShortTermTraining.findOne({ $and: [{ user: req.user.id }, { academic_year: year }] }).exec(),
-                    modules.Seminars.findOne({ $and: [{ user: req.user.id }, { academic_year: year }] }).exec(),
-
-                    modules.ResourcePerson.findOne({ $and: [{ user: req.user.id }, { academic_year: year }] }).exec(),
-                    modules.ContributionToSyllabus.findOne({ $and: [{ user: req.user.id }, { academic_year: year }] }).exec(),
-                    modules.MemberOfUniversityCommitte.findOne({ $and: [{ user: req.user.id }, { academic_year: year }] }).exec(),
-                    modules.ConsultancyAssignment.findOne({ $and: [{ user: req.user.id }, { academic_year: year }] }).exec(),
-                    modules.ExternalProjectsOrCompetition.findOne({ $and: [{ user: req.user.id }, { academic_year: year }] }).exec()
-                    ];
-                    Promise.all(loads)
-                        .then(result => {
-                            return Promise.all(result);
-                        })
-                        .then(([teachingLoad, teachingAssistant, newBooks, addedExp, innovation,
-                            leave,
-                            timeTable, classAdvisor, sportsActivities, culturalActivities, projectBasedLearning, udaan, placementActivities, inhousePlacement, studentOrganizations, industrialVisitActivities, admissionProcessActivities, examAssessmentExternal, examActivitiesSupervision, examActivitiesCollegeLevel, itMaintenance, lakshya, magazineNewsletter, sttp, departmentUGProjects,
-                            papersPublishedNationalConf, papersPublishedInternationalConf, papersPublishedJournals, moocs, swayam, shortTermTraining, seminars,
-                            resourcePerson, contributionToSyllabus, memberOfUniversityCommitte, consultancyAssignment, externalProjectsOrCompetition]) => {
-
-                            res.render('users/faculty/facultyOverview', { finalResult, teachingLoad, teachingAssistant, newBooks, addedExp, innovation, leave, timeTable, classAdvisor, sportsActivities, culturalActivities, projectBasedLearning, udaan, placementActivities, inhousePlacement, studentOrganizations, industrialVisitActivities, admissionProcessActivities, examAssessmentExternal, examActivitiesSupervision, examActivitiesCollegeLevel, itMaintenance, lakshya, magazineNewsletter, sttp, departmentUGProjects, papersPublishedNationalConf, papersPublishedInternationalConf, papersPublishedJournals, moocs, swayam, shortTermTraining, seminars, resourcePerson, contributionToSyllabus, memberOfUniversityCommitte, consultancyAssignment, externalProjectsOrCompetition });
-                        })
-                })
-                .catch(err => {
-                    if (err) throw err;
-                })
         })
 });
 
 // Management route
 router.get('/management/home', ensureAuthenticated, (req, res) => {
-    HodMarks.find({})
-        .sort({ date: 'desc' })
+    Manager.findOne({ _id: req.user.id })
         .then(result => {
             if (!result) {
-                req.flash('error_msg', 'No submissions yet.');
-                res.redirect('/users/management/home');
+                req.flash('error_msg', 'Not Authorized');
+                res.redirect('back');
             } else {
-                res.render('users/management/home', { result });
+                HodMarks.find({})
+                    .sort({ date: 'desc' })
+                    .then(result => {
+                        if (!result) {
+                            req.flash('error_msg', 'No submissions yet.');
+                            res.redirect('/users/management/home');
+                        } else {
+                            res.render('users/management/home', { result });
+                        }
+                    })
             }
         })
 });
@@ -189,17 +200,24 @@ router.post('/management/search', (req, res) => {
 
 // HoD Appraisal List route
 router.get('/hod/appraisalList', ensureAuthenticated, (req, res) => {
-    HodMarks.find({})
-        .sort({ date: 'desc' })
+    Hod.findOne({ _id: req.user.id })
         .then(result => {
             if (!result) {
-                req.flash('error_msg', 'No submissions yet.');
-                res.redirect('/users/hod/home');
+                req.flash('error_msg', 'Not Authorized');
+                res.redirect('back');
             } else {
-                res.render('users/hod/appraisalList', { result });
+                HodMarks.find({})
+                    .sort({ date: 'desc' })
+                    .then(result => {
+                        if (!result) {
+                            req.flash('error_msg', 'No submissions yet.');
+                            res.redirect('/users/hod/home');
+                        } else {
+                            res.render('users/hod/appraisalList', { result });
+                        }
+                    })
             }
         })
-
 });
 
 // Post route for HoD search
@@ -230,101 +248,112 @@ router.post('/hod/search', (req, res) => {
 // Hod year check
 router.get('/hod/check/year/:id', ensureAuthenticated, (req, res) => {
     let facultyDetails;
-    Faculty.find({ _id: req.params.id })
+    Hod.findOne({ _id: req.user.id })
         .then(result => {
-            facultyName = result[0].name;
-            facultyEmail = result[0].email;
-            FacultyMarks.find({ user: req.params.id })
-                .sort({ date: 'desc' })
-                .then(result => {
-                    facultID = result[0].user;
-                    res.render('users/hod/checkYear', { result, facultID, facultyName, facultyEmail });
-                })
-                .catch(err => {
-                    req.flash('error_msg', 'No submissions yet.');
-                    res.redirect('/users/hod/home');
-                })
+            if (!result) {
+                req.flash('error-msg', 'Not Authorized');
+                res.redirect('back');
+            } else {
+                Faculty.find({ _id: req.params.id })
+                    .then(result => {
+                        facultyName = result[0].name;
+                        facultyEmail = result[0].email;
+                        FacultyMarks.find({ user: req.params.id })
+                            .sort({ date: 'desc' })
+                            .then(result => {
+                                facultID = result[0].user;
+                                res.render('users/hod/checkYear', { result, facultID, facultyName, facultyEmail });
+                            })
+                            .catch(err => {
+                                req.flash('error_msg', 'No submissions yet.');
+                                res.redirect('/users/hod/home');
+                            })
+                    })
+            }
         })
 });
 
 // hod overview form
 router.get('/hod/hodOverview/:id/:year', ensureAuthenticated, (req, res) => {
     let finalResult;
-    FacultyMarks.find({ $and: [{ user: req.params.id }, { academic_year: req.params.year }] })
-        .then(marks => {
-            finalResult = marks;
-            facultID = marks[0].user;
-            year = req.params.year;
-            //console.log(facultID);
-            //console.log(finalResult);
-            var loads = [modules.TeachingLoad.findOne({ $and: [{ user: facultID }, { academic_year: req.params.year }] }).exec(),
-            modules.TeachingAssistant.findOne({ $and: [{ user: facultID }, { academic_year: req.params.year }] }).exec(),
-            modules.NewBooks.findOne({ $and: [{ user: facultID }, { academic_year: req.params.year }] }).exec(),
-            modules.AddedExp.findOne({ $and: [{ user: facultID }, { academic_year: req.params.year }] }).exec(),
-            modules.Innovation.findOne({ $and: [{ user: facultID }, { academic_year: req.params.year }] }).exec(),
+    Hod.findOne({ _id: req.user.id })
+        .then(result => {
+            if (!result) {
+                req.flash('error-msg', 'Not Authorized');
+                res.redirect('back');
+            } else {
+                FacultyMarks.find({ $and: [{ user: req.params.id }, { academic_year: req.params.year }] })
+                    .then(marks => {
+                        finalResult = marks;
+                        facultID = marks[0].user;
+                        year = req.params.year;
+                        //console.log(facultID);
+                        //console.log(finalResult);
+                        var loads = [modules.TeachingLoad.findOne({ $and: [{ user: facultID }, { academic_year: req.params.year }] }).exec(),
+                        modules.TeachingAssistant.findOne({ $and: [{ user: facultID }, { academic_year: req.params.year }] }).exec(),
+                        modules.NewBooks.findOne({ $and: [{ user: facultID }, { academic_year: req.params.year }] }).exec(),
+                        modules.AddedExp.findOne({ $and: [{ user: facultID }, { academic_year: req.params.year }] }).exec(),
+                        modules.Innovation.findOne({ $and: [{ user: facultID }, { academic_year: req.params.year }] }).exec(),
 
-            modules.Leave.findOne({ $and: [{ user: facultID }, { academic_year: req.params.year }] }).exec(),
+                        modules.Leave.findOne({ $and: [{ user: facultID }, { academic_year: req.params.year }] }).exec(),
 
-            modules.TimeTable.findOne({ $and: [{ user: facultID }, { academic_year: req.params.year }] }).exec(),
-            modules.ClassAdvisor.findOne({ $and: [{ user: facultID }, { academic_year: req.params.year }] }).exec(),
-            modules.SportsActivities.findOne({ $and: [{ user: facultID }, { academic_year: req.params.year }] }).exec(),
-            modules.CulturalActivities.findOne({ $and: [{ user: facultID }, { academic_year: req.params.year }] }).exec(),
-            modules.ProjectBasedLearning.findOne({ $and: [{ user: facultID }, { academic_year: req.params.year }] }).exec(),
-            modules.Udaan.findOne({ $and: [{ user: facultID }, { academic_year: req.params.year }] }).exec(),
-            modules.PlacementActivities.findOne({ $and: [{ user: facultID }, { academic_year: req.params.year }] }).exec(),
-            modules.InhousePlacement.findOne({ $and: [{ user: facultID }, { academic_year: req.params.year }] }).exec(),
-            modules.StudentOrganizations.findOne({ $and: [{ user: facultID }, { academic_year: req.params.year }] }).exec(),
-            modules.IndustrialVisitActivities.findOne({ $and: [{ user: facultID }, { academic_year: req.params.year }] }).exec(),
-            modules.AdmissionProcessActivities.findOne({ $and: [{ user: facultID }, { academic_year: req.params.year }] }).exec(),
-            modules.ExamAssessmentExternal.findOne({ $and: [{ user: facultID }, { academic_year: req.params.year }] }).exec(),
-            modules.ExamActivitiesSupervision.findOne({ $and: [{ user: facultID }, { academic_year: req.params.year }] }).exec(),
-            modules.ExamActivitiesCollegeLevel.findOne({ $and: [{ user: facultID }, { academic_year: req.params.year }] }).exec(),
-            modules.ITMaintenance.findOne({ $and: [{ user: facultID }, { academic_year: req.params.year }] }).exec(),
-            modules.Lakshya.findOne({ $and: [{ user: facultID }, { academic_year: req.params.year }] }).exec(),
-            modules.MagazineNewsletter.findOne({ $and: [{ user: facultID }, { academic_year: req.params.year }] }).exec(),
-            modules.STTP.findOne({ $and: [{ user: facultID }, { academic_year: req.params.year }] }).exec(),
-            modules.DepartmentUGProjects.findOne({ $and: [{ user: facultID }, { academic_year: req.params.year }] }).exec(),
+                        modules.TimeTable.findOne({ $and: [{ user: facultID }, { academic_year: req.params.year }] }).exec(),
+                        modules.ClassAdvisor.findOne({ $and: [{ user: facultID }, { academic_year: req.params.year }] }).exec(),
+                        modules.SportsActivities.findOne({ $and: [{ user: facultID }, { academic_year: req.params.year }] }).exec(),
+                        modules.CulturalActivities.findOne({ $and: [{ user: facultID }, { academic_year: req.params.year }] }).exec(),
+                        modules.ProjectBasedLearning.findOne({ $and: [{ user: facultID }, { academic_year: req.params.year }] }).exec(),
+                        modules.Udaan.findOne({ $and: [{ user: facultID }, { academic_year: req.params.year }] }).exec(),
+                        modules.PlacementActivities.findOne({ $and: [{ user: facultID }, { academic_year: req.params.year }] }).exec(),
+                        modules.InhousePlacement.findOne({ $and: [{ user: facultID }, { academic_year: req.params.year }] }).exec(),
+                        modules.StudentOrganizations.findOne({ $and: [{ user: facultID }, { academic_year: req.params.year }] }).exec(),
+                        modules.IndustrialVisitActivities.findOne({ $and: [{ user: facultID }, { academic_year: req.params.year }] }).exec(),
+                        modules.AdmissionProcessActivities.findOne({ $and: [{ user: facultID }, { academic_year: req.params.year }] }).exec(),
+                        modules.ExamAssessmentExternal.findOne({ $and: [{ user: facultID }, { academic_year: req.params.year }] }).exec(),
+                        modules.ExamActivitiesSupervision.findOne({ $and: [{ user: facultID }, { academic_year: req.params.year }] }).exec(),
+                        modules.ExamActivitiesCollegeLevel.findOne({ $and: [{ user: facultID }, { academic_year: req.params.year }] }).exec(),
+                        modules.ITMaintenance.findOne({ $and: [{ user: facultID }, { academic_year: req.params.year }] }).exec(),
+                        modules.Lakshya.findOne({ $and: [{ user: facultID }, { academic_year: req.params.year }] }).exec(),
+                        modules.MagazineNewsletter.findOne({ $and: [{ user: facultID }, { academic_year: req.params.year }] }).exec(),
+                        modules.STTP.findOne({ $and: [{ user: facultID }, { academic_year: req.params.year }] }).exec(),
+                        modules.DepartmentUGProjects.findOne({ $and: [{ user: facultID }, { academic_year: req.params.year }] }).exec(),
 
-            modules.PapersPublishedNationalConf.findOne({ $and: [{ user: facultID }, { academic_year: req.params.year }] }).exec(),
-            modules.PapersPublishedInternationalConf.findOne({ $and: [{ user: facultID }, { academic_year: req.params.year }] }).exec(),
-            modules.PapersPublishedJournals.findOne({ $and: [{ user: facultID }, { academic_year: req.params.year }] }).exec(),
-            modules.Moocs.findOne({ $and: [{ user: facultID }, { academic_year: req.params.year }] }).exec(),
-            modules.Swayam.findOne({ $and: [{ user: facultID }, { academic_year: req.params.year }] }).exec(),
-            modules.ShortTermTraining.findOne({ $and: [{ user: facultID }, { academic_year: req.params.year }] }).exec(),
-            modules.Seminars.findOne({ $and: [{ user: facultID }, { academic_year: req.params.year }] }).exec(),
+                        modules.PapersPublishedNationalConf.findOne({ $and: [{ user: facultID }, { academic_year: req.params.year }] }).exec(),
+                        modules.PapersPublishedInternationalConf.findOne({ $and: [{ user: facultID }, { academic_year: req.params.year }] }).exec(),
+                        modules.PapersPublishedJournals.findOne({ $and: [{ user: facultID }, { academic_year: req.params.year }] }).exec(),
+                        modules.Moocs.findOne({ $and: [{ user: facultID }, { academic_year: req.params.year }] }).exec(),
+                        modules.Swayam.findOne({ $and: [{ user: facultID }, { academic_year: req.params.year }] }).exec(),
+                        modules.ShortTermTraining.findOne({ $and: [{ user: facultID }, { academic_year: req.params.year }] }).exec(),
+                        modules.Seminars.findOne({ $and: [{ user: facultID }, { academic_year: req.params.year }] }).exec(),
 
-            modules.ResourcePerson.findOne({ $and: [{ user: facultID }, { academic_year: req.params.year }] }).exec(),
-            modules.ContributionToSyllabus.findOne({ $and: [{ user: facultID }, { academic_year: req.params.year }] }).exec(),
-            modules.MemberOfUniversityCommitte.findOne({ $and: [{ user: facultID }, { academic_year: req.params.year }] }).exec(),
-            modules.ConsultancyAssignment.findOne({ $and: [{ user: facultID }, { academic_year: req.params.year }] }).exec(),
-            modules.ExternalProjectsOrCompetition.findOne({ $and: [{ user: facultID }, { academic_year: req.params.year }] }).exec(),
+                        modules.ResourcePerson.findOne({ $and: [{ user: facultID }, { academic_year: req.params.year }] }).exec(),
+                        modules.ContributionToSyllabus.findOne({ $and: [{ user: facultID }, { academic_year: req.params.year }] }).exec(),
+                        modules.MemberOfUniversityCommitte.findOne({ $and: [{ user: facultID }, { academic_year: req.params.year }] }).exec(),
+                        modules.ConsultancyAssignment.findOne({ $and: [{ user: facultID }, { academic_year: req.params.year }] }).exec(),
+                        modules.ExternalProjectsOrCompetition.findOne({ $and: [{ user: facultID }, { academic_year: req.params.year }] }).exec(),
 
-            HodMarks.findOne({ $and: [{ user: facultID }, { academic_year: req.params.year }] }).exec()
-            ];
-            Promise.all(loads)
-                .then(result => {
-                    return Promise.all(result);
-                })
-                .then(([teachingLoad, teachingAssistant, newBooks, addedExp, innovation,
-                    leave,
-                    timeTable, classAdvisor, sportsActivities, culturalActivities, projectBasedLearning, udaan, placementActivities, inhousePlacement, studentOrganizations, industrialVisitActivities, admissionProcessActivities, examAssessmentExternal, examActivitiesSupervision, examActivitiesCollegeLevel, itMaintenance, lakshya, magazineNewsletter, sttp, departmentUGProjects,
-                    papersPublishedNationalConf, papersPublishedInternationalConf, papersPublishedJournals, moocs, swayam, shortTermTraining, seminars,
-                    resourcePerson, contributionToSyllabus, memberOfUniversityCommitte, consultancyAssignment, externalProjectsOrCompetition,
-                    hodMarks,
-                ]) => {
+                        HodMarks.findOne({ $and: [{ user: facultID }, { academic_year: req.params.year }] }).exec()
+                        ];
+                        Promise.all(loads)
+                            .then(result => {
+                                return Promise.all(result);
+                            })
+                            .then(([teachingLoad, teachingAssistant, newBooks, addedExp, innovation,
+                                leave,
+                                timeTable, classAdvisor, sportsActivities, culturalActivities, projectBasedLearning, udaan, placementActivities, inhousePlacement, studentOrganizations, industrialVisitActivities, admissionProcessActivities, examAssessmentExternal, examActivitiesSupervision, examActivitiesCollegeLevel, itMaintenance, lakshya, magazineNewsletter, sttp, departmentUGProjects,
+                                papersPublishedNationalConf, papersPublishedInternationalConf, papersPublishedJournals, moocs, swayam, shortTermTraining, seminars,
+                                resourcePerson, contributionToSyllabus, memberOfUniversityCommitte, consultancyAssignment, externalProjectsOrCompetition,
+                                hodMarks,
+                            ]) => {
 
-                    res.render('users/hod/hodOverview', { finalResult, teachingLoad, teachingAssistant, newBooks, addedExp, innovation, leave, timeTable, classAdvisor, sportsActivities, culturalActivities, projectBasedLearning, udaan, placementActivities, inhousePlacement, studentOrganizations, industrialVisitActivities, admissionProcessActivities, examAssessmentExternal, examActivitiesSupervision, examActivitiesCollegeLevel, itMaintenance, lakshya, magazineNewsletter, sttp, departmentUGProjects, papersPublishedNationalConf, papersPublishedInternationalConf, papersPublishedJournals, moocs, swayam, shortTermTraining, seminars, resourcePerson, contributionToSyllabus, memberOfUniversityCommitte, consultancyAssignment, externalProjectsOrCompetition, hodMarks, year });
-                })
+                                res.render('users/hod/hodOverview', { finalResult, teachingLoad, teachingAssistant, newBooks, addedExp, innovation, leave, timeTable, classAdvisor, sportsActivities, culturalActivities, projectBasedLearning, udaan, placementActivities, inhousePlacement, studentOrganizations, industrialVisitActivities, admissionProcessActivities, examAssessmentExternal, examActivitiesSupervision, examActivitiesCollegeLevel, itMaintenance, lakshya, magazineNewsletter, sttp, departmentUGProjects, papersPublishedNationalConf, papersPublishedInternationalConf, papersPublishedJournals, moocs, swayam, shortTermTraining, seminars, resourcePerson, contributionToSyllabus, memberOfUniversityCommitte, consultancyAssignment, externalProjectsOrCompetition, hodMarks, year });
+                            })
+                    })
+                    .catch(err => {
+                        req.flash('error_msg', 'No submissions yet.');
+                        res.redirect('/users/hod/home');
+                    })
+            }
         })
-        .catch(err => {
-            req.flash('error_msg', 'No submissions yet.');
-            res.redirect('/users/hod/home');
-        })
-});
-
-// User register form
-router.get('/register', (req, res) => {
-    res.render('users/register');
 });
 
 router.post('/faculty/login',
@@ -1608,12 +1637,21 @@ router.post('/hod/pdf/:id', (req, res) => {
 
 router.get('/hod/home', ensureAuthenticated, (req, res) => {
     let facultyDetails;
-    Faculty.find({})
+    Hod.findOne({ _id: req.user.id })
         .then(result => {
-            facultyDetails = result;
-            res.render('users/hod/home', {
-                faculty: result
-            });
+            if (!result) {
+                req.flash('error_msg', 'Not Authorized');
+                res.redirect('back');
+            } else {
+                Faculty.find({})
+                    .sort({ date: 'desc' })
+                    .then(result => {
+                        facultyDetails = result;
+                        res.render('users/hod/home', {
+                            faculty: result
+                        });
+                    })
+            }
         })
 });
 
@@ -1667,10 +1705,21 @@ router.post('/hod/finalSubmit/:id/:year', (req, res) => {
     }
 });
 
+// Register faculty
+router.get('/hod/registerFaculty', ensureAuthenticated, (req, res) => {
+    Hod.findOne({ _id: req.user.id })
+        .then(result => {
+            if (!result) {
+                req.flash('error_msg', 'Not Authorized');
+                res.redirect('back');
+            } else {
+                res.render('users/hod/registerFaculty');
+            }
+        })
+});
+
 // Register Form POST
-router.post('/register', (req, res) => {
-    var type = req.body.type;
-    if (type === 'faculty') {
+router.post('/registerFaculty', (req, res) => {
         let errors = [];
         if (req.body.password != req.body.password2) {
             errors.push({ text: 'Password do not match' });
@@ -1679,7 +1728,7 @@ router.post('/register', (req, res) => {
             errors.push({ text: 'Password must be atleast 4 characters' });
         }
         if (errors.length > 0) {
-            res.render('users/register', {
+            res.render('users/hod/registerFaculty', {
                 errors: errors,
                 name: req.body.name,
                 email: req.body.email,
@@ -1691,7 +1740,7 @@ router.post('/register', (req, res) => {
                 .then(user => {
                     if (user) {
                         req.flash('error_msg', 'Email already registered');
-                        res.redirect('/users/faculty/login');
+                        res.redirect('/users/hod/registerFaculty');
                     } else {
                         const newUser = new Faculty({
                             name: req.body.name,
@@ -1706,8 +1755,73 @@ router.post('/register', (req, res) => {
                                 newUser.password = hash;
                                 newUser.save()
                                     .then(user => {
-                                        req.flash('success_msg', 'You are now registered and can login');
-                                        res.redirect('/users/faculty/login')
+                                        req.flash('success_msg', 'New user added to the appraisal system');
+                                        res.redirect('/users/hod/registerFaculty')
+                                    });
+                            });
+                        });
+                    }
+                })
+        }
+});
+
+// mangament user creation 
+router.get('/management/registerUser', ensureAuthenticated, (req, res) => {
+    Manager.findOne({ _id: req.user.id })
+    .then(result => {
+        if(!result) {
+            req.flash('error_msg', 'Not Authorized');
+            res.redirect('back');
+        } else {
+            res.render('users/management/registerUser');
+        }
+    }).catch(() => {
+        req.flash('error_msg', 'Not Authorized');
+        res.redirect('back');
+    })
+});
+
+// Post route for user creation by manager
+router.post('/management/registerUser', (req, res) => {
+    var type = req.body.type;
+    if (type === 'faculty') {
+        let errors = [];
+        if (req.body.password != req.body.password2) {
+            errors.push({ text: 'Password do not match' });
+        }
+        if (req.body.password.length < 4) {
+            errors.push({ text: 'Password must be atleast 4 characters' });
+        }
+        if (errors.length > 0) {
+            res.render('users/management/registerUser', {
+                errors: errors,
+                name: req.body.name,
+                email: req.body.email,
+                password: req.body.password,
+                password2: req.body.password2
+            });
+        } else {
+            Faculty.findOne({ email: req.body.email })
+                .then(user => {
+                    if (user) {
+                        req.flash('error_msg', 'Email already registered');
+                        res.redirect('/users/management/registerUser');
+                    } else {
+                        const newUser = new Faculty({
+                            name: req.body.name,
+                            email: req.body.email,
+                            type: req.body.type,
+                            password: req.body.password
+                        });
+
+                        bcrypt.genSalt(10, (err, salt) => {
+                            bcrypt.hash(newUser.password, salt, (err, hash) => {
+                                if (err) throw err;
+                                newUser.password = hash;
+                                newUser.save()
+                                    .then(user => {
+                                        req.flash('success_msg', 'New user added to the appraisal system as faculty');
+                                        res.redirect('/users/management/registerUser')
                                     });
                             });
                         });
@@ -1723,7 +1837,7 @@ router.post('/register', (req, res) => {
             errors.push({ text: 'Password must be atleast 4 characters' });
         }
         if (errors.length > 0) {
-            res.render('users/register', {
+            res.render('users/management/registerUser', {
                 errors: errors,
                 name: req.body.name,
                 email: req.body.email,
@@ -1735,7 +1849,7 @@ router.post('/register', (req, res) => {
                 .then(user => {
                     if (user) {
                         req.flash('error_msg', 'Email already registered');
-                        res.redirect('/users/hod/login');
+                        res.redirect('/users/management/registerUser');
                     } else {
                         const newUser = new Hod({
                             name: req.body.name,
@@ -1750,8 +1864,8 @@ router.post('/register', (req, res) => {
                                 newUser.password = hash;
                                 newUser.save()
                                     .then(user => {
-                                        req.flash('success_msg', 'You are now registered and can login');
-                                        res.redirect('/users/hod/login')
+                                        req.flash('success_msg', 'New user added to the appraisal system as HoD');
+                                        res.redirect('/users/management/registerUser')
                                     })
                                     .catch(err => {
                                         console.log(err);
