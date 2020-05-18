@@ -1,0 +1,63 @@
+<h5>List of users (HoD & Faculty)</h5><hr><br>
+<div class="row">
+    <div class="col s12 l12 m12">
+        <ul class="tabs purple-text">
+            <li class="tab col s6"><a class="active" href="#hod">HoD</a></li>
+            <li class="tab col s6"><a href="#faculty">Faculty</a></li>
+        </ul>
+    </div>
+    <div id="hod" class="col s12">
+        {{#if hod}}
+        <table class="highlight centered responsive-table">
+            <thead>
+                <tr>
+                    <th>HoD Name</th>
+                    <th>HoD Email ID</th>
+                    <th>Type</th>
+                    <th>Delete User</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each hod}}
+
+                <tr>
+                    <td>{{name}}</td>
+                    <td>{{email}}</td>
+                    <td>{{type}}</td>
+                    <td><a href="/users/management/deleteUser/hod/{{name}}/{{email}}/{{_id}}" class="red-text"><i class="fa fa-trash purple-text fa-lg" aria-hidden="true"></i></a></td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+        {{else}}
+        <h6>HoD not created yet.</h6>
+        {{/if}}
+    </div>
+    <div id="faculty" class="col s12">
+        {{#if faculty}}
+        <table class="highlight centered responsive-table">
+            <thead>
+                <tr>
+                    <th>Faculty Name</th>
+                    <th>Faculty Email ID</th>
+                    <th>Type</th>
+                    <th>Delete User</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each faculty}}
+
+                <tr>
+                    <td>{{name}}</td>
+                    <td>{{email}}</td>
+                    <td>{{type}}</td>
+                    <td><a href="/users/management/deleteUser/faculty/{{name}}/{{email}}/{{_id}}" class="red-text"><i class="fa fa-trash purple-text fa-lg" aria-hidden="true"></i></a></td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+        {{else}}
+        <h6>Faculties not created yet.</h6>
+        {{/if}}
+        </div>
+</div><br><br><br><br><br><br>

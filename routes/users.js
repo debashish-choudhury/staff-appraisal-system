@@ -140,6 +140,61 @@ router.get('/faculty/facultyOverview', ensureAuthenticated, (req, res) => {
         })
 });
 
+// Management user view
+router.get('/management/viewUsers', ensureAuthenticated, (req, res) => {
+    Manager.findOne({ _id: req.user.id })
+    .then(result => {
+        if(!result) {
+            req.flash('error_msg', 'Not Authorized');
+            res.redirect('back');
+        } else {
+            var hod = Hod.find({}).exec();
+            var faculty = Faculty.find({}).exec();
+            Promise.all([hod, faculty])
+            .then(result => {
+                return Promise.all(result);
+            })
+            .then(([hod, faculty]) => {
+                res.render('users/management/viewUsers', {hod, faculty});
+            })
+        }
+    })
+})
+
+// Delete user management route
+// for hod
+router.get('/management/deleteUser/hod/:name/:email/:id', ensureAuthenticated, (req, res) => {
+    Manager.findOne({ _id: req.user.id })
+    .then(result => {
+        if(!result) {
+            req.flash('error_msg', 'Not Authorized');
+            res.redirect('back');
+        } else {
+            Hod.deleteOne({ _id: req.params.id })
+            .then(result => {
+                req.flash('success_msg', 'HoD with name '+req.params.name+' and email-id '+req.params.email+ ' Deleted');
+                res.redirect('/users/management/viewUsers');
+            })
+        }
+    })
+});
+//for faculty
+router.get('/management/deleteUser/faculty/:name/:email/:id', ensureAuthenticated, (req, res) => {
+    Manager.findOne({ _id: req.user.id })
+    .then(result => {
+        if(!result) {
+            req.flash('error_msg', 'Not Authorized');
+            res.redirect('back');
+        } else {
+            Faculty.deleteOne({ _id: req.params.id })
+            .then(result => {
+                req.flash('success_msg', 'Faculty with name '+req.params.name+' and email-id '+req.params.email+ ' Deleted');
+                res.redirect('/users/management/viewUsers');
+            })
+        }
+    })
+});
+
 // Management route
 router.get('/management/home', ensureAuthenticated, (req, res) => {
     Manager.findOne({ _id: req.user.id })
@@ -1653,6 +1708,23 @@ router.get('/hod/home', ensureAuthenticated, (req, res) => {
                     })
             }
         })
+});
+
+// Delete faculty from HOD route
+router.get('/hod/deleteFaculty/:id', ensureAuthenticated, (req, res) => {
+    Hod.findOne({ _id: req.user.id })
+    .then(result => {
+        if(!result) {
+            req.flash('error_msg', 'Not Authorized');
+            res.redirect('back');
+        } else {
+            Faculty.deleteOne({ _id: req.params.id })
+            .then(() => {
+                req.flash('success_msg', 'User deleted successfully');
+                res.redirect('/users/hod/home');
+            })
+        }
+    })
 });
 
 var facultyAP, facultyLeave, facultyA1, facultyA2, facultyA3;
