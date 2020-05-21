@@ -6,6 +6,7 @@
                     <span class="card-title">
                         <h5>Register as new user</h5>
                     </span>
+                    {{#unless errors}}
                     <form action="/users/management/registerUser" method="post" class="container">
                         <div class="row">
                             <div class="input-field l12 m12 s12">
@@ -52,6 +53,7 @@
 
                         <button class="btn waves-effect waves-light" type="submit" id="submit_btn">Submit</button>
                     </form>
+                    {{/unless}}
                     {{#if errors}}
                     <form action="/users/management/registerUser" method="post" class="container">
                         <div class="row">

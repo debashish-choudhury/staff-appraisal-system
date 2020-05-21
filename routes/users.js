@@ -136,6 +136,10 @@ router.get('/faculty/facultyOverview', ensureAuthenticated, (req, res) => {
                                 if (err) throw err;
                             })
                     })
+                    .catch(err => {
+                        req.flash('error_msg', 'Academic year not selected');
+                        res.redirect('back');
+                    })
             }
         })
 });
