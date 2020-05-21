@@ -59,26 +59,40 @@
             flex-direction: column;
         }
 
+        body {
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column;
+        }
+
         main {
             flex: 1 0 auto;
         }
-        .tabs .tab a{
-            color:#000;
-        } /*Black color to the text*/
+
+        .tabs .tab a {
+            color: #000;
+        }
+
+        /*Black color to the text*/
 
         .tabs .tab a:hover {
-            background-color:rgb(223, 177, 220);
-            color:rgb(255, 255, 255);
-        } /*Text color on hover*/
+            background-color: rgb(223, 177, 220);
+            color: rgb(255, 255, 255);
+        }
+
+        /*Text color on hover*/
 
         .tabs .tab a.active {
-            background-color:rgb(203, 155, 207);
-            color:rgb(0, 0, 0);
-        } /*Background and text color when a tab is active*/
+            background-color: rgb(203, 155, 207);
+            color: rgb(0, 0, 0);
+        }
+
+        /*Background and text color when a tab is active*/
 
         .tabs .indicator {
-            background-color:rgb(151, 64, 147);
+            background-color: rgb(151, 64, 147);
         }
+
         @media only screen and (max-width: 992px) {
 
             table.responsive-table thead,
@@ -92,14 +106,16 @@
 </head>
 
 <body>
-
-    {{> _navbar}}
-    <div class="container">
-        {{> _msg}}
-        {{> _errors}}
-        {{{body}}}
-        <br>
-    </div>
+    <header>{{> _navbar}}</header>
+    <main>
+        <div class="container">
+            {{> _msg}}
+            {{> _errors}}
+            {{{body}}}
+            <br>
+        </div>
+    </main>
+    <footer class="page-footer grey darken-3">{{> _footer}}</footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
@@ -177,7 +193,7 @@
         });
 
     </script>
-    {{> _footer}}
+
 </body>
 
 </html>

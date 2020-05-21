@@ -11,6 +11,10 @@ const FacultySchema = new Schema({
         type: String,
         required: true
     },
+    department: {
+        type: String,
+        required: true
+    },
     type: {
         type: String,
         required: true

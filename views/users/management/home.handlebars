@@ -1,22 +1,34 @@
 {{#if_eq user.type 'manager'}}
-<h2>Management Page</h2>
-<h4>Marks of each faculty assessed by HoD (module wise)</h4>
+<h5>Management Page</h5>
+<h6>Marks of each faculty assessed by HoD (module wise)</h6>
 <br><br>
 <form action="/users/management/search" method="post">
     <div class="row">
         <form class="col s12">
             <div class="row">
-                <div class="input-field col s4 l5">
+                <div class="input-field col s6 m4 l3">
                     <input id="email" name="filterEmail" value="{{fltEmail}}" type="text">
                     <label for="email">Email ID</label>
                 </div>
-                <div class="input-field col s4 l5">
+                <div class="input-field col s6 m4 l3">
                     <input id="academic_year" name="academic_year" value="{{academicYear}}" type="text">
                     <label for="academic_year">Academic Year</label>
                 </div>
-                <div class="input-field col s4 l2">
-                    <button class="btn waves-effect waves-light purple" type="submit"><i class="fa fa-search white-text"
-                            aria-hidden="true"></i>&nbsp; Submit</button>
+                <div class="input-field col s12 m4 l4">
+                    <select name="department">
+                        <option value="{{dept}}" selected>{{dept}}</option>
+                        <option value="">Department</option>
+                        <option value="Information Technology">Information Technology</option>
+                        <option value="Computer Engineering">Computer Engineering</option>
+                        <option value="Mechanical Engineering">Mechanical Engineering</option>
+                        <option value="Civil Engineering">Civil Engineering</option>
+                        <option value="EXTC Engineering">EXTC Engineering</option>
+                    </select>
+                    <label for="department">Department</label>
+                </div>
+                <div class="input-field col s12 m12 l2 center">
+                    <button class="btn waves-effect waves-light purple center" type="submit"><i
+                            class="fa fa-search white-text" aria-hidden="true"></i>&nbsp; Search</button>
                 </div>
             </div>
         </form>
@@ -27,6 +39,7 @@
     <thead>
         <tr>
             <th>Name</th>
+            <th>Department</th>
             <th>Email ID</th>
             <th>Academic</th>
             <th>Leave</th>
@@ -43,6 +56,7 @@
 
         <tr>
             <td>{{faculty_name}}</td>
+            <td>{{department}}</td>
             <td>{{faculty_email}}</td>
             <td>{{academicPerformance}}</td>
             <td>{{leaveRecord}}</td>
@@ -59,20 +73,21 @@
 {{else}}
 </tbody>
 </table>
+<h6>No data available.</h6>
 {{/if}}
 <br><br><br><br><br>
 <canvas id="myChart"></canvas>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
 {{#if fltEmail}}
 <script>
-    var facultyYear = '{{#each year}}{{this}}{{/each}}'; 
+    var facultyYear = '{{#each year}}{{this}}{{/each}}';
     var year = facultyYear.split(',');
-    var marks = '{{#each finalMarks}}{{this}}{{/each}}'; 
+    var marks = '{{#each finalMarks}}{{this}}{{/each}}';
     var facultyMarks = marks.split(',');
     var ctx = document.getElementById('myChart').getContext('2d');
     var myChart = new Chart(ctx, {
         type: 'bar',
-        data: { 
+        data: {
             labels: year,
             datasets: [{
                 label: 'Total no. of marks',
@@ -110,14 +125,14 @@
 {{else}}
 {{#if academicYear}}
 <script>
-    var facultyName = '{{#each name}}{{this}}{{/each}}'; 
+    var facultyName = '{{#each name}}{{this}}{{/each}}';
     var names = facultyName.split(',');
-    var marks = '{{#each finalMarks}}{{this}}{{/each}}'; 
+    var marks = '{{#each finalMarks}}{{this}}{{/each}}';
     var facultyMarks = marks.split(',');
     var ctx = document.getElementById('myChart').getContext('2d');
     var myChart = new Chart(ctx, {
         type: 'bar',
-        data: { 
+        data: {
             labels: names,
             datasets: [{
                 label: 'Total no. of marks',
@@ -152,6 +167,77 @@
         }
     });
 </script>
+{{else}}
+{{#if dept}}
+<script>
+    var facultyName = '{{#each name}}{{this}}{{/each}}';
+    var names = facultyName.split(',');
+    var facultyYear = '{{#each year}}{{this}}{{/each}}';
+    var year = facultyYear.split(',');
+    var marks = '{{#each finalMarks}}{{this}}{{/each}}';
+    var facultyMarks = marks.split(',');
+    let minYear = Math.min(year);
+    let maxYear = Math.max(year);
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: names,
+            datasets: [{
+                label: 'Total no. of marks',
+                data: facultyMarks,
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            },
+            {
+                label: 'Academic Year',
+                yAxisID: 'year',
+                data: year,
+                // Changes this dataset to become a line
+                type: 'line'
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                },
+                {
+                    id: 'year',
+                    type: 'linear',
+                    position: 'right',
+                    ticks: {
+                        userCallback: function (label, index, labels) {
+                            // when the floored value is the same as the value we have a whole number
+                            if (Math.floor(label) === label) {
+                                return label;
+                            }
+
+                        }
+                    }
+                }]
+            }
+        }
+    });
+</script>
+{{/if}}
 {{/if}}
 {{/if}}
 

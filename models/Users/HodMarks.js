@@ -15,6 +15,10 @@ const HodMarks = new Schema({
         type: String,
         required: true
     },
+    department: {
+        type: String,
+        required: true
+    },
     academicPerformance: {
         type: Number,
         required: true
