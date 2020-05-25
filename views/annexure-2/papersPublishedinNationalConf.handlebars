@@ -169,6 +169,88 @@
 </div>
 </div>
 {{else}}
+{{#if errors}}
+<div class="row" id="Papers Published In National Conference">
+
+        <div class="row">
+            <div class="input-field col s6 md5">
+                <input id="title_of_paper_published" type="text" name="title_of_paper_published"
+                    value="{{title_of_paper_published}}" class="validate "  required>
+                <label for="title_of_paper_published" class="">Title of Paper</label>
+            </div>
+
+            <div class="input-field col s6">
+                <input id="published_date" type="text" placeholder="march 2018" name="published_date"
+                    value="{{published_date}}"  class="validate" required>
+                <label for="published_date">Month / Year</label>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="input-field col s6 md5">
+                <input id="name_of_conference" type="text" name="name_of_conference" value="{{name_of_conference}}"
+                     class="validate " required>
+                <label for="name_of_conference" class="">Name of Conference</label>
+            </div>
+
+            <div class="input-field col s6">
+                <input id="isbn_issn_number" type="number" name="isbn_issn_number" value="{{isbn_issn_number}}" 
+                    class="validate" required>
+                <label for="isbn_issn_number">ISBN/ISSN NUMBER</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s6 md5">
+                <input id="name_of_coauthor" type="text" name="name_of_coauthor" value="{{name_of_coauthor}}" 
+                    class="validate " required>
+                <label for="name_of_coauthor" class="">Name Of Co-authors</label>
+            </div>
+
+            <div class="input-field col s6">
+                <input id="impact_factor" type="text" name="impact_factor" value="{{impact_factor}}" 
+                    class="validate" required>
+                <label for="impact_factor">Impact Factor &nbsp; <a href="#" class="tooltipped"
+                        data-tooltip="Total Impact Factor of the Conference"><i
+                            class="fa fa-info-circle"></i></a></label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s6 md5">
+                <input id="no_of_citations" type="number" name="no_of_citations" value="{{no_of_citations}}" 
+                    class="validate " required>
+                <label for="no_of_citations" class="">Number Of Citations</label>
+            </div>
+
+            <div class="input-field col s6">
+                <input id="rating" type="number" name="rating" value="{{rating}}"  class="validate" required>
+                <label for="rating">Rating</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="link" type="url" name="link" value="{{link}}"  class="validate" required>
+                <label for="link">Online Link</label>
+            </div>
+        </div>
+        <div>
+            <p>
+                <label>
+                    <input id="indeterminate-checkbox" type="checkbox" required />
+                    <span>I acknowledge that above filled information is verified and justified by me.</span>
+                </label>
+            </p>
+        </div>
+        <a href="/annexure-2/papersPublishedinInternationalConf" class="waves-effect waves-light btn red center">Not
+            Applicable</a>
+        <button class="btn waves-effect waves-light" id="submit_btn" type="submit" disabled>Submit
+        </button>
+    </div>
+</div>
+{{else}}
 <div class="row" id="Papers Published In National Conference">
     <form action="/annexure-2/papersPublishedinNationalConf" method="post" class="col s12">
 
@@ -247,5 +329,6 @@
     </form>
 </div>
 </div>
+{{/if}}
 {{/if}}
 {{/if}}

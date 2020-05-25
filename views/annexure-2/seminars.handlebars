@@ -152,6 +152,80 @@
 </div>
 </div>
 {{else}}
+{{#if errors}}
+<div class="row" id="seminars">
+        <div class="row">
+            <div class="input-field col s6 md5">
+                <input id="name_of_seminar" type="text" name="name_of_seminar" value="{{name_of_seminar}}" 
+                    class="validate " required>
+                <label for="name_of_seminar" class="">Name Of Seminar</label>
+            </div>
+
+            <div class="input-field col s6">
+                <input id="techonology" type="text" name="techonology" value="{{techonology}}"  class="validate"
+                    required>
+                <label for="techonology">Techonology</label>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="input-field col s6 md5">
+                <input id="duration_of_course" type="number" name="duration_of_course" value="{{duration_of_course}}"
+                     class="validate " required>
+                <label for="duration_of_course">Duration(months) &nbsp; <a href="#" class="tooltipped"
+                        data-tooltip="Total Duration of STTP Courses(months)"><i
+                            class="fa fa-info-circle"></i></a></label>
+            </div>
+
+            <div class="input-field col s6 md5">
+                <input id="start_date" type="text" name="start_date" value="{{start_date}}" 
+                    class="datepicker validate" required>
+                <label for="start_date" class="">Starting Date</label>
+            </div>
+
+        </div>
+
+        <div class="row">
+
+            <div class="input-field col s6 md5">
+                <input id="end_date" type="text" name="end_date" value="{{end_date}}" 
+                    class="datepicker validate" required>
+                <label for="end_date" class="">Ending Date</label>
+            </div>
+
+            <div class="input-field col s6">
+                <select name="internal_external" required>
+                    <option value="{{internal_external}}" selected>{{internal_external}}</option>
+                    <option value="Internal" >Internal</option>
+                    <option value="External" >External</option>
+                </select>
+                <label for="">Internal/External</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="name_of_institue" type="text" name="name_of_institue" value="{{name_of_institue}}" 
+                    class="validate" required>
+                <label for="name_of_institute">Institute &nbsp; <a href="#" class="tooltipped"
+                        data-tooltip="Name of Institute where attended"><i class="fa fa-info-circle"></i></a></label>
+            </div>
+        </div>
+        <div>
+            <p>
+                <label>
+                    <input id="indeterminate-checkbox" type="checkbox" required />
+                    <span>I acknowledge that above filled information is verified and justified by me.</span>
+                </label>
+            </p>
+        </div>
+        <a href="/annexure-3/resourcePerson" class="waves-effect waves-light btn red center">Not Applicable</a>
+        <button class="btn waves-effect waves-light" id="submit_btn" type="submit" disabled>Submit
+        </button>
+    </div>
+</div>
+{{else}}
 <div class="row" id="seminars">
     <form action="/annexure-2/seminars" method="post" class="col s12">
 
@@ -220,5 +294,6 @@
     </form>
 </div>
 </div>
+{{/if}}
 {{/if}}
 {{/if}}

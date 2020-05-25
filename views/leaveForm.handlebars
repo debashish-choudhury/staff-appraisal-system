@@ -1,73 +1,76 @@
 <h5>Leave Form</h5>
 <div class="container">
-{{#if result}}
-{{#each result}}
-<h6>Pre-sanctioned leave record (Enter 0 if none)</h6>
-<hr>
-<div class="row" id="leaveform">
-    <div class="row">
-        <div class="input-field col s6 md5">
-            <input id="casual_leave" type="number" name="pre_casual_leave" value="{{pre_casual_leave}}" disabled>
-            <label for="casual_leave">Casual Leave</label>
+    {{#if result}}
+    {{#each result}}
+    <h6>Pre-sanctioned leave record (Enter 0 if none)</h6>
+    <hr>
+    <div class="row" id="leaveform">
+        <div class="row">
+            <div class="input-field col s6 md5">
+                <input id="casual_leave" type="number" name="pre_casual_leave" value="{{pre_casual_leave}}" disabled>
+                <label for="casual_leave">Casual Leave</label>
+            </div>
+            <div class="input-field col s6">
+                <input id="outdoor_leave" type="number" name="pre_outdoor_leave" value="{{pre_outdoor_leave}}" disabled>
+                <label for="outdoor_leave">Outdoor Leave</label>
+            </div>
         </div>
-        <div class="input-field col s6">
-            <input id="outdoor_leave" type="number" name="pre_outdoor_leave" value="{{pre_outdoor_leave}}" disabled>
-            <label for="outdoor_leave">Outdoor Leave</label>
-        </div>
-    </div>
 
-    <div class="row">
-        <div class="input-field col s6">
-            <input id="medical_leave" type="number" name="pre_medical_leave" value="{{pre_medical_leave}}" disabled>
-            <label for="medical_leave">Medical Leave</label>
+        <div class="row">
+            <div class="input-field col s6">
+                <input id="medical_leave" type="number" name="pre_medical_leave" value="{{pre_medical_leave}}" disabled>
+                <label for="medical_leave">Medical Leave</label>
+            </div>
+            <div class="input-field col s6">
+                <input id="special_leave" type="number" name="pre_special_leave" value="{{pre_special_leave}}" disabled>
+                <label for="special_leave">Special Leave</label>
+            </div>
         </div>
-        <div class="input-field col s6">
-            <input id="special_leave" type="number" name="pre_special_leave" value="{{pre_special_leave}}" disabled>
-            <label for="special_leave">Special Leave</label>
-        </div>
-    </div>
 
-    <h6>Post-sanctioned leave record (Enter 0 if none)</h6>
-    <div class="row">
-        <div class="input-field col s6 md5">
-            <input id="casual_leave" type="number" name="post_casual_leave" value="{{post_casual_leave}}" disabled>
-            <label for="casual_leave">Casual Leave</label>
+        <h6>Post-sanctioned leave record (Enter 0 if none)</h6>
+        <div class="row">
+            <div class="input-field col s6 md5">
+                <input id="casual_leave" type="number" name="post_casual_leave" value="{{post_casual_leave}}" disabled>
+                <label for="casual_leave">Casual Leave</label>
+            </div>
+            <div class="input-field col s6">
+                <input id="outdoor_leave" type="number" name="post_outdoor_leave" value="{{post_outdoor_leave}}"
+                    disabled>
+                <label for="outdoor_leave">Outdoor Leave</label>
+            </div>
         </div>
-        <div class="input-field col s6">
-            <input id="outdoor_leave" type="number" name="post_outdoor_leave" value="{{post_outdoor_leave}}" disabled>
-            <label for="outdoor_leave">Outdoor Leave</label>
-        </div>
-    </div>
 
-    <div class="row">
-        <div class="input-field col s6">
-            <input id="medical_leave" type="number" name="post_medical_leave" value="{{post_medical_leave}}" disabled>
-            <label for="medical_leave">Medical Leave</label>
-        </div>
-        <div class="input-field col s6">
-            <input id="special_leave" type="number" name="post_special_leave" value="{{post_special_leave}}" disabled>
-            <label for="special_leave">Special Leave</label>
+        <div class="row">
+            <div class="input-field col s6">
+                <input id="medical_leave" type="number" name="post_medical_leave" value="{{post_medical_leave}}"
+                    disabled>
+                <label for="medical_leave">Medical Leave</label>
+            </div>
+            <div class="input-field col s6">
+                <input id="special_leave" type="number" name="post_special_leave" value="{{post_special_leave}}"
+                    disabled>
+                <label for="special_leave">Special Leave</label>
 
+            </div>
         </div>
+        <a href="/leave/edit/{{id}}" class="waves-effect waves-light btn red center">Edit</a>
+        <a href="/users/faculty/facultyOverview" class="waves-effect waves-light btn purple center">Back to overview</a>
+        <br> <br>
+        <form method="post" action="/leave/{{id}}?_method=DELETE">
+            <input type="hidden" name="_method" value="DELETE">
+            <input type="submit" class="btn waves-effect waves-light red center white-text" value="Delete">
+        </form>
     </div>
-    <a href="/leave/edit/{{id}}" class="waves-effect waves-light btn red center">Edit</a>
-    <a href="/users/faculty/facultyOverview" class="waves-effect waves-light btn purple center">Back to overview</a>
-    <br> <br>
-    <form method="post" action="/leave/{{id}}?_method=DELETE">
-        <input type="hidden" name="_method" value="DELETE">
-        <input type="submit" class="btn waves-effect waves-light red center white-text" value="Delete">
-    </form>
-</div>
 </div>
 {{else}}
 {{/each}}
 {{else}}
 {{#if editResult}}
-    <h6>Pre-sanctioned leave record (Enter 0 if none)</h6>
+<h6>Pre-sanctioned leave record (Enter 0 if none)</h6>
 <hr>
 <div class="row" id="leaveform">
     <form action="/leave/{{editResult.id}}?_method=PUT" method="post" class="col s12">
-    <input type="hidden" value="_method" name="PUT">
+        <input type="hidden" value="_method" name="PUT">
         <div class="row">
             <div class="input-field col s6 md5">
                 <input id="casual_leave" type="number" name="pre_casual_leave" value="{{editResult.pre_casual_leave}}"
@@ -75,21 +78,21 @@
                 <label for="casual_leave">Casual Leave</label>
             </div>
             <div class="input-field col s6">
-                <input id="outdoor_leave" type="number" name="pre_outdoor_leave" value="{{editResult.pre_outdoor_leave}}"
-                    class="validate" required>
+                <input id="outdoor_leave" type="number" name="pre_outdoor_leave"
+                    value="{{editResult.pre_outdoor_leave}}" class="validate" required>
                 <label for="outdoor_leave">Outdoor Leave</label>
             </div>
         </div>
 
         <div class="row">
             <div class="input-field col s6">
-                <input id="medical_leave" type="number" name="pre_medical_leave" value="{{editResult.pre_medical_leave}}"
-                    class="validate" required>
+                <input id="medical_leave" type="number" name="pre_medical_leave"
+                    value="{{editResult.pre_medical_leave}}" class="validate" required>
                 <label for="medical_leave">Medical Leave</label>
             </div>
             <div class="input-field col s6">
-                <input id="special_leave" type="number" name="pre_special_leave" value="{{editResult.pre_special_leave}}"
-                    class="validate" required>
+                <input id="special_leave" type="number" name="pre_special_leave"
+                    value="{{editResult.pre_special_leave}}" class="validate" required>
                 <label for="special_leave">Special Leave</label>
             </div>
         </div>
@@ -102,21 +105,21 @@
                 <label for="casual_leave">Casual Leave</label>
             </div>
             <div class="input-field col s6">
-                <input id="outdoor_leave" type="number" name="post_outdoor_leave" value="{{editResult.post_outdoor_leave}}"
-                    class="validate" required>
+                <input id="outdoor_leave" type="number" name="post_outdoor_leave"
+                    value="{{editResult.post_outdoor_leave}}" class="validate" required>
                 <label for="outdoor_leave">Outdoor Leave</label>
             </div>
         </div>
 
         <div class="row">
             <div class="input-field col s6">
-                <input id="medical_leave" type="number" name="post_medical_leave" value="{{editResult.post_medical_leave}}"
-                    class="validate" required>
+                <input id="medical_leave" type="number" name="post_medical_leave"
+                    value="{{editResult.post_medical_leave}}" class="validate" required>
                 <label for="medical_leave">Medical Leave</label>
             </div>
             <div class="input-field col s6">
-                <input id="special_leave" type="number" name="post_special_leave" value="{{editResult.post_special_leave}}"
-                    class="validate" required>
+                <input id="special_leave" type="number" name="post_special_leave"
+                    value="{{editResult.post_special_leave}}" class="validate" required>
                 <label for="special_leave">Special Leave</label>
 
             </div>
@@ -132,6 +135,68 @@
             </button>
         </div>
     </form>
+</div>
+</div>
+{{else}}
+{{#if errors}}
+<h6>Pre-sanctioned leave record (Enter 0 if none)</h6>
+<hr>
+<div class="row" id="leaveform">
+    <div class="row">
+        <div class="input-field col s6 md5">
+            <input id="casual_leave" type="number" name="pre_casual_leave" value="{{pre_casual_leave}}">
+            <label for="casual_leave">Casual Leave</label>
+        </div>
+        <div class="input-field col s6">
+            <input id="outdoor_leave" type="number" name="pre_outdoor_leave" value="{{pre_outdoor_leave}}">
+            <label for="outdoor_leave">Outdoor Leave</label>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="input-field col s6">
+            <input id="medical_leave" type="number" name="pre_medical_leave" value="{{pre_medical_leave}}">
+            <label for="medical_leave">Medical Leave</label>
+        </div>
+        <div class="input-field col s6">
+            <input id="special_leave" type="number" name="pre_special_leave" value="{{pre_special_leave}}">
+            <label for="special_leave">Special Leave</label>
+        </div>
+    </div>
+
+    <h6>Post-sanctioned leave record (Enter 0 if none)</h6>
+    <div class="row">
+        <div class="input-field col s6 md5">
+            <input id="casual_leave" type="number" name="post_casual_leave" value="{{post_casual_leave}}">
+            <label for="casual_leave">Casual Leave</label>
+        </div>
+        <div class="input-field col s6">
+            <input id="outdoor_leave" type="number" name="post_outdoor_leave" value="{{post_outdoor_leave}}">
+            <label for="outdoor_leave">Outdoor Leave</label>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="input-field col s6">
+            <input id="medical_leave" type="number" name="post_medical_leave" value="{{post_medical_leave}}">
+            <label for="medical_leave">Medical Leave</label>
+        </div>
+        <div class="input-field col s6">
+            <input id="special_leave" type="number" name="post_special_leave" value="{{post_special_leave}}">
+            <label for="special_leave">Special Leave</label>
+
+        </div>
+    </div>
+    <div>
+        <p>
+            <label>
+                <input id="indeterminate-checkbox" type="checkbox" required />
+                <span>I acknowledge that above filled information is verified and justified by me.</span>
+            </label>
+        </p>
+    </div>
+    <button class="btn waves-effect waves-light" type="submit" id="submit_btn" disabled>Submit
+    </button>
 </div>
 </div>
 {{else}}
@@ -197,5 +262,6 @@
     </form>
 </div>
 </div>
+{{/if}}
 {{/if}}
 {{/if}}

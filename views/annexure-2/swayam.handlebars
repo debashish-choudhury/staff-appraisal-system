@@ -99,6 +99,53 @@
 </div>
 </div>
 {{else}}
+{{#if errors}}
+<div class="row" id="swayam">
+        <div class="row">
+            <div class="input-field col s6 md5">
+                <input id="name_of_swayam_undertaken" type="text" name="name_of_swayam_undertaken"
+                    value="{{name_of_swayam_undertaken}}"  class="validate " required>
+                <label for="name_of_swayam_undertaken">Swayam Course &nbsp; <a href="#" class="tooltipped"
+                        data-tooltip="Name of swayam Course undertaken"><i class="fa fa-info-circle"></i></a></label>
+            </div>
+
+            <div class="input-field col s6">
+                <input id="swayam_date" type="text" name="swayam_date" value="{{swayam_date}}"  class="validate"
+                    required>
+                <label for="swayam_date">Month / Year</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s6 md5">
+                <input id="swayam_duartion" type="number" name="swayam_duartion" value="{{swayam_duartion}}" 
+                    class="validate " required>
+                <label for="swayam_duartion" class="">Duration Of Course</label>
+            </div>
+
+            <div class="input-field col s6">
+                <select name="certification_status" required>
+                    <option value="{{certification_status}}" selected>{{certification_status}}</option>
+                    <option value="YES" >YES</option>
+                    <option value="NO" >NO</option>
+                </select>
+                <label for="">Completed?</label>
+            </div>
+        </div>
+        <div>
+            <p>
+                <label>
+                    <input id="indeterminate-checkbox" type="checkbox" required />
+                    <span>I acknowledge that above filled information is verified and justified by me.</span>
+                </label>
+            </p>
+        </div>
+        <a href="/annexure-2/shortTermTraining" class="waves-effect waves-light btn red center">Not Applicable</a>
+        <button class="btn waves-effect waves-light" id="submit_btn" type="submit" disabled>Submit
+        </button>
+    </div>
+</div>
+{{else}}
 <div class="row" id="swayam">
     <form action="/annexure-2/swayam" method="post" class="col s12">
 
@@ -144,5 +191,6 @@
     </form>
 </div>
 </div>
+{{/if}}
 {{/if}}
 {{/if}}
