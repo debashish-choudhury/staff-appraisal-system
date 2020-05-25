@@ -33,12 +33,18 @@
                 <label for="name_of_college_university">College/University</label>
 
             </div>
-
             <div class="input-field col s6">
-                <input id="exam_subject_external" type="text" disabled name="exam_subject_external"
-                    value="{{exam_subject_external}}" class="validate" required>
-                <label for="exam_subject_external">Subject</label>
-            </div>
+                    <input id="outdoor_activities" type="number" name="outdoor_activities" value="{{outdoor_activities}}" class="validate" required>
+                    <label for="outdoor_activities">Outdoor Activities &nbsp; <a href="#" class="tooltipped"
+                data-tooltip="Total Number of Outdoor Activities"><i class="fa fa-info-circle"></i></a></label>
+             </div>
+         </div>
+         <div class="row">
+             <div class="input-field col s6">
+                    <input id="papers_revaluated" type="number" name="papers_revaluated" value="{{papers_revaluated}}" class="validate" required>
+                    <label for="papers_revaluated">Evaluations &nbsp; <a href="#" class="tooltipped"
+                data-tooltip="Total Number of papers Evaluated or Revaluated"><i class="fa fa-info-circle"></i></a></label>
+             </div>
 
         </div>
         <div class="row">
@@ -57,15 +63,13 @@
                         data-tooltip="Enter the number of Papers evaluated"><i
                             class="fa fa-info-circle"></i></a></label>
             </div>
-
-        </div>
-        <div class="row">
-            <div class="input-field col s6">
-                <input id="papers_moderated" type="number" disabled name="papers_moderated" value="{{papers_moderated}}"
-                    class="validate" required>
-                <label for="papers_moderated">Papers Moderated &nbsp; <a href="#" class="tooltipped"
-                        data-tooltip="Enter the number of Papers Moderated"><i
-                            class="fa fa-info-circle"></i></a></label>
+            </div>
+<div class="row">
+                <div class="input-field col s6">
+                    <input id="papers_moderated" type="number" name="papers_moderated" value="{{papers_moderated}}" class="validate" required>
+                    <label for="papers_moderated">Moderations &nbsp; <a href="#" class="tooltipped"
+                data-tooltip="Total Number of papers Moderated"><i class="fa fa-info-circle"></i></a></label>
+                </div>
             </div>
         </div>
         <a href="/annexure-1/examAssessmentExternal/edit/{{id}}"
@@ -114,20 +118,18 @@
 
             </div>
 
-            <div class="input-field col s6">
-                <input id="exam_subject_external" type="text" name="exam_subject_external"
-                    value="{{editResult.exam_subject_external}}" class="validate" required>
-                <label for="exam_subject_external">Subject</label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="input-field col s6">
-                <input id="outdoor_activities" type="number" name="outdoor_activities"
-                    value="{{editResult.outdoor_activities}}" class="validate" required>
-                <label for="outdoor_activities">Outdoor Activites &nbsp; <a href="#" class="tooltipped"
-                        data-tooltip="Enter the number of Outdoor Activities"><i
-                            class="fa fa-info-circle"></i></a></label>
-            </div>
+<div class="row">
+                <div class="input-field col s6">
+                    <input id="outdoor_activities" type="number" name="outdoor_activities" value="{{editResult.outdoor_activities}}" class="validate" required>
+                     <label for="outdoor_activities">Outdoor Activities &nbsp; <a href="#" class="tooltipped"
+                data-tooltip="Total Number of Outdoor Activities"><i class="fa fa-info-circle"></i></a></label>
+                </div>
+
+                <div class="input-field col s6">
+                    <input id="papers_revaluated" type="number" name="papers_revaluated" value="{{editResult.papers_revaluated}}" class="validate" required>
+                    <label for="papers_revaluated">Evaluations &nbsp; <a href="#" class="tooltipped"
+                data-tooltip="Total Number of papers Evaluated or Revaluated"><i class="fa fa-info-circle"></i></a></label>
+                </div>
 
             <div class="input-field col s6">
                 <input id="papers_revaluated" type="number" name="papers_revaluated"
@@ -140,13 +142,20 @@
         </div>
 
 
-        <div class="row">
-            <div class="input-field col s6">
-                <input id="papers_moderated" type="number" name="papers_moderated"
-                    value="{{editResult.papers_moderated}}" class="validate" required>
-                <label for="papers_moderated">Papers Moderated &nbsp; <a href="#" class="tooltipped"
-                        data-tooltip="Enter the number of Papers Moderated"><i
-                            class="fa fa-info-circle"></i></a></label>
+<div class="row">
+                <div class="input-field col s6">
+                    <input id="papers_moderated" type="number" name="papers_moderated" value="{{editResult.papers_moderated}}" class="validate" required>
+                    <label for="papers_moderated">Moderations &nbsp; <a href="#" class="tooltipped"
+                data-tooltip="Total Number of papers Moderated"><i class="fa fa-info-circle"></i></a></label>
+                </div>
+            </div>
+            <div>
+                <p>
+                    <label>
+                        <input id="indeterminate-checkbox" type="checkbox" required />
+                        <span>I acknowledge that above filled information is verified and justified by me.</span>
+                    </label>
+                </p>
             </div>
         </div>
 
@@ -206,23 +215,23 @@
             </div>
             <div class="row">
                 <div class="input-field col s6">
-                    <input id="outdoor_activities" type="number" name="outdoor_activities" value="{{outdoor_activities}}" class="validate" required>
-                    <label for="outdoor_activities">Outdoor Activites  &nbsp; <a href="#" class="tooltipped"
-                            data-tooltip="Enter the number of Outdoor Activities"><i class="fa fa-info-circle"></i></a></label>
+<input id="outdoor_activities" type="number" name="outdoor_activities" class="validate" required>
+                     <label for="outdoor_activities">Outdoor Activities &nbsp; <a href="#" class="tooltipped"
+                data-tooltip="Total Number of Outdoor Activities"><i class="fa fa-info-circle"></i></a></label>
                 </div>
 
                 <div class="input-field col s6">
-                    <input id="papers_revaluated" type="number" name="papers_revaluated" value="{{papers_revaluated}}" class="validate" required>
-                    <label for="papers_revaluated">Papers Evaluated &nbsp; <a href="#" class="tooltipped"
-                            data-tooltip="Enter the number of Papers evaluated"><i class="fa fa-info-circle"></i></a></label>
+                    <input id="papers_revaluated" type="number" name="papers_revaluated" class="validate" required>
+                     <label for="papers_revaluated">Evaluations &nbsp; <a href="#" class="tooltipped"
+                data-tooltip="Total Number of papers Evaluated or Revaluated"><i class="fa fa-info-circle"></i></a></label>
                 </div>
 
             </div>
             <div class="row">
                 <div class="input-field col s6">
-                    <input id="papers_moderated" type="number" name="papers_moderated" value="{{papers_moderated}}" class="validate" required>
-                    <label for="papers_moderated">Papers Moderated &nbsp; <a href="#" class="tooltipped"
-                            data-tooltip="Enter the number of Papers Moderated"><i class="fa fa-info-circle"></i></a></label>
+                <input id="papers_moderated" type="number" name="papers_moderated" class="validate" required>
+                    <label for="papers_moderated">Moderations &nbsp; <a href="#" class="tooltipped"
+                data-tooltip="Total Number of papers Moderated"><i class="fa fa-info-circle"></i></a></label>
                 </div>
             </div>
         <div>
