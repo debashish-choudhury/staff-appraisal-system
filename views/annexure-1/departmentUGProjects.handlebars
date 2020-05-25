@@ -2,8 +2,8 @@
 <div class="container">
     <h6>1.19 Department UG Projects Undertaken</h6>
     <hr>
-{{#if result}}
-{{#each result}}
+    {{#if result}}
+    {{#each result}}
     <div class="row" id="DeptUGProjects">
         <div class="row">
             <div class="input-field col s6 md5">
@@ -42,45 +42,45 @@
 {{/each}}
 {{else}}
 {{#if editResult}}
-    <div class="row" id="DeptUGProjects">
-        <form action="/annexure-1/departmentUGProjects/{{editResult.id}}?_method=PUT" method="post" class="col s12">
-            <input type="hidden" name="_method" value="PUT">
-            <div class="row">
-                <div class="input-field col s6 md5">
-                    <select name="dept_project_role" required>
-                        <option value="{{editResult.dept_project_role}}" selected>{{editResult.dept_project_role}}</option>
-                        <option value="guide">Guide</option>
-                        <option value="co-guide">Co-guide</option>
-                    </select>
-                    <label for="">Role</label>
-                </div>
-                <div class="input-field col s6">
-                    <input id="project_title" type="text" name="project_title" value="{{editResult.project_title}}" class="validate" required>
-                    <label for="project_title">Title Of Project</label>
-                </div>
+<div class="row" id="DeptUGProjects">
+    <form action="/annexure-1/departmentUGProjects/{{editResult.id}}?_method=PUT" method="post" class="col s12">
+        <input type="hidden" name="_method" value="PUT">
+        <div class="row">
+            <div class="input-field col s6 md5">
+                <select name="dept_project_role" required>
+                    <option value="{{editResult.dept_project_role}}" selected>{{editResult.dept_project_role}}</option>
+                    <option value="guide">Guide</option>
+                    <option value="co-guide">Co-guide</option>
+                </select>
+                <label for="">Role</label>
             </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <input id="project_no_of_students" type="number" name="project_no_of_students" value="{{editResult.project_no_of_students}}" class="validate"
-                        required>
-                    <label for="project_no_of_students">Number Of Students</label>
-                </div>
+            <div class="input-field col s6">
+                <input id="project_title" type="text" name="project_title" value="{{editResult.project_title}}"
+                    class="validate" required>
+                <label for="project_title">Title Of Project</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="project_no_of_students" type="number" name="project_no_of_students"
+                    value="{{editResult.project_no_of_students}}" class="validate" required>
+                <label for="project_no_of_students">Number Of Students</label>
+            </div>
 
-            </div>
-            <div>
-             <p>
-                 <label>
-                <input id="indeterminate-checkbox" type="checkbox" required/>
-                 <span>I acknowledge that above filled information is verified and justified by me.</span>
+        </div>
+        <div>
+            <p>
+                <label>
+                    <input id="indeterminate-checkbox" type="checkbox" required />
+                    <span>I acknowledge that above filled information is verified and justified by me.</span>
                 </label>
             </p>
         </div>
-            <button
-                class="btn waves-effect waves-dark" id="submit_btn" type="submit" disabled>Submit
-            </button>
-        </form>
-    </div>
-    </div>
+        <button class="btn waves-effect waves-dark" id="submit_btn" type="submit" disabled>Submit
+        </button>
+    </form>
+</div>
+</div>
 </div>
 {{else}}
 {{#if errors}}

@@ -2,156 +2,156 @@
 <div class="container">
     <h6>1.17 Magazine/Newsletter Related Activities</h6>
     <hr>
-{{#if result}}
-{{#each result}}
-<div class="row" id="magazineNewsletter">
-            <div class="row">
-                <div class="input-field col s6 md5">
-                    <input id="class_name" type="text" name="class_name" value="{{class_name}}" class="validate" required>
-                    <label for="class_name">Title</label>
-                </div>
-                <div class="input-field col s6 md5">
-                    <select name="magazine_role">
-                        <option value="{{magazine_role}}" disabled selected>{{magazine_role}}</option>
-                        <option value="incharge">Incharge</option>
-                        <option value="coordinator">Co-orditors</option>
-                    </select>
-                    <label for="">Role</label>
-                </div>
+    {{#if result}}
+    {{#each result}}
+    <div class="row" id="magazineNewsletter">
+        <div class="row">
+            <div class="input-field col s6 md5">
+                <input id="class_name" type="text" name="class_name" value="{{class_name}}" class="validate" required>
+                <label for="class_name">Title</label>
             </div>
-            <div class="row">
-
-                <div class="input-field col s6 md5">
-                    <select name="magazineNewsletter_type">
-                        <option value="{{magazineNewsletter_type}}" disabled selected>{{magazineNewsletter_type}}</option>
-                        <option value="incharge">Magazine</option>
-                        <option value="coordinator">Newsletter</option>
-                        <option value="coordinator">Other</option>
-                    </select>
-                    <label for="">Type</label>
-                </div>
-
-                <div class="input-field col s6">
-                    <input id="year_of_publication" type="number" name="year_of_publication" value="{{year_of_publication}}"
-                        class="validate" required>
-                    <label for="year_of_publication">Year of publication</label>
-
-                </div>
+            <div class="input-field col s6 md5">
+                <select name="magazine_role">
+                    <option value="{{magazine_role}}" disabled selected>{{magazine_role}}</option>
+                    <option value="incharge">Incharge</option>
+                    <option value="coordinator">Co-orditors</option>
+                </select>
+                <label for="">Role</label>
             </div>
-            <a href="/annexure-1/magazineNewsletter/edit/{{id}}" class="btn waves-effect waves-light red center mb-2">Edit</a>
+        </div>
+        <div class="row">
+
+            <div class="input-field col s6 md5">
+                <select name="magazineNewsletter_type">
+                    <option value="{{magazineNewsletter_type}}" disabled selected>{{magazineNewsletter_type}}</option>
+                    <option value="incharge">Magazine</option>
+                    <option value="coordinator">Newsletter</option>
+                    <option value="coordinator">Other</option>
+                </select>
+                <label for="">Type</label>
+            </div>
+
+            <div class="input-field col s6">
+                <input id="year_of_publication" type="number" name="year_of_publication" value="{{year_of_publication}}"
+                    class="validate" required>
+                <label for="year_of_publication">Year of publication</label>
+
+            </div>
+        </div>
+        <a href="/annexure-1/magazineNewsletter/edit/{{id}}"
+            class="btn waves-effect waves-light red center mb-2">Edit</a>
         <a href="/users/faculty/facultyOverview" class="btn waves-effect waves-light purple center mb-2">Back to
             overview</a><br><br>
         <form method="post" action="/annexure-1/magazineNewsletter/delete/{{id}}?_method=DELETE">
             <input type="hidden" name="_method" value="DELETE">
             <input type="submit" class="btn waves-effect waves-light center red white-text" value="Delete">
         </form>
-        </div>
-    </div> 
+    </div>
+</div>
 {{else}}
 {{/each}}
 {{else}}
 {{#if editResult}}
 <div class="row" id="magazineNewsletter">
-        <form action="/annexure-1/magazineNewsletter/{{editResult.id}}?_method=PUT" method="post" class="col s12">
-            <input type="hidden" name="_method" value="PUT">
-            <div class="row">
-                <div class="input-field col s6 md5">
-                    <input id="class_name" type="text" name="class_name" value="{{editResult.class_name}}" class="validate" required>
-                    <label for="class_name">Title</label>
-                </div>
-                <div class="input-field col s6 md5">
-                    <select name="magazine_role">
-                        <option value="{{editResult.magazine_role}}" selected>{{editResult.magazine_role}}</option>
-                        <option value="incharge">Incharge</option>
-                        <option value="coordinator">Co-orditors</option>
-                    </select>
-                    <label for="">Role</label>
-                </div>
+    <form action="/annexure-1/magazineNewsletter/{{editResult.id}}?_method=PUT" method="post" class="col s12">
+        <input type="hidden" name="_method" value="PUT">
+        <div class="row">
+            <div class="input-field col s6 md5">
+                <input id="class_name" type="text" name="class_name" value="{{editResult.class_name}}" class="validate"
+                    required>
+                <label for="class_name">Title</label>
             </div>
-            <div class="row">
+            <div class="input-field col s6 md5">
+                <select name="magazine_role">
+                    <option value="{{editResult.magazine_role}}" selected>{{editResult.magazine_role}}</option>
+                    <option value="incharge">Incharge</option>
+                    <option value="coordinator">Co-orditors</option>
+                </select>
+                <label for="">Role</label>
+            </div>
+        </div>
+        <div class="row">
 
-                <div class="input-field col s6 md5">
-                    <select name="magazineNewsletter_type">
-                        <option value="{{editResult.magazineNewsletter_type}}" selected>{{editResult.magazineNewsletter_type}}</option>
-                        <option value="Magazine">Magazine</option>
-                        <option value="Newsletter">Newsletter</option>
-                        <option value="Other">Other</option>
-                    </select>
-                    <label for="">Type</label>
-                </div>
+            <div class="input-field col s6 md5">
+                <select name="magazineNewsletter_type">
+                    <option value="{{editResult.magazineNewsletter_type}}" selected>
+                        {{editResult.magazineNewsletter_type}}</option>
+                    <option value="Magazine">Magazine</option>
+                    <option value="Newsletter">Newsletter</option>
+                    <option value="Other">Other</option>
+                </select>
+                <label for="">Type</label>
+            </div>
 
-                <div class="input-field col s6">
-                    <input id="year_of_publication" type="number" placeholder="eg: 2019" name="year_of_publication" 
+            <div class="input-field col s6">
+                <input id="year_of_publication" type="number" placeholder="eg: 2019" name="year_of_publication"
                     value="{{editResult.year_of_publication}}" class="validate" required>
-                    <label for="year_of_publication">Year of publication</label>
+                <label for="year_of_publication">Year of publication</label>
 
-                </div>
             </div>
-            <div>
-                <p>
-                    <label>
-                        <input id="indeterminate-checkbox" type="checkbox" required />
-                        <span>I acknowledge that above filled information is verified and justified by me.</span>
-                    </label>
-                </p>
-            </div>
-            <button
-                class="btn waves-effect waves-dark" id="submit_btn" type="submit" disabled>Submit
-            </button>
-        </form>
-    </div>
-    </div>
+        </div>
+        <div>
+            <p>
+                <label>
+                    <input id="indeterminate-checkbox" type="checkbox" required />
+                    <span>I acknowledge that above filled information is verified and justified by me.</span>
+                </label>
+            </p>
+        </div>
+        <button class="btn waves-effect waves-dark" id="submit_btn" type="submit" disabled>Submit
+        </button>
+    </form>
+</div>
+</div>
 </div>
 {{else}}
-    <div class="row" id="magazineNewsletter">
-        <form action="/annexure-1/magazineNewsletter" method="post" class="col s12">
-            <div class="row">
-                <div class="input-field col s6 md5">
-                    <input id="class_name" type="text" name="class_name" class="validate" required>
-                    <label for="class_name">Title</label>
-                </div>
-                <div class="input-field col s6 md5">
-                    <select name="magazine_role">
-                        <option value="" disabled selected>Role</option>
-                        <option value="incharge">Incharge</option>
-                        <option value="coordinator">Co-orditors</option>
-
-                    </select>
-                </div>
+<div class="row" id="magazineNewsletter">
+    <form action="/annexure-1/magazineNewsletter" method="post" class="col s12">
+        <div class="row">
+            <div class="input-field col s6 md5">
+                <input id="class_name" type="text" name="class_name" class="validate" required>
+                <label for="class_name">Title</label>
             </div>
-            <div class="row">
+            <div class="input-field col s6 md5">
+                <select name="magazine_role">
+                    <option value="" disabled selected>Role</option>
+                    <option value="incharge">Incharge</option>
+                    <option value="coordinator">Co-orditors</option>
 
-                <div class="input-field col s6 md5">
-                    <select name="magazineNewsletter_type">
-                        <option value="" disabled selected>Type</option>
-                        <option value="incharge">Magazine</option>
-                        <option value="coordinator">Newsletter</option>
-                        <option value="coordinator">Other</option>
-
-                    </select>
-                </div>
-
-                <div class="input-field col s6">
-                    <input id="year_of_publication" type="number" name="year_of_publication"
-                        class="validate" required>
-                    <label for="year_of_publication">Year of publication</label>
-
-                </div>
+                </select>
             </div>
-            <div>
-                <p>
-                    <label>
-                        <input id="indeterminate-checkbox" type="checkbox" required />
-                        <span>I acknowledge that above filled information is verified and justified by me.</span>
-                    </label>
-                </p>
+        </div>
+        <div class="row">
+
+            <div class="input-field col s6 md5">
+                <select name="magazineNewsletter_type">
+                    <option value="" disabled selected>Type</option>
+                    <option value="incharge">Magazine</option>
+                    <option value="coordinator">Newsletter</option>
+                    <option value="coordinator">Other</option>
+
+                </select>
             </div>
-            <a href="/annexure-1/conductOfSTTP" class="waves-effect waves-light btn red center">Not Applicable</a>
-            <button
-                class="btn waves-effect waves-dark" id="submit_btn" type="submit" disabled>Submit
-            </button>
-        </form>
-    </div>
+
+            <div class="input-field col s6">
+                <input id="year_of_publication" type="number" name="year_of_publication" class="validate" required>
+                <label for="year_of_publication">Year of publication</label>
+
+            </div>
+        </div>
+        <div>
+            <p>
+                <label>
+                    <input id="indeterminate-checkbox" type="checkbox" required />
+                    <span>I acknowledge that above filled information is verified and justified by me.</span>
+                </label>
+            </p>
+        </div>
+        <a href="/annexure-1/conductOfSTTP" class="waves-effect waves-light btn red center">Not Applicable</a>
+        <button class="btn waves-effect waves-dark" id="submit_btn" type="submit" disabled>Submit
+        </button>
+    </form>
+</div>
 </div>
 {{/if}}
 {{/if}}

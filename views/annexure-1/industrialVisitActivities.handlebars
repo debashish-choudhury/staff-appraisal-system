@@ -1,24 +1,25 @@
 <h5>Annexure 1</h5><br>
 <div class="container">
-<h6>1.10 Industrial Visit Activities</h6>
-<hr>
-{{#if result}}
-{{#each result}}
-<div class="row" id="industrialVisitActivities">
+    <h6>1.10 Industrial Visit Activities</h6>
+    <hr>
+    {{#if result}}
+    {{#each result}}
+    <div class="row" id="industrialVisitActivities">
         <div class="row">
             <div class="input-field col s6 md5">
-                <input id="industrial-visit-role" type="text" name="industrial_visit_role" value="{{industrial_visit_role}}" class="validate" required>
+                <input id="industrial-visit-role" type="text" name="industrial_visit_role"
+                    value="{{industrial_visit_role}}" class="validate" required>
                 <label for="industrial-visit-role">Role</label>
             </div>
-            
-                <div class="input-field col s6">
+
+            <div class="input-field col s6">
                 <select name="class_name">
                     <option value="{{class_name}}" disabled selected>{{class_name}}</option>
                     <option value="FE">FE</option>
                     <option value="SE">SE</option>
                     <option value="TE">TE</option>
                     <option value="BE">BE</option>
-                    
+
                 </select>
                 <label for="">Class</label>
 
@@ -38,18 +39,20 @@
                 </select>
                 <label for="">Department</label>
             </div>
-            
+
             <div class="input-field col s6 md5">
-                <input id="industrial-visit-days" type="number" name="industrial_visit_days" value="{{industrial_visit_days}}" class="validate" required>
+                <input id="industrial-visit-days" type="number" name="industrial_visit_days"
+                    value="{{industrial_visit_days}}" class="validate" required>
                 <label for="industrial-visit-days">No. of Days</label>
-            </div>   
-            
+            </div>
+
         </div>
         <div class="row">
 
-           <div class="input-field col s6 md5">
+            <div class="input-field col s6 md5">
                 <select name="industrial_visit_organizer">
-                    <option value="{{industrial_visit_organizer}}" disabled selected>{{industrial_visit_organizer}}</option>
+                    <option value="{{industrial_visit_organizer}}" disabled selected>{{industrial_visit_organizer}}
+                    </option>
                     <option value="IEEE">IEEE</option>
                     <option value="ITSA">ITSA</option>
                     <option value="TPO">TPO</option>
@@ -57,156 +60,163 @@
                 </select>
                 <label for="">Organized By</label>
             </div>
-            
-             <div class="input-field col s6 md5">
-                <input id="name-of-company" type="text" name="name_of_company" value="{{name_of_company}}" class="validate" required>
-               <label for="name-of-company">Company Visited &nbsp; <a href="#" class="tooltipped"
-                data-tooltip="Name of company visited"><i class="fa fa-info-circle"></i></a></label>
-            </div>  
-            
+
+            <div class="input-field col s6 md5">
+                <input id="name-of-company" type="text" name="name_of_company" value="{{name_of_company}}"
+                    class="validate" required>
+                <label for="name-of-company">Company Visited &nbsp; <a href="#" class="tooltipped"
+                        data-tooltip="Name of company visited"><i class="fa fa-info-circle"></i></a></label>
+            </div>
+
         </div>
         <div class="row">
             <div class="input-field col s6">
-                    <textarea id="iv-description" name="iv_description" aria-valuetext="{{iv_description}}" class="materialize-textarea">{{iv_description}}</textarea>
-                    <label for="iv-description">Description</label>
-                </div>
+                <textarea id="iv-description" name="iv_description" aria-valuetext="{{iv_description}}"
+                    class="materialize-textarea">{{iv_description}}</textarea>
+                <label for="iv-description">Description</label>
+            </div>
             <div class="input-field col s6 md5">
-                <input id="industrial-visit-hrs" type="number" name="industrial_visit_hrs" value="{{industrial_visit_hrs}}" class="validate" required>
+                <input id="industrial-visit-hrs" type="number" name="industrial_visit_hrs"
+                    value="{{industrial_visit_hrs}}" class="validate" required>
                 <label for="industrial-visit-hrs">Duration(hours)</label>
-            </div> 
+            </div>
 
 
         </div>
         <div class="row">
-           
-             <div class="input-field col s6 md5">
-                <input id="iv-start-date" type="text" name="iv_start_date" value="{{iv_start_date}}" class="datepicker validate" required>
+
+            <div class="input-field col s6 md5">
+                <input id="iv-start-date" type="text" name="iv_start_date" value="{{iv_start_date}}"
+                    class="datepicker validate" required>
                 <label for="student-event-start-date">Start Date</label>
             </div>
-            
+
             <div class="input-field col s6 md5">
-                <input id="iv-end-date" type="text" name="iv_end_date" value="{{iv_end_date}}" class="datepicker validate" required>
+                <input id="iv-end-date" type="text" name="iv_end_date" value="{{iv_end_date}}"
+                    class="datepicker validate" required>
                 <label for="student-event-end-date">End Date</label>
             </div>
         </div>
-        <a href="/annexure-1/industrialVisitActivities/edit/{{id}}" class="btn waves-effect waves-light red center mb-2">Edit</a>
+        <a href="/annexure-1/industrialVisitActivities/edit/{{id}}"
+            class="btn waves-effect waves-light red center mb-2">Edit</a>
         <a href="/users/faculty/facultyOverview" class="btn waves-effect waves-light purple center mb-2">Back to
             overview</a><br><br>
         <form method="post" action="/annexure-1/industrialVisitActivities/delete/{{id}}?_method=DELETE">
             <input type="hidden" name="_method" value="DELETE">
             <input type="submit" class="btn waves-effect waves-light center red white-text" value="Delete">
         </form>
-        </div>
-    </div> 
+    </div>
+</div>
 {{else}}
 {{/each}}
 {{else}}
 {{#if editResult}}
 <div class="row" id="industrialVisitActivities">
-        <form action="/annexure-1/industrialVisitActivities/{{editResult.id}}?_method=PUT" method="post" class="col s12">
-            <input type="hidden" name="_method" value="PUT">
-            <div class="row">
-                <div class="input-field col s6 md5">
-                    <input id="industrial-visit-role" type="text" name="industrial_visit_role"
-                        value="{{editResult.industrial_visit_role}}" class="validate" required>
-                    <label for="industrial-visit-role">Role</label>
-                </div>
-                <div class="input-field col s6 md5">
-                    <select name="class_name" class="validate">
+    <form action="/annexure-1/industrialVisitActivities/{{editResult.id}}?_method=PUT" method="post" class="col s12">
+        <input type="hidden" name="_method" value="PUT">
+        <div class="row">
+            <div class="input-field col s6 md5">
+                <input id="industrial-visit-role" type="text" name="industrial_visit_role"
+                    value="{{editResult.industrial_visit_role}}" class="validate" required>
+                <label for="industrial-visit-role">Role</label>
+            </div>
+            <div class="input-field col s6 md5">
+                <select name="class_name" class="validate">
                     <option value="{{editResult.class_name}}">{{editResult.class_name}}</option>
                     <option value="FE">FE</option>
                     <option value="SE">SE</option>
                     <option value="TE">TE</option>
                     <option value="BE">BE</option>
-                    
+
                 </select>
                 <label for="">Class</label>
-                </div>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="input-field col s6">
+                <select name="department">
+                    <option value="{{editResult.department}}">{{editResult.department}}</option>
+                    <option value="Information Technology">Information Technology</option>
+                    <option value="Computer Engineering">Computer Engineering</option>
+                    <option value="Mechanical Engineering">Mechanical Engineering</option>
+                    <option value="Civil Engineering">Civil Engineering</option>
+                    <option value="EXTC Engineering">EXTC Engineering</option>
+                </select>
+                <label for="">Department</label>
             </div>
 
-            <div class="row">
-
-                <div class="input-field col s6">
-                    <select name="department">
-                        <option value="{{editResult.department}}" >{{editResult.department}}</option>
-                        <option value="Information Technology">Information Technology</option>
-                        <option value="Computer Engineering">Computer Engineering</option>
-                        <option value="Mechanical Engineering">Mechanical Engineering</option>
-                        <option value="Civil Engineering">Civil Engineering</option>
-                        <option value="EXTC Engineering">EXTC Engineering</option>
-                    </select>
-                    <label for="">Department</label>
-                </div>
-
-                <div class="input-field col s6 md5">
-                    <input id="industrial-visit-days" type="number" name="industrial_visit_days" 
+            <div class="input-field col s6 md5">
+                <input id="industrial-visit-days" type="number" name="industrial_visit_days"
                     value="{{editResult.industrial_visit_days}}" class="validate" required>
-                    <label for="industrial-visit-days">No. of Days</label>
-                </div>
-
+                <label for="industrial-visit-days">No. of Days</label>
             </div>
-            <div class="row">
 
-                <div class="input-field col s6 md5">
-                    <select name="industrial_visit_organizer">
-                        <option value="{{editResult.industrial_visit_organizer}}">{{editResult.industrial_visit_organizer}}</option>
-                        <option value="IEEE">IEEE</option>
-                        <option value="ITSA">ITSA</option>
-                        <option value="TPO">TPO</option>
-                        <option value="Others">Others</option>
-                    </select>
-                    <label for="">Organized By</label>
-                </div>
+        </div>
+        <div class="row">
 
-                <div class="input-field col s6 md5">
-                    <input id="name-of-company" type="text" name="name_of_company" value="{{editResult.name_of_company}}"
-                        class="validate" required>
-                   <label for="name-of-company">Company Visited &nbsp; <a href="#" class="tooltipped"
-                data-tooltip="Name of company visited"><i class="fa fa-info-circle"></i></a></label>
-                </div>
-
+            <div class="input-field col s6 md5">
+                <select name="industrial_visit_organizer">
+                    <option value="{{editResult.industrial_visit_organizer}}">{{editResult.industrial_visit_organizer}}
+                    </option>
+                    <option value="IEEE">IEEE</option>
+                    <option value="ITSA">ITSA</option>
+                    <option value="TPO">TPO</option>
+                    <option value="Others">Others</option>
+                </select>
+                <label for="">Organized By</label>
             </div>
-            <div class="row">
-                <div class="input-field col s6">
-                    <textarea id="iv-description" name="iv_description" aria-valuetext="{{editResult.iv_description}}"
-                        class="materialize-textarea">{{editResult.iv_description}}</textarea>
-                    <label for="iv-description">Description</label>
-                </div>
-                <div class="input-field col s6 md5">
-                    <input id="industrial-visit-hrs" type="number" name="industrial_visit_hrs"
-                        value="{{editResult.industrial_visit_hrs}}" class="validate" required>
-                    <label for="industrial-visit-hrs">Duration(hours)</label>
-                </div>
 
-
+            <div class="input-field col s6 md5">
+                <input id="name-of-company" type="text" name="name_of_company" value="{{editResult.name_of_company}}"
+                    class="validate" required>
+                <label for="name-of-company">Company Visited &nbsp; <a href="#" class="tooltipped"
+                        data-tooltip="Name of company visited"><i class="fa fa-info-circle"></i></a></label>
             </div>
-            <div class="row">
 
-                <div class="input-field col s6 md5">
-                    <input id="iv-start-date" type="text" name="iv_start_date" value="{{editResult.iv_start_date}}"
-                        class="datepicker validate" required>
-                    <label for="student-event-start-date">Start Date</label>
-                </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s6">
+                <textarea id="iv-description" name="iv_description" aria-valuetext="{{editResult.iv_description}}"
+                    class="materialize-textarea">{{editResult.iv_description}}</textarea>
+                <label for="iv-description">Description</label>
+            </div>
+            <div class="input-field col s6 md5">
+                <input id="industrial-visit-hrs" type="number" name="industrial_visit_hrs"
+                    value="{{editResult.industrial_visit_hrs}}" class="validate" required>
+                <label for="industrial-visit-hrs">Duration(hours)</label>
+            </div>
 
-                <div class="input-field col s6 md5">
-                    <input id="iv-end-date" type="text" name="iv_end_date" value="{{editResult.iv_end_date}}"
-                        class="datepicker validate" required>
-                    <label for="student-event-end-date">End Date</label>
-                </div>
+
+        </div>
+        <div class="row">
+
+            <div class="input-field col s6 md5">
+                <input id="iv-start-date" type="text" name="iv_start_date" value="{{editResult.iv_start_date}}"
+                    class="datepicker validate" required>
+                <label for="student-event-start-date">Start Date</label>
             </div>
-            <div>
-                <p>
-                    <label>
-                        <input id="indeterminate-checkbox" type="checkbox" required />
-                        <span>I acknowledge that above filled information is verified and justified by me.</span>
-                    </label>
-                </p>
+
+            <div class="input-field col s6 md5">
+                <input id="iv-end-date" type="text" name="iv_end_date" value="{{editResult.iv_end_date}}"
+                    class="datepicker validate" required>
+                <label for="student-event-end-date">End Date</label>
             </div>
-            <button class="btn waves-effect waves-light" id="submit_btn" type="submit" disabled>Submit
-            </button>
-        </form>
-    </div>
-    </div>
+        </div>
+        <div>
+            <p>
+                <label>
+                    <input id="indeterminate-checkbox" type="checkbox" required />
+                    <span>I acknowledge that above filled information is verified and justified by me.</span>
+                </label>
+            </p>
+        </div>
+        <button class="btn waves-effect waves-light" id="submit_btn" type="submit" disabled>Submit
+        </button>
+    </form>
+</div>
+</div>
 </div>
 {{else}}
 {{#if errors}}
@@ -214,17 +224,18 @@
     <form action="/annexure-1/industrialVisitActivities" method="post" class="col s12">
         <div class="row">
             <div class="input-field col s6 md5">
-                <input id="industrial-visit-role" type="text" name="industrial_visit_role" value="{{industrial_visit_role}}" class="validate" required>
+                <input id="industrial-visit-role" type="text" name="industrial_visit_role"
+                    value="{{industrial_visit_role}}" class="validate" required>
                 <label for="industrial-visit-role">Role</label>
             </div>
-             <div class="input-field col s6 md5">
+            <div class="input-field col s6 md5">
                 <select name="class_name" required>
                     <option value="{{class_name}}" selected>{{class_name}}</option>
                     <option value="FE">FE</option>
                     <option value="SE">SE</option>
                     <option value="TE">TE</option>
                     <option value="BE">BE</option>
-                    
+
                 </select>
             </div>
         </div>
@@ -241,65 +252,72 @@
                     <option value="EXTC Engineering">EXTC Engineering</option>
                 </select>
             </div>
-            
+
             <div class="input-field col s6 md5">
-                <input id="industrial-visit-days" type="number" name="industrial_visit_days" value="{{industrial_visit_days}}" class="validate" required>
+                <input id="industrial-visit-days" type="number" name="industrial_visit_days"
+                    value="{{industrial_visit_days}}" class="validate" required>
                 <label for="industrial-visit-days">No. of Days</label>
-            </div>   
-            
+            </div>
+
         </div>
         <div class="row">
 
-           <div class="input-field col s6 md5">
+            <div class="input-field col s6 md5">
                 <select name="industrial_visit_organizer">
                     <option value="{{industrial_visit_organizer}}" selected>{{industrial_visit_organizer}}</option>
                     <option value="IEEE">IEEE</option>
                     <option value="ITSA">ITSA</option>
                     <option value="TPO">TPO</option>
                     <option value="Others">Others</option>
-                  
+
                 </select>
             </div>
-            
-             <div class="input-field col s6 md5">
-                <input id="name-of-company" type="text" name="name_of_company" value="{{name_of_company}}" class="validate" required>
+
+            <div class="input-field col s6 md5">
+                <input id="name-of-company" type="text" name="name_of_company" value="{{name_of_company}}"
+                    class="validate" required>
                 <label for="name-of-company">Name of Company visited</label>
-            </div>  
-            
+            </div>
+
         </div>
         <div class="row">
             <div class="input-field col s6">
-                    <textarea id="iv-description" name="iv_description" class="materialize-textarea">{{iv_description}}</textarea>
-                    <label for="iv-description">Description</label>
-                </div>
+                <textarea id="iv-description" name="iv_description"
+                    class="materialize-textarea">{{iv_description}}</textarea>
+                <label for="iv-description">Description</label>
+            </div>
             <div class="input-field col s6 md5">
-                <input id="industrial-visit-hrs" type="number" name="industrial_visit_hrs" value="{{industrial_visit_hrs}}" class="validate" required>
+                <input id="industrial-visit-hrs" type="number" name="industrial_visit_hrs"
+                    value="{{industrial_visit_hrs}}" class="validate" required>
                 <label for="industrial-visit-hrs">Duration(hours)</label>
-            </div> 
+            </div>
 
 
         </div>
         <div class="row">
-           
-             <div class="input-field col s6 md5">
-                <input id="iv-start-date" type="text" name="iv_start_date" value="{{iv_start_date}}" class="datepicker validate" required>
+
+            <div class="input-field col s6 md5">
+                <input id="iv-start-date" type="text" name="iv_start_date" value="{{iv_start_date}}"
+                    class="datepicker validate" required>
                 <label for="student-event-start-date">Start Date</label>
             </div>
-            
+
             <div class="input-field col s6 md5">
-                <input id="iv-end-date" type="text" name="iv_end_date" value="{{iv_end_date}}" class="datepicker validate" required>
+                <input id="iv-end-date" type="text" name="iv_end_date" value="{{iv_end_date}}"
+                    class="datepicker validate" required>
                 <label for="student-event-end-date">End Date</label>
             </div>
         </div>
         <div>
-             <p>
-                 <label>
-                <input id="indeterminate-checkbox" type="checkbox" required/>
-                 <span>I acknowledge that above filled information is verified and justified by me.</span>
+            <p>
+                <label>
+                    <input id="indeterminate-checkbox" type="checkbox" required />
+                    <span>I acknowledge that above filled information is verified and justified by me.</span>
                 </label>
             </p>
         </div>
-        <a href="/annexure-1/admissionProcessActivities" class="waves-effect waves-light btn red center">Not Applicable</a>
+        <a href="/annexure-1/admissionProcessActivities" class="waves-effect waves-light btn red center">Not
+            Applicable</a>
         <button class="btn waves-effect waves-light" id="submit_btn" type="submit" disabled>Submit
         </button>
     </form>
@@ -313,14 +331,14 @@
                 <input id="industrial-visit-role" type="text" name="industrial_visit_role" class="validate" required>
                 <label for="industrial-visit-role">Role</label>
             </div>
-             <div class="input-field col s6 md5">
+            <div class="input-field col s6 md5">
                 <select name="class_name" required>
                     <option value="" disabled selected>Class</option>
                     <option value="FE">FE</option>
                     <option value="SE">SE</option>
                     <option value="TE">TE</option>
                     <option value="BE">BE</option>
-                    
+
                 </select>
             </div>
         </div>
@@ -337,66 +355,67 @@
                     <option value="EXTC Engineering">EXTC Engineering</option>
                 </select>
             </div>
-            
+
             <div class="input-field col s6 md5">
                 <input id="industrial-visit-days" type="number" name="industrial_visit_days" class="validate" required>
                 <label for="industrial-visit-days">No. of Days</label>
-            </div>   
-            
+            </div>
+
         </div>
         <div class="row">
 
-           <div class="input-field col s6 md5">
+            <div class="input-field col s6 md5">
                 <select name="industrial_visit_organizer">
                     <option value="" disabled selected>Organized By</option>
                     <option value="IEEE">IEEE</option>
                     <option value="ITSA">ITSA</option>
                     <option value="TPO">TPO</option>
                     <option value="Others">Others</option>
-                  
+
                 </select>
             </div>
-            
-             <div class="input-field col s6 md5">
+
+            <div class="input-field col s6 md5">
                 <input id="name-of-company" type="text" name="name_of_company" class="validate" required>
                 <label for="name-of-company">Company Visited &nbsp; <a href="#" class="tooltipped"
-                data-tooltip="Name of company visited"><i class="fa fa-info-circle"></i></a></label>
-            </div>  
-            
+                        data-tooltip="Name of company visited"><i class="fa fa-info-circle"></i></a></label>
+            </div>
+
         </div>
         <div class="row">
             <div class="input-field col s6">
-                    <textarea id="iv-description" name="iv_description" class="materialize-textarea"></textarea>
-                    <label for="iv-description">Description</label>
-                </div>
+                <textarea id="iv-description" name="iv_description" class="materialize-textarea"></textarea>
+                <label for="iv-description">Description</label>
+            </div>
             <div class="input-field col s6 md5">
                 <input id="industrial-visit-hrs" type="number" name="industrial_visit_hrs" class="validate" required>
                 <label for="industrial-visit-hrs">Duration(hours)</label>
-            </div> 
+            </div>
 
 
         </div>
         <div class="row">
-           
-             <div class="input-field col s6 md5">
+
+            <div class="input-field col s6 md5">
                 <input id="iv-start-date" type="text" name="iv_start_date" class="datepicker validate" required>
                 <label for="student-event-start-date">Start Date</label>
             </div>
-            
+
             <div class="input-field col s6 md5">
                 <input id="iv-end-date" type="text" name="iv_end_date" class="datepicker validate" required>
                 <label for="student-event-end-date">End Date</label>
             </div>
         </div>
         <div>
-             <p>
-                 <label>
-                <input id="indeterminate-checkbox" type="checkbox" required/>
-                 <span>I acknowledge that above filled information is verified and justified by me.</span>
+            <p>
+                <label>
+                    <input id="indeterminate-checkbox" type="checkbox" required />
+                    <span>I acknowledge that above filled information is verified and justified by me.</span>
                 </label>
             </p>
         </div>
-        <a href="/annexure-1/admissionProcessActivities" class="waves-effect waves-light btn red center">Not Applicable</a>
+        <a href="/annexure-1/admissionProcessActivities" class="waves-effect waves-light btn red center">Not
+            Applicable</a>
         <button class="btn waves-effect waves-light" id="submit_btn" type="submit" disabled>Submit
         </button>
     </form>

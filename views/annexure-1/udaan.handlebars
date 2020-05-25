@@ -2,128 +2,143 @@
 <div class="container">
     <h6>1.6 UDAAN Incubation Activities</h6>
     <hr>
-{{#if result}}
-{{#each result}}
-<div class="row" id="udaan">
-            <div class="row">
-                <div class="input-field col s6 md5">
-                    <input id="udaan-subject" type="text" name="udaan_subject" value="{{udaan_subject}}" class="validate" required>
-                    <label for="udaan-subject">Area of Participation</label>
-                </div>
-                <div class="input-field col s6">
-                    <textarea id="udaan-contribution" name="udaan_contribution" aria-valuemax="{{udaan_contribution}}" class="materialize-textarea validate"
-                        required></textarea>
-                    <label for="udaan-contribution">Contribution &nbsp; <a href="#" class="tooltipped" data-tooltip="Enter the contribution given by perticular staff in UDAAN activity"><i class="fa fa-info-circle"></i></a></label>
-                </div>
+    {{#if result}}
+    {{#each result}}
+    <div class="row" id="udaan">
+        <div class="row">
+            <div class="input-field col s6 md5">
+                <input id="udaan-subject" type="text" name="udaan_subject" value="{{udaan_subject}}" class="validate"
+                    required>
+                <label for="udaan-subject">Area of Participation</label>
             </div>
-
-            <div class="row">
-
-                <div class="input-field col s6 md5">
-                    <input id="udaan-start-date" type="text" name="udaan_start_date" value="{{udaan_start_date}}" class="datepicker validate" required>
-                    <label for="udaan-start-date">Start Date</label>
-                </div>
-
-                <div class="input-field col s6 md5">
-                    <input id="udaan-end-date" type="text" name="udaan_end_date" value="{{udaan_end_date}}" class="datepicker validate" required>
-                    <label for="udaan-end-date">End Date</label>
-                </div>
+            <div class="input-field col s6">
+                <textarea id="udaan-contribution" name="udaan_contribution" aria-valuemax="{{udaan_contribution}}"
+                    class="materialize-textarea validate" required></textarea>
+                <label for="udaan-contribution">Contribution &nbsp; <a href="#" class="tooltipped"
+                        data-tooltip="Enter the contribution given by perticular staff in UDAAN activity"><i
+                            class="fa fa-info-circle"></i></a></label>
             </div>
-            <a href="/annexure-1/udaan/edit/{{id}}" class="btn waves-effect waves-light red center mb-2">Edit</a>
-            <a href="/users/faculty/facultyOverview" class="btn waves-effect waves-light purple center mb-2">Back to
-                overview</a><br><br>
-            <form method="post" action="/annexure-1/udaan/delete/{{id}}?_method=DELETE">
-                <input type="hidden" name="_method" value="DELETE">
-                <input type="submit" class="btn waves-effect waves-light center red white-text" value="Delete">
-            </form>
         </div>
+
+        <div class="row">
+
+            <div class="input-field col s6 md5">
+                <input id="udaan-start-date" type="text" name="udaan_start_date" value="{{udaan_start_date}}"
+                    class="datepicker validate" required>
+                <label for="udaan-start-date">Start Date</label>
+            </div>
+
+            <div class="input-field col s6 md5">
+                <input id="udaan-end-date" type="text" name="udaan_end_date" value="{{udaan_end_date}}"
+                    class="datepicker validate" required>
+                <label for="udaan-end-date">End Date</label>
+            </div>
+        </div>
+        <a href="/annexure-1/udaan/edit/{{id}}" class="btn waves-effect waves-light red center mb-2">Edit</a>
+        <a href="/users/faculty/facultyOverview" class="btn waves-effect waves-light purple center mb-2">Back to
+            overview</a><br><br>
+        <form method="post" action="/annexure-1/udaan/delete/{{id}}?_method=DELETE">
+            <input type="hidden" name="_method" value="DELETE">
+            <input type="submit" class="btn waves-effect waves-light center red white-text" value="Delete">
+        </form>
     </div>
+</div>
 {{else}}
 {{/each}}
 {{else}}
 {{#if editResult}}
 <div class="row" id="udaan">
-        <form action="/annexure-1/udaan/{{editResult.id}}?_method=PUT" method="post" class="col s12">
+    <form action="/annexure-1/udaan/{{editResult.id}}?_method=PUT" method="post" class="col s12">
         <input type="hidden" name="_method" value="PUT">
-            <div class="row">
-                <div class="input-field col s6 md5">
-                    <input id="udaan-subject" type="text" name="udaan_subject" value="{{editResult.udaan_subject}}" class="validate" required>
-                    <label for="udaan-subject">Area of Participation</label>
-                </div>
-                <div class="input-field col s6">
-                    <textarea id="udaan-contribution" name="udaan_contribution" aria-valuetext="{{editResult.udaan_contribution}}" class="materialize-textarea validate" required></textarea>
-                    <label for="udaan-contribution">Contribution &nbsp; <a href="#" class="tooltipped" data-tooltip="Enter the contribution given by perticular staff in UDAAN activity"><i class="fa fa-info-circle"></i></a></label>
-                </div>
+        <div class="row">
+            <div class="input-field col s6 md5">
+                <input id="udaan-subject" type="text" name="udaan_subject" value="{{editResult.udaan_subject}}"
+                    class="validate" required>
+                <label for="udaan-subject">Area of Participation</label>
+            </div>
+            <div class="input-field col s6">
+                <textarea id="udaan-contribution" name="udaan_contribution"
+                    aria-valuetext="{{editResult.udaan_contribution}}" class="materialize-textarea validate"
+                    required></textarea>
+                <label for="udaan-contribution">Contribution &nbsp; <a href="#" class="tooltipped"
+                        data-tooltip="Enter the contribution given by perticular staff in UDAAN activity"><i
+                            class="fa fa-info-circle"></i></a></label>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="input-field col s6 md5">
+                <input id="udaan-start-date" type="text" name="udaan_start_date" value="{{editResult.udaan_start_date}}"
+                    class="datepicker validate" required>
+                <label for="udaan-start-date">Start Date</label>
             </div>
 
-            <div class="row">
-
-                <div class="input-field col s6 md5">
-                    <input id="udaan-start-date" type="text" name="udaan_start_date" value="{{editResult.udaan_start_date}}" class="datepicker validate" required>
-                    <label for="udaan-start-date">Start Date</label>
-                </div>
-
-                <div class="input-field col s6 md5">
-                    <input id="udaan-end-date" type="text" name="udaan_end_date" value="{{editResult.udaan_end_date}}" class="datepicker validate" required>
-                    <label for="udaan-end-date">End Date</label>
-                </div>
+            <div class="input-field col s6 md5">
+                <input id="udaan-end-date" type="text" name="udaan_end_date" value="{{editResult.udaan_end_date}}"
+                    class="datepicker validate" required>
+                <label for="udaan-end-date">End Date</label>
             </div>
-            <div>
-                <p>
-                    <label>
-                        <input id="indeterminate-checkbox" type="checkbox" required />
-                        <span>I acknowledge that above filled information is verified and justified by me.</span>
-                    </label>
-                </p>
-            </div>
-            <button
-                class="btn waves-effect waves-light" id="submit_btn" type="submit" disabled>Submit
-            </button>
-        </form>
-    </div>
-    </div>
+        </div>
+        <div>
+            <p>
+                <label>
+                    <input id="indeterminate-checkbox" type="checkbox" required />
+                    <span>I acknowledge that above filled information is verified and justified by me.</span>
+                </label>
+            </p>
+        </div>
+        <button class="btn waves-effect waves-light" id="submit_btn" type="submit" disabled>Submit
+        </button>
+    </form>
+</div>
+</div>
 </div>
 {{else}}
-    <div class="row" id="udaan">
-        <form action="/annexure-1/udaan" method="post" class="col s12">
-            <div class="row">
-                <div class="input-field col s6 md5">
-                    <input id="udaan-subject" type="text" name="udaan_subject" value="{{udaan_subject}}" class="validate" required>
-                    <label for="udaan-subject">Area of Participation</label>
-                </div>
-                <div class="input-field col s6">
-                    <textarea id="udaan-contribution" name="udaan_contribution" class="materialize-textarea validate"
-                        required>{{udaan_contribution}}</textarea>
-                    <label for="udaan-contribution">Contribution &nbsp; <a href="#" class="tooltipped" data-tooltip="Enter the contribution given by perticular staff in UDAAN activity"><i class="fa fa-info-circle"></i></a></label>
-                </div>
+<div class="row" id="udaan">
+    <form action="/annexure-1/udaan" method="post" class="col s12">
+        <div class="row">
+            <div class="input-field col s6 md5">
+                <input id="udaan-subject" type="text" name="udaan_subject" value="{{udaan_subject}}" class="validate"
+                    required>
+                <label for="udaan-subject">Area of Participation</label>
+            </div>
+            <div class="input-field col s6">
+                <textarea id="udaan-contribution" name="udaan_contribution" class="materialize-textarea validate"
+                    required>{{udaan_contribution}}</textarea>
+                <label for="udaan-contribution">Contribution &nbsp; <a href="#" class="tooltipped"
+                        data-tooltip="Enter the contribution given by perticular staff in UDAAN activity"><i
+                            class="fa fa-info-circle"></i></a></label>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="input-field col s6 md5">
+                <input id="udaan-start-date" type="text" name="udaan_start_date" value="{{udaan_start_date}}"
+                    class="datepicker validate" required>
+                <label for="udaan-start-date">Start Date</label>
             </div>
 
-            <div class="row">
-
-                <div class="input-field col s6 md5">
-                    <input id="udaan-start-date" type="text" name="udaan_start_date" value="{{udaan_start_date}}" class="datepicker validate" required>
-                    <label for="udaan-start-date">Start Date</label>
-                </div>
-
-                <div class="input-field col s6 md5">
-                    <input id="udaan-end-date" type="text" name="udaan_end_date" value="{{udaan_end_date}}" class="datepicker validate" required>
-                    <label for="udaan-end-date">End Date</label>
-                </div>
+            <div class="input-field col s6 md5">
+                <input id="udaan-end-date" type="text" name="udaan_end_date" value="{{udaan_end_date}}"
+                    class="datepicker validate" required>
+                <label for="udaan-end-date">End Date</label>
             </div>
-            <div>
-                <p>
-                    <label>
-                        <input id="indeterminate-checkbox" type="checkbox" required />
-                        <span>I acknowledge that above filled information is verified and justified by me.</span>
-                    </label>
-                </p>
-            </div>
-            <a href="/annexure-1/placementActivities" class="waves-effect waves-light btn red center">Not Applicable</a>
-            <button
-                class="btn waves-effect waves-light" id="submit_btn" type="submit" disabled>Submit
-            </button>
-        </form>
-    </div>
+        </div>
+        <div>
+            <p>
+                <label>
+                    <input id="indeterminate-checkbox" type="checkbox" required />
+                    <span>I acknowledge that above filled information is verified and justified by me.</span>
+                </label>
+            </p>
+        </div>
+        <a href="/annexure-1/placementActivities" class="waves-effect waves-light btn red center">Not Applicable</a>
+        <button class="btn waves-effect waves-light" id="submit_btn" type="submit" disabled>Submit
+        </button>
+    </form>
+</div>
 </div>
 {{/if}}
 {{/if}}

@@ -3,8 +3,8 @@
     <h6>1.18 Conduct Of STTP</h6>
     <hr>
 
-{{#if result}}
-{{#each result}}
+    {{#if result}}
+    {{#each result}}
     <div class="row" id="conductOfSTTP">
         <div class="row">
             <div class="input-field col s6 md5">
@@ -13,22 +13,25 @@
                         data-tooltip="Organizing Committee!!"><i class="fa fa-info-circle"></i></a></label>
             </div>
             <div class="input-field col s6">
-            <input id="no_of_sttp" type="number" name="no_of_sttp" value="{{no_of_sttp}}" class="validate" required>
-               <label for="no_of_sttp">No. of STTPs &nbsp; <a href="#" class="tooltipped"
-                data-tooltip="Number of STTPs conducted"><i class="fa fa-info-circle"></i></a></label>
+                <input id="no_of_sttp" type="number" name="no_of_sttp" value="{{no_of_sttp}}" class="validate" required>
+                <label for="no_of_sttp">No. of STTPs &nbsp; <a href="#" class="tooltipped"
+                        data-tooltip="Number of STTPs conducted"><i class="fa fa-info-circle"></i></a></label>
             </div>
         </div>
         <div class="row">
             <div class="input-field col s6">
-                <input id="sttp_technology" type="text" name="sttp_technology" value="{{sttp_technology}}" class="validate" disabled>
+                <input id="sttp_technology" type="text" name="sttp_technology" value="{{sttp_technology}}"
+                    class="validate" disabled>
                 <label for="sttp_technology">Technology</label>
 
             </div>
 
             <div class="input-field col s6">
-            <input id="sttp_duration" type="number" name="sttp_duration" value="{{sttp_duration}}" class="validate" required>
+                <input id="sttp_duration" type="number" name="sttp_duration" value="{{sttp_duration}}" class="validate"
+                    required>
                 <label for="sttp_duration">Duration(hrs) &nbsp; <a href="#" class="tooltipped"
-                data-tooltip="Total Duration of STTP Courses(hours)"><i class="fa fa-info-circle"></i></a></label>
+                        data-tooltip="Total Duration of STTP Courses(hours)"><i
+                            class="fa fa-info-circle"></i></a></label>
             </div>
 
         </div>
@@ -36,13 +39,15 @@
 
         <div class="row">
             <div class="input-field col s6">
-                <input id="sttp_end_date" type="text" name="sttp_start_date" value="{{sttp_start_date}}" class="datepicker validate" disabled>
+                <input id="sttp_end_date" type="text" name="sttp_start_date" value="{{sttp_start_date}}"
+                    class="datepicker validate" disabled>
                 <label for="sttp_end_date">Start Date</label>
 
             </div>
 
             <div class="input-field col s6">
-                <input id="sttp_end_date" type="text" name="sttp_end_date" value="{{sttp_end_date}}" class="datepicker validate" disabled>
+                <input id="sttp_end_date" type="text" name="sttp_end_date" value="{{sttp_end_date}}"
+                    class="datepicker validate" disabled>
                 <label for="sttp_end_date">End Date</label>
 
             </div>
@@ -51,7 +56,8 @@
 
         <div class="row">
             <div class="input-field col s6">
-            <input id="sttp_participants" type="number" name="sttp_participants" value="{{sttp_participants}}" class="validate" required>
+                <input id="sttp_participants" type="number" name="sttp_participants" value="{{sttp_participants}}"
+                    class="validate" required>
                 <label for="sttp_participants">No. of Participants</label>
 
             </div>
@@ -69,104 +75,106 @@
             </div>
         </div>
         <a href="/annexure-1/conductOfSTTP/edit/{{id}}" class="btn waves-effect waves-light red center mb-2">Edit</a>
-        <a href="/users/faculty/facultyOverview" class="btn waves-effect waves-light purple center mb-2">Back to overview</a><br><br>
+        <a href="/users/faculty/facultyOverview" class="btn waves-effect waves-light purple center mb-2">Back to
+            overview</a><br><br>
         <form method="post" action="/annexure-1/conductOfSTTP/delete/{{id}}?_method=DELETE">
             <input type="hidden" name="_method" value="DELETE">
             <input type="submit" class="btn waves-effect waves-light center red white-text" value="Delete">
         </form>
     </div>
 </div>
-    </div>
+</div>
 </div>
 {{else}}
 {{/each}}
 {{else}}
 {{#if editResult}}
 <div class="row" id="conductOfSTTP">
-        <form action="/annexure-1/conductOfSTTP/{{editResult.id}}?_method=PUT" method="post" class="col s12">
-            <input type="hidden" name="_method" value="PUT">
-            <div class="row">
-                <div class="input-field col s6 md5">
-                    <input id="sttp_role" type="text" name="sttp_role" value="{{editResult.sttp_role}}" class="validate"
-                        required>
-                    <label for="sttp_role">Role &nbsp; <a href="#" class="tooltipped"
-                            data-tooltip="Organizing Committee!!"><i class="fa fa-info-circle"></i></a></label>
-                </div>
-                <div class="input-field col s6">
-                    <input id="no_of_sttp" type="number" name="no_of_sttp" value="{{editResult.no_of_sttp}}"
-                        class="validate" required>
-                        <label for="no_of_sttp">No. of STTPs &nbsp; <a href="#" class="tooltipped"
-                data-tooltip="Number of STTPs conducted"><i class="fa fa-info-circle"></i></a></label>
-                </div>
+    <form action="/annexure-1/conductOfSTTP/{{editResult.id}}?_method=PUT" method="post" class="col s12">
+        <input type="hidden" name="_method" value="PUT">
+        <div class="row">
+            <div class="input-field col s6 md5">
+                <input id="sttp_role" type="text" name="sttp_role" value="{{editResult.sttp_role}}" class="validate"
+                    required>
+                <label for="sttp_role">Role &nbsp; <a href="#" class="tooltipped"
+                        data-tooltip="Organizing Committee!!"><i class="fa fa-info-circle"></i></a></label>
             </div>
-            <div class="row">
-                <div class="input-field col s6">
-                    <input id="sttp_technology" type="text" name="sttp_technology" value="{{editResult.sttp_technology}}"
-                        class="validate" required>
-                    <label for="sttp_technology">Technology</label>
-
-                </div>
-
-                <div class="input-field col s6">
-                    <input id="sttp_duration" type="number" name="sttp_duration" value="{{editResult.sttp_duration}}"
-                        class="validate" required>
-                    <label for="sttp_duration">Duration(hrs) &nbsp; <a href="#" class="tooltipped"
-                data-tooltip="Total Duration of STTP Courses(hours)"><i class="fa fa-info-circle"></i></a></label>
-                </div>
+            <div class="input-field col s6">
+                <input id="no_of_sttp" type="number" name="no_of_sttp" value="{{editResult.no_of_sttp}}"
+                    class="validate" required>
+                <label for="no_of_sttp">No. of STTPs &nbsp; <a href="#" class="tooltipped"
+                        data-tooltip="Number of STTPs conducted"><i class="fa fa-info-circle"></i></a></label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s6">
+                <input id="sttp_technology" type="text" name="sttp_technology" value="{{editResult.sttp_technology}}"
+                    class="validate" required>
+                <label for="sttp_technology">Technology</label>
 
             </div>
 
+            <div class="input-field col s6">
+                <input id="sttp_duration" type="number" name="sttp_duration" value="{{editResult.sttp_duration}}"
+                    class="validate" required>
+                <label for="sttp_duration">Duration(hrs) &nbsp; <a href="#" class="tooltipped"
+                        data-tooltip="Total Duration of STTP Courses(hours)"><i
+                            class="fa fa-info-circle"></i></a></label>
+            </div>
 
-            <div class="row">
-                <div class="input-field col s6">
-                    <input id="sttp_end_date" type="text" name="sttp_start_date" value="{{editResult.sttp_start_date}}"
-                        class="datepicker validate" required>
-                    <label for="sttp_end_date">Start Date</label>
+        </div>
 
-                </div>
 
-                <div class="input-field col s6">
-                    <input id="sttp_end_date" type="text" name="sttp_end_date" value="{{editResult.sttp_end_date}}"
-                        class="datepicker validate" required>
-                    <label for="sttp_end_date">End Date</label>
-
-                </div>
+        <div class="row">
+            <div class="input-field col s6">
+                <input id="sttp_end_date" type="text" name="sttp_start_date" value="{{editResult.sttp_start_date}}"
+                    class="datepicker validate" required>
+                <label for="sttp_end_date">Start Date</label>
 
             </div>
 
-            <div class="row">
-                <div class="input-field col s6">
-                    <input id="sttp_participants" type="number" name="sttp_participants"
-                        value="{{editResult.sttp_participants}}" class="validate" required>
-                    <label for="sttp_participants">No. of Participants</label>
+            <div class="input-field col s6">
+                <input id="sttp_end_date" type="text" name="sttp_end_date" value="{{editResult.sttp_end_date}}"
+                    class="datepicker validate" required>
+                <label for="sttp_end_date">End Date</label>
 
-                </div>
+            </div>
 
-                <div class="input-field col s6">
-                    <select name="department">
-                        <option value="{{editResult.department}}" selected>{{editResult.department}}</option>
-                        <option value="Information Technology">Information Technology</option>
-                        <option value="Computer Engineering">Computer Engineering</option>
-                        <option value="Mechanical Engineering">Mechanical Engineering</option>
-                        <option value="Civil Engineering">Civil Engineering</option>
-                        <option value="EXTC Engineering">EXTC Engineering</option>
-                    </select>
-                    <label for="">Department</label>
-                </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s6">
+                <input id="sttp_participants" type="number" name="sttp_participants"
+                    value="{{editResult.sttp_participants}}" class="validate" required>
+                <label for="sttp_participants">No. of Participants</label>
+
             </div>
-            <div>
-                <p>
-                    <label>
-                        <input id="indeterminate-checkbox" type="checkbox" required />
-                        <span>I acknowledge that above filled information is verified and justified by me.</span>
-                    </label>
-                </p>
+
+            <div class="input-field col s6">
+                <select name="department">
+                    <option value="{{editResult.department}}" selected>{{editResult.department}}</option>
+                    <option value="Information Technology">Information Technology</option>
+                    <option value="Computer Engineering">Computer Engineering</option>
+                    <option value="Mechanical Engineering">Mechanical Engineering</option>
+                    <option value="Civil Engineering">Civil Engineering</option>
+                    <option value="EXTC Engineering">EXTC Engineering</option>
+                </select>
+                <label for="">Department</label>
             </div>
-            <button class="btn waves-effect waves-dark" id="submit_btn" type="submit" disabled>Submit
-            </button>
-        </form>
-    </div>
-    </div>
+        </div>
+        <div>
+            <p>
+                <label>
+                    <input id="indeterminate-checkbox" type="checkbox" required />
+                    <span>I acknowledge that above filled information is verified and justified by me.</span>
+                </label>
+            </p>
+        </div>
+        <button class="btn waves-effect waves-dark" id="submit_btn" type="submit" disabled>Submit
+        </button>
+    </form>
+</div>
+</div>
 </div>
 {{else}}
 {{#if errors}}
@@ -185,13 +193,15 @@
         </div>
         <div class="row">
             <div class="input-field col s6">
-                <input id="sttp_technology" type="text" name="sttp_technology" value="{{sttp_technology}}" class="validate" required>
+                <input id="sttp_technology" type="text" name="sttp_technology" value="{{sttp_technology}}"
+                    class="validate" required>
                 <label for="sttp_technology">Technology</label>
 
             </div>
 
             <div class="input-field col s6">
-                <input id="sttp_duration" type="number" name="sttp_duration" value="{{sttp_duration}}" class="validate" required>
+                <input id="sttp_duration" type="number" name="sttp_duration" value="{{sttp_duration}}" class="validate"
+                    required>
                 <label for="sttp_duration">Duartion Of Course(hrs)</label>
             </div>
 
@@ -200,13 +210,15 @@
 
         <div class="row">
             <div class="input-field col s6">
-                <input id="sttp_end_date" type="text" name="sttp_start_date" value="{{sttp_start_date}}" class="datepicker validate" required>
+                <input id="sttp_end_date" type="text" name="sttp_start_date" value="{{sttp_start_date}}"
+                    class="datepicker validate" required>
                 <label for="sttp_end_date">Start Date</label>
 
             </div>
 
             <div class="input-field col s6">
-                <input id="sttp_end_date" type="text" name="sttp_end_date" value="{{sttp_end_date}}" class="datepicker validate" required>
+                <input id="sttp_end_date" type="text" name="sttp_end_date" value="{{sttp_end_date}}"
+                    class="datepicker validate" required>
                 <label for="sttp_end_date">End Date</label>
 
             </div>
@@ -215,7 +227,8 @@
 
         <div class="row">
             <div class="input-field col s6">
-                <input id="sttp_participants" type="number" name="sttp_participants" value="{{sttp_participants}}" class="validate" required>
+                <input id="sttp_participants" type="number" name="sttp_participants" value="{{sttp_participants}}"
+                    class="validate" required>
                 <label for="sttp_participants">Number Of Participants</label>
 
             </div>
@@ -258,7 +271,7 @@
             <div class="input-field col s6">
                 <input id="no_of_sttp" type="number" name="no_of_sttp" class="validate" required>
                 <label for="no_of_sttp">No. of STTPs &nbsp; <a href="#" class="tooltipped"
-                data-tooltip="Number of STTPs conducted"><i class="fa fa-info-circle"></i></a></label>
+                        data-tooltip="Number of STTPs conducted"><i class="fa fa-info-circle"></i></a></label>
             </div>
         </div>
         <div class="row">
@@ -271,7 +284,8 @@
             <div class="input-field col s6">
                 <input id="sttp_duration" type="number" name="sttp_duration" class="validate" required>
                 <label for="sttp_duration">Duration(hrs) &nbsp; <a href="#" class="tooltipped"
-                data-tooltip="Total Duration of STTP Courses(hours)"><i class="fa fa-info-circle"></i></a></label>
+                        data-tooltip="Total Duration of STTP Courses(hours)"><i
+                            class="fa fa-info-circle"></i></a></label>
             </div>
 
         </div>

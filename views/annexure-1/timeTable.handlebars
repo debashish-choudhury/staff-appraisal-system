@@ -2,157 +2,158 @@
 <div class="container">
     <h6>1.1 Timetable related Activities</h6>
     <hr>
-{{#if result}}
-{{#each result}}
-<div class="row" id="timetable">
-            <div class="row">
-                <div class="input-field col s6 md5">
-                    <input id="role" type="text" name="role" value="{{role}}" class="validate" disabled>
-                    <label for="role">Role &nbsp; <a href="#" class="tooltipped"
-                            data-tooltip="Enter the type of role given to you in time table related activities"><i class="fa fa-info-circle"></i></a></label>
-                </div>
-                <div class="input-field col s6">
-                    <select name="department">
-                        <option value="{{department}}" selected>{{department}}</option>
-                        <option value="Information Technology" disabled>Information Technology</option>
-                        <option value="Computer Engineering" disabled>Computer Engineering</option>
-                        <option value="Mechanical Engineering" disabled>Mechanical Engineering</option>
-                        <option value="Civil Engineering" disabled>Civil Engineering</option>
-                        <option value="EXTC Engineering" disabled>EXTC Engineering</option>
-                    </select>
-                    <label for="">Department</label>
-                </div>
+    {{#if result}}
+    {{#each result}}
+    <div class="row" id="timetable">
+        <div class="row">
+            <div class="input-field col s6 md5">
+                <input id="role" type="text" name="role" value="{{role}}" class="validate" disabled>
+                <label for="role">Role &nbsp; <a href="#" class="tooltipped"
+                        data-tooltip="Enter the type of role given to you in time table related activities"><i
+                            class="fa fa-info-circle"></i></a></label>
             </div>
-            <div class="row">
-                <div class="input-field col s6 md5">
-                    <select name="semester">
-                        <option value="{{semester}}" selected>{{semester}}</option>
-                        <option value="sem 1"disabled>Sem 1</option>
-                        <option value="sem 2"disabled>Sem 2</option>
-                        <option value="sem 3"disabled>Sem 3</option>
-                        <option value="sem 4"disabled>Sem 4</option>
-                        <option value="sem 5"disabled>Sem 5</option>
-                        <option value="sem 6"disabled>Sem 6</option>
-                        <option value="sem 7"disabled>Sem 7</option>
-                        <option value="sem 8"disabled>Sem 8</option>
-                    </select>
-                    <label for="">Semester</label>
-                </div>
+            <div class="input-field col s6">
+                <select name="department">
+                    <option value="{{department}}" selected>{{department}}</option>
+                    <option value="Information Technology" disabled>Information Technology</option>
+                    <option value="Computer Engineering" disabled>Computer Engineering</option>
+                    <option value="Mechanical Engineering" disabled>Mechanical Engineering</option>
+                    <option value="Civil Engineering" disabled>Civil Engineering</option>
+                    <option value="EXTC Engineering" disabled>EXTC Engineering</option>
+                </select>
+                <label for="">Department</label>
             </div>
-            <a href="/annexure-1/timeTable/edit/{{id}}" class="btn waves-effect waves-light red center mb-2">Edit</a>
-            <a href="/users/faculty/facultyOverview" class="btn waves-effect waves-light purple center mb-2">Back to
-                overview</a><br><br>
-            <form method="post" action="/annexure-1/timeTable/delete/{{id}}?_method=DELETE">
-                <input type="hidden" name="_method" value="DELETE">
-                <input type="submit" class="btn waves-effect waves-light center red white-text" value="Delete">
-            </form>
         </div>
-    </div> 
+        <div class="row">
+            <div class="input-field col s6 md5">
+                <select name="semester">
+                    <option value="{{semester}}" selected>{{semester}}</option>
+                    <option value="sem 1" disabled>Sem 1</option>
+                    <option value="sem 2" disabled>Sem 2</option>
+                    <option value="sem 3" disabled>Sem 3</option>
+                    <option value="sem 4" disabled>Sem 4</option>
+                    <option value="sem 5" disabled>Sem 5</option>
+                    <option value="sem 6" disabled>Sem 6</option>
+                    <option value="sem 7" disabled>Sem 7</option>
+                    <option value="sem 8" disabled>Sem 8</option>
+                </select>
+                <label for="">Semester</label>
+            </div>
+        </div>
+        <a href="/annexure-1/timeTable/edit/{{id}}" class="btn waves-effect waves-light red center mb-2">Edit</a>
+        <a href="/users/faculty/facultyOverview" class="btn waves-effect waves-light purple center mb-2">Back to
+            overview</a><br><br>
+        <form method="post" action="/annexure-1/timeTable/delete/{{id}}?_method=DELETE">
+            <input type="hidden" name="_method" value="DELETE">
+            <input type="submit" class="btn waves-effect waves-light center red white-text" value="Delete">
+        </form>
+    </div>
+</div>
 {{else}}
 {{/each}}
 {{else}}
 {{#if editResult}}
 <div class="row" id="timetable">
-        <form action="/annexure-1/timeTable/{{editResult.id}}?_method=PUT" method="post" class="col s12">
-             <input type="hidden" name="_method" value="PUT">
-            <div class="row">
-                <div class="input-field col s6 md5">
-                    <input id="role" type="text" name="role" value="{{editResult.role}}" class="validate" required>
-                    <label for="role">Role &nbsp; <a href="#" class="tooltipped"
-                            data-tooltip="Enter the type of role given to you in time table related activities"><i class="fa fa-info-circle"></i></a></label>
-                </div>
-                <div class="input-field col s6">
-                    <select name="department" >
-                        <option value="{{editResult.department}}" selected>{{editResult.department}}</option>
-                        <option value="Information Technology">Information Technology</option>
-                        <option value="Computer Engineering">Computer Engineering</option>
-                        <option value="Mechanical Engineering">Mechanical Engineering</option>
-                        <option value="Civil Engineering">Civil Engineering</option>
-                        <option value="EXTC Engineering">EXTC Engineering</option>
-                    </select>
-                    <label for="">Department</label>
-                </div>
+    <form action="/annexure-1/timeTable/{{editResult.id}}?_method=PUT" method="post" class="col s12">
+        <input type="hidden" name="_method" value="PUT">
+        <div class="row">
+            <div class="input-field col s6 md5">
+                <input id="role" type="text" name="role" value="{{editResult.role}}" class="validate" required>
+                <label for="role">Role &nbsp; <a href="#" class="tooltipped"
+                        data-tooltip="Enter the type of role given to you in time table related activities"><i
+                            class="fa fa-info-circle"></i></a></label>
             </div>
-            <div class="row">
-                <div class="input-field col s6 md5">
-                    <select name="semester">
-                        <option value="{{editResult.semester}}" selected>{{editResult.semester}}</option>
-                        <option value="sem 1">Sem 1</option>
-                        <option value="sem 2">Sem 2</option>
-                        <option value="sem 3">Sem 3</option>
-                        <option value="sem 4">Sem 4</option>
-                        <option value="sem 5">Sem 5</option>
-                        <option value="sem 6">Sem 6</option>
-                        <option value="sem 7">Sem 7</option>
-                        <option value="sem 8">Sem 8</option>
-                    </select>
-                    <label for="">Semester</label>
-                </div>
+            <div class="input-field col s6">
+                <select name="department">
+                    <option value="{{editResult.department}}" selected>{{editResult.department}}</option>
+                    <option value="Information Technology">Information Technology</option>
+                    <option value="Computer Engineering">Computer Engineering</option>
+                    <option value="Mechanical Engineering">Mechanical Engineering</option>
+                    <option value="Civil Engineering">Civil Engineering</option>
+                    <option value="EXTC Engineering">EXTC Engineering</option>
+                </select>
+                <label for="">Department</label>
             </div>
-            <div>
-                <p>
-                    <label>
-                        <input id="indeterminate-checkbox" type="checkbox" required />
-                        <span>I acknowledge that above filled information is verified and justified by me.</span>
-                    </label>
-                </p>
+        </div>
+        <div class="row">
+            <div class="input-field col s6 md5">
+                <select name="semester">
+                    <option value="{{editResult.semester}}" selected>{{editResult.semester}}</option>
+                    <option value="sem 1">Sem 1</option>
+                    <option value="sem 2">Sem 2</option>
+                    <option value="sem 3">Sem 3</option>
+                    <option value="sem 4">Sem 4</option>
+                    <option value="sem 5">Sem 5</option>
+                    <option value="sem 6">Sem 6</option>
+                    <option value="sem 7">Sem 7</option>
+                    <option value="sem 8">Sem 8</option>
+                </select>
+                <label for="">Semester</label>
             </div>
-            <button
-                class="btn waves-effect waves-light" id="submit_btn" type="submit" disabled>Submit
-            </button>
-        </form>
-    </div>
-    </div>
+        </div>
+        <div>
+            <p>
+                <label>
+                    <input id="indeterminate-checkbox" type="checkbox" required />
+                    <span>I acknowledge that above filled information is verified and justified by me.</span>
+                </label>
+            </p>
+        </div>
+        <button class="btn waves-effect waves-light" id="submit_btn" type="submit" disabled>Submit
+        </button>
+    </form>
+</div>
+</div>
 </div>
 {{else}}
-    <div class="row" id="timetable">
-        <form action="/annexure-1/timeTable" method="post" class="col s12">
-            <div class="row">
-                <div class="input-field col s6 md5">
-                    <input id="role" type="text" name="role" class="validate" required>
-                    <label for="role">Role &nbsp; <a href="#" class="tooltipped"
-                            data-tooltip="Enter the type of role given to you in time table related activities"><i class="fa fa-info-circle"></i></a></label>
-                </div>
-                <div class="input-field col s6">
-                    <select name="department">
-                        <option value="" disabled selected>Department</option>
-                        <option value="Information Technology">Information Technology</option>
-                        <option value="Computer Engineering">Computer Engineering</option>
-                        <option value="Mechanical Engineering">Mechanical Engineering</option>
-                        <option value="Civil Engineering">Civil Engineering</option>
-                        <option value="EXTC Engineering">EXTC Engineering</option>
-                    </select>
-                </div>
+<div class="row" id="timetable">
+    <form action="/annexure-1/timeTable" method="post" class="col s12">
+        <div class="row">
+            <div class="input-field col s6 md5">
+                <input id="role" type="text" name="role" class="validate" required>
+                <label for="role">Role &nbsp; <a href="#" class="tooltipped"
+                        data-tooltip="Enter the type of role given to you in time table related activities"><i
+                            class="fa fa-info-circle"></i></a></label>
             </div>
-            <div class="row">
-                <div class="input-field col s6 md5">
-                    <select name="semester">
-                        <option value="" disabled selected>Semester</option>
-                        <option value="sem 1">Sem 1</option>
-                        <option value="sem 2">Sem 2</option>
-                        <option value="sem 3">Sem 3</option>
-                        <option value="sem 4">Sem 4</option>
-                        <option value="sem 5">Sem 5</option>
-                        <option value="sem 6">Sem 6</option>
-                        <option value="sem 7">Sem 7</option>
-                        <option value="sem 8">Sem 8</option>
-                    </select>
-                </div>
+            <div class="input-field col s6">
+                <select name="department">
+                    <option value="" disabled selected>Department</option>
+                    <option value="Information Technology">Information Technology</option>
+                    <option value="Computer Engineering">Computer Engineering</option>
+                    <option value="Mechanical Engineering">Mechanical Engineering</option>
+                    <option value="Civil Engineering">Civil Engineering</option>
+                    <option value="EXTC Engineering">EXTC Engineering</option>
+                </select>
             </div>
-            <div>
-                <p>
-                    <label>
-                        <input id="indeterminate-checkbox" type="checkbox" required />
-                        <span>I acknowledge that above filled information is verified and justified by me.</span>
-                    </label>
-                </p>
+        </div>
+        <div class="row">
+            <div class="input-field col s6 md5">
+                <select name="semester">
+                    <option value="" disabled selected>Semester</option>
+                    <option value="sem 1">Sem 1</option>
+                    <option value="sem 2">Sem 2</option>
+                    <option value="sem 3">Sem 3</option>
+                    <option value="sem 4">Sem 4</option>
+                    <option value="sem 5">Sem 5</option>
+                    <option value="sem 6">Sem 6</option>
+                    <option value="sem 7">Sem 7</option>
+                    <option value="sem 8">Sem 8</option>
+                </select>
             </div>
-            <a href="/annexure-1/classAdvisor" class="waves-effect waves-light btn red center">Not Applicable</a>
-            <button
-                class="btn waves-effect waves-light" id="submit_btn" type="submit" disabled>Submit
-            </button>
-        </form>
-    </div>
+        </div>
+        <div>
+            <p>
+                <label>
+                    <input id="indeterminate-checkbox" type="checkbox" required />
+                    <span>I acknowledge that above filled information is verified and justified by me.</span>
+                </label>
+            </p>
+        </div>
+        <a href="/annexure-1/classAdvisor" class="waves-effect waves-light btn red center">Not Applicable</a>
+        <button class="btn waves-effect waves-light" id="submit_btn" type="submit" disabled>Submit
+        </button>
+    </form>
+</div>
 </div>
 {{/if}}
 {{/if}}

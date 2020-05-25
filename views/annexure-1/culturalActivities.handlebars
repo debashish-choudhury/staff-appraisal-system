@@ -1,24 +1,30 @@
 <h5>Annexure 1</h5><br>
 <div class="container">
-<h6>1.4 Cultural Activities</h6>
-<hr>
-{{#if result}}
-{{#each result}}
-<div class="row" id="culturalActivities">
+    <h6>1.4 Cultural Activities</h6>
+    <hr>
+    {{#if result}}
+    {{#each result}}
+    <div class="row" id="culturalActivities">
         <div class="row">
             <div class="input-field col s6 md5">
-            <input id="cultural_name" type="text" name="cultural_name" value="{{cultural_name}}" class="validate" required>
-                <label for="cultural_name">Cultural Activity &nbsp; <a href="#" class="tooltipped" data-tooltip="Enter the name of cultural activity performed"><i class="fa fa-info-circle"></i></a></label>
+                <input id="cultural_name" type="text" name="cultural_name" value="{{cultural_name}}" class="validate"
+                    required>
+                <label for="cultural_name">Cultural Activity &nbsp; <a href="#" class="tooltipped"
+                        data-tooltip="Enter the name of cultural activity performed"><i
+                            class="fa fa-info-circle"></i></a></label>
             </div>
-             <div class="input-field col s6 md5">
-                <input id="cultural-category" type="text" name="cultural_category" value="{{cultural_category}}" class="validate" disabled>
-                <label for="cultural-category">Category &nbsp; <a href="#" class="tooltipped" data-tooltip="Enter the category of the event eg: social, politics, educational"><i class="fa fa-info-circle"></i></a></label>
+            <div class="input-field col s6 md5">
+                <input id="cultural-category" type="text" name="cultural_category" value="{{cultural_category}}"
+                    class="validate" disabled>
+                <label for="cultural-category">Category &nbsp; <a href="#" class="tooltipped"
+                        data-tooltip="Enter the category of the event eg: social, politics, educational"><i
+                            class="fa fa-info-circle"></i></a></label>
             </div>
         </div>
 
         <div class="row">
-           
-             <div class="input-field col s6 md5">
+
+            <div class="input-field col s6 md5">
                 <select name="cultural_role">
                     <option value="{{cultural_role}}" selected>{{cultural_role}}</option>
                     <option value="incharge" disabled>Incharge</option>
@@ -26,18 +32,20 @@
                 </select>
                 <label for="">Role</label>
             </div>
-            
+
             <div class="input-field col s6 md5">
                 <select name="cultural_ojus_or_other">
                     <option value="{{cultural_ojus_or_other}}" disabled selected>{{cultural_ojus_or_other}}</option>
                     <option value="sports-ojus" disabled>Ojus</option>
-                    <option value="other-ojus"disabled>Other College Activities</option>
+                    <option value="other-ojus" disabled>Other College Activities</option>
                 </select>
                 <label for="">Ojus/Other</label>
             </div>
         </div>
-        <a href="/annexure-1/culturalActivities/edit/{{id}}" class="btn waves-effect waves-light red center mb-2">Edit</a>
-        <a href="/users/faculty/facultyOverview" class="btn waves-effect waves-light purple center mb-2">Back to overview</a><br><br>
+        <a href="/annexure-1/culturalActivities/edit/{{id}}"
+            class="btn waves-effect waves-light red center mb-2">Edit</a>
+        <a href="/users/faculty/facultyOverview" class="btn waves-effect waves-light purple center mb-2">Back to
+            overview</a><br><br>
         <form method="post" action="/annexure-1/culturalActivities/delete/{{id}}?_method=DELETE">
             <input type="hidden" name="_method" value="DELETE">
             <input type="submit" class="btn waves-effect waves-light center red white-text" value="Delete">
@@ -53,29 +61,36 @@
         <input type="hidden" name="_method" value="PUT">
         <div class="row">
             <div class="input-field col s6 md5">
-                <input id="cultural_name" type="text" name="cultural_name" value="{{editResult.cultural_name}}" class="validate" required>
-<label for="cultural_name">Cultural Activity &nbsp; <a href="#" class="tooltipped" data-tooltip="Enter the name of cultural activity performed"><i class="fa fa-info-circle"></i></a></label>
+                <input id="cultural_name" type="text" name="cultural_name" value="{{editResult.cultural_name}}"
+                    class="validate" required>
+                <label for="cultural_name">Cultural Activity &nbsp; <a href="#" class="tooltipped"
+                        data-tooltip="Enter the name of cultural activity performed"><i
+                            class="fa fa-info-circle"></i></a></label>
             </div>
-             <div class="input-field col s6 md5">
-                <input id="cultural-category" type="text" name="cultural_category" value="{{editResult.cultural_category}}" class="validate" required>
-                <label for="cultural-category">Category &nbsp; <a href="#" class="tooltipped" data-tooltip="Enter the category of the event eg: social, politics, educational"><i class="fa fa-info-circle"></i></a></label>
+            <div class="input-field col s6 md5">
+                <input id="cultural-category" type="text" name="cultural_category"
+                    value="{{editResult.cultural_category}}" class="validate" required>
+                <label for="cultural-category">Category &nbsp; <a href="#" class="tooltipped"
+                        data-tooltip="Enter the category of the event eg: social, politics, educational"><i
+                            class="fa fa-info-circle"></i></a></label>
             </div>
         </div>
 
         <div class="row">
-           
-             <div class="input-field col s6 md5">
-                <select name="cultural_role" >
+
+            <div class="input-field col s6 md5">
+                <select name="cultural_role">
                     <option value="{{editResult.cultural_role}}" selected>{{editResult.cultural_role}}</option>
                     <option value="incharge">Incharge</option>
                     <option value="coordinator">Co-orditors</option>
                 </select>
                 <label for="">Role</label>
             </div>
-            
+
             <div class="input-field col s6 md5">
                 <select name="cultural_ojus_or_other">
-                    <option value="{{editResult.cultural_ojus_or_other}}" selected>{{editResult.cultural_ojus_or_other}}</option>
+                    <option value="{{editResult.cultural_ojus_or_other}}" selected>{{editResult.cultural_ojus_or_other}}
+                    </option>
                     <option value="Ojus">Ojus</option>
                     <option value="other college activities">Other College Activities</option>
                 </select>
@@ -83,10 +98,10 @@
             </div>
         </div>
         <div>
-             <p>
-                 <label>
-                <input id="indeterminate-checkbox" type="checkbox" required/>
-                 <span>I acknowledge that above filled information is verified and justified by me.</span>
+            <p>
+                <label>
+                    <input id="indeterminate-checkbox" type="checkbox" required />
+                    <span>I acknowledge that above filled information is verified and justified by me.</span>
                 </label>
             </p>
         </div>
@@ -102,39 +117,43 @@
         <div class="row">
             <div class="input-field col s6 md5">
                 <input id="cultural_name" type="text" name="cultural_name" class="validate" required>
-<label for="cultural_name">Cultural Activity &nbsp; <a href="#" class="tooltipped" data-tooltip="Enter the name of cultural activity performed"><i class="fa fa-info-circle"></i></a></label>
+                <label for="cultural_name">Cultural Activity &nbsp; <a href="#" class="tooltipped"
+                        data-tooltip="Enter the name of cultural activity performed"><i
+                            class="fa fa-info-circle"></i></a></label>
             </div>
-             <div class="input-field col s6 md5">
+            <div class="input-field col s6 md5">
                 <input id="cultural-category" type="text" name="cultural_category" class="validate" required>
-                <label for="cultural-category">Category &nbsp; <a href="#" class="tooltipped" data-tooltip="Enter the category of the event eg: social, politics, educational"><i class="fa fa-info-circle"></i></a></label>
+                <label for="cultural-category">Category &nbsp; <a href="#" class="tooltipped"
+                        data-tooltip="Enter the category of the event eg: social, politics, educational"><i
+                            class="fa fa-info-circle"></i></a></label>
             </div>
         </div>
 
         <div class="row">
-           
-             <div class="input-field col s6 md5">
+
+            <div class="input-field col s6 md5">
                 <select name="cultural_role">
                     <option value="" disabled selected>Role</option>
                     <option value="incharge">Incharge</option>
                     <option value="coordinator">Co-orditors</option>
-                  
+
                 </select>
             </div>
-            
+
             <div class="input-field col s6 md5">
                 <select name="cultural_ojus_or_other">
                     <option value="" disabled selected>Ojus/Other</option>
                     <option value="sports-ojus">Ojus</option>
                     <option value="other-ojus">Other College Activities</option>
-                  
+
                 </select>
             </div>
         </div>
         <div>
-             <p>
-                 <label>
-                <input id="indeterminate-checkbox" type="checkbox" required/>
-                 <span>I acknowledge that above filled information is verified and justified by me.</span>
+            <p>
+                <label>
+                    <input id="indeterminate-checkbox" type="checkbox" required />
+                    <span>I acknowledge that above filled information is verified and justified by me.</span>
                 </label>
             </p>
         </div>

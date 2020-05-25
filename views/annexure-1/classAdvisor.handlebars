@@ -1,12 +1,12 @@
 <h5>Annexure 1</h5><br>
 <div class="container">
-<h6>1.2 Class Advisor</h6>
-<hr>
-{{#if result}}
-{{#each result}}
-<div class="row" id="classAdvisor">
+    <h6>1.2 Class Advisor</h6>
+    <hr>
+    {{#if result}}
+    {{#each result}}
+    <div class="row" id="classAdvisor">
         <div class="row">
-             <div class="input-field col s6">
+            <div class="input-field col s6">
                 <select name="class_name">
                     <option value="{{class_name}}">{{class_name}}</option>
                     <option value="FE" disabled>FE</option>
@@ -16,7 +16,7 @@
                 </select>
                 <label for="">Class</label>
             </div>
-             <div class="input-field col s6">
+            <div class="input-field col s6">
                 <select name="department">
                     <option value="{{department}}">{{department}}</option>
                     <option value="Information Technology" disabled>Information Technology</option>
@@ -30,8 +30,8 @@
         </div>
 
         <div class="row">
-           
-             <div class="input-field col s6 md5">
+
+            <div class="input-field col s6 md5">
                 <select name="semester">
                     <option value="{{semester}}">{{semester}}</option>
                     <option value="sem 1" disabled>Sem 1</option>
@@ -45,14 +45,15 @@
                 </select>
                 <label for="">Semester</label>
             </div>
-            
+
             <div class="input-field col s6 md5">
                 <input id="duties" type="text" name="duties" value="{{duties}}" disabled>
                 <label for="duties">Duties Performed</label>
             </div>
         </div>
         <a href="/annexure-1/classAdvisor/edit/{{id}}" class="btn waves-effect waves-light red center mb-2">Edit</a>
-        <a href="/users/faculty/facultyOverview" class="btn waves-effect waves-light purple center mb-2">Back to overview</a><br><br>
+        <a href="/users/faculty/facultyOverview" class="btn waves-effect waves-light purple center mb-2">Back to
+            overview</a><br><br>
         <form method="post" action="/annexure-1/classAdvisor/delete/{{id}}?_method=DELETE">
             <input type="hidden" name="_method" value="DELETE">
             <input type="submit" class="btn waves-effect waves-light center red white-text" value="Delete">
@@ -63,84 +64,84 @@
 {{/each}}
 {{else}}
 {{#if editResult}}
-    <div class="row" id="classAdvisor">
-        <form action="/annexure-1/classAdvisor/{{result.id}}?_method=put" method="post" class="col s12">
-            <input type="hidden" name="_method" value="PUT">
-            <div class="row">
-                <div class="input-field col s6">
-                    <select name="class_name">
-                        <option value="{{editResult.class_name}}" selected>{{editResult.class_name}}</option>
-                        <option value="FE">FE</option>
-                        <option value="SE">SE</option>
-                        <option value="TE">TE</option>
-                        <option value="BE">BE</option>
-                    </select>
-                    <label for="">Class</label>
-                </div>
-                <div class="input-field col s6">
-                    <select name="department">
-                        <option value="{{editResult.department}}" selected>{{editResult.department}}</option>
-                        <option value="Information Technology">Information Technology</option>
-                        <option value="Computer Engineering">Computer Engineering</option>
-                        <option value="Mechanical Engineering">Mechanical Engineering</option>
-                        <option value="Civil Engineering">Civil Engineering</option>
-                        <option value="EXTC Engineering">EXTC Engineering</option>
-                    </select>
-                    <label for="">Department</label>
-                </div>
+<div class="row" id="classAdvisor">
+    <form action="/annexure-1/classAdvisor/{{result.id}}?_method=put" method="post" class="col s12">
+        <input type="hidden" name="_method" value="PUT">
+        <div class="row">
+            <div class="input-field col s6">
+                <select name="class_name">
+                    <option value="{{editResult.class_name}}" selected>{{editResult.class_name}}</option>
+                    <option value="FE">FE</option>
+                    <option value="SE">SE</option>
+                    <option value="TE">TE</option>
+                    <option value="BE">BE</option>
+                </select>
+                <label for="">Class</label>
+            </div>
+            <div class="input-field col s6">
+                <select name="department">
+                    <option value="{{editResult.department}}" selected>{{editResult.department}}</option>
+                    <option value="Information Technology">Information Technology</option>
+                    <option value="Computer Engineering">Computer Engineering</option>
+                    <option value="Mechanical Engineering">Mechanical Engineering</option>
+                    <option value="Civil Engineering">Civil Engineering</option>
+                    <option value="EXTC Engineering">EXTC Engineering</option>
+                </select>
+                <label for="">Department</label>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="input-field col s6 md5">
+                <select name="semester" class="validate">
+                    <option value="{{editResult.semester}}" selected>{{editResult.semester}}</option>
+                    <option value="sem 1">Sem 1</option>
+                    <option value="sem 2">Sem 2</option>
+                    <option value="sem 3">Sem 3</option>
+                    <option value="sem 4">Sem 4</option>
+                    <option value="sem 5">Sem 5</option>
+                    <option value="sem 6">Sem 6</option>
+                    <option value="sem 7">Sem 7</option>
+                    <option value="sem 8">Sem 8</option>
+                </select>
+                <label for="">Semester</label>
             </div>
 
-            <div class="row">
-
-                <div class="input-field col s6 md5">
-                    <select name="semester" class="validate" >
-                        <option value="{{editResult.semester}}" selected>{{editResult.semester}}</option>
-                        <option value="sem 1">Sem 1</option>
-                        <option value="sem 2">Sem 2</option>
-                        <option value="sem 3">Sem 3</option>
-                        <option value="sem 4">Sem 4</option>
-                        <option value="sem 5">Sem 5</option>
-                        <option value="sem 6">Sem 6</option>
-                        <option value="sem 7">Sem 7</option>
-                        <option value="sem 8">Sem 8</option>
-                    </select>
-                    <label for="">Semester</label>
-                </div>
-
-                <div class="input-field col s6 md5">
-                    <input id="duties" type="text" name="duties" value="{{result.duties}}" class="validate" required>
-                    <label for="duties">Duties Performed</label>
-                </div>
+            <div class="input-field col s6 md5">
+                <input id="duties" type="text" name="duties" value="{{result.duties}}" class="validate" required>
+                <label for="duties">Duties Performed</label>
             </div>
-            <div>
-                <p>
-                    <label>
-                        <input id="indeterminate-checkbox" type="checkbox" required />
-                        <span>I acknowledge that above filled information is verified and justified by me.</span>
-                    </label>
-                </p>
-            </div>
-            <button class="btn waves-effect waves-light" type="submit" id="submit_btn" disabled>Submit
-            </button>
-        </form>
-    </div>
-    </div>
+        </div>
+        <div>
+            <p>
+                <label>
+                    <input id="indeterminate-checkbox" type="checkbox" required />
+                    <span>I acknowledge that above filled information is verified and justified by me.</span>
+                </label>
+            </p>
+        </div>
+        <button class="btn waves-effect waves-light" type="submit" id="submit_btn" disabled>Submit
+        </button>
+    </form>
+</div>
+</div>
 </div>
 {{else}}
 <div class="row" id="classAdvisor">
     <form action="/annexure-1/classAdvisor" method="post" class="col s12">
         <div class="row">
-             <div class="input-field col s6">
+            <div class="input-field col s6">
                 <select name="class_name">
                     <option value="" disabled selected>Class</option>
                     <option value="FE">FE</option>
                     <option value="SE">SE</option>
                     <option value="TE">TE</option>
                     <option value="BE">BE</option>
-                    
+
                 </select>
             </div>
-             <div class="input-field col s6">
+            <div class="input-field col s6">
                 <select name="department">
                     <option value="" disabled selected>Department</option>
                     <option value="Information Technology">Information Technology</option>
@@ -153,8 +154,8 @@
         </div>
 
         <div class="row">
-           
-             <div class="input-field col s6 md5">
+
+            <div class="input-field col s6 md5">
                 <select name="semester">
                     <option value="" disabled selected>Semester</option>
                     <option value="sem 1">Sem 1</option>
@@ -167,17 +168,17 @@
                     <option value="sem 8">Sem 8</option>
                 </select>
             </div>
-            
+
             <div class="input-field col s6 md5">
                 <input id="duties" type="text" name="duties" class="validate" required>
                 <label for="duties">Duties Performed</label>
             </div>
         </div>
         <div>
-             <p>
-                 <label>
-                <input id="indeterminate-checkbox" type="checkbox" required/>
-                 <span>I acknowledge that above filled information is verified and justified by me.</span>
+            <p>
+                <label>
+                    <input id="indeterminate-checkbox" type="checkbox" required />
+                    <span>I acknowledge that above filled information is verified and justified by me.</span>
                 </label>
             </p>
         </div>

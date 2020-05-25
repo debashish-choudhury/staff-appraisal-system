@@ -1,156 +1,165 @@
 <h5>Annexure 3</h5><br>
 <div class="container">
-<h6>3.5 External Projects Or Competitions Participations</h6>
-<hr>
-{{#if result}}
-{{#each result}}
-        <div class="row">
-            <div class="input-field col s6 md5">
-                <input id="description" type="text" name="description" value="{{description}}" disabled class="validate" required>
-                <label for="description">Description</label>
-            </div>
-            
-            <div class="input-field col s6 md5">
-                <input id="contribution" type="text" name="contribution" value="{{contribution}}" disabled class="validate" required>
-                <label for="contribution">Contribution</label>
-            </div>
+    <h6>3.5 External Projects Or Competitions Participations</h6>
+    <hr>
+    {{#if result}}
+    {{#each result}}
+    <div class="row">
+        <div class="input-field col s6 md5">
+            <input id="description" type="text" name="description" value="{{description}}" disabled class="validate"
+                required>
+            <label for="description">Description</label>
         </div>
 
-
-        <div class="row">
-
-            <div class="input-field col s6 md5">
-                <input id="university" type="text" name="university" value="{{university}}" disabled class="validate" required>
-                <label for="university">University</label>
-            </div>
-            
-            <div class="input-field col s6 md5">
-                <input id="duration" type="number" name="duration" value="{{duration}}" disabled class="validate" required>
-                <label for="duration">Duration</label>
-            </div>
-        </div>
-
-        <div class="row">
-            
-            <div class="input-field col s12">
-                 <input id="comments" type="text" name="comments" value="{{comments}}" disabled class="validate" required>
-                <label for="comments">Comments</label>
-            </div>
-         </div>
-            <a href="/annexure-3/externalProjectsOrCompetition/edit/{{id}}" class="btn waves-effect waves-light red center mb-2">Edit</a>
-            <a href="/users/faculty/facultyOverview" class="btn waves-effect waves-light purple center mb-2">Back to
-                overview</a><br><br>
-            <form method="post" action="/annexure-3/externalProjectsOrCompetition/delete/{{id}}?_method=DELETE">
-                <input type="hidden" name="_method" value="DELETE">
-                <input type="submit" class="btn waves-effect waves-light center red white-text" value="Delete">
-            </form>
+        <div class="input-field col s6 md5">
+            <input id="contribution" type="text" name="contribution" value="{{contribution}}" disabled class="validate"
+                required>
+            <label for="contribution">Contribution</label>
         </div>
     </div>
+
+
+    <div class="row">
+
+        <div class="input-field col s6 md5">
+            <input id="university" type="text" name="university" value="{{university}}" disabled class="validate"
+                required>
+            <label for="university">University</label>
+        </div>
+
+        <div class="input-field col s6 md5">
+            <input id="duration" type="number" name="duration" value="{{duration}}" disabled class="validate" required>
+            <label for="duration">Duration</label>
+        </div>
     </div>
+
+    <div class="row">
+
+        <div class="input-field col s12">
+            <input id="comments" type="text" name="comments" value="{{comments}}" disabled class="validate" required>
+            <label for="comments">Comments</label>
+        </div>
+    </div>
+    <a href="/annexure-3/externalProjectsOrCompetition/edit/{{id}}"
+        class="btn waves-effect waves-light red center mb-2">Edit</a>
+    <a href="/users/faculty/facultyOverview" class="btn waves-effect waves-light purple center mb-2">Back to
+        overview</a><br><br>
+    <form method="post" action="/annexure-3/externalProjectsOrCompetition/delete/{{id}}?_method=DELETE">
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="submit" class="btn waves-effect waves-light center red white-text" value="Delete">
+    </form>
+</div>
+</div>
+</div>
 {{else}}
 {{/each}}
 {{else}}
 {{#if editResult}}
 <form action="/annexure-3/externalProjectsOrCompetition/{{editResult.id}}?_method=PUT" method="post" class="col s12">
     <input type="hidden" name="_method" value="PUT">
-        <div class="row">
-            <div class="input-field col s6 md5">
-                <input id="description" type="text" name="description" value="{{editResult.description}}"  class="validate" required>
-                <label for="description">Description</label>
-            </div>
-            
-            <div class="input-field col s6 md5">
-                <input id="contribution" type="text" name="contribution" value="{{editResult.contribution}}"  class="validate" required>
-                <label for="contribution">Contribution</label>
-            </div>
+    <div class="row">
+        <div class="input-field col s6 md5">
+            <input id="description" type="text" name="description" value="{{editResult.description}}" class="validate"
+                required>
+            <label for="description">Description</label>
         </div>
 
-
-        <div class="row">
-
-            <div class="input-field col s6 md5">
-                <input id="university" type="text" name="university" value="{{editResult.university}}"  class="validate" required>
-                <label for="university">University</label>
-            </div>
-            
-            <div class="input-field col s6 md5">
-                <input id="duration" type="number" name="duration" value="{{editResult.duration}}"  class="validate" required>
-                <label for="duration">Duration</label>
-            </div>
+        <div class="input-field col s6 md5">
+            <input id="contribution" type="text" name="contribution" value="{{editResult.contribution}}"
+                class="validate" required>
+            <label for="contribution">Contribution</label>
         </div>
-
-        <div class="row">
-            
-            <div class="input-field col s12">
-                 <input id="comments" type="text" name="comments" value="{{editResult.comments}}"  class="validate" required>
-                <label for="comments">Comments</label>
-            </div>
-         </div>
-        <div>
-             <p>
-                 <label>
-                <input id="indeterminate-checkbox" type="checkbox" />
-                 <span>I acknowledge that above filled information is verified and justified by me.</span>
-                </label>
-            </p>
-        </div>
-        <button class="btn waves-effect waves-light" type="submit" id="submit_btn" disabled>Submit
-        </button>
-    </form>
     </div>
+
+
+    <div class="row">
+
+        <div class="input-field col s6 md5">
+            <input id="university" type="text" name="university" value="{{editResult.university}}" class="validate"
+                required>
+            <label for="university">University</label>
+        </div>
+
+        <div class="input-field col s6 md5">
+            <input id="duration" type="number" name="duration" value="{{editResult.duration}}" class="validate"
+                required>
+            <label for="duration">Duration</label>
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div class="input-field col s12">
+            <input id="comments" type="text" name="comments" value="{{editResult.comments}}" class="validate" required>
+            <label for="comments">Comments</label>
+        </div>
+    </div>
+    <div>
+        <p>
+            <label>
+                <input id="indeterminate-checkbox" type="checkbox" />
+                <span>I acknowledge that above filled information is verified and justified by me.</span>
+            </label>
+        </p>
+    </div>
+    <button class="btn waves-effect waves-light" type="submit" id="submit_btn" disabled>Submit
+    </button>
+</form>
+</div>
 </div>
 </div>
 {{else}}
-    <form action="/annexure-3/externalProjectsOrCompetition" method="post" class="col s12">
+<form action="/annexure-3/externalProjectsOrCompetition" method="post" class="col s12">
 
-        <div class="row">
-            
-            <div class="input-field col s6 md5">
-                <input id="description" type="text" name="description" class="validate" required>
-                <label for="description">Description</label>
-            </div>
-            
-            <div class="input-field col s6 md5">
-                <input id="contribution" type="text" name="contribution" class="validate" required>
-                <label for="contribution">Contribution</label>
-            </div>
+    <div class="row">
+
+        <div class="input-field col s6 md5">
+            <input id="description" type="text" name="description" class="validate" required>
+            <label for="description">Description</label>
         </div>
 
-
-        <div class="row">
-
-            <div class="input-field col s6 md5">
-                <input id="university" type="text" name="university" class="validate" required>
-                <label for="university">University</label>
-            </div>
-            
-            <div class="input-field col s6 md5">
-                <input id="duration" type="number" name="duration" class="validate" required>
-                <label for="duration">Duration</label>
-            </div>
+        <div class="input-field col s6 md5">
+            <input id="contribution" type="text" name="contribution" class="validate" required>
+            <label for="contribution">Contribution</label>
         </div>
-
-        <div class="row">
-            
-            <div class="input-field col s12">
-                 <input id="comments" type="text" name="comments" class="validate" required>
-                <label for="comments">Comments</label>
-            </div>
-         </div>
-
-        <div>
-             <p>
-                 <label>
-                <input id="indeterminate-checkbox" type="checkbox" />
-                 <span>I acknowledge that above filled information is verified and justified by me.</span>
-                </label>
-            </p>
-        </div>
-  <a href="/annexure-3/externalProjectsOrCompetition" class="waves-effect waves-light btn center red">Not Applicable</a>
-        <button class="btn waves-effect waves-light" type="submit" id="submit_btn" disabled>Submit
-        </button>
-    </form>
     </div>
-    {{/if}}
-    {{/if}}
+
+
+    <div class="row">
+
+        <div class="input-field col s6 md5">
+            <input id="university" type="text" name="university" class="validate" required>
+            <label for="university">University</label>
+        </div>
+
+        <div class="input-field col s6 md5">
+            <input id="duration" type="number" name="duration" class="validate" required>
+            <label for="duration">Duration</label>
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div class="input-field col s12">
+            <input id="comments" type="text" name="comments" class="validate" required>
+            <label for="comments">Comments</label>
+        </div>
+    </div>
+
+    <div>
+        <p>
+            <label>
+                <input id="indeterminate-checkbox" type="checkbox" />
+                <span>I acknowledge that above filled information is verified and justified by me.</span>
+            </label>
+        </p>
+    </div>
+    <a href="/annexure-3/externalProjectsOrCompetition" class="waves-effect waves-light btn center red">Not
+        Applicable</a>
+    <button class="btn waves-effect waves-light" type="submit" id="submit_btn" disabled>Submit
+    </button>
+</form>
+</div>
+{{/if}}
+{{/if}}
 </div>

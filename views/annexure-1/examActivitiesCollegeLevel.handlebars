@@ -3,41 +3,43 @@
     <h6>1.14 Exam related Activities (Assessment/Oral/Practical
         Exams Conducted, college level)</h6>
     <hr>
-{{#if result}}
-{{#each result}}
-<div class="row" id="examActivitiesCollegeLevel">
-            <div class="row">
-                <div class="input-field col s6 md5">
-                    <input id="subject_name" type="text" name="subject_name" name="{{subject_name}}" class="validate" required>
-                    <label for="subject_name">Name Of Subject</label>
-                </div>
-                <div class="input-field col s6 md5">
-                    <select name="semester">
-                        <option value="{{semester}}" disabled selected>{{semester}}</option>
-                        <option value="sem 1">Sem 1</option>
-                        <option value="sem 2">Sem 2</option>
-                        <option value="sem 3">Sem 3</option>
-                        <option value="sem 4">Sem 4</option>
-                        <option value="sem 5">Sem 5</option>
-                        <option value="sem 6">Sem 6</option>
-                        <option value="sem 7">Sem 7</option>
-                        <option value="sem 8">Sem 8</option>
-                    </select>
-                    <label for="">Department</label>
-                </div>
+    {{#if result}}
+    {{#each result}}
+    <div class="row" id="examActivitiesCollegeLevel">
+        <div class="row">
+            <div class="input-field col s6 md5">
+                <input id="subject_name" type="text" name="subject_name" name="{{subject_name}}" class="validate"
+                    required>
+                <label for="subject_name">Name Of Subject</label>
             </div>
-            <div class="row">
-                <div class="input-field col s12 md5">
-                    <select name="exam_type">
-                        <option value="{{exam_type}}" disabled selected>{{exam_type}}</option>
-                        <option value="assessment">Assessment</option>
-                        <option value="oral">Oral</option>
-                        <option value="practical">Practical</option>
-                    </select>
-                    <label for="">Exam Type</label>
-                </div>
+            <div class="input-field col s6 md5">
+                <select name="semester">
+                    <option value="{{semester}}" disabled selected>{{semester}}</option>
+                    <option value="sem 1">Sem 1</option>
+                    <option value="sem 2">Sem 2</option>
+                    <option value="sem 3">Sem 3</option>
+                    <option value="sem 4">Sem 4</option>
+                    <option value="sem 5">Sem 5</option>
+                    <option value="sem 6">Sem 6</option>
+                    <option value="sem 7">Sem 7</option>
+                    <option value="sem 8">Sem 8</option>
+                </select>
+                <label for="">Department</label>
             </div>
-            <a href="/annexure-1/examActivitiesCollegeLevel/edit/{{id}}" class="btn waves-effect waves-light red center mb-2">Edit</a>
+        </div>
+        <div class="row">
+            <div class="input-field col s12 md5">
+                <select name="exam_type">
+                    <option value="{{exam_type}}" disabled selected>{{exam_type}}</option>
+                    <option value="assessment">Assessment</option>
+                    <option value="oral">Oral</option>
+                    <option value="practical">Practical</option>
+                </select>
+                <label for="">Exam Type</label>
+            </div>
+        </div>
+        <a href="/annexure-1/examActivitiesCollegeLevel/edit/{{id}}"
+            class="btn waves-effect waves-light red center mb-2">Edit</a>
         <a href="/users/faculty/facultyOverview" class="btn waves-effect waves-light purple center mb-2">Back to
             overview</a><br><br>
         <form method="post" action="/annexure-1/examActivitiesCollegeLevel/delete/{{id}}?_method=DELETE">
@@ -51,100 +53,99 @@
 {{else}}
 {{#if editResult}}
 <div class="row" id="examActivitiesCollegeLevel">
-        <form action="/annexure-1/examActivitiesCollegeLevel/{{editResult.id}}?_method=PUT" method="post" class="col s12">
-            <input type="hidden" name="_method" value="PUT">
-            <div class="row">
-                <div class="input-field col s6 md5">
-                    <input id="subject_name" type="text" name="subject_name" value="{{editResult.subject_name}}" class="validate" required>
-                    <label for="subject_name">Name Of Subject</label>
-                </div>
-                <div class="input-field col s6 md5">
-                    <select name="semester" class="required" required>
-                        <option value="{{editResult.semester}}" selected>{{editResult.semester}}</option>
-                        <option value="sem 1">Sem 1</option>
-                        <option value="sem 2">Sem 2</option>
-                        <option value="sem 3">Sem 3</option>
-                        <option value="sem 4">Sem 4</option>
-                        <option value="sem 5">Sem 5</option>
-                        <option value="sem 6">Sem 6</option>
-                        <option value="sem 7">Sem 7</option>
-                        <option value="sem 8">Sem 8</option>
-                    </select>
-                    <label for="">Department</label>
-                </div>
+    <form action="/annexure-1/examActivitiesCollegeLevel/{{editResult.id}}?_method=PUT" method="post" class="col s12">
+        <input type="hidden" name="_method" value="PUT">
+        <div class="row">
+            <div class="input-field col s6 md5">
+                <input id="subject_name" type="text" name="subject_name" value="{{editResult.subject_name}}"
+                    class="validate" required>
+                <label for="subject_name">Name Of Subject</label>
             </div>
-            <div class="row">
-                <div class="input-field col s12 md5">
-                    <select name="exam_type" class="validate" required>
-                        <option value="{{editResult.exam_type}}" selected>{{editResult.exam_type}}</option>
-                        <option value="assessment">Assessment</option>
-                        <option value="oral">Oral</option>
-                        <option value="practical">Practical</option>
-                    </select>
-                    <label for="">Exam Type</label>
-                </div>
+            <div class="input-field col s6 md5">
+                <select name="semester" class="required" required>
+                    <option value="{{editResult.semester}}" selected>{{editResult.semester}}</option>
+                    <option value="sem 1">Sem 1</option>
+                    <option value="sem 2">Sem 2</option>
+                    <option value="sem 3">Sem 3</option>
+                    <option value="sem 4">Sem 4</option>
+                    <option value="sem 5">Sem 5</option>
+                    <option value="sem 6">Sem 6</option>
+                    <option value="sem 7">Sem 7</option>
+                    <option value="sem 8">Sem 8</option>
+                </select>
+                <label for="">Department</label>
             </div>
-            <div>
-             <p>
-                 <label>
-                <input id="indeterminate-checkbox" type="checkbox" required/>
-                 <span>I acknowledge that above filled information is verified and justified by me.</span>
+        </div>
+        <div class="row">
+            <div class="input-field col s12 md5">
+                <select name="exam_type" class="validate" required>
+                    <option value="{{editResult.exam_type}}" selected>{{editResult.exam_type}}</option>
+                    <option value="assessment">Assessment</option>
+                    <option value="oral">Oral</option>
+                    <option value="practical">Practical</option>
+                </select>
+                <label for="">Exam Type</label>
+            </div>
+        </div>
+        <div>
+            <p>
+                <label>
+                    <input id="indeterminate-checkbox" type="checkbox" required />
+                    <span>I acknowledge that above filled information is verified and justified by me.</span>
                 </label>
             </p>
         </div>
-            <button
-                class="btn waves-effect waves-dark" id="submit_btn" type="submit" disabled>Submit
-            </button>
-        </form>
-    </div>
-    </div>
+        <button class="btn waves-effect waves-dark" id="submit_btn" type="submit" disabled>Submit
+        </button>
+    </form>
+</div>
+</div>
 </div>
 {{else}}
-    <div class="row" id="examActivitiesCollegeLevel">
-        <form action="/annexure-1/examActivitiesCollegeLevel" method="post" class="col s12">
-            <div class="row">
-                <div class="input-field col s6 md5">
-                    <input id="subject_name" type="text" name="subject_name" class="validate" required>
-                    <label for="subject_name">Name Of Subject</label>
-                </div>
-                <div class="input-field col s6 md5">
-                    <select name="semester">
-                        <option value="" disabled selected>Semester</option>
-                        <option value="sem 1">Sem 1</option>
-                        <option value="sem 2">Sem 2</option>
-                        <option value="sem 3">Sem 3</option>
-                        <option value="sem 4">Sem 4</option>
-                        <option value="sem 5">Sem 5</option>
-                        <option value="sem 6">Sem 6</option>
-                        <option value="sem 7">Sem 7</option>
-                        <option value="sem 8">Sem 8</option>
-                    </select>
-                </div>
+<div class="row" id="examActivitiesCollegeLevel">
+    <form action="/annexure-1/examActivitiesCollegeLevel" method="post" class="col s12">
+        <div class="row">
+            <div class="input-field col s6 md5">
+                <input id="subject_name" type="text" name="subject_name" class="validate" required>
+                <label for="subject_name">Name Of Subject</label>
             </div>
-            <div class="row">
-                <div class="input-field col s12 md5">
-                    <select name="exam_type">
-                        <option value="" disabled selected>Exam Type</option>
-                        <option value="assessment">Assessment</option>
-                        <option value="oral">Oral</option>
-                        <option value="practical">Practical</option>
-                    </select>
-                </div>
+            <div class="input-field col s6 md5">
+                <select name="semester">
+                    <option value="" disabled selected>Semester</option>
+                    <option value="sem 1">Sem 1</option>
+                    <option value="sem 2">Sem 2</option>
+                    <option value="sem 3">Sem 3</option>
+                    <option value="sem 4">Sem 4</option>
+                    <option value="sem 5">Sem 5</option>
+                    <option value="sem 6">Sem 6</option>
+                    <option value="sem 7">Sem 7</option>
+                    <option value="sem 8">Sem 8</option>
+                </select>
             </div>
-            <div>
-             <p>
-                 <label>
-                <input id="indeterminate-checkbox" type="checkbox" required/>
-                 <span>I acknowledge that above filled information is verified and justified by me.</span>
+        </div>
+        <div class="row">
+            <div class="input-field col s12 md5">
+                <select name="exam_type">
+                    <option value="" disabled selected>Exam Type</option>
+                    <option value="assessment">Assessment</option>
+                    <option value="oral">Oral</option>
+                    <option value="practical">Practical</option>
+                </select>
+            </div>
+        </div>
+        <div>
+            <p>
+                <label>
+                    <input id="indeterminate-checkbox" type="checkbox" required />
+                    <span>I acknowledge that above filled information is verified and justified by me.</span>
                 </label>
             </p>
         </div>
-            <a href="/annexure-1/ITmaintenance" class="waves-effect waves-light btn red center">Not Applicable</a>
-            <button
-                class="btn waves-effect waves-dark" id="submit_btn" type="submit" disabled>Submit
-            </button>
-        </form>
-    </div>
+        <a href="/annexure-1/ITmaintenance" class="waves-effect waves-light btn red center">Not Applicable</a>
+        <button class="btn waves-effect waves-dark" id="submit_btn" type="submit" disabled>Submit
+        </button>
+    </form>
+</div>
 </div>
 {{/if}}
 {{/if}}
