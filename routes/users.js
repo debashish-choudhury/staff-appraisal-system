@@ -142,6 +142,10 @@ router.get('/faculty/facultyOverview', ensureAuthenticated, (req, res) => {
                     })
             }
         })
+        .catch(err => {
+            req.flash('error_msg', 'Cannot find the user.');
+            res.redirect('back');
+        })
 });
 
 // Management user view
@@ -161,7 +165,15 @@ router.get('/management/viewUsers', ensureAuthenticated, (req, res) => {
                     .then(([hod, faculty]) => {
                         res.render('users/management/viewUsers', { hod, faculty });
                     })
+                    .catch(err => {
+                        req.flash('error_msg', 'Error while rendering the page.');
+                        res.redirect('back');
+                    })
             }
+        })
+        .catch(err => {
+            req.flash('error_msg', 'Cannot find the user');
+            res.redirect('back');
         })
 })
 
@@ -179,7 +191,15 @@ router.get('/management/deleteUser/hod/:name/:email/:id', ensureAuthenticated, (
                         req.flash('success_msg', 'HoD with name ' + req.params.name + ' and email-id ' + req.params.email + ' Deleted');
                         res.redirect('/users/management/viewUsers');
                     })
+                    .catch(err => {
+                        req.flash('error_msg', 'Cannot delete the user due to some error');
+                        res.redirect('back');
+                    })
             }
+        })
+        .catch(err => {
+            req.flash('error_msg', 'Cannot find the user');
+            res.redirect('back');
         })
 });
 //for faculty
@@ -195,7 +215,15 @@ router.get('/management/deleteUser/faculty/:name/:email/:id', ensureAuthenticate
                         req.flash('success_msg', 'Faculty with name ' + req.params.name + ' and email-id ' + req.params.email + ' Deleted');
                         res.redirect('/users/management/viewUsers');
                     })
+                    .catch(err => {
+                        req.flash('error_msg', 'Cannot delete the user due to some error.');
+                        res.redirect('back');
+                    })
             }
+        })
+        .catch(err => {
+            req.flash('error_msg', 'Cannot find the user.');
+            res.redirect('back');
         })
 });
 
@@ -217,7 +245,15 @@ router.get('/management/home', ensureAuthenticated, (req, res) => {
                             res.render('users/management/home', { result });
                         }
                     })
+                    .catch(err => {
+                        req.flash('error_msg', 'Error while retreving marks.');
+                        res.redirect('back');
+                    })
             }
+        })
+        .catch(err => {
+            req.flash('error_msg', 'Cannot find the user.');
+            res.redirect('back');
         })
 });
 
@@ -262,6 +298,10 @@ router.post('/management/search', (req, res) => {
                 res.render('users/management/home', { result, fltEmail, academicYear, name, finalMarks, year, dept });
             }
         })
+        .catch(err => {
+            req.flash('error_msg', 'Error while filtering data.');
+            res.redirect('back');
+        })
 });
 
 // HoD Appraisal List route
@@ -282,7 +322,15 @@ router.get('/hod/appraisalList', ensureAuthenticated, (req, res) => {
                             res.render('users/hod/appraisalList', { result });
                         }
                     })
+                    .catch(err => {
+                        req.flash('error_msg', 'Error while retreving data.');
+                        res.redirect('back');
+                    })
             }
+        })
+        .catch(err => {
+            req.flash('error_msg', 'Cannot find the user.');
+            res.redirect('back');
         })
 });
 
@@ -308,6 +356,10 @@ router.post('/hod/search', (req, res) => {
             } else {
                 res.render('users/hod/appraisalList', { result, fltEmail, academicYear });
             }
+        })
+        .catch(err => {
+            req.flash('error_msg', 'Cannot filter data due to some error.');
+            res.redirect('back');
         })
 });
 
@@ -509,6 +561,8 @@ router.post('/faculty/facultyOverview/:year', (req, res) => {
                     })
                     .catch(err => {
                         if (err) throw err;
+                        req.flash('error_msg', 'There was an error while performing the tasks.');
+                        res.redirect('back');
                     })
             }
         })
@@ -1746,7 +1800,15 @@ router.get('/hod/home', ensureAuthenticated, (req, res) => {
                             faculty: result
                         });
                     })
+                    .catch(() => {
+                        req.flash('error_msg', 'Perticular faculty not found.');
+                        res.redirect('back');
+                    })
             }
+        })
+        .catch(() => {
+            req.flash('error_msg', 'Cannot find the user.');
+            res.redirect('back');
         })
 });
 
@@ -1762,6 +1824,10 @@ router.get('/hod/deleteFaculty/:id', ensureAuthenticated, (req, res) => {
                     .then(() => {
                         req.flash('success_msg', 'User deleted successfully');
                         res.redirect('/users/hod/home');
+                    })
+                    .catch(() => {
+                        req.flash('error_msg', 'Cannot find the user. Please try again');
+                        res.redirect('back');
                     })
             }
         })
@@ -1815,6 +1881,10 @@ router.post('/hod/finalSubmit/:id/:year', (req, res) => {
                     req.flash('success_msg', 'Marks added successfully');
                     res.redirect('/users/hod/home');
                 })
+                .catch(() => {
+                    req.flash('error_msg', 'Cannot save the data. Please try logging in again.');
+                    res.redirect('back');
+                })
         })
     }
 });
@@ -1830,6 +1900,10 @@ router.get('/hod/registerFaculty', ensureAuthenticated, (req, res) => {
                 var dept = result.department;
                 res.render('users/hod/registerFaculty', { dept });
             }
+        })
+        .catch(() => {
+            req.flash('error_msg', 'Cannot find the user.');
+            res.redirect('back');
         })
 });
 
@@ -1878,6 +1952,10 @@ router.post('/registerFaculty', (req, res) => {
                         });
                     });
                 }
+            })
+            .catch(() => {
+                req.flash('error_msg', 'Cannot find the user.');
+                res.redirect('back');
             })
     }
 });

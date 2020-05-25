@@ -94,6 +94,10 @@ router.get('/timeTable', ensureAuthenticated, (req, res) => {
                 .then(result => {
                     res.render('annexure-1/timeTable', { result });
                 })
+                .catch(() => {
+                    req.flash('error_msg', 'Error while retrieving data.');
+                    res.redirect('/');
+                })
         })
         .catch(() => {
             req.flash('error_msg', 'Select the academic year before proceeding.');
@@ -113,6 +117,10 @@ router.get('/classAdvisor', ensureAuthenticated, (req, res) => {
             ClassAdvisor.find({ $and: [{ user: req.user.id }, { academic_year: year }] })
                 .then(result => {
                     res.render('annexure-1/classAdvisor', { result });
+                })
+                .catch(() => {
+                    req.flash('error_msg', 'Error while retrieving data.');
+                    res.redirect('/');
                 })
         })
         .catch(() => {
@@ -134,6 +142,10 @@ router.get('/sportsActivities', ensureAuthenticated, (req, res) => {
                 .then(result => {
                     res.render('annexure-1/sportsActivities', { result });
                 })
+                .catch(() => {
+                    req.flash('error_msg', 'Error while retrieving data.');
+                    res.redirect('/');
+                })
         })
         .catch(() => {
             req.flash('error_msg', 'Select the academic year before proceeding.');
@@ -153,6 +165,10 @@ router.get('/culturalActivities', ensureAuthenticated, (req, res) => {
             CulturalActivities.find({ $and: [{ user: req.user.id }, { academic_year: year }] })
                 .then(result => {
                     res.render('annexure-1/culturalActivities', { result });
+                })
+                .catch(() => {
+                    req.flash('error_msg', 'Error while retrieving data.');
+                    res.redirect('/');
                 })
         })
         .catch(() => {
@@ -174,6 +190,10 @@ router.get('/projectBasedLearning', ensureAuthenticated, (req, res) => {
                 .then(result => {
                     res.render('annexure-1/projectBasedLearning', { result });
                 })
+                .catch(() => {
+                    req.flash('error_msg', 'Error while retrieving data.');
+                    res.redirect('/');
+                })
         })
         .catch(() => {
             req.flash('error_msg', 'Select the academic year before proceeding.');
@@ -193,6 +213,10 @@ router.get('/udaan', ensureAuthenticated, (req, res) => {
             Udaan.find({ $and: [{ user: req.user.id }, { academic_year: year }] })
                 .then(result => {
                     res.render('annexure-1/udaan', { result });
+                })
+                .catch(() => {
+                    req.flash('error_msg', 'Error while retrieving data.');
+                    res.redirect('/');
                 })
         })
         .catch(() => {
@@ -214,6 +238,10 @@ router.get('/placementActivities', ensureAuthenticated, (req, res) => {
                 .then(result => {
                     res.render('annexure-1/placementActivities', { result });
                 })
+                .catch(() => {
+                    req.flash('error_msg', 'Error while retrieving data.');
+                    res.redirect('/');
+                })
         })
         .catch(() => {
             req.flash('error_msg', 'Select the academic year before proceeding.');
@@ -233,6 +261,10 @@ router.get('/inhousePlacement', ensureAuthenticated, (req, res) => {
             InhousePlacement.find({ $and: [{ user: req.user.id }, { academic_year: year }] })
                 .then(result => {
                     res.render('annexure-1/inhousePlacement', { result });
+                })
+                .catch(() => {
+                    req.flash('error_msg', 'Error while retrieving data.');
+                    res.redirect('/');
                 })
         })
         .catch(() => {
@@ -254,6 +286,10 @@ router.get('/studentorganizations', ensureAuthenticated, (req, res) => {
                 .then(result => {
                     res.render('annexure-1/studentorganizations', { result });
                 })
+                .catch(() => {
+                    req.flash('error_msg', 'Error while retrieving data.');
+                    res.redirect('/');
+                })
         })
         .catch(() => {
             req.flash('error_msg', 'Select the academic year before proceeding.');
@@ -273,6 +309,10 @@ router.get('/industrialVisitActivities', ensureAuthenticated, (req, res) => {
             IndustrialVisitActivities.find({ $and: [{ user: req.user.id }, { academic_year: year }] })
                 .then(result => {
                     res.render('annexure-1/industrialVisitActivities', { result });
+                })
+                .catch(() => {
+                    req.flash('error_msg', 'Error while retrieving data.');
+                    res.redirect('/');
                 })
         })
         .catch(() => {
@@ -294,6 +334,10 @@ router.get('/admissionProcessActivities', ensureAuthenticated, (req, res) => {
                 .then(result => {
                     res.render('annexure-1/admissionProcessActivities', { result });
                 })
+                .catch(() => {
+                    req.flash('error_msg', 'Error while retrieving data.');
+                    res.redirect('/');
+                })
         })
         .catch(() => {
             req.flash('error_msg', 'Select the academic year before proceeding.');
@@ -313,6 +357,10 @@ router.get('/examAssessmentExternal', ensureAuthenticated, (req, res) => {
             ExamAssessmentExternal.find({ $and: [{ user: req.user.id }, { academic_year: year }] })
                 .then(result => {
                     res.render('annexure-1/examAssessmentExternal', { result });
+                })
+                .catch(() => {
+                    req.flash('error_msg', 'Error while retrieving data.');
+                    res.redirect('/');
                 })
         })
         .catch(() => {
@@ -334,6 +382,10 @@ router.get('/examActivitiesSupervision', ensureAuthenticated, (req, res) => {
                 .then(result => {
                     res.render('annexure-1/examActivitiesSupervision', { result });
                 })
+                .catch(() => {
+                    req.flash('error_msg', 'Error while retrieving data.');
+                    res.redirect('/');
+                })
         })
         .catch(() => {
             req.flash('error_msg', 'Select the academic year before proceeding.');
@@ -353,6 +405,10 @@ router.get('/examActivitiesCollegeLevel', ensureAuthenticated, (req, res) => {
             ExamActivitiesCollegeLevel.find({ $and: [{ user: req.user.id }, { academic_year: year }] })
                 .then(result => {
                     res.render('annexure-1/examActivitiesCollegeLevel', { result });
+                })
+                .catch(() => {
+                    req.flash('error_msg', 'Error while retrieving data.');
+                    res.redirect('/');
                 })
         })
         .catch(() => {
@@ -374,6 +430,10 @@ router.get('/ITmaintenance', ensureAuthenticated, (req, res) => {
                 .then(result => {
                     res.render('annexure-1/ITmaintenance', { result });
                 })
+                .catch(() => {
+                    req.flash('error_msg', 'Error while retrieving data.');
+                    res.redirect('/');
+                })
         })
         .catch(() => {
             req.flash('error_msg', 'Select the academic year before proceeding.');
@@ -393,6 +453,10 @@ router.get('/lakshya', ensureAuthenticated, (req, res) => {
             Lakshya.find({ $and: [{ user: req.user.id }, { academic_year: year }] })
                 .then(result => {
                     res.render('annexure-1/lakshya', { result });
+                })
+                .catch(() => {
+                    req.flash('error_msg', 'Error while retrieving data.');
+                    res.redirect('/');
                 })
         })
         .catch(() => {
@@ -414,6 +478,10 @@ router.get('/magazineNewsletter', ensureAuthenticated, (req, res) => {
                 .then(result => {
                     res.render('annexure-1/magazineNewsletter', { result });
                 })
+                .catch(() => {
+                    req.flash('error_msg', 'Error while retrieving data.');
+                    res.redirect('/');
+                })
         })
         .catch(() => {
             req.flash('error_msg', 'Select the academic year before proceeding.');
@@ -433,6 +501,10 @@ router.get('/conductOfSTTP', ensureAuthenticated, (req, res) => {
             STTP.find({ $and: [{ user: req.user.id }, { academic_year: year }] })
                 .then(result => {
                     res.render('annexure-1/conductOfSTTP', { result });
+                })
+                .catch(() => {
+                    req.flash('error_msg', 'Error while retrieving data.');
+                    res.redirect('/');
                 })
         })
         .catch(() => {
@@ -454,6 +526,10 @@ router.get('/departmentUGProjects', ensureAuthenticated, (req, res) => {
                 .then(result => {
                     res.render('annexure-1/departmentUGProjects', { result });
                 })
+                .catch(() => {
+                    req.flash('error_msg', 'Error while retrieving data.');
+                    res.redirect('/');
+                })
         })
         .catch(() => {
             req.flash('error_msg', 'Select the academic year before proceeding.');
@@ -473,6 +549,10 @@ router.get('/timeTable/edit/:id', ensureAuthenticated, (req, res) => {
                 res.render('annexure-1/timeTable', { editResult: result });
             }
         })
+        .catch(() => {
+            req.flash('error_msg', 'Error while finding your previous data. Please try again.');
+            res.redirect('/annexure-1/timeTable');
+        })
 });
 
 // Class advisor load route
@@ -485,6 +565,10 @@ router.get('/classAdvisor/edit/:id', ensureAuthenticated, (req, res) => {
             } else {
                 res.render('annexure-1/classAdvisor', { editResult: result });
             }
+        })
+        .catch(() => {
+            req.flash('error_msg', 'Error while finding your previous data. Please try again.');
+            res.redirect('/annexure-1/classAdvisor');
         })
 });
 
@@ -499,6 +583,10 @@ router.get('/sportsActivities/edit/:id', ensureAuthenticated, (req, res) => {
                 res.render('annexure-1/sportsActivities', { editResult: result });
             }
         })
+        .catch(() => {
+            req.flash('error_msg', 'Error while finding your previous data. Please try again.');
+            res.redirect('/annexure-1/sportsActivities');
+        })
 });
 
 // Cultural activity load route
@@ -511,6 +599,10 @@ router.get('/culturalActivities/edit/:id', ensureAuthenticated, (req, res) => {
             } else {
                 res.render('annexure-1/culturalActivities', { editResult: result });
             }
+        })
+        .catch(() => {
+            req.flash('error_msg', 'Error while finding your previous data. Please try again.');
+            res.redirect('/annexure-1/culturalActivities');
         })
 });
 
@@ -525,6 +617,10 @@ router.get('/projectBasedLearning/edit/:id', ensureAuthenticated, (req, res) => 
                 res.render('annexure-1/projectBasedLearning', { editResult: result });
             }
         })
+        .catch(() => {
+            req.flash('error_msg', 'Error while finding your previous data. Please try again.');
+            res.redirect('/annexure-1/projectBasedLearning');
+        })
 });
 
 // udaan load route
@@ -537,6 +633,10 @@ router.get('/udaan/edit/:id', ensureAuthenticated, (req, res) => {
             } else {
                 res.render('annexure-1/udaan', { editResult: result });
             }
+        })
+        .catch(() => {
+            req.flash('error_msg', 'Error while finding your previous data. Please try again.');
+            res.redirect('/annexure-1/udaan');
         })
 });
 
@@ -551,6 +651,10 @@ router.get('/placementActivities/edit/:id', ensureAuthenticated, (req, res) => {
                 res.render('annexure-1/placementActivities', { editResult: result });
             }
         })
+        .catch(() => {
+            req.flash('error_msg', 'Error while finding your previous data. Please try again.');
+            res.redirect('/annexure-1/placementActivities');
+        })
 });
 
 // Inhouse placement load route
@@ -563,6 +667,10 @@ router.get('/inhousePlacement/edit/:id', ensureAuthenticated, (req, res) => {
             } else {
                 res.render('annexure-1/inhousePlacement', { editResult: result });
             }
+        })
+        .catch(() => {
+            req.flash('error_msg', 'Error while finding your previous data. Please try again.');
+            res.redirect('/annexure-1/inhousePlacement');
         })
 });
 
@@ -577,6 +685,10 @@ router.get('/studentOrganizations/edit/:id', ensureAuthenticated, (req, res) => 
                 res.render('annexure-1/studentorganizations', { editResult: result });
             }
         })
+        .catch(() => {
+            req.flash('error_msg', 'Error while finding your previous data. Please try again.');
+            res.redirect('/annexure-1/studentOrganizations');
+        })
 });
 
 // Industrial visit load route
@@ -589,6 +701,10 @@ router.get('/industrialVisitActivities/edit/:id', ensureAuthenticated, (req, res
             } else {
                 res.render('annexure-1/industrialVisitActivities', { editResult: result });
             }
+        })
+        .catch(() => {
+            req.flash('error_msg', 'Error while finding your previous data. Please try again.');
+            res.redirect('/annexure-1/industrialVisitActivities');
         })
 });
 
@@ -603,6 +719,10 @@ router.get('/admissionProcessActivities/edit/:id', ensureAuthenticated, (req, re
                 res.render('annexure-1/admissionProcessActivities', { editResult: result });
             }
         })
+        .catch(() => {
+            req.flash('error_msg', 'Error while finding your previous data. Please try again.');
+            res.redirect('/annexure-1/admissionProcessActivities');
+        })
 });
 
 // exam assesssment external load route
@@ -615,6 +735,10 @@ router.get('/examAssessmentExternal/edit/:id', ensureAuthenticated, (req, res) =
             } else {
                 res.render('annexure-1/examAssessmentExternal', { editResult: result });
             }
+        })
+        .catch(() => {
+            req.flash('error_msg', 'Error while finding your previous data. Please try again.');
+            res.redirect('/annexure-1/examAssessmentExternal');
         })
 });
 
@@ -629,6 +753,10 @@ router.get('/examActivitiesSupervision/edit/:id', ensureAuthenticated, (req, res
                 res.render('annexure-1/examActivitiesSupervision', { editResult: result });
             }
         })
+        .catch(() => {
+            req.flash('error_msg', 'Error while finding your previous data. Please try again.');
+            res.redirect('/annexure-1/examActivitiesSupervision');
+        })
 });
 
 // exam activities college level route
@@ -641,6 +769,10 @@ router.get('/examActivitiesCollegeLevel/edit/:id', ensureAuthenticated, (req, re
             } else {
                 res.render('annexure-1/examActivitiesCollegeLevel', { editResult: result });
             }
+        })
+        .catch(() => {
+            req.flash('error_msg', 'Error while finding your previous data. Please try again.');
+            res.redirect('/annexure-1/examActivitiesCollegeLevel');
         })
 });
 
@@ -655,6 +787,10 @@ router.get('/ITmaintenance/edit/:id', ensureAuthenticated, (req, res) => {
                 res.render('annexure-1/ITmaintenance', { editResult: result });
             }
         })
+        .catch(() => {
+            req.flash('error_msg', 'Error while finding your previous data. Please try again.');
+            res.redirect('/annexure-1/ITmaintenance');
+        })
 });
 
 // Load Lakshya route
@@ -667,6 +803,10 @@ router.get('/lakshya/edit/:id', ensureAuthenticated, (req, res) => {
             } else {
                 res.render('annexure-1/lakshya', { editResult: result });
             }
+        })
+        .catch(() => {
+            req.flash('error_msg', 'Error while finding your previous data. Please try again.');
+            res.redirect('/annexure-1/lakshya');
         })
 });
 
@@ -681,6 +821,10 @@ router.get('/magazineNewsletter/edit/:id', ensureAuthenticated, (req, res) => {
                 res.render('annexure-1/magazineNewsletter', { editResult: result });
             }
         })
+        .catch(() => {
+            req.flash('error_msg', 'Error while finding your previous data. Please try again.');
+            res.redirect('/annexure-1/magazineNewsletter');
+        })
 });
 
 // sttp load route
@@ -694,6 +838,10 @@ router.get('/conductOfSTTP/edit/:id', ensureAuthenticated, (req, res) => {
                 res.render('annexure-1/conductOfSTTP', { editResult: result });
             }
         })
+        .catch(() => {
+            req.flash('error_msg', 'Error while finding your previous data. Please try again.');
+            res.redirect('/annexure-1/conductOfSTTP');
+        })
 });
 
 // Dept. UG Project load route
@@ -706,6 +854,10 @@ router.get('/departmentUGProjects/edit/:id', ensureAuthenticated, (req, res) => 
             } else {
                 res.render('annexure-1/departmentUGProjects', { editResult: result });
             }
+        })
+        .catch(() => {
+            req.flash('error_msg', 'Error while finding your previous data. Please try again.');
+            res.redirect('/annexure-1/departmentUGProjects');
         })
 });
 
@@ -724,7 +876,12 @@ router.post('/timeTable', (req, res) => {
         .then(timetable => {
             req.flash('success_msg', 'Data entered successfully');
             res.redirect('/annexure-1/classAdvisor');
-        });
+        })
+        .catch(err => {
+            console.log(err);
+            req.flash('error_msg', 'faculty ID not found please login again.');
+            res.redirect('/annexure-1/timeTable');
+        })
 });
 
 //process class advisor form
@@ -743,7 +900,12 @@ router.post('/classAdvisor', (req, res) => {
         .then(classAdvisor => {
             req.flash('success_msg', 'Data entered successfully');
             res.redirect('/annexure-1/sportsActivities');
-        });
+        })
+        .catch(err => {
+            console.log(err);
+            req.flash('error_msg', 'faculty ID not found please login again.');
+            res.redirect('/annexure-1/classAdvisor');
+        })
 });
 
 //process sports activities form
@@ -762,7 +924,12 @@ router.post('/sportsActivities', (req, res) => {
         .then(sportsactivities => {
             req.flash('success_msg', 'Data entered successfully');
             res.redirect('/annexure-1/culturalActivities');
-        });
+        })
+        .catch(err => {
+            console.log(err);
+            req.flash('error_msg', 'faculty ID not found please login again.');
+            res.redirect('/annexure-1/sportsActivities');
+        })
 });
 
 //process cultural activities form
@@ -781,7 +948,12 @@ router.post('/culturalActivities', (req, res) => {
         .then(culturalactivities => {
             req.flash('success_msg', 'Data entered successfully');
             res.redirect('/annexure-1/projectBasedLearning');
-        });
+        })
+        .catch(err => {
+            console.log(err);
+            req.flash('error_msg', 'faculty ID not found please login again.');
+            res.redirect('/annexure-1/culturalActivities');
+        })
 });
 
 //process PBL activities form
@@ -818,7 +990,12 @@ router.post('/projectBasedLearning', (req, res) => {
             .then(projectBasedLearning => {
                 req.flash('success_msg', 'Data entered successfully');
                 res.redirect('/annexure-1/udaan');
-            });
+            })
+            .catch(err => {
+                console.log(err);
+                req.flash('error_msg', 'faculty ID not found please login again.');
+                res.redirect('/annexure-1/projectBasedLearning');
+            })
     }
 });
 
@@ -854,7 +1031,12 @@ router.post('/udaan', (req, res) => {
             .then(udaan => {
                 req.flash('success_msg', 'Data entered successfully');
                 res.redirect('/annexure-1/placementActivities');
-            });
+            })
+            .catch(err => {
+                console.log(err);
+                req.flash('error_msg', 'faculty ID not found please login again.');
+                res.redirect('/annexure-1/udaan');
+            })
     }
 });
 
@@ -893,7 +1075,12 @@ router.post('/placementActivities', (req, res) => {
             .then(placementActivities => {
                 req.flash('success_msg', 'Data entered successfully');
                 res.redirect('/annexure-1/inhousePlacement');
-            });
+            })
+            .catch(err => {
+                console.log(err);
+                req.flash('error_msg', 'faculty ID not found please login again.');
+                res.redirect('/annexure-1/placementActivities');
+            })
     }
 });
 
@@ -929,7 +1116,12 @@ router.post('/inhousePlacement', (req, res) => {
             .then(inhousePlacement => {
                 req.flash('success_msg', 'Data entered successfully');
                 res.redirect('/annexure-1/studentorganizations');
-            });
+            })
+            .catch(err => {
+                console.log(err);
+                req.flash('error_msg', 'faculty ID not found please login again.');
+                res.redirect('/annexure-1/inhousePlacement');
+            })
     }
 });
 
@@ -979,7 +1171,12 @@ router.post('/studentorganizations', (req, res) => {
             .then(studentOrganization => {
                 req.flash('success_msg', 'Data entered successfully');
                 res.redirect('/annexure-1/industrialVisitActivities');
-            });
+            })
+            .catch(err => {
+                console.log(err);
+                req.flash('error_msg', 'faculty ID not found please login again.');
+                res.redirect('/annexure-1/studentorganizations');
+            })
     }
 });
 
@@ -1033,7 +1230,12 @@ router.post('/industrialVisitActivities', (req, res) => {
             .then(industrialVisit => {
                 req.flash('success_msg', 'Data entered successfully');
                 res.redirect('/annexure-1/admissionProcessActivities');
-            });
+            })
+            .catch(err => {
+                console.log(err);
+                req.flash('error_msg', 'faculty ID not found please login again.');
+                res.redirect('/annexure-1/industrialVisitActivities');
+            })
     }
 });
 
@@ -1072,7 +1274,12 @@ router.post('/admissionProcessActivities', (req, res) => {
             .then(industrialVisit => {
                 req.flash('success_msg', 'Data entered successfully');
                 res.redirect('/annexure-1/examAssessmentExternal');
-            });
+            })
+            .catch(err => {
+                console.log(err);
+                req.flash('error_msg', 'faculty ID not found please login again.');
+                res.redirect('/annexure-1/admissionProcessActivities');
+            })
     }
 
 });
@@ -1118,7 +1325,12 @@ router.post('/examAssessmentExternal', (req, res) => {
             .then(examAssessment => {
                 req.flash('success_msg', 'Data entered successfully');
                 res.redirect('/annexure-1/examActivitiesSupervision');
-            });
+            })
+            .catch(err => {
+                console.log(err);
+                req.flash('error_msg', 'faculty ID not found please login again.');
+                res.redirect('/annexure-1/examAssessmentExternal');
+            })
     }
 });
 
@@ -1162,7 +1374,12 @@ router.post('/examActivitiesSupervision', (req, res) => {
             .then(examActivitiesSupervision => {
                 req.flash('success_msg', 'Data entered successfully');
                 res.redirect('/annexure-1/examActivitiesCollegeLevel');
-            });
+            })
+            .catch(err => {
+                console.log(err);
+                req.flash('error_msg', 'faculty ID not found please login again.');
+                res.redirect('/annexure-1/examActivitiesSupervision');
+            })
     }
 });
 
@@ -1180,7 +1397,12 @@ router.post('/examActivitiesCollegeLevel', (req, res) => {
         .then(examActivitiesCollege => {
             req.flash('success_msg', 'Data entered successfully');
             res.redirect('/annexure-1/ITmaintenance');
-        });
+        })
+        .catch(err => {
+            console.log(err);
+            req.flash('error_msg', 'faculty ID not found please login again.');
+            res.redirect('/annexure-1/examActivitiesCollegeLevel');
+        })
 });
 
 //process inhouse placement form
@@ -1199,7 +1421,12 @@ router.post('/ITmaintenance', (req, res) => {
         .then(ITmaintenance => {
             req.flash('success_msg', 'Data entered successfully');
             res.redirect('/annexure-1/lakshya');
-        });
+        })
+        .catch(err => {
+            console.log(err);
+            req.flash('error_msg', 'faculty ID not found please login again.');
+            res.redirect('/annexure-1/ITmaintenance');
+        })
 });
 
 //process lakshya form
@@ -1234,7 +1461,12 @@ router.post('/lakshya', (req, res) => {
             .then(lakshyaData => {
                 req.flash('success_msg', 'Data entered successfully');
                 res.redirect('/annexure-1/magazineNewsletter');
-            });
+            })
+            .catch(err => {
+                console.log(err);
+                req.flash('error_msg', 'faculty ID not found please login again.');
+                res.redirect('/annexure-1/lakshya');
+            })
     }
 });
 
@@ -1254,7 +1486,12 @@ router.post('/magazineNewsletter', (req, res) => {
         .then(magazineNewsletter => {
             req.flash('success_msg', 'Data entered successfully');
             res.redirect('/annexure-1/conductOfSTTP');
-        });
+        })
+        .catch(err => {
+            console.log(err);
+            req.flash('error_msg', 'faculty ID not found please login again.');
+            res.redirect('/annexure-1/magazineNewsletter');
+        })
 });
 
 //process student organizations form
@@ -1306,7 +1543,12 @@ router.post('/conductOfSTTP', (req, res) => {
             .then(sttp => {
                 req.flash('success_msg', 'Data entered successfully');
                 res.redirect('/annexure-1/departmentUGProjects');
-            });
+            })
+            .catch(err => {
+                console.log(err);
+                req.flash('error_msg', 'faculty ID not found please login again.');
+                res.redirect('/annexure-1/conductOfSTTP');
+            })
     }
 });
 
@@ -1340,7 +1582,12 @@ router.post('/departmentUGProjects', (req, res) => {
             .then(departmentUGProject => {
                 req.flash('success_msg', 'Data entered successfully');
                 res.redirect('/annexure-2/papersPublishedinNationalConf');
-            });
+            })
+            .catch(err => {
+                console.log(err);
+                req.flash('error_msg', 'faculty ID not found please login again.');
+                res.redirect('/annexure-1/departmentUGProjects');
+            })
     }
 });
 
@@ -1357,6 +1604,14 @@ router.put('/timeTable/:id', (req, res) => {
                     req.flash('success_msg', 'Data updated successfully');
                     res.redirect('/annexure-1/timeTable');
                 })
+                .catch(() => {
+                    req.flash('error_msg', 'Data not updated. Please try logging in again.');
+                    res.redirect('/annexure-1/timeTable');
+                })
+        })
+        .catch(() => {
+            req.flash('error_msg', 'User not found. Please try logging in again.');
+            res.redirect('/annexure-1/timeTable');
         })
 });
 
@@ -1373,6 +1628,14 @@ router.put('/classAdvisor/:id', (req, res) => {
                     req.flash('success_msg', 'Data updated successfully');
                     res.redirect('/annexure-1/classAdvisor');
                 })
+                .catch(() => {
+                    req.flash('error_msg', 'Data not updated. Please try logging in again.');
+                    res.redirect('/annexure-1/classAdvisor');
+                })
+        })
+        .catch(() => {
+            req.flash('error_msg', 'User not found. Please try logging in again.');
+            res.redirect('/annexure-1/classAdvisor');
         })
 });
 
@@ -1389,6 +1652,14 @@ router.put('/sportsActivities/:id', (req, res) => {
                     req.flash('success_msg', 'Data updated successfully');
                     res.redirect('/annexure-1/sportsActivities');
                 })
+                .catch(() => {
+                    req.flash('error_msg', 'Data not updated. Please try logging in again.');
+                    res.redirect('/annexure-1/sportsActivities');
+                })
+        })
+        .catch(() => {
+            req.flash('error_msg', 'User not found. Please try logging in again.');
+            res.redirect('/annexure-1/sportsActivities');
         })
 });
 
@@ -1405,6 +1676,14 @@ router.put('/culturalActivities/:id', (req, res) => {
                     req.flash('success_msg', 'Data updated successfully');
                     res.redirect('/annexure-1/culturalActivities');
                 })
+                .catch(() => {
+                    req.flash('error_msg', 'Data not updated. Please try logging in again.');
+                    res.redirect('/annexure-1/culturalActivities');
+                })
+        })
+        .catch(() => {
+            req.flash('error_msg', 'User not found. Please try logging in again.');
+            res.redirect('/annexure-1/culturalActivities');
         })
 });
 
@@ -1433,6 +1712,14 @@ router.put('/projectBasedLearning/:id', (req, res) => {
                         req.flash('success_msg', 'Data updated successfully');
                         res.redirect('/annexure-1/projectBasedLearning');
                     })
+                    .catch(() => {
+                        req.flash('error_msg', 'Data not updated. Please try logging in again.');
+                        res.redirect('/annexure-1/projectBasedLearning');
+                    })
+            })
+            .catch(() => {
+                req.flash('error_msg', 'User not found. Please try logging in again.');
+                res.redirect('/annexure-1/projectBasedLearning');
             })
     }
 });
@@ -1461,6 +1748,14 @@ router.put('/udaan/:id', (req, res) => {
                         req.flash('success_msg', 'Data updated successfully');
                         res.redirect('/annexure-1/udaan');
                     })
+                    .catch(() => {
+                        req.flash('error_msg', 'Data not updated. Please try logging in again.');
+                        res.redirect('/annexure-1/udaan');
+                    })
+            })
+            .catch(() => {
+                req.flash('error_msg', 'User not found. Please try logging in again.');
+                res.redirect('/annexure-1/udaan');
             })
     }
 });
@@ -1497,6 +1792,14 @@ router.put('/placementActivities/:id', (req, res) => {
                         req.flash('success_msg', 'Data updated successfully');
                         res.redirect('/annexure-1/placementActivities');
                     })
+                    .catch(() => {
+                        req.flash('error_msg', 'Data not updated. Please try logging in again.');
+                        res.redirect('/annexure-1/placementActivities');
+                    })
+            })
+            .catch(() => {
+                req.flash('error_msg', 'User not found. Please try logging in again.');
+                res.redirect('/annexure-1/placementActivities');
             })
     }
 });
@@ -1525,6 +1828,14 @@ router.put('/inhousePlacement/:id', (req, res) => {
                         req.flash('success_msg', 'Data updated successfully');
                         res.redirect('/annexure-1/inhousePlacement');
                     })
+                    .catch(() => {
+                        req.flash('error_msg', 'Data not updated. Please try logging in again.');
+                        res.redirect('/annexure-1/inhousePlacement');
+                    })
+            })
+            .catch(() => {
+                req.flash('error_msg', 'User not found. Please try logging in again.');
+                res.redirect('/annexure-1/inhousePlacement');
             })
     }
 });
@@ -1571,6 +1882,14 @@ router.put('/studentorganizations/:id', (req, res) => {
                         req.flash('success_msg', 'Data updated successfully');
                         res.redirect('/annexure-1/studentorganizations');
                     })
+                    .catch(() => {
+                        req.flash('error_msg', 'Data not updated. Please try logging in again.');
+                        res.redirect('/annexure-1/studentorganizations');
+                    })
+            })
+            .catch(() => {
+                req.flash('error_msg', 'User not found. Please try logging in again.');
+                res.redirect('/annexure-1/studentorganizations');
             })
     }
 });
@@ -1618,6 +1937,14 @@ router.put('/industrialVisitActivities/:id', (req, res) => {
                     req.flash('success_msg', 'Data updated successfully');
                     res.redirect('/annexure-1/industrialVisitActivities');
                 })
+                .catch(() => {
+                    req.flash('error_msg', 'Data not updated. Please try logging in again.');
+                    res.redirect('/annexure-1/industrialVisitActivities');
+                })
+        })
+        .catch(() => {
+            req.flash('error_msg', 'User not found. Please try logging in again.');
+            res.redirect('/annexure-1/industrialVisitActivities');
         })
 });
 
@@ -1646,6 +1973,14 @@ router.put('/admissionProcessActivities/:id', (req, res) => {
                         req.flash('success_msg', 'Data updated successfully');
                         res.redirect('/annexure-1/admissionProcessActivities');
                     })
+                    .catch(() => {
+                        req.flash('error_msg', 'Data not updated. Please try logging in again.');
+                        res.redirect('/annexure-1/admissionProcessActivities');
+                    })
+            })
+            .catch(() => {
+                req.flash('error_msg', 'User not found. Please try logging in again.');
+                res.redirect('/annexure-1/admissionProcessActivities');
             })
     }
 });
@@ -1684,6 +2019,14 @@ router.put('/examAssessmentExternal/:id', (req, res) => {
                         req.flash('success_msg', 'Data updated successfully');
                         res.redirect('/annexure-1/examAssessmentExternal');
                     })
+                    .catch(() => {
+                        req.flash('error_msg', 'Data not updated. Please try logging in again.');
+                        res.redirect('/annexure-1/examAssessmentExternal');
+                    })
+            })
+            .catch(() => {
+                req.flash('error_msg', 'User not found. Please try logging in again.');
+                res.redirect('/annexure-1/examAssessmentExternal');
             })
     }
 });
@@ -1734,6 +2077,14 @@ router.put('/examActivitiesSupervision/:id', (req, res) => {
                         req.flash('success_msg', 'Data updated successfully');
                         res.redirect('/annexure-1/examActivitiesSupervision');
                     })
+                    .catch(() => {
+                        req.flash('error_msg', 'Data not updated. Please try logging in again.');
+                        res.redirect('/annexure-1/examActivitiesSupervision');
+                    })
+            })
+            .catch(() => {
+                req.flash('error_msg', 'User not found. Please try logging in again.');
+                res.redirect('/annexure-1/examActivitiesSupervision');
             })
     }
 });
@@ -1750,6 +2101,14 @@ router.put('/examActivitiesCollegeLevel/:id', (req, res) => {
                     req.flash('success_msg', 'Data updated successfully');
                     res.redirect('/annexure-1/examActivitiesCollegeLevel');
                 })
+                .catch(() => {
+                    req.flash('error_msg', 'Data not updated. Please try logging in again.');
+                    res.redirect('/annexure-1/examActivitiesCollegeLevel');
+                })
+        })
+        .catch(() => {
+            req.flash('error_msg', 'User not found. Please try logging in again.');
+            res.redirect('/annexure-1/examActivitiesCollegeLevel');
         })
 });
 
@@ -1766,6 +2125,14 @@ router.put('/ITmaintenance/:id', (req, res) => {
                     req.flash('success_msg', 'Data updated successfully');
                     res.redirect('/annexure-1/ITmaintenance');
                 })
+                .catch(() => {
+                    req.flash('error_msg', 'Data not updated. Please try logging in again.');
+                    res.redirect('/annexure-1/ITmaintenance');
+                })
+        })
+        .catch(() => {
+            req.flash('error_msg', 'User not found. Please try logging in again.');
+            res.redirect('/annexure-1/ITmaintenance');
         })
 });
 
@@ -1791,8 +2158,16 @@ router.put('/lakshya/:id', (req, res) => {
                 result.save()
                     .then(() => {
                         req.flash('success_msg', 'Data updated successfully');
-                        res.redirect('/annexure-1/Lakshya');
+                        res.redirect('/annexure-1/lakshya');
                     })
+                    .catch(() => {
+                        req.flash('error_msg', 'Data not updated. Please try logging in again.');
+                        res.redirect('/annexure-1/lakshya');
+                    })
+            })
+            .catch(() => {
+                req.flash('error_msg', 'User not found. Please try logging in again.');
+                res.redirect('/annexure-1/lakshya');
             })
     }
 });
@@ -1810,10 +2185,18 @@ router.put('/magazineNewsletter/:id', (req, res) => {
                     req.flash('success_msg', 'Data updated successfully');
                     res.redirect('/annexure-1/magazineNewsletter');
                 })
+                .catch(() => {
+                    req.flash('error_msg', 'Data not updated. Please try logging in again.');
+                    res.redirect('/annexure-1/magazineNewsletter');
+                })
+        })
+        .catch(() => {
+            req.flash('error_msg', 'User not found. Please try logging in again.');
+            res.redirect('/annexure-1/magazineNewsletter');
         })
 });
 
-router.put('//:id', (req, res) => {
+router.put('/conductOfSTTP/:id', (req, res) => {
     let errors = [];
     if (req.body.sttp_start_date > req.body.sttp_end_date) {
         errors.push({ text: 'End Date should not be before start date' });
@@ -1865,6 +2248,14 @@ router.put('//:id', (req, res) => {
                         req.flash('success_msg', 'Data updated successfully');
                         res.redirect('/annexure-1/conductOfSTTP');
                     })
+                    .catch(() => {
+                        req.flash('error_msg', 'Data not updated. Please try logging in again.');
+                        res.redirect('/annexure-1/conductOfSTTP');
+                    })
+            })
+            .catch(() => {
+                req.flash('error_msg', 'User not found. Please try logging in again.');
+                res.redirect('/annexure-1/conductOfSTTP');
             })
     }
 });
@@ -1892,6 +2283,14 @@ router.put('/departmentUGProjects/:id', (req, res) => {
                         req.flash('success_msg', 'Data updated successfully');
                         res.redirect('/annexure-1/departmentUGProjects');
                     })
+                    .catch(() => {
+                        req.flash('error_msg', 'Data not updated. Please try logging in again.');
+                        res.redirect('/annexure-1/departmentUGProjects');
+                    })
+            })
+            .catch(() => {
+                req.flash('error_msg', 'User not found. Please try logging in again.');
+                res.redirect('/annexure-1/departmentUGProjects');
             })
     }
 });
@@ -1903,12 +2302,20 @@ router.delete('/timeTable/delete/:id', (req, res) => {
             req.flash('success_msg', 'Data deleted successfully');
             res.redirect('/annexure-1/timeTable');
         })
+        .catch(() => {
+            req.flash('error_msg', 'User not found. Please try logging in again.');
+            res.redirect('/annexure-1/timeTable');
+        })
 });
 
 router.delete('/classAdvisor/delete/:id', (req, res) => {
     ClassAdvisor.deleteOne({ _id: req.params.id })
         .then(() => {
             req.flash('success_msg', 'Data deleted successfully');
+            res.redirect('/annexure-1/classAdvisor');
+        })
+        .catch(() => {
+            req.flash('error_msg', 'User not found. Please try logging in again.');
             res.redirect('/annexure-1/classAdvisor');
         })
 });
@@ -1919,12 +2326,20 @@ router.delete('/sportsActivities/delete/:id', (req, res) => {
             req.flash('success_msg', 'Data deleted successfully');
             res.redirect('/annexure-1/sportsActivities');
         })
+        .catch(() => {
+            req.flash('error_msg', 'User not found. Please try logging in again.');
+            res.redirect('/annexure-1/sportsActivities');
+        })
 });
 
 router.delete('/culturalActivities/delete/:id', (req, res) => {
     CulturalActivities.deleteOne({ _id: req.params.id })
         .then(() => {
             req.flash('success_msg', 'Data deleted successfully');
+            res.redirect('/annexure-1/culturalActivities');
+        })
+        .catch(() => {
+            req.flash('error_msg', 'User not found. Please try logging in again.');
             res.redirect('/annexure-1/culturalActivities');
         })
 });
@@ -1935,12 +2350,20 @@ router.delete('/projectBasedLearning/delete/:id', (req, res) => {
             req.flash('success_msg', 'Data deleted successfully');
             res.redirect('/annexure-1/projectBasedLearning');
         })
+        .catch(() => {
+            req.flash('error_msg', 'User not found. Please try logging in again.');
+            res.redirect('/annexure-1/projectBasedLearning');
+        })
 });
 
 router.delete('/udaan/delete/:id', (req, res) => {
     Udaan.deleteOne({ _id: req.params.id })
         .then(() => {
             req.flash('success_msg', 'Data deleted successfully');
+            res.redirect('/annexure-1/udaan');
+        })
+        .catch(() => {
+            req.flash('error_msg', 'User not found. Please try logging in again.');
             res.redirect('/annexure-1/udaan');
         })
 });
@@ -1951,12 +2374,20 @@ router.delete('/placementActivities/delete/:id', (req, res) => {
             req.flash('success_msg', 'Data deleted successfully');
             res.redirect('/annexure-1/placementActivities');
         })
+        .catch(() => {
+            req.flash('error_msg', 'User not found. Please try logging in again.');
+            res.redirect('/annexure-1/placementActivities');
+        })
 });
 
 router.delete('/inhousePlacement/delete/:id', (req, res) => {
     InhousePlacement.deleteOne({ _id: req.params.id })
         .then(() => {
             req.flash('success_msg', 'Data deleted successfully');
+            res.redirect('/annexure-1/inhousePlacement');
+        })
+        .catch(() => {
+            req.flash('error_msg', 'User not found. Please try logging in again.');
             res.redirect('/annexure-1/inhousePlacement');
         })
 });
@@ -1967,12 +2398,20 @@ router.delete('/studentorganizations/delete/:id', (req, res) => {
             req.flash('success_msg', 'Data deleted successfully');
             res.redirect('/annexure-1/studentorganizations');
         })
+        .catch(() => {
+            req.flash('error_msg', 'User not found. Please try logging in again.');
+            res.redirect('/annexure-1/studentorganizations');
+        })
 });
 
 router.delete('/industrialVisitActivities/delete/:id', (req, res) => {
     IndustrialVisitActivities.deleteOne({ _id: req.params.id })
         .then(() => {
             req.flash('success_msg', 'Data deleted successfully');
+            res.redirect('/annexure-1/industrialVisitActivities');
+        })
+        .catch(() => {
+            req.flash('error_msg', 'User not found. Please try logging in again.');
             res.redirect('/annexure-1/industrialVisitActivities');
         })
 });
@@ -1983,12 +2422,20 @@ router.delete('/admissionProcessActivities/delete/:id', (req, res) => {
             req.flash('success_msg', 'Data deleted successfully');
             res.redirect('/annexure-1/admissionProcessActivities');
         })
+        .catch(() => {
+            req.flash('error_msg', 'User not found. Please try logging in again.');
+            res.redirect('/annexure-1/admissionProcessActivities');
+        })
 });
 
 router.delete('/examAssessmentExternal/delete/:id', (req, res) => {
     ExamAssessmentExternal.deleteOne({ _id: req.params.id })
         .then(() => {
             req.flash('success_msg', 'Data deleted successfully');
+            res.redirect('/annexure-1/examAssessmentExternal');
+        })
+        .catch(() => {
+            req.flash('error_msg', 'User not found. Please try logging in again.');
             res.redirect('/annexure-1/examAssessmentExternal');
         })
 });
@@ -1999,12 +2446,20 @@ router.delete('/examActivitiesSupervision/delete/:id', (req, res) => {
             req.flash('success_msg', 'Data deleted successfully');
             res.redirect('/annexure-1/examActivitiesSupervision');
         })
+        .catch(() => {
+            req.flash('error_msg', 'User not found. Please try logging in again.');
+            res.redirect('/annexure-1/examActivitiesSupervision');
+        })
 });
 
 router.delete('/examActivitiesCollegeLevel/delete/:id', (req, res) => {
     ExamActivitiesCollegeLevel.deleteOne({ _id: req.params.id })
         .then(() => {
             req.flash('success_msg', 'Data deleted successfully');
+            res.redirect('/annexure-1/examActivitiesCollegeLevel');
+        })
+        .catch(() => {
+            req.flash('error_msg', 'User not found. Please try logging in again.');
             res.redirect('/annexure-1/examActivitiesCollegeLevel');
         })
 });
@@ -2015,12 +2470,20 @@ router.delete('/ITmaintenance/delete/:id', (req, res) => {
             req.flash('success_msg', 'Data deleted successfully');
             res.redirect('/annexure-1/ITmaintenance');
         })
+        .catch(() => {
+            req.flash('error_msg', 'User not found. Please try logging in again.');
+            res.redirect('/annexure-1/ITmaintenance');
+        })
 });
 
 router.delete('/lakshya/delete/:id', (req, res) => {
     Lakshya.deleteOne({ _id: req.params.id })
         .then(() => {
             req.flash('success_msg', 'Data deleted successfully');
+            res.redirect('/annexure-1/lakshya');
+        })
+        .catch(() => {
+            req.flash('error_msg', 'User not found. Please try logging in again.');
             res.redirect('/annexure-1/lakshya');
         })
 });
@@ -2031,6 +2494,10 @@ router.delete('/magazineNewsletter/delete/:id', (req, res) => {
             req.flash('success_msg', 'Data deleted successfully');
             res.redirect('/annexure-1/magazineNewsletter');
         })
+        .catch(() => {
+            req.flash('error_msg', 'User not found. Please try logging in again.');
+            res.redirect('/annexure-1/magazineNewsletter');
+        })
 });
 
 router.delete('/conductOfSTTP/delete/:id', (req, res) => {
@@ -2039,12 +2506,20 @@ router.delete('/conductOfSTTP/delete/:id', (req, res) => {
             req.flash('success_msg', 'Data deleted successfully');
             res.redirect('/annexure-1/conductOfSTTP');
         })
+        .catch(() => {
+            req.flash('error_msg', 'User not found. Please try logging in again.');
+            res.redirect('/annexure-1/conductOfSTTP');
+        })
 });
 
 router.delete('/departmentUGProjects/delete/:id', (req, res) => {
     DepartmentUGProjects.deleteOne({ _id: req.params.id })
         .then(() => {
             req.flash('success_msg', 'Data deleted successfully');
+            res.redirect('/annexure-1/departmentUGProjects');
+        })
+        .catch(() => {
+            req.flash('error_msg', 'User not found. Please try logging in again.');
             res.redirect('/annexure-1/departmentUGProjects');
         })
 });

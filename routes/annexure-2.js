@@ -46,6 +46,10 @@ router.get('/papersPublishedinNationalConf', ensureAuthenticated, (req, res) => 
                 .then(result => {
                     res.render('annexure-2/papersPublishedinNationalConf', { result: result });
                 })
+                .catch(() => {
+                    req.flash('error_msg', 'Error while retrieving data.');
+                    res.redirect('/');
+                })
         })
         .catch(() => {
             req.flash('error_msg', 'Select the academic year before proceeding.');
@@ -65,6 +69,10 @@ router.get('/papersPublishedinInternationalConf', ensureAuthenticated, (req, res
             PapersPublishedInternationalConf.find({ $and: [{ user: req.user.id }, { academic_year: year }] })
                 .then(result => {
                     res.render('annexure-2/papersPublishedinInternationalConf', { result: result });
+                })
+                .catch(() => {
+                    req.flash('error_msg', 'Error while retrieving data.');
+                    res.redirect('/');
                 })
         })
         .catch(() => {
@@ -86,6 +94,10 @@ router.get('/papersPublishedinJournals', ensureAuthenticated, (req, res) => {
                 .then(result => {
                     res.render('annexure-2/paperspublishedinjournals', { result: result });
                 })
+                .catch(() => {
+                    req.flash('error_msg', 'Error while retrieving data.');
+                    res.redirect('/');
+                })
         })
         .catch(() => {
             req.flash('error_msg', 'Select the academic year before proceeding.');
@@ -105,6 +117,10 @@ router.get('/moocs', ensureAuthenticated, (req, res) => {
             Moocs.find({ $and: [{ user: req.user.id }, { academic_year: year }] })
                 .then(result => {
                     res.render('annexure-2/moocs', { result: result });
+                })
+                .catch(() => {
+                    req.flash('error_msg', 'Error while retrieving data.');
+                    res.redirect('/');
                 })
         })
         .catch(() => {
@@ -126,6 +142,10 @@ router.get('/swayam', ensureAuthenticated, (req, res) => {
                 .then(result => {
                     res.render('annexure-2/swayam', { result: result });
                 })
+                .catch(() => {
+                    req.flash('error_msg', 'Error while retrieving data.');
+                    res.redirect('/');
+                })
         })
         .catch(() => {
             req.flash('error_msg', 'Select the academic year before proceeding.');
@@ -145,6 +165,10 @@ router.get('/shortTermTraining', ensureAuthenticated, (req, res) => {
             ShortTermTraining.find({ $and: [{ user: req.user.id }, { academic_year: year }] })
                 .then(result => {
                     res.render('annexure-2/shorttermtraining', { result: result });
+                })
+                .catch(() => {
+                    req.flash('error_msg', 'Error while retrieving data.');
+                    res.redirect('/');
                 })
         })
         .catch(() => {
@@ -166,6 +190,10 @@ router.get('/seminars', ensureAuthenticated, (req, res) => {
                 .then(result => {
                     res.render('annexure-2/seminars', { result: result });
                 })
+                .catch(() => {
+                    req.flash('error_msg', 'Error while retrieving data.');
+                    res.redirect('/');
+                })
         })
         .catch(() => {
             req.flash('error_msg', 'Select the academic year before proceeding.');
@@ -184,7 +212,11 @@ router.get('/papersPublishedinNationalConf/edit/:id', ensureAuthenticated, (req,
             } else {
                 res.render('annexure-2/papersPublishedinNationalConf', { editResult: result });
             }
-        });
+        })
+        .catch(() => {
+            req.flash('error_msg', 'Error while finding your previous data. Please try again.');
+            res.redirect('/annexure-2/papersPublishedinNationalConf');
+        })
 });
 
 // paper publication in international conf load route
@@ -197,7 +229,11 @@ router.get('/papersPublishedinInternationalConf/edit/:id', ensureAuthenticated, 
             } else {
                 res.render('annexure-2/papersPublishedinInternationalConf', { editResult: result });
             }
-        });
+        })
+        .catch(() => {
+            req.flash('error_msg', 'Error while finding your previous data. Please try again.');
+            res.redirect('/annexure-2/papersPublishedinInternationalConf');
+        })
 });
 
 // Papers Published in Journals load route
@@ -210,7 +246,11 @@ router.get('/papersPublishedinJournals/edit/:id', ensureAuthenticated, (req, res
             } else {
                 res.render('annexure-2/paperspublishedinjournals', { editResult: result });
             }
-        });
+        })
+        .catch(() => {
+            req.flash('error_msg', 'Error while finding your previous data. Please try again.');
+            res.redirect('/annexure-2/paperspublishedinjournals');
+        })
 });
 
 // MOOCS load route
@@ -223,7 +263,11 @@ router.get('/moocs/edit/:id', ensureAuthenticated, (req, res) => {
             } else {
                 res.render('annexure-2/moocs', { editResult: result });
             }
-        });
+        })
+        .catch(() => {
+            req.flash('error_msg', 'Error while finding your previous data. Please try again.');
+            res.redirect('/annexure-2/moocs');
+        })
 });
 
 // Swayam conf load route
@@ -236,7 +280,11 @@ router.get('/swayam/edit/:id', ensureAuthenticated, (req, res) => {
             } else {
                 res.render('annexure-2/swayam', { editResult: result });
             }
-        });
+        })
+        .catch(() => {
+            req.flash('error_msg', 'Error while finding your previous data. Please try again.');
+            res.redirect('/annexure-2/swayam');
+        })
 });
 
 // Short Term Training conf load route
@@ -249,7 +297,11 @@ router.get('/shortTermTraining/edit/:id', ensureAuthenticated, (req, res) => {
             } else {
                 res.render('annexure-2/shorttermtraining', { editResult: result });
             }
-        });
+        })
+        .catch(() => {
+            req.flash('error_msg', 'Error while finding your previous data. Please try again.');
+            res.redirect('/annexure-2/shorttermtraining');
+        })
 });
 
 // Seminars conf load route
@@ -262,16 +314,12 @@ router.get('/seminars/edit/:id', ensureAuthenticated, (req, res) => {
             } else {
                 res.render('annexure-2/seminars', { editResult: result });
             }
-        });
+        })
+        .catch(() => {
+            req.flash('error_msg', 'Error while finding your previous data. Please try again.');
+            res.redirect('/annexure-2/seminars');
+        })
 });
-
-//////////////////////
-/////////////////////////
-/////////////////////////
-///////////////////////////////////////////////////
-////////////////
-
-
 
 //process paper published in national conference form
 router.post('/papersPublishedinNationalConf', (req, res) => {
@@ -322,7 +370,12 @@ router.post('/papersPublishedinNationalConf', (req, res) => {
             .then(papersPublishedNational => {
                 req.flash('success_msg', 'Data entered successfully');
                 res.redirect('/annexure-2/papersPublishedinInternationalConf');
-            });
+            })
+            .catch(err => {
+                console.log(err);
+                req.flash('error_msg', 'faculty ID not found please login again.');
+                res.redirect('/annexure-2/papersPublishedinNationalConf');
+            })
     }
 });
 
@@ -341,7 +394,7 @@ router.post('/papersPublishedinInternationalConf', (req, res) => {
 
     }
     if (errors.length > 0) {
-        res.render('annexure-2/papersPublishedinJournals', {
+        res.render('annexure-2/papersPublishedinInternationalConf', {
             errors: errors,
             title_of_paper_published: req.body.title_of_paper_published,
             published_date: req.body.published_date,
@@ -375,7 +428,12 @@ router.post('/papersPublishedinInternationalConf', (req, res) => {
             .then(papersPublishedInternational => {
                 req.flash('success_msg', 'Data entered successfully');
                 res.redirect('/annexure-2/paperspublishedinjournals');
-            });
+            })
+            .catch(err => {
+                console.log(err);
+                req.flash('error_msg', 'faculty ID not found please login again.');
+                res.redirect('/annexure-2/papersPublishedinInternationalConf');
+            })
     }
 });
 
@@ -428,7 +486,12 @@ router.post('/papersPublishedinJournals', (req, res) => {
             .then(papersPublishedJournals => {
                 req.flash('success_msg', 'Data entered successfully');
                 res.redirect('/annexure-2/moocs');
-            });
+            })
+            .catch(err => {
+                console.log(err);
+                req.flash('error_msg', 'faculty ID not found please login again.');
+                res.redirect('/annexure-2/papersPublishedinJournals');
+            })
     }
 });
 
@@ -464,7 +527,12 @@ router.post('/moocs', (req, res) => {
             .then(moocs => {
                 req.flash('success_msg', 'Data entered successfully');
                 res.redirect('/annexure-2/swayam');
-            });
+            })
+            .catch(err => {
+                console.log(err);
+                req.flash('error_msg', 'faculty ID not found please login again.');
+                res.redirect('/annexure-2/moocs');
+            })
     }
 });
 
@@ -500,7 +568,12 @@ router.post('/swayam', (req, res) => {
             .then(swayam => {
                 req.flash('success_msg', 'Data entered successfully');
                 res.redirect('/annexure-2/shorttermtraining');
-            });
+            })
+            .catch(err => {
+                console.log(err);
+                req.flash('error_msg', 'faculty ID not found please login again.');
+                res.redirect('/annexure-2/swayam');
+            })
     }
 });
 
@@ -545,7 +618,12 @@ router.post('/shortTermTraining', (req, res) => {
             .then(shortTermTraining => {
                 req.flash('success_msg', 'Data entered successfully');
                 res.redirect('/annexure-2/seminars');
-            });
+            })
+            .catch(err => {
+                console.log(err);
+                req.flash('error_msg', 'faculty ID not found please login again.');
+                res.redirect('/annexure-2/shortTermTraining');
+            })
     }
 });
 
@@ -590,7 +668,12 @@ router.post('/seminars', (req, res) => {
             .then(seminars => {
                 req.flash('success_msg', 'Data entered successfully');
                 res.redirect('/annexure-3/resourcePerson');
-            });
+            })
+            .catch(err => {
+                console.log(err);
+                req.flash('error_msg', 'faculty ID not found please login again.');
+                res.redirect('/annexure-2/seminars');
+            })
     }
 });
 
@@ -641,6 +724,14 @@ router.put('/papersPublishedinNationalConf/:id', (req, res) => {
                         req.flash('success_msg', 'Data updated successfully');
                         res.redirect('/annexure-2/papersPublishedinNationalConf');
                     })
+                    .catch(() => {
+                        req.flash('error_msg', 'Data not updated. Please try logging in again.');
+                        res.redirect('/annexure-2/papersPublishedinNationalConf');
+                    })
+            })
+            .catch(() => {
+                req.flash('error_msg', 'User not found. Please try logging in again.');
+                res.redirect('/annexure-2/papersPublishedinNationalConf');
             })
     }
 });
@@ -691,6 +782,14 @@ router.put('/papersPublishedinInternationalConf/:id', (req, res) => {
                         req.flash('success_msg', 'Data updated successfully');
                         res.redirect('/annexure-2/papersPublishedinInternationalConf');
                     })
+                    .catch(() => {
+                        req.flash('error_msg', 'Data not updated. Please try logging in again.');
+                        res.redirect('/annexure-2/papersPublishedinInternationalConf');
+                    })
+            })
+            .catch(() => {
+                req.flash('error_msg', 'User not found. Please try logging in again.');
+                res.redirect('/annexure-2/papersPublishedinInternationalConf');
             })
     }
 });
@@ -741,6 +840,14 @@ router.put('/papersPublishedinJournals/:id', (req, res) => {
                         req.flash('success_msg', 'Data updated successfully');
                         res.redirect('/annexure-2/paperspublishedinjournals');
                     })
+                    .catch(() => {
+                        req.flash('error_msg', 'Data not updated. Please try logging in again.');
+                        res.redirect('/annexure-2/paperspublishedinjournals');
+                    })
+            })
+            .catch(() => {
+                req.flash('error_msg', 'User not found. Please try logging in again.');
+                res.redirect('/annexure-2/paperspublishedinjournals');
             })
     }
 });
@@ -770,6 +877,14 @@ router.put('/moocs/:id', (req, res) => {
                         req.flash('success_msg', 'Data updated successfully');
                         res.redirect('/annexure-2/moocs');
                     })
+                    .catch(() => {
+                        req.flash('error_msg', 'Data not updated. Please try logging in again.');
+                        res.redirect('/annexure-2/moocs');
+                    })
+            })
+            .catch(() => {
+                req.flash('error_msg', 'User not found. Please try logging in again.');
+                res.redirect('/annexure-2/moocs');
             })
     }
 });
@@ -799,6 +914,14 @@ router.put('/swayam/:id', (req, res) => {
                         req.flash('success_msg', 'Data updated successfully');
                         res.redirect('/annexure-2/swayam');
                     })
+                    .catch(() => {
+                        req.flash('error_msg', 'Data not updated. Please try logging in again.');
+                        res.redirect('/annexure-2/swayam');
+                    })
+            })
+            .catch(() => {
+                req.flash('error_msg', 'User not found. Please try logging in again.');
+                res.redirect('/annexure-2/swayam');
             })
     }
 });
@@ -838,6 +961,14 @@ router.put('/shortTermTraining/:id', (req, res) => {
                         req.flash('success_msg', 'Data updated successfully');
                         res.redirect('/annexure-2/shorttermtraining');
                     })
+                    .catch(() => {
+                        req.flash('error_msg', 'Data not updated. Please try logging in again.');
+                        res.redirect('/annexure-2/shorttermtraining');
+                    })
+            })
+            .catch(() => {
+                req.flash('error_msg', 'User not found. Please try logging in again.');
+                res.redirect('/annexure-2/shorttermtraining');
             })
     }
 });
@@ -876,6 +1007,14 @@ router.put('/seminars/:id', (req, res) => {
                         req.flash('success_msg', 'Data updated successfully');
                         res.redirect('/annexure-2/seminars');
                     })
+                    .catch(() => {
+                        req.flash('error_msg', 'Data not updated. Please try logging in again.');
+                        res.redirect('/annexure-2/seminars');
+                    })
+            })
+            .catch(() => {
+                req.flash('error_msg', 'User not found. Please try logging in again.');
+                res.redirect('/annexure-2/seminars');
             })
     }
 });
@@ -887,12 +1026,20 @@ router.delete('/papersPublishedinNationalConf/delete/:id', (req, res) => {
             req.flash('success_msg', 'Data deleted successully');
             res.redirect('/annexure-2/papersPublishedinNationalConf');
         })
+        .catch(() => {
+            req.flash('error_msg', 'User not found. Please try logging in again.');
+            res.redirect('/annexure-2/papersPublishedinNationalConf');
+        })
 });
 
 router.delete('/papersPublishedinInternationalConf/delete/:id', (req, res) => {
     PapersPublishedInternationalConf.deleteOne({ _id: req.params.id })
         .then(() => {
             req.flash('success_msg', 'Data deleted successully');
+            res.redirect('/annexure-2/papersPublishedinInternationalConf');
+        })
+        .catch(() => {
+            req.flash('error_msg', 'User not found. Please try logging in again.');
             res.redirect('/annexure-2/papersPublishedinInternationalConf');
         })
 });
@@ -903,12 +1050,20 @@ router.delete('/paperPublishedinJournals/delete/:id', (req, res) => {
             req.flash('success_msg', 'Data deleted successully');
             res.redirect('/annexure-2/paperspublishedinjournals');
         })
+        .catch(() => {
+            req.flash('error_msg', 'User not found. Please try logging in again.');
+            res.redirect('/annexure-2/paperspublishedinjournals');
+        })
 });
 
 router.delete('/moocs/delete/:id', (req, res) => {
     Moocs.deleteOne({ _id: req.params.id })
         .then(() => {
             req.flash('success_msg', 'Data deleted successully');
+            res.redirect('/annexure-2/moocs');
+        })
+        .catch(() => {
+            req.flash('error_msg', 'User not found. Please try logging in again.');
             res.redirect('/annexure-2/moocs');
         })
 });
@@ -919,6 +1074,10 @@ router.delete('/swayam/delete/:id', (req, res) => {
             req.flash('success_msg', 'Data deleted successully');
             res.redirect('/annexure-2/swayam');
         })
+        .catch(() => {
+            req.flash('error_msg', 'User not found. Please try logging in again.');
+            res.redirect('/annexure-2/swayam');
+        })
 });
 
 router.delete('/shortTermTraining/delete/:id', (req, res) => {
@@ -927,12 +1086,20 @@ router.delete('/shortTermTraining/delete/:id', (req, res) => {
             req.flash('success_msg', 'Data deleted successully');
             res.redirect('/annexure-2/shorttermtraining');
         })
+        .catch(() => {
+            req.flash('error_msg', 'User not found. Please try logging in again.');
+            res.redirect('/annexure-2/shorttermtraining');
+        })
 });
 
 router.delete('/seminars/delete/:id', (req, res) => {
     Seminars.deleteOne({ _id: req.params.id })
         .then(() => {
             req.flash('success_msg', 'Data deleted successully');
+            res.redirect('/annexure-2/seminars');
+        })
+        .catch(() => {
+            req.flash('error_msg', 'User not found. Please try logging in again.');
             res.redirect('/annexure-2/seminars');
         })
 });

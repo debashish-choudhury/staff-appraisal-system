@@ -42,7 +42,7 @@ router.get('/teachingLoad', ensureAuthenticated, (req, res) => {
                     res.render('academicPerformance/teachingLoad', { result });
                 })
                 .catch(() => {
-                    req.flash('error_msg', 'Academic year not selected');
+                    req.flash('error_msg', 'Error while retrieving data.');
                     res.redirect('/');
                 })
         })
@@ -66,7 +66,7 @@ router.get('/teachingAssistant', ensureAuthenticated, (req, res) => {
                     res.render('academicPerformance/teachingAssistant', { result });
                 })
                 .catch(() => {
-                    req.flash('error_msg', 'Academic year not selected');
+                    req.flash('error_msg', 'Error while retrieving data.');
                     res.redirect('/');
                 })
         })
@@ -90,7 +90,7 @@ router.get('/newBooks', ensureAuthenticated, (req, res) => {
                     res.render('academicPerformance/newBooks', { result });
                 })
                 .catch(() => {
-                    req.flash('error_msg', 'Academic year not selected');
+                    req.flash('error_msg', 'Error while retrieving data.');
                     res.redirect('/');
                 })
         })
@@ -115,7 +115,7 @@ router.get('/addedExp', ensureAuthenticated, (req, res) => {
                     res.render('academicPerformance/addedExp', { result });
                 })
                 .catch(() => {
-                    req.flash('error_msg', 'Academic year not selected');
+                    req.flash('error_msg', 'Error while retrieving data.');
                     res.redirect('/');
                 })
         })
@@ -140,7 +140,7 @@ router.get('/innovativeTeaching', ensureAuthenticated, (req, res) => {
                     res.render('academicPerformance/innovativeTeaching', { result });
                 })
                 .catch(() => {
-                    req.flash('error_msg', 'Academic year not selected');
+                    req.flash('error_msg', 'Error while retrieving data.');
                     res.redirect('/');
                 })
         })
@@ -161,6 +161,10 @@ router.get('/teachingLoad/edit/:id', ensureAuthenticated, (req, res) => {
                 res.render('academicPerformance/teachingLoad', { editResult: result });
             }
         })
+        .catch(() => {
+            req.flash('error_msg', 'Error while finding your previous data. Please try again.');
+            res.redirect('/academicPerformance/teachingLoad');
+        })
 });
 
 // Load edit pages for teaching assistant
@@ -173,6 +177,10 @@ router.get('/teachingAssistant/edit/:id', ensureAuthenticated, (req, res) => {
             } else {
                 res.render('academicPerformance/teachingAssistant', { editResult: result });
             }
+        })
+        .catch(() => {
+            req.flash('error_msg', 'Error while finding your previous data. Please try again.');
+            res.redirect('/academicPerformance/teachingAssistant');
         })
 });
 
@@ -187,6 +195,10 @@ router.get('/newBooks/edit/:id', ensureAuthenticated, (req, res) => {
                 res.render('academicPerformance/newBooks', { editResult: result });
             }
         })
+        .catch(() => {
+            req.flash('error_msg', 'Error while finding your previous data. Please try again.');
+            res.redirect('/academicPerformance/newBooks');
+        })
 });
 
 // added experiment edit route
@@ -200,6 +212,10 @@ router.get('/addedExp/edit/:id', ensureAuthenticated, (req, res) => {
                 res.render('academicPerformance/addedExp', { editResult: result });
             }
         })
+        .catch(() => {
+            req.flash('error_msg', 'Error while finding your previous data. Please try again.');
+            res.redirect('/academicPerformance/addedExp');
+        })
 });
 
 // innovative teaching technique edit route
@@ -212,6 +228,10 @@ router.get('/innovativeTeaching/edit/:id', ensureAuthenticated, (req, res) => {
             } else {
                 res.render('academicPerformance/innovativeTeaching', { editResult: result });
             }
+        })
+        .catch(() => {
+            req.flash('error_msg', 'Error while finding your previous data. Please try again.');
+            res.redirect('/academicPerformance/innovativeTeaching');
         })
 });
 
@@ -273,7 +293,9 @@ router.post('/teachingLoad', (req, res) => {
                 res.redirect('/academicPerformance/teachingAssistant');
             })
             .catch(err => {
-                if (err) throw err;
+                console.log(err);
+                req.flash('error_msg', 'faculty ID not found please login again.');
+                res.redirect('/academicPerformance/teachingLoad');
             })
     }
 });
@@ -294,7 +316,12 @@ router.post('/teachingAssistant', (req, res) => {
         .then(teachingAssistant => {
             req.flash('success_msg', 'Data entered successfully');
             res.redirect('/academicPerformance/newBooks');
-        });
+        })
+        .catch(err => {
+            console.log(err);
+            req.flash('error_msg', 'faculty ID not found please login again.');
+            res.redirect('/academicPerformance/teachingAssistant');
+        })
 });
 
 //process new books form
@@ -315,7 +342,12 @@ router.post('/newBooks', (req, res) => {
         .then(newbooks => {
             req.flash('success_msg', 'Data entered successfully');
             res.redirect('/academicPerformance/addedExp');
-        });
+        })
+        .catch(err => {
+            console.log(err);
+            req.flash('error_msg', 'faculty ID not found please login again.');
+            res.redirect('/academicPerformance/newBooks');
+        })
 });
 
 //process added experiments form
@@ -334,7 +366,12 @@ router.post('/addedExp', (req, res) => {
         .then(newbooks => {
             req.flash('success_msg', 'Data entered successfully');
             res.redirect('/academicPerformance/innovativeTeaching');
-        });
+        })
+        .catch(err => {
+            console.log(err);
+            req.flash('error_msg', 'faculty ID not found please login again.');
+            res.redirect('/academicPerformance/addedExp');
+        })
 });
 
 //process innovation teaching technique form
@@ -353,7 +390,12 @@ router.post('/innovation', (req, res) => {
         .then(innovationrecords => {
             req.flash('success_msg', 'Data entered successfully');
             res.redirect('/leave');
-        });
+        })
+        .catch(err => {
+            console.log(err);
+            req.flash('error_msg', 'faculty ID not found please login again.');
+            res.redirect('/academicPerformance/innovation');
+        })
 });
 
 // Put request (edit form)
@@ -414,8 +456,16 @@ router.put('/teachingLoad/:id', (req, res) => {
                     .then(result => {
                         req.flash('success_msg', 'Data updated successfully');
                         res.redirect('/academicPerformance/teachingLoad');
-                    });
-            });
+                    })
+                    .catch(() => {
+                        req.flash('error_msg', 'Data not updated. Please try logging in again.');
+                        res.redirect('/academicPerformance/teachingLoad');
+                    })
+            })
+            .catch(() => {
+                req.flash('error_msg', 'User not found. Please try logging in again.');
+                res.redirect('/academicPerformance/teachingLoad');
+            })
     }
 });
 
@@ -432,6 +482,14 @@ router.put('/teachingAssistant/:id', (req, res) => {
                     req.flash('success_msg', 'Data updated successfully');
                     res.redirect('/academicPerformance/teachingAssistant');
                 })
+                .catch(() => {
+                    req.flash('error_msg', 'Data not updated. Please try logging in again.');
+                    res.redirect('/academicPerformance/teachingAssistant');
+                })
+        })
+        .catch(() => {
+            req.flash('error_msg', 'User not found. Please try logging in again.');
+            res.redirect('/academicPerformance/teachingAssistant');
         })
 });
 
@@ -449,7 +507,15 @@ router.put('/newBooks/:id', (req, res) => {
                     .then(result => {
                         req.flash('success_msg', 'Data updated successfully');
                         res.redirect('/academicPerformance/newBooks');
-                    });
+                    })
+                    .catch(() => {
+                        req.flash('error_msg', 'Data not updated. Please try logging in again.');
+                        res.redirect('/academicPerformance/newBooks');
+                    })
+        })
+        .catch(() => {
+            req.flash('error_msg', 'User not found. Please try logging in again.');
+            res.redirect('/academicPerformance/newBooks');
         })
 });
 
@@ -465,7 +531,15 @@ router.put('/addedExp/:id', (req, res) => {
                 .then(result => {
                     req.flash('success_msg', 'Data updated successfully');
                     res.redirect('/academicPerformance/addedExp');
-                });
+                })
+                .catch(() => {
+                    req.flash('error_msg', 'Data not updated. Please try logging in again.');
+                    res.redirect('/academicPerformance/addedExp');
+                })
+        })
+        .catch(() => {
+            req.flash('error_msg', 'User not found. Please try logging in again.');
+            res.redirect('/academicPerformance/addedExp');
         })
 });
 
@@ -481,7 +555,15 @@ router.put('/innovativeTeaching/:id', (req, res) => {
                 .then(result => {
                     req.flash('success_msg', 'Data updated successfully');
                     res.redirect('/academicPerformance/innovativeTeaching');
-                });
+                })
+                .catch(() => {
+                    req.flash('error_msg', 'Data not updated. Please try logging in again.');
+                    res.redirect('/academicPerformance/innovativeTeaching');
+                })
+        })
+        .catch(() => {
+            req.flash('error_msg', 'User not found. Please try logging in again.');
+            res.redirect('/academicPerformance/innovativeTeaching');
         })
 });
 
@@ -492,7 +574,11 @@ router.delete('/teachingLoad/delete/:id', (req, res) => {
         .then(() => {
             req.flash('success_msg', 'Data deleted successfully');
             res.redirect('/academicPerformance/teachingLoad');
-        });
+        })
+        .catch(() => {
+            req.flash('error_msg', 'User not found. Please try logging in again.');
+            res.redirect('/academicPerformance/teachingLoad');
+        })
 });
 
 router.delete('/teachingAssistant/delete/:id', (req, res) => {
@@ -500,7 +586,11 @@ router.delete('/teachingAssistant/delete/:id', (req, res) => {
         .then(() => {
             req.flash('success_msg', 'Data deleted successfully');
             res.redirect('/academicPerformance/teachingAssistant');
-        });
+        })
+        .catch(() => {
+            req.flash('error_msg', 'User not found. Please try logging in again.');
+            res.redirect('/academicPerformance/teachingAssistant');
+        })
 });
 
 router.delete('/newBooks/delete/:id', (req, res) => {
@@ -508,7 +598,11 @@ router.delete('/newBooks/delete/:id', (req, res) => {
         .then(() => {
             req.flash('success_msg', 'Data deleted successfully');
             res.redirect('/academicPerformance/newBooks');
-        });
+        })
+        .catch(() => {
+            req.flash('error_msg', 'User not found. Please try logging in again.');
+            res.redirect('/academicPerformance/newBooks');
+        })
 });
 
 router.delete('/addedExp/delete/:id', (req, res) => {
@@ -516,13 +610,21 @@ router.delete('/addedExp/delete/:id', (req, res) => {
         .then(() => {
             req.flash('success_msg', 'Data deleted successfully');
             res.redirect('/academicPerformance/addedExp');
-        });
+        })
+        .catch(() => {
+            req.flash('error_msg', 'User not found. Please try logging in again.');
+            res.redirect('/academicPerformance/addedExp');
+        })
 })
 
 router.delete('/innovativeTeaching/delete/:id', (req, res) => {
     Innovation.deleteOne({ _id: req.params.id })
         .then(() => {
             req.flash('success_msg', 'Data deleted successfully');
+            res.redirect('/academicPerformance/innovativeTeaching');
+        })
+        .catch(() => {
+            req.flash('error_msg', 'User not found. Please try logging in again.');
             res.redirect('/academicPerformance/innovativeTeaching');
         })
 })

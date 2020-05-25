@@ -119,6 +119,10 @@ app.get('/edit/:id', ensureAuthenticated, (req, res) => {
                 res.render('index', { editResult: result });
             }
         })
+        .catch(() => {
+            req.flash('error_msg', 'There was an error while edit the academic year. Please try again after some time');
+            res.redirect('back');
+        })
 });
 
 // Academic year route
@@ -139,6 +143,10 @@ app.post('/', (req, res) => {
                 res.redirect('/academicPerformance/teachingLoad');
             }
         })
+        .catch(() => {
+            req.flash('error_msg', 'Error while saving academic year. Please resubmit the academic year.')
+            res.redirect('back');
+        })
 });
 
 // PUT Request for academic year
@@ -151,8 +159,16 @@ app.put('/:id', (req, res) => {
                 .then(result => {
                     req.flash('success_msg', 'Data updated successfully');
                     res.redirect('/academicPerformance/teachingLoad');
-                });
-        });
+                })
+                .catch(() => {
+                    req.flash('error_msg', 'Error while updating academiic year. Please try again.');
+                    res.redirect('back');
+                })
+        })
+        .catch(() => {
+            req.flash('error_msg', 'Error while finding your academiic year. Please try again.');
+            res.redirect('back');
+        })
 });
 
 // Use routes

@@ -21,6 +21,10 @@ router.get('/', ensureAuthenticated, (req, res) => {
                 .then(result => {
                     res.render('leaveForm', { result });
                 })
+                .catch(() => {
+                    req.flash('error_msg', 'Error while retrieving data.');
+                    res.redirect('/');
+                })
         })
         .catch(() => {
             req.flash('error_msg', 'Select the academic year before proceeding.');
@@ -38,6 +42,10 @@ router.get('/edit/:id', ensureAuthenticated, (req, res) => {
             } else {
                 res.render('leaveForm', { editResult: result });
             }
+        })
+        .catch(() => {
+            req.flash('error_msg', 'Error while finding your previous data. Please try again.');
+            res.redirect('/leaveForm');
         })
 });
 
@@ -81,7 +89,12 @@ router.post('/', (req, res) => {
             .then(leaves => {
                 req.flash('success_msg', 'Data entered successfully');
                 res.redirect('/annexure-1/timeTable');
-            });
+            })
+            .catch(err => {
+                console.log(err);
+                req.flash('error_msg', 'faculty ID not found please login again.');
+                res.redirect('/leaveForm');
+            })
     }
 });
 
@@ -115,6 +128,14 @@ router.put('/:id', (req, res) => {
                         req.flash('success_msg', 'Data updated successfully');
                         res.redirect('/leave');
                     })
+                    .catch(() => {
+                        req.flash('error_msg', 'Data not updated. Please try logging in again.');
+                        res.redirect('/leaveForm');
+                    })
+            })
+            .catch(() => {
+                req.flash('error_msg', 'User not found. Please try logging in again.');
+                res.redirect('/leaveForm');
             })
     }
 });
@@ -125,6 +146,10 @@ router.delete('/:id', (req, res) => {
         .then(() => {
             req.flash('success_msg', 'Data Deleted successfully');
             res.redirect('/leave');
+        })
+        .catch(() => {
+            req.flash('error_msg', 'User not found. Please try logging in again.');
+            res.redirect('/leaveForm');
         })
 });
 

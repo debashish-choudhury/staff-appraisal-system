@@ -26,13 +26,13 @@ router.get('/faculty', function (req, res) {
 
 router.post('/faculty', function (req, res, next) {
     async.waterfall([
-        function (done) {
+        done => {
             crypto.randomBytes(20, function (err, buf) {
                 var token = buf.toString('hex');
                 done(err, token);
             });
         },
-        function (token, done) {
+        (token, done) => {
             Faculty.findOne({ email: req.body.email }, function (err, user) {
                 if (!user) {
                     req.flash('error_msg', 'No account with that email address exists.');
@@ -47,7 +47,7 @@ router.post('/faculty', function (req, res, next) {
                 });
             });
         },
-        function (token, user, done) {
+        (token, user, done) => {
             var smtpTransport = nodemailer.createTransport({
                 service: 'Gmail',
                 auth: {
@@ -70,8 +70,9 @@ router.post('/faculty', function (req, res, next) {
                 done(err, 'done');
             });
         }
-    ], function (err) {
+    ], err => {
         if (err) return next(err);
+        req.flash('error_msg', 'Error occurred while sending mail');
         res.redirect('/users/faculty/forgot');
     });
 });
@@ -88,7 +89,7 @@ router.get('/reset/faculty/:token', function (req, res) {
 
 router.post('/reset/faculty/:token', function (req, res) {
     async.waterfall([
-        function (done) {
+        done => {
             Faculty.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, function (err, user) {
                 if (!user) {
                     req.flash('error_msg', 'Password reset token is invalid or has expired.');
@@ -113,7 +114,7 @@ router.post('/reset/faculty/:token', function (req, res) {
                 }
             });
         },
-        function (user, done) {
+        (user, done) => {
             var smtpTransport = nodemailer.createTransport({
                 service: 'Gmail',
                 auth: {
@@ -133,7 +134,8 @@ router.post('/reset/faculty/:token', function (req, res) {
                 done(err);
             });
         }
-    ], function (err) {
+    ], err => {
+        req.flash('error_msg', 'Error occurred while sending mail');
         res.redirect('/users/faculty/login');
     });
 });
@@ -145,13 +147,13 @@ router.get('/hod', function (req, res) {
 
 router.post('/hod', function (req, res, next) {
     async.waterfall([
-        function (done) {
+        done => {
             crypto.randomBytes(20, function (err, buf) {
                 var token = buf.toString('hex');
                 done(err, token);
             });
         },
-        function (token, done) {
+        (token, done) => {
             Hod.findOne({ email: req.body.email }, function (err, user) {
                 if (!user) {
                     req.flash('error_msg', 'No account with that email address exists.');
@@ -166,7 +168,7 @@ router.post('/hod', function (req, res, next) {
                 });
             });
         },
-        function (token, user, done) {
+        (token, user, done) => {
             var smtpTransport = nodemailer.createTransport({
                 service: 'Gmail',
                 auth: {
@@ -189,8 +191,9 @@ router.post('/hod', function (req, res, next) {
                 done(err, 'done');
             });
         }
-    ], function (err) {
+    ], err => {
         if (err) return next(err);
+        req.flash('error_msg', 'Error occurred while sending mail');
         res.redirect('/users/hod/forgot');
     });
 });
@@ -207,7 +210,7 @@ router.get('/reset/hod/:token', function (req, res) {
 
 router.post('/reset/hod/:token', function (req, res) {
     async.waterfall([
-        function (done) {
+        done => {
             Hod.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, function (err, user) {
                 if (!user) {
                     req.flash('error_msg', 'Password reset token is invalid or has expired.');
@@ -232,7 +235,7 @@ router.post('/reset/hod/:token', function (req, res) {
                 }
             });
         },
-        function (user, done) {
+        (user, done) => {
             var smtpTransport = nodemailer.createTransport({
                 service: 'Gmail',
                 auth: {
@@ -252,7 +255,8 @@ router.post('/reset/hod/:token', function (req, res) {
                 done(err);
             });
         }
-    ], function (err) {
+    ], err => {
+        req.flash('error_msg', 'Error occurred while sending mail');
         res.redirect('/users/hod/login');
     });
 });
@@ -264,13 +268,13 @@ router.get('/manager', function (req, res) {
 
 router.post('/manager', function (req, res, next) {
     async.waterfall([
-        function (done) {
+        done => {
             crypto.randomBytes(20, function (err, buf) {
                 var token = buf.toString('hex');
                 done(err, token);
             });
         },
-        function (token, done) {
+        (token, done) => {
             Manager.findOne({ email: req.body.email }, function (err, user) {
                 if (!user) {
                     req.flash('error_msg', 'No account with that email address exists.');
@@ -285,7 +289,7 @@ router.post('/manager', function (req, res, next) {
                 });
             });
         },
-        function (token, user, done) {
+        (token, user, done) => {
             var smtpTransport = nodemailer.createTransport({
                 service: 'Gmail',
                 auth: {
@@ -308,8 +312,9 @@ router.post('/manager', function (req, res, next) {
                 done(err, 'done');
             });
         }
-    ], function (err) {
+    ], err => {
         if (err) return next(err);
+        req.flash('error_msg', 'Error occurred while sending mail');
         res.redirect('/users/manager/forgot');
     });
 });
@@ -326,7 +331,7 @@ router.get('/reset/manager/:token', function (req, res) {
 
 router.post('/reset/manager/:token', function (req, res) {
     async.waterfall([
-        function (done) {
+        done => {
             Manager.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, function (err, user) {
                 if (!user) {
                     req.flash('error_msg', 'Password reset token is invalid or has expired.');
@@ -351,7 +356,7 @@ router.post('/reset/manager/:token', function (req, res) {
                 }
             });
         },
-        function (user, done) {
+        (user, done) => {
             var smtpTransport = nodemailer.createTransport({
                 service: 'Gmail',
                 auth: {
@@ -371,7 +376,8 @@ router.post('/reset/manager/:token', function (req, res) {
                 done(err);
             });
         }
-    ], function (err) {
+    ], err => {
+        req.flash('error_msg', 'Error occurred while sending mail');
         res.redirect('/users/management/login');
     });
 });
