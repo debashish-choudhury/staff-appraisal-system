@@ -17,17 +17,23 @@
   },
   "homepage": "https://github.com/deb1398/staff-appraisal-system#readme",
   "dependencies": {
+    "async": "^3.2.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
+    "chart.js": "^2.9.3",
     "connect-flash": "^0.1.1",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-flash-messages": "^0.1.1",
     "express-handlebars": "^3.1.0",
     "express-session": "^1.17.0",
     "method-override": "^3.0.0",
     "mongoose": "^5.6.13",
+    "nodemailer": "^6.4.6",
     "nodemon": "^1.19.2",
     "passport": "^0.4.1",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "passport-local-mongoose": "^6.0.1",
+    "pdfmake": "^0.1.65"
   }
 }

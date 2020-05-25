@@ -1,10 +1,10 @@
-<h4>Annexure 1</h4><br>
+<h5>Annexure 1</h5><br>
 <div class="container">
-    <h5>1.11 Admission Process Related Activities</h5>
+    <h6>1.11 Admission Process Related Activities</h6>
     <hr>
 {{#if result}}
 {{#each result}}
-    <div class="row" id="udaan">
+    <div class="row" id="admissionProcessActivities">
         <div class="row">
             <div class="input-field col s6 md5">
                 <select name="admission_role">
@@ -58,13 +58,13 @@
 {{/each}}
 {{else}}
     {{#if editResult}}
-    <div class="row" id="udaan">
+    <div class="row" id="admissionProcessActivities">
         <form action="/annexure-1/admissionProcessActivities/{{editResult.id}}?_method=PUT" method="post" class="col s12">
         <input type="hidden" name="_method" value="PUT">
             <div class="row">
                 <div class="input-field col s6 md5">
                     <select name="admission_role">
-                        <option value="{{editResult.admission_role}}" disabled selected>{{editResult.admission_role}}</option>
+                        <option value="{{editResult.admission_role}}" selected>{{editResult.admission_role}}</option>
                         <option value="incharge">Incharge</option>
                         <option value="coordinator">Co-orditors</option>
                     </select>
@@ -72,7 +72,7 @@
                 </div>
                 <div class="input-field col s6 md5">
                     <select name="admission_duties">
-                        <option value="{{editResult.admission_duties}}" disabled selected>{{editResult.admission_duties}}</option>
+                        <option value="{{editResult.admission_duties}}" selected>{{editResult.admission_duties}}</option>
                         <option value="confirmation">Confirmation</option>
                         <option value="verification">Verification</option>
                     </select>
@@ -82,7 +82,7 @@
             <div class="row">
                 <div class="input-field col s12 md5">
                     <select name="admission_class">
-                        <option value="{{editResult.admission_class}}" disabled selected>{{editResult.admission_class}}</option>
+                        <option value="{{editResult.admission_class}}" selected>{{editResult.admission_class}}</option>
                         <option value="FE">First Year</option>
                         <option value="DSE">Direct Second Year</option>
                     </select>
@@ -119,8 +119,65 @@
     </div>
 </div>
     {{else}}
-    
-<div class="row" id="udaan">
+    {{#if errors}}
+        <form action="/annexure-1/admissionProcessActivities" method="post" class="col s12">
+        <div class="row">
+            <div class="input-field col s6 md5">
+                <select name="admission_role">
+                    <option value="{{admission_role}}" selected>{{admission_role}}</option>
+                    <option value="incharge" disabled>Incharge</option>
+                    <option value="coordinator" disabled>Co-orditors</option>
+
+                </select>
+            </div>
+            <div class="input-field col s6 md5">
+                <select name="admission_duties">
+                    <option value="{{admission_duties}}" selected>{{admission_duties}}</option>
+                    <option value="confirmation" disabled>Confirmation</option>
+                    <option value="verification" disabled>Verification</option>
+
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12 md5">
+                <select name="admission_class">
+                    <option value="{{admission_class}}" selected>{{admission_class}}</option>
+                    <option value="FE" disabled>First Year</option>
+                    <option value="DSE" disabled>Direct Second Year</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="input-field col s6 md5">
+                <input id="admission-start-date" type="text" name="admission_start_date" value="{{admission_start_date}}" class="datepicker validate" required>
+                <label for="admission-start-date">Start Date</label>
+            </div>
+
+            <div class="input-field col s6 md5">
+                <input id="admission-end-date" type="text" name="admission_end_date" value="{{admission_end_date}}" class="datepicker validate" required>
+                <label for="admission-end-date">End Date</label>
+            </div>
+        </div>
+        <div>
+            <p>
+                <label>
+                    <input id="indeterminate-checkbox" type="checkbox" required />
+                    <span>I acknowledge that above filled information is verified and justified by me.</span>
+                </label>
+            </p>
+        </div>
+        <a href="/annexure-1/examActivitiesSupervision" class="waves-effect waves-light btn red center">Not
+            Applicable</a>
+        <button class="btn waves-effect waves-light" type="submit" id="submit_btn" disabled>Submit
+        </button>
+    </form>
+</div>
+</div>
+    {{else}}
+<div class="row" id="admissionProcessActivities">
     <form action="/annexure-1/admissionProcessActivities" method="post" class="col s12">
         <div class="row">
             <div class="input-field col s6 md5">
@@ -181,6 +238,7 @@
     </form>
 </div>
 </div>
+{{/if}}
 {{/if}}
 {{/if}}
 

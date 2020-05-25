@@ -1,0 +1,110 @@
+<div class="row">
+    <div class="col s12 m12">
+        <div class="card">
+            <div class="card-content">
+                <div class="container">
+                    <span class="card-title">
+                        <h5>Register as new user</h5>
+                    </span>
+                    {{#unless errors}}
+                    <form action="/users/management/registerUser" method="post" class="container">
+                        <div class="row">
+                            <div class="input-field l12 m12 s12">
+                                <input id="name" name="name" type="text" class="validate" required>
+                                <label for="name">Username</label>
+                            </div>
+                            <div class="input-field col l12 m12 s12">
+                                <select name="department" required>
+                                    <option value="" disabled selected>Select Department</option>
+                                    <option value="Information Technology">Information Technology</option>
+                                    <option value="Computer Engineering">Computer Engineering</option>
+                                    <option value="Mechanical Engineering">Mechanical Engineering</option>
+                                    <option value="Civil Engineering">Civil Engineering</option>
+                                    <option value="EXTC Engineering">EXTC Engineering</option>
+                                </select>
+                                <label for="department">Department</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12 m6">
+                                <input id="email" name="email" type="email" class="validate" required>
+                                <label for="email">Email ID</label>
+                            </div>
+                            <div class="input-field col s12 m6">
+                                <select name="type" required>
+                                    <option value="hod"selected>HoD</option>
+                                    <option value="faculty">Faculty</option>
+                                </select>
+                                <label for="type">User Type</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field s12 m4 l8">
+                                <input id="password" type="password" name="password" class="validate" required>
+                                <label for="password">Password</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field s12 m4 l8">
+                                <input id="password2" type="password" name="password2" class="validate" required>
+                                <label for="password2">Confirm Password</label>
+                            </div>
+                        </div>
+
+                        <button class="btn waves-effect waves-light" type="submit" id="submit_btn">Submit</button>
+                    </form>
+                    {{/unless}}
+                    {{#if errors}}
+                    <form action="/users/management/registerUser" method="post" class="container">
+                        <div class="row">
+                            <div class="input-field l12 m12 s12">
+                                <input id="name" name="name" type="text" class="validate" value="{{name}}" required>
+                                <label for="name">Username</label>
+                            </div>
+                            <div class="input-field l12 m12 s12">
+                                <select name="department" required>
+                                    <option value="{{department}}" selected>{{department}}</option>
+                                    <option value="Information Technology">Information Technology</option>
+                                    <option value="Computer Engineering">Computer Engineering</option>
+                                    <option value="Mechanical Engineering">Mechanical Engineering</option>
+                                    <option value="Civil Engineering">Civil Engineering</option>
+                                    <option value="EXTC Engineering">EXTC Engineering</option>
+                                </select>
+                                <label for="department">Department</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12 m6">
+                                <input id="email"value="{{email}}" name="email" type="email" class="validate" required>
+                                <label for="email">Email ID</label>
+                            </div>
+                            <div class="input-field col s12 m6">
+                                <select name="type" required>
+                                    <option value="{{type}}"selected>{{type}}</option>
+                                    <option value="hod"selected>HoD</option>
+                                    <option value="faculty">Faculty</option>
+                                </select>
+                                <label for="type">User Type</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field s12 m4 l8">
+                                <input id="password" type="password" value="{{password}}" name="password" class="validate" required>
+                                <label for="password">Password</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field s12 m4 l8">
+                                <input id="password2" type="password" value="{{password2}}" name="password2" class="validate" required>
+                                <label for="password2">Confirm Password</label>
+                            </div>
+                        </div>
+
+                        <button class="btn waves-effect waves-light" type="submit" id="submit_btn">Submit</button>
+                    </form>
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

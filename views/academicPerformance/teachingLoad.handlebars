@@ -1,25 +1,16 @@
-<h4> Academic Performance</h4><br>
+<h5> Academic Performance ({{year}})</h5><br>
 <div class="container">
-<h5> Teaching Load</h5>
+<h6> Teaching Load</h6>
 <hr>
-
 {{#if result}}
 {{#each result}}
     <div class="row" id="leaveform">
-        <div class="row">
-            <div class="input-field col s6">
-                <select name="academic_year">
-                    <option value="{{academic_year}}">{{academic_year}}</option>
-                    <option value="2014-15" disabled>2014-15</option>
-                    <option value="2015-16" disabled>2015-16</option>
-                    <option value="2016-17" disabled>2016-17</option>
-                    <option value="2017-18" disabled>2017-18</option>
-                    <option value="2018-19" disabled>2018-19</option>
-                    <option value="2019-20" disabled>2019-20</option>
-                </select>
-                <label for="">Academic Year</label>
+        {{!-- <div class="row">
+            <div class="input-field col s6 md5">
+                <input id="academic_year" type="text" name="academic_year" value="{{../year}}" disabled>
+                <label for="academic_year" class="">Academic Year</label>
             </div>
-        </div>
+        </div> --}}
         <div class="row">
             <div class="input-field col s6 md5">
                 <input id="subject_name" type="text" name="subject_name" value="{{subject_name}}" disabled>
@@ -69,7 +60,7 @@
         <div class="row">
             <div class="input-field col s6 md5">
                 <input id="theory" type="number" name="theory_subject" value="{{theory_subject}}" disabled>
-                 <label for="theory">Theory Load &nbsp; <a href="#" class="tooltipped"
+                <label for="theory">Theory Load &nbsp; <a href="#" class="tooltipped"
                     data-tooltip="Theory Teaching Load per week"><i class="fa fa-info-circle"></i></a></label>
             </div>
             <div class="input-field col s6">
@@ -82,7 +73,7 @@
         <div class="row">
             <div class="input-field col s6">
                 <input id="tutorials" type="number" name="tutorials" value="{{tutorials}}" disabled>
-                <label for="tutorials">Tutorials Load &nbsp; <a href="#" class="tooltipped"
+<label for="tutorials">Tutorials Load &nbsp; <a href="#" class="tooltipped"
                     data-tooltip="Tutorials Teaching Load per week"><i class="fa fa-info-circle"></i></a></label>
             </div>
             <div class="input-field col s6">
@@ -95,7 +86,7 @@
         <div class="row">
             <div class="input-field col s6">
                 <input id="practical_session" type="number" name="practical_session" value="{{practical_session}}" disabled>
-                <label for="practical_session">Practical sessions &nbsp; <a href="#" class="tooltipped"
+<label for="practical_session">Practical sessions &nbsp; <a href="#" class="tooltipped"
                 data-tooltip="No. of Practical sessions conducted (hours)"><i class="fa fa-info-circle"></i></a></label>
             </div>
             <div class="input-field col s6">
@@ -121,20 +112,12 @@
 <div class="row" id="leaveform">
         <form method="post" action="/academicPerformance/teachingLoad/{{editResult.id}}?_method=PUT" class="col s12">
         <input type="hidden" name="_method" value="PUT">
-            <div class="row">
-                <div class="input-field col s6">
-                    <select name="academic_year">
-                        <option value="{{editResult.academic_year}}">{{editResult.academic_year}}</option>
-                        <option value="2014-15">2014-15</option>
-                        <option value="2015-16">2015-16</option>
-                        <option value="2016-17">2016-17</option>
-                        <option value="2017-18">2017-18</option>
-                        <option value="2018-19">2018-19</option>
-                        <option value="2019-20">2019-20</option>
-                    </select>
-                    <label for="">Academic Year</label>
-                </div>
+            {{!-- <div class="row">
+                <div class="input-field col s6 md5">
+                <input id="academic_year" type="text" name="academic_year" value="{{year}}" disabled>
+                <label for="academic_year" class="">Academic Year</label>
             </div>
+            </div> --}}
             <div class="row">
                 <div class="input-field col s6 md5">
                     <input id="subject_name" type="text" name="subject_name" value="{{editResult.subject_name}}"
@@ -207,7 +190,7 @@
                 <div class="input-field col s6">
                     <input id="theory_session" type="number" name="theory_session" value="{{editResult.theory_session}}"
                         class="validate" required>
-                    <label for="theory_session">Theory sessions &nbsp; <a href="#" class="tooltipped"
+                        <label for="theory_session">Theory sessions &nbsp; <a href="#" class="tooltipped"
                     data-tooltip="No. of Theory sessions conducted (hours)"><i class="fa fa-info-circle"></i></a></label>
 
                 </div>
@@ -216,12 +199,14 @@
                 <div class="input-field col s6">
                     <input id="practical_session" type="number" name="practical_session"
                         value="{{editResult.practical_session}}" class="validate" required>
+                        
                    <label for="practical_session">Practical sessions &nbsp; <a href="#" class="tooltipped"
                     data-tooltip="No. of Practical sessions conducted (hours)"><i class="fa fa-info-circle"></i></a></label>
                 </div>
                 <div class="input-field col s6">
                     <input id="Student_feedback" type="number" name="Student_feedback"
                         value="{{editResult.Student_feedback}}" class="validate" required>
+                        
                      <label for="Student_feedback">Feedback &nbsp; <a href="#" class="tooltipped"
                 data-tooltip="Online Students Feedback (1-5)"><i class="fa fa-info-circle"></i></a></label>
 
@@ -241,27 +226,125 @@
 </div>
 </div>
 {{else}}
+{{#if errors}}
 <div class="row" id="leaveform">
     <form action="/academicPerformance/teachingLoad" method="post" class="col s12">
 
+        {{!-- <div class="row">
+            <div class="input-field col s6 md5">
+                <input id="academic_year" type="text" name="academic_year" value="{{year}}" disabled>
+                <label for="academic_year" class="">Academic Year</label>
+            </div>
+        </div> --}}
         <div class="row">
-            
+            <div class="input-field col s6 md5">
+                <input id="subject_name" type="text" name="subject_name" value="{{subject_name}}" class="validate " required>
+                
+                <label for="subject_name" class="">Subject Name</label>
+                
+            </div>
             <div class="input-field col s6">
-                <select name="academic_year">
-                    <option value="" disabled selected>Academic Year</option>
-                    <option value="2014-15">2014-15</option>
-                    <option value="2015-16">2015-16</option>
-                    <option value="2016-17">2016-17</option>
-                    <option value="2017-18">2017-18</option>
-                    <option value="2018-19">2018-19</option>
-                    <option value="2019-20">2019-20</option>
+                <select name="class">
+                    <option value="{{class}}" selected>{{class}}</option>
+                    <option value="FE">FE</option>
+                    <option value="SE">SE</option>
+                    <option value="TE">TE</option>
+                    <option value="BE">BE</option>
                     
+                </select>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s6">
+                <select name="department">
+                    <option value="{{department}}" selected>{{department}}</option>
+                    <option value="Information Technology">Information Technology</option>
+                    <option value="Computer Engineering">Computer Engineering</option>
+                    <option value="Mechanical Engineering">Mechanical Engineering</option>
+                    <option value="Civil Engineering">Civil Engineering</option>
+                    <option value="EXTC Engineering">EXTC Engineering</option>
+                </select>
+            </div>
+            <div class="input-field col s6 md5">
+                <select name="semester">
+                    <option value="{{semester}}" selected>{{semester}}</option>
+                    <option value="sem 1">Sem 1</option>
+                    <option value="sem 2">Sem 2</option>
+                    <option value="sem 3">Sem 3</option>
+                    <option value="sem 4">Sem 4</option>
+                    <option value="sem 5">Sem 5</option>
+                    <option value="sem 6">Sem 6</option>
+                    <option value="sem 7">Sem 7</option>
+                    <option value="sem 8">Sem 8</option>
                 </select>
             </div>
         </div>
         <div class="row">
             <div class="input-field col s6 md5">
-                <input id="subject_name" type="text" name="subject_name" class="validate " required>
+                <input id="theory" type="number" name="theory_subject" value="{{theory_subject}}" class="validate" required>
+                <label for="theory">Theory Load &nbsp; <a href="#" class="tooltipped"
+                            data-tooltip="Enter the Thoery Teaching Load per week"><i class="fa fa-info-circle"></i></a></label>
+            </div>
+            <div class="input-field col s6">
+                <input id="lab" type="number" name="lab_subject" value="{{lab_subject}}" class="validate" required>
+                <label for="lab">Lab Load &nbsp; <a href="#" class="tooltipped"
+                            data-tooltip="Enter the Lab Teaching Load per week"><i class="fa fa-info-circle"></i></a></label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s6">
+                <input id="tutorials" type="number" name="tutorials" value="{{tutorials}}" class="validate" required>
+                <label for="tutorials">Tutorials Load &nbsp; <a href="#" class="tooltipped"
+                            data-tooltip="Enter the Tutorials Teaching Load per week"><i class="fa fa-info-circle"></i></a></label>
+            </div>
+            <div class="input-field col s6">
+                <input id="theory_session" type="number" name="theory_session" value="{{theory_session}}" class="validate" required>
+                <label for="theory_session">Theory sessions  &nbsp; <a href="#" class="tooltipped"
+                            data-tooltip="Enter the Total hours of Thoery Sessions"><i class="fa fa-info-circle"></i></a></label>
+                
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s6">
+                <input id="practical_session" type="number" name="practical_session" value="{{practical_session}}" class="validate" required>
+                <label for="practical_session">Practical sessions  &nbsp; <a href="#" class="tooltipped"
+                            data-tooltip="Enter the Total hours of Practical Sessions"><i class="fa fa-info-circle"></i></a></label>
+            </div>
+            <div class="input-field col s6">
+                <input id="Student_feedback" type="number" name="Student_feedback" value="{{Student_feedback}}" class="validate" required>
+                <label for="Student_feedback">Students Feedback &nbsp; <a href="#" class="tooltipped"
+                            data-tooltip="Enter the Online Students Feedback (1-5)"><i class="fa fa-info-circle"></i></a></label>
+                
+            </div>
+        </div>
+       <div>
+             <p>
+                 <label>
+                <input id="indeterminate-checkbox" type="checkbox" required/>
+                 <span>I acknowledge that above filled information is verified and justified by me.</span>
+                </label>
+            </p>
+        </div>
+        <button class="btn waves-effect waves-light" type="submit" id="submit_btn" disabled>Submit
+        </button>
+    </form>
+</div>
+</div>
+{{else}}
+<div class="row" id="leaveform">
+    <form action="/academicPerformance/teachingLoad" method="post" class="col s12">
+
+        {{!-- <div class="row">
+            <div class="input-field col s6 md5">
+                <input id="academic_year" type="text" name="academic_year" value="{{year}}" disabled>
+                <label for="academic_year" class="">Academic Year</label>
+            </div>
+        </div> --}}
+        <div class="row">
+            <div class="input-field col s6 md5">
+                <input id="subject_name" type="text" name="subject_name" value="{{subject_name}}" class="validate " required>
                 
                 <label for="subject_name" class="">Subject Name</label>
                 
@@ -307,6 +390,7 @@
             <div class="input-field col s6 md5">
                 <input id="theory" type="number" name="theory_subject" class="validate" required>
                 <label for="theory">Theory Load &nbsp; <a href="#" class="tooltipped"
+                
                     data-tooltip="Theory Teaching Load per week"><i class="fa fa-info-circle"></i></a></label>
             </div>
             <div class="input-field col s6">
@@ -319,6 +403,7 @@
         <div class="row">
             <div class="input-field col s6">
                 <input id="tutorials" type="number" name="tutorials" class="validate" required>
+                
                  <label for="tutorials">Tutorials Load &nbsp; <a href="#" class="tooltipped"
                     data-tooltip="Tutorials Teaching Load per week"><i class="fa fa-info-circle"></i></a></label>
             </div>
@@ -332,7 +417,7 @@
         <div class="row">
             <div class="input-field col s6">
                 <input id="practical_session" type="number" name="practical_session" class="validate" required>
-                <label for="practical_session">Practical sessions &nbsp; <a href="#" class="tooltipped"
+<label for="practical_session">Practical sessions &nbsp; <a href="#" class="tooltipped"
                     data-tooltip="No. of Practical sessions conducted (hours)"><i class="fa fa-info-circle"></i></a></label>
             </div>
             <div class="input-field col s6">
@@ -355,5 +440,6 @@
     </form>
 </div>
 </div>
+{{/if}}
 {{/if}}
 {{/if}}

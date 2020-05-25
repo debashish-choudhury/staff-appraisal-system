@@ -3,6 +3,10 @@ const Schema = mongoose.Schema;
 
 //create Schema
 const ProjectBasedLearning = new Schema({
+    academic_year: {
+        type: Number,
+        required: true
+    },
     pbl_subject: {
         type: String,
         required: true

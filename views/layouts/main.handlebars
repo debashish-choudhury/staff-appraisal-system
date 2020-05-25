@@ -58,23 +58,65 @@
             min-height: 41vh;
             flex-direction: column;
         }
+
+        body {
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column;
+        }
+
         main {
             flex: 1 0 auto;
+        }
+
+        .tabs .tab a {
+            color: #000;
+        }
+
+        /*Black color to the text*/
+
+        .tabs .tab a:hover {
+            background-color: rgb(223, 177, 220);
+            color: rgb(255, 255, 255);
+        }
+
+        /*Text color on hover*/
+
+        .tabs .tab a.active {
+            background-color: rgb(203, 155, 207);
+            color: rgb(0, 0, 0);
+        }
+
+        /*Background and text color when a tab is active*/
+
+        .tabs .indicator {
+            background-color: rgb(151, 64, 147);
+        }
+
+        @media only screen and (max-width: 992px) {
+
+            table.responsive-table thead,
+            table.responsive-table thead tr {
+                display: block;
+                float: left;
+            }
         }
     </style>
 
 </head>
 
 <body>
+    <header>{{> _navbar}}</header>
+    <main>
+        <div class="container">
+            {{> _msg}}
+            {{> _errors}}
+            {{{body}}}
+            <br>
+        </div>
+    </main>
+    <footer class="page-footer grey darken-3">{{> _footer}}</footer>
 
-    {{> _navbar}}
-    <div class="container">
-        {{> _msg}}
-        {{> _errors}}
-        {{{body}}}
-        <br>
-    </div>
-    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
@@ -103,6 +145,14 @@
         // Date format initialization
         $(document).ready(function () {
             $('.datepicker').datepicker();
+            $('#datepicker').datepicker({
+                yearRange: 10,
+                format: 'yyyy'
+                //setDate: new Date()
+            });
+            //var datepicker = document.getElementById('datepicker');
+            //var instance = M.Datepicker.getInstance(datepicker);
+            //instance.setDate(new Date());
         });
         $('.tooltipped').tooltip();
         $('button').addClass('purple');
@@ -116,6 +166,16 @@
 
             } else {
                 $('#submit_btn').attr('disabled', true); //disable input
+            }
+        });
+        $('#indeterminate-checkbox-overview').click(function () {
+            //check if checkbox is checked
+            if ($(this).is(':checked')) {
+
+                $('#submit_btn_overview').removeAttr('disabled'); //enable input
+
+            } else {
+                $('#submit_btn_overview').attr('disabled', true); //disable input
             }
         });
 
@@ -132,9 +192,8 @@
             });
         });
 
-
     </script>
-{{> _footer}}
+
 </body>
 
 </html>

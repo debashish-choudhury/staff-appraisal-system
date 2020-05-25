@@ -1,6 +1,6 @@
-<h4>Annexure 1</h4><br>
+<h5>Annexure 1</h5><br>
 <div class="container">
-<h5>1.2 Class Advisor</h5>
+<h6>1.2 Class Advisor</h6>
 <hr>
 {{#if result}}
 {{#each result}}
@@ -69,7 +69,7 @@
             <div class="row">
                 <div class="input-field col s6">
                     <select name="class_name">
-                        <option value="{{result.class_name}}" disabled selected>{{result.class_name}}</option>
+                        <option value="{{editResult.class_name}}" selected>{{editResult.class_name}}</option>
                         <option value="FE">FE</option>
                         <option value="SE">SE</option>
                         <option value="TE">TE</option>
@@ -79,7 +79,7 @@
                 </div>
                 <div class="input-field col s6">
                     <select name="department">
-                        <option value="{{result.department}}" disabled selected>{{result.department}}</option>
+                        <option value="{{editResult.department}}" selected>{{editResult.department}}</option>
                         <option value="Information Technology">Information Technology</option>
                         <option value="Computer Engineering">Computer Engineering</option>
                         <option value="Mechanical Engineering">Mechanical Engineering</option>
@@ -93,8 +93,8 @@
             <div class="row">
 
                 <div class="input-field col s6 md5">
-                    <select name="semester" class="validate" required>
-                        <option value="{{result.semester}}" disabled selected>{{result.semester}}</option>
+                    <select name="semester" class="validate" >
+                        <option value="{{editResult.semester}}" selected>{{editResult.semester}}</option>
                         <option value="sem 1">Sem 1</option>
                         <option value="sem 2">Sem 2</option>
                         <option value="sem 3">Sem 3</option>

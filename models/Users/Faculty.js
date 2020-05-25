@@ -11,6 +11,10 @@ const FacultySchema = new Schema({
         type: String,
         required: true
     },
+    department: {
+        type: String,
+        required: true
+    },
     type: {
         type: String,
         required: true
@@ -19,6 +23,8 @@ const FacultySchema = new Schema({
         type: String,
         required: true
     },
+    resetPasswordToken: {type: String},
+    resetPasswordExpires: {type: Date},
     date: {
         type: Date,
         default: Date.now

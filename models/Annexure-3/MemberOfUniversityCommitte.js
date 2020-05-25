@@ -3,6 +3,10 @@ const Schema = mongoose.Schema;
 
 //create Schema
 const MemberOfUniversityCommite = new Schema({
+    academic_year: {
+        type: Number,
+        required: true
+    },
     nameofCommittee: {
         type: String,
         required: true

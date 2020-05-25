@@ -3,6 +3,10 @@ const Schema = mongoose.Schema;
 
 //create Schema
 const FacultyMarks = new Schema({
+    academic_year: {
+        type: Number,
+        required: true
+    },
     academicPerformance: {
         type: Number,
         required: true

@@ -2,6 +2,10 @@ const express = require('express');
 const mongoose = require('mongoose');
 const router = express.Router();
 const { ensureAuthenticated } = require('../helpers/auth');
+const AcademicYear = require('../config/academicYear');
+
+// let academic_year_id;
+let year;
 
 // Load teaching model
 require('../models/AcademicPerformance/TeachingLoad')
@@ -25,41 +29,124 @@ const Innovation = mongoose.model('innovation');
 
 // Teaching load route
 router.get('/teachingLoad', ensureAuthenticated, (req, res) => {
-    TeachingLoad.find({ user: req.user.id })
+    AcademicYear.find({ user: req.user.id })
         .then(result => {
-            res.render('academicPerformance/teachingLoad', { result });
+            if (!result) {
+                req.flash('error_msg', 'Select the academic year before proceeding');
+                res.redirect('/');
+            }
+            // academic_year_id = result[0].user;
+            year = result[0].academic_year;
+            TeachingLoad.find({ $and: [{ user: req.user.id }, { academic_year: year }] })
+                .then(result => {
+                    res.render('academicPerformance/teachingLoad', { result });
+                })
+                .catch(() => {
+                    req.flash('error_msg', 'Error while retrieving data.');
+                    res.redirect('/');
+                })
+        })
+        .catch(() => {
+            req.flash('error_msg', 'Select the academic year before proceeding.');
+            res.redirect('/');
         })
 });
 
 // Teaching assistant route
 router.get('/teachingAssistant', ensureAuthenticated, (req, res) => {
-    TeachingAssistant.find({ user: req.user.id })
+    AcademicYear.find({ user: req.user.id })
         .then(result => {
-            res.render('academicPerformance/teachingAssistant', { result });
+            if (!result) {
+                req.flash('error_msg', 'Select the academic year before proceeding');
+                res.redirect('/');
+            }
+            year = result[0].academic_year;
+            TeachingAssistant.find({ $and: [{ user: req.user.id }, { academic_year: year }] })
+                .then(result => {
+                    res.render('academicPerformance/teachingAssistant', { result });
+                })
+                .catch(() => {
+                    req.flash('error_msg', 'Error while retrieving data.');
+                    res.redirect('/');
+                })
+        })
+        .catch(() => {
+            req.flash('error_msg', 'Select the academic year before proceeding.');
+            res.redirect('/');
         })
 });
 
 // new books load route
 router.get('/newBooks', ensureAuthenticated, (req, res) => {
-    NewBooks.find({ user: req.user.id })
+    AcademicYear.find({ user: req.user.id })
         .then(result => {
-            res.render('academicPerformance/newBooks', { result });
+            if (!result) {
+                req.flash('error_msg', 'Select the academic year before proceeding');
+                res.redirect('/');
+            }
+            year = result[0].academic_year;
+            NewBooks.find({ $and: [{ user: req.user.id }, { academic_year: year }] })
+                .then(result => {
+                    res.render('academicPerformance/newBooks', { result });
+                })
+                .catch(() => {
+                    req.flash('error_msg', 'Error while retrieving data.');
+                    res.redirect('/');
+                })
         })
+        .catch(() => {
+            req.flash('error_msg', 'Select the academic year before proceeding.');
+            res.redirect('/');
+        })
+
 });
 
 // added experiment load route
 router.get('/addedExp', ensureAuthenticated, (req, res) => {
-    AddedExp.find({ user: req.user.id })
+    AcademicYear.find({ user: req.user.id })
         .then(result => {
-            res.render('academicPerformance/addedExp', { result });
+            if (!result) {
+                req.flash('error_msg', 'Select the academic year before proceeding');
+                res.redirect('/');
+            }
+            year = result[0].academic_year;
+            AddedExp.find({ $and: [{ user: req.user.id }, { academic_year: year }] })
+                .then(result => {
+                    res.render('academicPerformance/addedExp', { result });
+                })
+                .catch(() => {
+                    req.flash('error_msg', 'Error while retrieving data.');
+                    res.redirect('/');
+                })
         })
+        .catch(() => {
+            req.flash('error_msg', 'Select the academic year before proceeding.');
+            res.redirect('/');
+        })
+
 });
 
 // innovative teaching technique load route
 router.get('/innovativeTeaching', ensureAuthenticated, (req, res) => {
-    Innovation.find({ user: req.user.id })
+    AcademicYear.find({ user: req.user.id })
         .then(result => {
-            res.render('academicPerformance/innovativeTeaching', { result });
+            if (!result) {
+                req.flash('error_msg', 'Select the academic year before proceeding');
+                res.redirect('/');
+            }
+            year = result[0].academic_year;
+            Innovation.find({ $and: [{ user: req.user.id }, { academic_year: year }] })
+                .then(result => {
+                    res.render('academicPerformance/innovativeTeaching', { result });
+                })
+                .catch(() => {
+                    req.flash('error_msg', 'Error while retrieving data.');
+                    res.redirect('/');
+                })
+        })
+        .catch(() => {
+            req.flash('error_msg', 'Select the academic year before proceeding.');
+            res.redirect('/');
         })
 });
 
@@ -74,6 +161,10 @@ router.get('/teachingLoad/edit/:id', ensureAuthenticated, (req, res) => {
                 res.render('academicPerformance/teachingLoad', { editResult: result });
             }
         })
+        .catch(() => {
+            req.flash('error_msg', 'Error while finding your previous data. Please try again.');
+            res.redirect('/academicPerformance/teachingLoad');
+        })
 });
 
 // Load edit pages for teaching assistant
@@ -86,6 +177,10 @@ router.get('/teachingAssistant/edit/:id', ensureAuthenticated, (req, res) => {
             } else {
                 res.render('academicPerformance/teachingAssistant', { editResult: result });
             }
+        })
+        .catch(() => {
+            req.flash('error_msg', 'Error while finding your previous data. Please try again.');
+            res.redirect('/academicPerformance/teachingAssistant');
         })
 });
 
@@ -100,18 +195,26 @@ router.get('/newBooks/edit/:id', ensureAuthenticated, (req, res) => {
                 res.render('academicPerformance/newBooks', { editResult: result });
             }
         })
+        .catch(() => {
+            req.flash('error_msg', 'Error while finding your previous data. Please try again.');
+            res.redirect('/academicPerformance/newBooks');
+        })
 });
 
 // added experiment edit route
 router.get('/addedExp/edit/:id', ensureAuthenticated, (req, res) => {
     AddedExp.findOne({ _id: req.params.id })
         .then(result => {
-            if(result.user != req.user.id) { 
+            if (result.user != req.user.id) {
                 req.flash('error_msg', 'Not Authorized');
                 res.redirect('/academicPerformance/addedExp');
             } else {
-            res.render('academicPerformance/addedExp', { editResult: result });
+                res.render('academicPerformance/addedExp', { editResult: result });
             }
+        })
+        .catch(() => {
+            req.flash('error_msg', 'Error while finding your previous data. Please try again.');
+            res.redirect('/academicPerformance/addedExp');
         })
 });
 
@@ -119,45 +222,89 @@ router.get('/addedExp/edit/:id', ensureAuthenticated, (req, res) => {
 router.get('/innovativeTeaching/edit/:id', ensureAuthenticated, (req, res) => {
     Innovation.findOne({ _id: req.params.id })
         .then(result => {
-            if(result.user != req. user.id) {
+            if (result.user != req.user.id) {
                 req.flash('error_msg', 'Not authorized');
                 res.redirect('/academicPerformance/innovativeTeaching');
             } else {
                 res.render('academicPerformance/innovativeTeaching', { editResult: result });
             }
         })
+        .catch(() => {
+            req.flash('error_msg', 'Error while finding your previous data. Please try again.');
+            res.redirect('/academicPerformance/innovativeTeaching');
+        })
 });
 
 //process teaching form
 router.post('/teachingLoad', (req, res) => {
+    let errors = [];
 
-    // add preleave data into db
-    const TeachingRecord = {
-        academic_year: req.body.academic_year,
-        subject_name: req.body.subject_name,
-        class: req.body.class,
-        department: req.body.department,
-        semester: req.body.semester,
-        theory_subject: req.body.theory_subject,
-        lab_subject: req.body.lab_subject,
-        tutorials: req.body.tutorials,
-        theory_session: req.body.theory_session,
-        practical_session: req.body.practical_session,
-        Student_feedback: req.body.Student_feedback,
-        user: req.user.id
+    if (!req.body.theory_subject || req.body.theory_subject > 40 || req.body.theory_subject < 0) {
+        errors.push({ text: 'Please enter value between 0 to 40 for theory load' });
+    } else if (!req.body.lab_subject || req.body.lab_subject > 40 || req.body.lab_subject < 0) {
+        errors.push({ text: 'Please enter value between 0 to 40 for lab load' });
+    } else if (!req.body.tutorials || req.body.tutorials > 40 || req.body.tutorials < 0) {
+        errors.push({ text: 'Please enter value between 0 to 40 for tutorials load' });
+    } else if (!req.body.theory_session || req.body.theory_session > 40 || req.body.theory_session < 0) {
+        errors.push({ text: 'Please enter value between 0 to 40 for theory session' });
+    } else if (!req.body.practical_session || req.body.practical_session > 40 || req.body.practical_session < 0) {
+        errors.push({ text: 'Please enter value between 0 to 40 for practical session' });
     }
-    new TeachingLoad(TeachingRecord)
-        .save()
-        .then(teaching => {
-            req.flash('success_msg', 'Data entered successfully');
-            res.redirect('/academicPerformance/teachingAssistant');
+    else if (!req.body.Student_feedback || req.body.Student_feedback > 5 || req.body.Student_feedback < 0) {
+        errors.push({ text: 'Please enter feedback value between 0 and 5' });
+    }
+    if (errors.length > 0) {
+        res.render('academicPerformance/teachingLoad', {
+            errors: errors,
+            subject_name: req.body.subject_name,
+            class: req.body.class,
+            department: req.body.department,
+            semester: req.body.semester,
+            theory_subject: req.body.theory_subject,
+            lab_subject: req.body.lab_subject,
+            tutorials: req.body.tutorials,
+            theory_session: req.body.theory_session,
+            practical_session: req.body.practical_session,
+            Student_feedback: req.body.Student_feedback,
+
         });
+    }
+    else {
+        // add preleave data into db
+        const TeachingRecord = {
+            academic_year: year,
+            subject_name: req.body.subject_name,
+            class: req.body.class,
+            department: req.body.department,
+            semester: req.body.semester,
+            theory_subject: req.body.theory_subject,
+            lab_subject: req.body.lab_subject,
+            tutorials: req.body.tutorials,
+            theory_session: req.body.theory_session,
+            practical_session: req.body.practical_session,
+            Student_feedback: req.body.Student_feedback,
+            user: req.user.id
+
+        }
+        new TeachingLoad(TeachingRecord)
+            .save()
+            .then(teaching => {
+                req.flash('success_msg', 'Data entered successfully');
+                res.redirect('/academicPerformance/teachingAssistant');
+            })
+            .catch(err => {
+                console.log(err);
+                req.flash('error_msg', 'faculty ID not found please login again.');
+                res.redirect('/academicPerformance/teachingLoad');
+            })
+    }
 });
 
 //process teaching form
 router.post('/teachingAssistant', (req, res) => {
     // add preleave data into db
     const teachingAssistantRecord = {
+        academic_year: year,
         faculty_name: req.body.faculty_name,
         class: req.body.class,
         semester: req.body.semester,
@@ -169,13 +316,19 @@ router.post('/teachingAssistant', (req, res) => {
         .then(teachingAssistant => {
             req.flash('success_msg', 'Data entered successfully');
             res.redirect('/academicPerformance/newBooks');
-        });
+        })
+        .catch(err => {
+            console.log(err);
+            req.flash('error_msg', 'faculty ID not found please login again.');
+            res.redirect('/academicPerformance/teachingAssistant');
+        })
 });
 
 //process new books form
 router.post('/newBooks', (req, res) => {
     // add preleave data into db
     const NewBooksRecord = {
+        academic_year: year,
         subject_name: req.body.subject_name,
         title: req.body.title,
         semester: req.body.semester,
@@ -189,13 +342,19 @@ router.post('/newBooks', (req, res) => {
         .then(newbooks => {
             req.flash('success_msg', 'Data entered successfully');
             res.redirect('/academicPerformance/addedExp');
-        });
+        })
+        .catch(err => {
+            console.log(err);
+            req.flash('error_msg', 'faculty ID not found please login again.');
+            res.redirect('/academicPerformance/newBooks');
+        })
 });
 
 //process added experiments form
 router.post('/addedExp', (req, res) => {
     // add preleave data into db
     const AddedExpRecord = {
+        academic_year: year,
         subject_name: req.body.subject_name,
         class: req.body.class,
         semester: req.body.semester,
@@ -207,13 +366,19 @@ router.post('/addedExp', (req, res) => {
         .then(newbooks => {
             req.flash('success_msg', 'Data entered successfully');
             res.redirect('/academicPerformance/innovativeTeaching');
-        });
+        })
+        .catch(err => {
+            console.log(err);
+            req.flash('error_msg', 'faculty ID not found please login again.');
+            res.redirect('/academicPerformance/addedExp');
+        })
 });
 
 //process innovation teaching technique form
 router.post('/innovation', (req, res) => {
     // add preleave data into db
     const InnovationTeachingRecords = {
+        academic_year: year,
         subject_name: req.body.subject_name,
         class_name: req.body.class_name,
         semester: req.body.semester,
@@ -225,46 +390,106 @@ router.post('/innovation', (req, res) => {
         .then(innovationrecords => {
             req.flash('success_msg', 'Data entered successfully');
             res.redirect('/leave');
-        });
+        })
+        .catch(err => {
+            console.log(err);
+            req.flash('error_msg', 'faculty ID not found please login again.');
+            res.redirect('/academicPerformance/innovation');
+        })
 });
 
 // Put request (edit form)
 router.put('/teachingLoad/:id', (req, res) => {
-    TeachingLoad.findOne({ _id: req.params.id })
-        .then(result => {
-            result.academic_year = req.body.academic_year,
-                result.subject_name = req.body.subject_name,
-                result.class = req.body.class,
-                result.department = req.body.department,
-                result.semester = req.body.semester,
-                result.theory_subject = req.body.theory_subject,
-                result.lab_subject = req.body.lab_subject,
-                result.tutorials = req.body.tutorials,
-                result.theory_session = req.body.theory_session,
-                result.practical_session = req.body.practical_session,
-                result.Student_feedback = req.body.Student_feedback
+    let errors = [];
 
-            result.save()
-                .then(result => {
-                    req.flash('success_msg', 'Data updated successfully');
-                    res.redirect('/academicPerformance/teachingLoad');
-                });
-        });
+    if (!req.body.theory_subject || req.body.theory_subject > 40 || req.body.theory_subject < 0) {
+        errors.push({ text: 'Please enter value between 0 to 40 for theory load' });
+    } else if (!req.body.lab_subject || req.body.lab_subject > 40 || req.body.lab_subject < 0) {
+        errors.push({ text: 'Please enter value between 0 to 40 for lab load' });
+    } else if (!req.body.tutorials || req.body.tutorials > 40 || req.body.tutorials < 0) {
+        errors.push({ text: 'Please enter value between 0 to 40 for tutorials load' });
+    } else if (!req.body.theory_session || req.body.theory_session > 40 || req.body.theory_session < 0) {
+        errors.push({ text: 'Please enter value between 0 to 40 for theory session' });
+    } else if (!req.body.practical_session || req.body.practical_session > 40 || req.body.practical_session < 0) {
+        errors.push({ text: 'Please enter value between 0 to 40 for practical session' });
+    }
+    else if (!req.body.Student_feedback || req.body.Student_feedback > 5 || req.body.Student_feedback < 0) {
+        errors.push({ text: 'Please enter feedback value between 0 and 5' });
+    }
+
+    if (errors.length > 0) {
+        if (!req.body.theory_subject || req.body.theory_subject > 40 || req.body.theory_subject < 0) {
+            req.flash('error_msg', 'Please enter value between 0 to 40 for theory load');
+        } else if (!req.body.lab_subject || req.body.lab_subject > 40 || req.body.lab_subject < 0) {
+            req.flash('error_msg', 'Please enter value between 0 to 40 for lab load');
+        } else if (!req.body.tutorials || req.body.tutorials > 40 || req.body.tutorials < 0) {
+            req.flash('error_msg', 'Please enter value between 0 to 40 for tutorials');
+        } else if (!req.body.theory_session || req.body.theory_session > 40 || req.body.theory_session < 0) {
+            req.flash('error_msg', 'Please enter value between 0 to 40 for theory sessions');
+        } else if (!req.body.practical_session || req.body.practical_session > 40 || req.body.practical_session < 0) {
+            req.flash('error_msg', 'Please enter value between 0 to 40 for practical sessions');
+        }
+        else if (!req.body.Student_feedback || req.body.Student_feedback > 5 || req.body.Student_feedback < 0) {
+            req.flash('error_msg', 'Please enter feedback value between 0 to 5');
+        }
+
+
+        res.redirect('/academicPerformance/teachingLoad');
+    }
+    else {
+
+        TeachingLoad.findOne({ _id: req.params.id })
+            .then(result => {
+                result.subject_name = req.body.subject_name,
+                    result.class = req.body.class,
+                    result.department = req.body.department,
+                    result.semester = req.body.semester,
+                    result.theory_subject = req.body.theory_subject,
+                    result.lab_subject = req.body.lab_subject,
+                    result.tutorials = req.body.tutorials,
+                    result.theory_session = req.body.theory_session,
+                    result.practical_session = req.body.practical_session,
+                    result.Student_feedback = req.body.Student_feedback
+
+
+                result.save()
+                    .then(result => {
+                        req.flash('success_msg', 'Data updated successfully');
+                        res.redirect('/academicPerformance/teachingLoad');
+                    })
+                    .catch(() => {
+                        req.flash('error_msg', 'Data not updated. Please try logging in again.');
+                        res.redirect('/academicPerformance/teachingLoad');
+                    })
+            })
+            .catch(() => {
+                req.flash('error_msg', 'User not found. Please try logging in again.');
+                res.redirect('/academicPerformance/teachingLoad');
+            })
+    }
 });
 
 router.put('/teachingAssistant/:id', (req, res) => {
     TeachingAssistant.findOne({ _id: req.params.id })
         .then(result => {
             result.faculty_name = req.body.faculty_name,
-            result.class = req.body.class,
-            result.semester = req.body.semester,
-            result.subject = req.body.subject
+                result.class = req.body.class,
+                result.semester = req.body.semester,
+                result.subject = req.body.subject
 
             result.save()
                 .then(result => {
                     req.flash('success_msg', 'Data updated successfully');
                     res.redirect('/academicPerformance/teachingAssistant');
                 })
+                .catch(() => {
+                    req.flash('error_msg', 'Data not updated. Please try logging in again.');
+                    res.redirect('/academicPerformance/teachingAssistant');
+                })
+        })
+        .catch(() => {
+            req.flash('error_msg', 'User not found. Please try logging in again.');
+            res.redirect('/academicPerformance/teachingAssistant');
         })
 });
 
@@ -282,40 +507,64 @@ router.put('/newBooks/:id', (req, res) => {
                     .then(result => {
                         req.flash('success_msg', 'Data updated successfully');
                         res.redirect('/academicPerformance/newBooks');
-                    });
+                    })
+                    .catch(() => {
+                        req.flash('error_msg', 'Data not updated. Please try logging in again.');
+                        res.redirect('/academicPerformance/newBooks');
+                    })
+        })
+        .catch(() => {
+            req.flash('error_msg', 'User not found. Please try logging in again.');
+            res.redirect('/academicPerformance/newBooks');
         })
 });
 
 router.put('/addedExp/:id', (req, res) => {
-    AddedExp.findOne({_id: req.params.id})
-    .then(result => {
-        result.subject_name = req.body.subject_name,
-        result.class = req.body.class,
-        result.semester = req.body.semester,
-        result.exp_name = req.body.exp_name
-
-        result.save()
+    AddedExp.findOne({ _id: req.params.id })
         .then(result => {
-            req.flash('success_msg', 'Data updated successfully');
+            result.subject_name = req.body.subject_name,
+                result.class = req.body.class,
+                result.semester = req.body.semester,
+                result.exp_name = req.body.exp_name
+
+            result.save()
+                .then(result => {
+                    req.flash('success_msg', 'Data updated successfully');
+                    res.redirect('/academicPerformance/addedExp');
+                })
+                .catch(() => {
+                    req.flash('error_msg', 'Data not updated. Please try logging in again.');
+                    res.redirect('/academicPerformance/addedExp');
+                })
+        })
+        .catch(() => {
+            req.flash('error_msg', 'User not found. Please try logging in again.');
             res.redirect('/academicPerformance/addedExp');
-        });
-    })
+        })
 });
 
 router.put('/innovativeTeaching/:id', (req, res) => {
     Innovation.findOne({ _id: req.params.id })
-    .then(result => {
-        result.subject_name = req.body.subject_name,
-        result.class_name = req.body.class_name,
-        result.semester = req.body.semester,
-        result.technique = req.body.technique
-        
-        result.save()
         .then(result => {
-            req.flash('success_msg', 'Data updated successfully');
+            result.subject_name = req.body.subject_name,
+                result.class_name = req.body.class_name,
+                result.semester = req.body.semester,
+                result.technique = req.body.technique
+
+            result.save()
+                .then(result => {
+                    req.flash('success_msg', 'Data updated successfully');
+                    res.redirect('/academicPerformance/innovativeTeaching');
+                })
+                .catch(() => {
+                    req.flash('error_msg', 'Data not updated. Please try logging in again.');
+                    res.redirect('/academicPerformance/innovativeTeaching');
+                })
+        })
+        .catch(() => {
+            req.flash('error_msg', 'User not found. Please try logging in again.');
             res.redirect('/academicPerformance/innovativeTeaching');
-        });
-    })
+        })
 });
 
 //DELETE DATA
@@ -325,7 +574,11 @@ router.delete('/teachingLoad/delete/:id', (req, res) => {
         .then(() => {
             req.flash('success_msg', 'Data deleted successfully');
             res.redirect('/academicPerformance/teachingLoad');
-        });
+        })
+        .catch(() => {
+            req.flash('error_msg', 'User not found. Please try logging in again.');
+            res.redirect('/academicPerformance/teachingLoad');
+        })
 });
 
 router.delete('/teachingAssistant/delete/:id', (req, res) => {
@@ -333,7 +586,11 @@ router.delete('/teachingAssistant/delete/:id', (req, res) => {
         .then(() => {
             req.flash('success_msg', 'Data deleted successfully');
             res.redirect('/academicPerformance/teachingAssistant');
-        });
+        })
+        .catch(() => {
+            req.flash('error_msg', 'User not found. Please try logging in again.');
+            res.redirect('/academicPerformance/teachingAssistant');
+        })
 });
 
 router.delete('/newBooks/delete/:id', (req, res) => {
@@ -341,23 +598,35 @@ router.delete('/newBooks/delete/:id', (req, res) => {
         .then(() => {
             req.flash('success_msg', 'Data deleted successfully');
             res.redirect('/academicPerformance/newBooks');
-        });
+        })
+        .catch(() => {
+            req.flash('error_msg', 'User not found. Please try logging in again.');
+            res.redirect('/academicPerformance/newBooks');
+        })
 });
 
 router.delete('/addedExp/delete/:id', (req, res) => {
     AddedExp.deleteOne({ _id: req.params.id })
-    .then(() => {
-        req.flash('success_msg', 'Data deleted successfully');
-        res.redirect('/academicPerformance/addedExp');
-    });
+        .then(() => {
+            req.flash('success_msg', 'Data deleted successfully');
+            res.redirect('/academicPerformance/addedExp');
+        })
+        .catch(() => {
+            req.flash('error_msg', 'User not found. Please try logging in again.');
+            res.redirect('/academicPerformance/addedExp');
+        })
 })
 
 router.delete('/innovativeTeaching/delete/:id', (req, res) => {
     Innovation.deleteOne({ _id: req.params.id })
-    .then(() => {
-        req.flash('success_msg', 'Data deleted successfully');
-        res.redirect('/academicPerformance/innovativeTeaching');
-    })
+        .then(() => {
+            req.flash('success_msg', 'Data deleted successfully');
+            res.redirect('/academicPerformance/innovativeTeaching');
+        })
+        .catch(() => {
+            req.flash('error_msg', 'User not found. Please try logging in again.');
+            res.redirect('/academicPerformance/innovativeTeaching');
+        })
 })
 
 module.exports = router;

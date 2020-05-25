@@ -1,865 +1,807 @@
-<h4>HoD's Overview: Part-A</h4>
+<h4></h4>
+<div class="row">
+    <div class="col s8">
+        <h5>HoD's Overview: Part-A</h5>
+    </div>
+    {{#each finalResult}}
+    <div class="col s4">
+        <form action="/users/hod/pdf/{{user}}" method="post">
+            <h5 class="right"> <button class="btn waves-effect waves-light" type="submit" id="submit_btn">PDF <i
+                        class="fa fa-download white-text" aria-hidden="true"></i></button></h5>
+        </form>
+    </div>
+</div>
 <hr>
 <div class="row">
-{{#each finalResult}}
-{{#if ../hodMarks}}
+
+    {{#if ../hodMarks}}
     <form action="/users/hod/finalSubmit" method="post">
-    <ul class="collapsible popout" data-collapsible="accordion">
-        <li id="overview">
-            <div class="collapsible-header"><i class="material-icons">book</i><b>Academic Performance</b>
-                <div class="right inline col s12 m4 l2">
-                    <input id="score_inline" placeholder="Score ( /40)" name="academicPerformance" disabled
-                        value="{{../hodMarks.academicPerformance}}" type="number" class="validate">
+        <ul class="collapsible popout" data-collapsible="accordion">
+            <li id="overview">
+                <div class="collapsible-header"><i class="material-icons">book</i><b>Academic Performance</b>
+                    <div class="right inline col s12 m4 l2">
+                        <input id="score_inline" placeholder="Score ( /40)" name="academicPerformance" disabled
+                            value="{{../hodMarks.academicPerformance}}" type="number" class="validate">
+                    </div>
+                    <br><br><br>
                 </div>
-                <br><br><br>
-            </div>
-            <div class="collapsible-body">
-                <ul class="collection">
-                    <li class="collection-item">
-                        <p>
-                            <div>
-                                {{#if ../teachingLoad}}
-                                <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
-                                {{else}}
-                                <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
-                                {{/if}}
-                                Teaching Load
-                                <div class="right">
-                                    <a class="btn-small" href="" style="background-color: purple;">View</a>
+                <div class="collapsible-body">
+                    <ul class="collection">
+                        <li class="collection-item">
+                            <p>
+                                <div>
+                                    {{#if ../teachingLoad}}
+                                    <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
+                                    {{else}}
+                                    <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
+                                    {{/if}}
+                                    Teaching Load
+
+
                                 </div>
-
-                            </div>
-                        </p>
-                    </li>
+                            </p>
+                        </li>
 
 
-                    <li class="collection-item">
-                        <p>
-                            <div>
-                                {{#if ../teachingAssistant}}
-                                <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
-                                {{else}}
-                                <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
-                                {{/if}}
-                                Teaching Assistant
+                        <li class="collection-item">
+                            <p>
+                                <div>
+                                    {{#if ../teachingAssistant}}
+                                    <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
+                                    {{else}}
+                                    <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
+                                    {{/if}}
+                                    Teaching Assistant
 
-                                <div class="right">
-                                    <a class="btn-small" style="background-color: purple;">View</a>
+
                                 </div>
-                            </div>
-                        </p>
-                    </li>
+                            </p>
+                        </li>
 
 
-                    <li class="collection-item">
-                        <p>
-                            <div>
-                                {{#if ../newBooks}}
-                                <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
-                                {{else}}
-                                <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
-                                {{/if}}
-                                New Books Suggested To Library
+                        <li class="collection-item">
+                            <p>
+                                <div>
+                                    {{#if ../newBooks}}
+                                    <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
+                                    {{else}}
+                                    <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
+                                    {{/if}}
+                                    New Books Suggested To Library
 
-                                <div class="right">
-                                    <a class="btn-small" style="background-color: purple;">View</a>
+
                                 </div>
-                            </div>
-                        </p>
-                    </li>
+                            </p>
+                        </li>
 
 
-                    <li class="collection-item">
-                        <p>
-                            <div>
-                                {{#if ../addedExp}}
-                                <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
-                                {{else}}
-                                <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
-                                {{/if}}
-                                Additional Experiment Added To Lab Manual
+                        <li class="collection-item">
+                            <p>
+                                <div>
+                                    {{#if ../addedExp}}
+                                    <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
+                                    {{else}}
+                                    <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
+                                    {{/if}}
+                                    Additional Experiment Added To Lab Manual
 
-                                <div class="right">
-                                    <a class="btn-small" style="background-color: purple;">View</a>
+
                                 </div>
-                            </div>
-                        </p>
-                    </li>
+                            </p>
+                        </li>
 
 
-                    <li class="collection-item">
-                        <p>
-                            <div>
-                                {{#if ../innovation}}
-                                <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
-                                {{else}}
-                                <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
-                                {{/if}}
-                                Innovative Teaching Technique Adapted
+                        <li class="collection-item">
+                            <p>
+                                <div>
+                                    {{#if ../innovation}}
+                                    <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
+                                    {{else}}
+                                    <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
+                                    {{/if}}
+                                    Innovative Teaching Technique Adapted
 
-                                <div class="right">
-                                    <a class="btn-small" style="background-color: purple;">View</a>
+
                                 </div>
-                            </div>
-                        </p>
-                    </li>
-                </ul>
-            </div>
-        </li>
-
-        <li id="overview">
-
-            <div class="collapsible-header"><i class="material-icons">book</i><b>Leave Form</b>
-                <div class="right inline col s12 m4 l2">
-                    <input id="score_inline" placeholder="Score ( /40)" name="leaveRecord" disabled value="{{../hodMarks.leaveRecord}}"
-                        type="number" class="validate">
+                            </p>
+                        </li>
+                    </ul>
                 </div>
-                <br><br><br>
-            </div>
-            <div class="collapsible-body">
-                <ul class="collection">
-                    <li class="collection-item">
-                        <p>
-                            <div>{{#if ../leave}}
-                                <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
-                                {{else}}
-                                <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
-                                {{/if}}
-                                Leave Record
+            </li>
 
-                                <div class="right">
-                                    <a class="btn-small" style="background-color: purple;">View</a>
-                                </div>
-                            </div>
-                        </p>
-                    </li>
-                </ul>
-            </div>
-        </li>
+            <li id="overview">
 
-        <li id="overview">
-            <div class="collapsible-header"><i class="material-icons">book</i><b>Annexure 1</b>
-                <div class="right inline col s12 m4 l2">
-                    <input id="score_inline" placeholder="Score ( /40)" name="annexure_1" disabled value="{{../hodMarks.annexure_1}}"
-                        type="number" class="validate">
+                <div class="collapsible-header"><i class="material-icons">book</i><b>Leave Form</b>
+                    <div class="right inline col s12 m4 l2">
+                        <input id="score_inline" placeholder="Score ( /40)" name="leaveRecord" disabled
+                            value="{{../hodMarks.leaveRecord}}" type="number" class="validate">
+                    </div>
+                    <br><br><br>
                 </div>
-                <br><br><br>
-            </div>
-            <div class="collapsible-body">
-                <ul class="collection">
-                    <li class="collection-item">
-                        <p>
-                            <div>
-                                {{#if ../timeTable}}
-                                <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
-                                {{else}}
-                                <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
-                                {{/if}}
-                                1.1 Timetable Related Activities
+                <div class="collapsible-body">
+                    <ul class="collection">
+                        <li class="collection-item">
+                            <p>
+                                <div>{{#if ../leave}}
+                                    <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
+                                    {{else}}
+                                    <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
+                                    {{/if}}
+                                    Leave Record
 
-                                <div class="right">
-                                    <a class="btn-small" style="background-color: purple;">View</a>
+
                                 </div>
-                            </div>
-                        </p>
-                    </li>
-
-                    <li class="collection-item">
-                        <p>
-                            <div>
-                                {{#if ../classAdvisor}}
-                                <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
-                                {{else}}
-                                <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
-                                {{/if}}
-                                1.2 Class Advisor
-
-                                <div class="right">
-                                    <a class="btn-small" style="background-color: purple;">View</a>
-                                </div>
-                            </div>
-                        </p>
-                    </li>
-
-                    <li class="collection-item">
-                        <p>
-                            <div>
-                                {{#if ../sportsActivities}}
-                                <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
-                                {{else}}
-                                <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
-                                {{/if}}
-                                1.3 Sports Activities
-
-                                <div class="right">
-                                    <a class="btn-small" style="background-color: purple;">View</a>
-                                </div>
-                            </div>
-                        </p>
-                    </li>
-
-                    <li class="collection-item">
-                        <p>
-                            <div>
-                                {{#if ../culturalActivities}}
-                                <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
-                                {{else}}
-                                <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
-                                {{/if}}
-                                1.4 Cultural Activities
-
-                                <div class="right">
-                                    <a class="btn-small" style="background-color: purple;">View</a>
-                                </div>
-                            </div>
-                        </p>
-                    </li>
-
-                    <li class="collection-item">
-                        <p>
-                            <div>
-                                {{#if ../projectBasedLearning}}
-                                <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
-                                {{else}}
-                                <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
-                                {{/if}}
-                                1.5 Project Based Learning
-
-                                <div class="right">
-                                    <a class="btn-small" style="background-color: purple;">View</a>
-                                </div>
-                            </div>
-                        </p>
-                    </li>
-
-                    <li class="collection-item">
-                        <p>
-                            <div>
-                                {{#if ../uddan}}
-                                <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
-                                {{else}}
-                                <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
-                                {{/if}}1.6 UDAAN Incubation Activities
-
-                                <div class="right">
-                                    <a class="btn-small" style="background-color: purple;">View</a>
-                                </div>
-                            </div>
-                        </p>
-                    </li>
-
-                    <li class="collection-item">
-                        <p>
-                            <div>
-                                {{#if ../placementActivities}}
-                                <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
-                                {{else}}
-                                <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
-                                {{/if}}
-                                1.7 Placement Activities
-
-                                <div class="right">
-                                    <a class="btn-small" style="background-color: purple;">View</a>
-                                </div>
-                            </div>
-                        </p>
-                    </li>
-
-                    <li class="collection-item">
-                        <p>
-                            <div>
-                                {{#if ../inhousePlacement}}
-                                <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
-                                {{else}}
-                                <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
-                                {{/if}}
-                                1.8 In-house Placement Activities(Trainings and Workshops)
-
-                                <div class="right">
-                                    <a class="btn-small" style="background-color: purple;">View</a>
-                                </div>
-                            </div>
-                        </p>
-                    </li>
-
-
-                    <li class="collection-item">
-                        <p>
-                            <div>
-                                {{#if ../studentOrganization}}
-                                <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
-                                {{else}}
-                                <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
-                                {{/if}}
-                                1.9 Student Organisation Activity
-
-                                <div class="right">
-                                    <a class="btn-small" style="background-color: purple;">View</a>
-                                </div>
-                            </div>
-                        </p>
-                    </li>
-
-                    <li class="collection-item">
-                        <p>
-                            <div>
-                                {{#if ../industrialVisitActivities}}
-                                <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
-                                {{else}}
-                                <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
-                                {{/if}}
-                                1.10 Industrial Visit Activities
-
-                                <div class="right">
-                                    <a class="btn-small" style="background-color: purple;">View</a>
-                                </div>
-                            </div>
-                        </p>
-                    </li>
-
-                    <li class="collection-item">
-                        <p>
-                            <div>
-                                {{#if ../admissionProcessActivities}}
-                                <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
-                                {{else}}
-                                <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
-                                {{/if}}
-                                1.11 Admission Related Activities
-
-                                <div class="right">
-                                    <a class="btn-small" style="background-color: purple;">View</a>
-                                </div>
-                            </div>
-                        </p>
-                    </li>
-
-                    <li class="collection-item">
-                        <p>
-                            <div>
-                                {{#if ../examActivitiesSupervision}}
-                                <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
-                                {{else}}
-                                <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
-                                {{/if}}
-                                1.12 Exam related activities(University exams Supervision)
-
-                                <div class="right">
-                                    <a class="btn-small" style="background-color: purple;">View</a>
-                                </div>
-                            </div>
-                        </p>
-                    </li>
-
-                    <li class="collection-item">
-                        <p>
-                            <div>
-                                {{#if ../examAssessmentExternal}}
-                                <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
-                                {{else}}
-                                <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
-                                {{/if}}
-                                1.13 Exam related activities(External)
-
-                                <div class="right">
-                                    <a class="btn-small" style="background-color: purple;">View</a>
-                                </div>
-                            </div>
-                        </p>
-                    </li>
-
-                    <li class="collection-item">
-                        <p>
-                            <div>
-                                {{#if ../examActivitiesCollegeLevel}}
-                                <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
-                                {{else}}
-                                <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
-                                {{/if}}
-                                1.14 Exam related activities(Assessment/Oral/Practical Exams Conducted, college level)
-
-                                <div class="right">
-                                    <a class="btn-small" style="background-color: purple;">View</a>
-                                </div>
-                            </div>
-                        </p>
-                    </li>
-
-                    <li class="collection-item">
-                        <p>
-                            <div>
-                                {{#if ../itMaintenance}}
-                                <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
-                                {{else}}
-                                <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
-                                {{/if}}
-                                1.15 IT Maintenance
-                                <div class="right">
-                                    <a class="btn-small" style="background-color: purple;">View</a>
-                                </div>
-                            </div>
-                        </p>
-                    </li>
-
-                    <li class="collection-item">
-                        <p>
-                            <div>
-                                {{#if ../lakshya}}
-                                <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
-                                {{else}}
-                                <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
-                                {{/if}}
-                                1.16 Lakshya Related Activities
-                                <div class="right">
-                                    <a class="btn-small" style="background-color: purple;">View</a>
-                                </div>
-                            </div>
-                        </p>
-                    </li>
-
-                    <li class="collection-item">
-                        <p>
-                            <div>
-                                {{#if ../magazineNewsletter}}
-                                <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
-                                {{else}}
-                                <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
-                                {{/if}}
-                                1.17 Magazine/Newsletter Related Activities
-                                <div class="right">
-                                    <a class="btn-small" style="background-color: purple;">View</a>
-                                </div>
-                            </div>
-                        </p>
-                    </li>
-
-                    <li class="collection-item">
-                        <p>
-                            <div>
-                                {{#if ../sttp}}
-                                <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
-                                {{else}}
-                                <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
-                                {{/if}}
-                                1.18 Conduct Of STTP
-                                <div class="right">
-                                    <a class="btn-small" style="background-color: purple;">View</a>
-                                </div>
-                            </div>
-                        </p>
-                    </li>
-
-                    <li class="collection-item">
-                        <p>
-                            <div>
-                                {{#if ../departmentUGProjects}}
-                                <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
-                                {{else}}
-                                <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
-                                {{/if}}
-                                1.19 Department UG Projects Undertaken
-                                <div class="right">
-                                    <a class="btn-small" style="background-color: purple;">View</a>
-                                </div>
-                            </div>
-                        </p>
-                    </li>
-                </ul>
-            </div>
-        </li>
-
-        <li id="overview">
-            <div class="collapsible-header"><i class="material-icons">book</i><b>Annexure 2</b>
-                <div class="right inline col s12 m4 l2">
-                    <input id="score_inline" placeholder="Score ( /40)" name="annexure_2" disabled value="{{../hodMarks.annexure_2}}"
-                        type="number" class="validate">
+                            </p>
+                        </li>
+                    </ul>
                 </div>
-                <br><br><br>
-            </div>
-            <div class="collapsible-body">
-                <ul class="collection">
-                    <li class="collection-item">
-                        <p>
-                            <div>
-                                {{#if ../papersPublishedNationalConf}}
-                                <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
-                                {{else}}
-                                <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
-                                {{/if}}
-                                2.1 Papers Published In National Conference
+            </li>
 
-                                <div class="right">
-                                    <a class="btn-small" style="background-color: purple;">View</a>
-                                </div>
-                            </div>
-                        </p>
-                    </li>
-
-                    <li class="collection-item">
-                        <p>
-                            <div>
-                                {{#if ../papersPublishedInternationalConf}}
-                                <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
-                                {{else}}
-                                <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
-                                {{/if}}
-                                2.2 Papers Published International Conference
-
-                                <div class="right">
-                                    <a class="btn-small" style="background-color: purple;">View</a>
-                                </div>
-                            </div>
-                        </p>
-                    </li>
-
-                    <li class="collection-item">
-                        <p>
-                            <div>
-                                {{#if ../papersPublishedJournals}}
-                                <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
-                                {{else}}
-                                <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
-                                {{/if}}
-                                2.3 Papers Published In Journals
-
-                                <div class="right">
-                                    <a class="btn-small" style="background-color: purple;">View</a>
-                                </div>
-                            </div>
-                        </p>
-                    </li>
-
-                    <li class="collection-item">
-                        <p>
-                            <div>
-                                {{#if ../moocs}}
-                                <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
-                                {{else}}
-                                <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
-                                {{/if}}
-                                2.4 MOOCS
-
-                                <div class="right">
-                                    <a class="btn-small" style="background-color: purple;">View</a>
-                                </div>
-                            </div>
-                        </p>
-                    </li>
-
-                    <li class="collection-item">
-                        <p>
-                            <div>
-                                {{#if ../swayam}}
-                                <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
-                                {{else}}
-                                <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
-                                {{/if}}
-                                2.5 Swayam
-
-                                <div class="right">
-                                    <a class="btn-small" style="background-color: purple;">View</a>
-                                </div>
-                            </div>
-                        </p>
-                    </li>
-
-                    <li class="collection-item">
-                        <p>
-                            <div>
-                                {{#if ../shortTermTraining}}
-                                <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
-                                {{else}}
-                                <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
-                                {{/if}}
-                                2.6 Short-Term Traning
-
-                                <div class="right">
-                                    <a class="btn-small" style="background-color: purple;">View</a>
-                                </div>
-                            </div>
-                        </p>
-                    </li>
-
-                    <li class="collection-item">
-                        <p>
-                            <div>
-                                {{#if ../seminars}}
-                                <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
-                                {{else}}
-                                <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
-                                {{/if}}
-                                2.8 Seminars
-
-                                <div class="right">
-                                    <a class="btn-small" style="background-color: purple;">View</a>
-                                </div>
-                            </div>
-                        </p>
-                    </li>
-
-                </ul>
-            </div>
-        </li>
-
-
-        <li id="overview">
-            <div class="collapsible-header"><i class="material-icons">book</i><b>Annexure 3</b>
-                <div class="right inline col s12 m4 l2">
-                    <input id="score_inline" placeholder="Score ( /40)" name="annexure_3" disabled value="{{../hodMarks.annexure_3}}"
-                        type="number" class="validate">
+            <li id="overview">
+                <div class="collapsible-header"><i class="material-icons">book</i><b>Annexure 1</b>
+                    <div class="right inline col s12 m4 l2">
+                        <input id="score_inline" placeholder="Score ( /40)" name="annexure_1" disabled
+                            value="{{../hodMarks.annexure_1}}" type="number" class="validate">
+                    </div>
+                    <br><br><br>
                 </div>
-                <br><br><br>
-            </div>
-            <div class="collapsible-body">
-                <ul class="collection">
-                    <li class="collection-item">
-                        <p>
-                            <div>
-                                {{#if ../resourcePerson}}
-                                <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
-                                {{else}}
-                                <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
-                                {{/if}}
-                                3.1Resource Person in STTP/Training Course/Lecture Talks
+                <div class="collapsible-body">
+                    <ul class="collection">
+                        <li class="collection-item">
+                            <p>
+                                <div>
+                                    {{#if ../timeTable}}
+                                    <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
+                                    {{else}}
+                                    <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
+                                    {{/if}}
+                                    1.1 Timetable Related Activities
 
-                                <div class="right">
-                                    <a class="btn-small" style="background-color: purple;">View</a>
+
                                 </div>
-                            </div>
-                        </p>
-                    </li>
+                            </p>
+                        </li>
 
-                    <li class="collection-item">
-                        <p>
-                            <div>{{#if ../contributionToSyllabus}}
-                                <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
-                                {{else}}
-                                <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
-                                {{/if}}
-                                3.2 Contribution To Syllabus Framing
+                        <li class="collection-item">
+                            <p>
+                                <div>
+                                    {{#if ../classAdvisor}}
+                                    <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
+                                    {{else}}
+                                    <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
+                                    {{/if}}
+                                    1.2 Class Advisor
 
-                                <div class="right">
-                                    <a class="btn-small" style="background-color: purple;">View</a>
+
                                 </div>
-                            </div>
-                        </p>
-                    </li>
+                            </p>
+                        </li>
 
-                    <li class="collection-item">
-                        <p>
-                            <div>
-                                {{#if ../memberOfUniversityCommitte}}
-                                <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
-                                {{else}}
-                                <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
-                                {{/if}}
-                                3.3 Member Of University Committe
+                        <li class="collection-item">
+                            <p>
+                                <div>
+                                    {{#if ../sportsActivities}}
+                                    <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
+                                    {{else}}
+                                    <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
+                                    {{/if}}
+                                    1.3 Sports Activities
 
-                                <div class="right">
-                                    <a class="btn-small" style="background-color: purple;">View</a>
+
                                 </div>
-                            </div>
-                        </p>
-                    </li>
+                            </p>
+                        </li>
 
-                    <li class="collection-item">
-                        <p>
-                            <div>
-                                {{#if ../consultancyAssignment}}
-                                <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
-                                {{else}}
-                                <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
-                                {{/if}}
-                                3.4 Consultancy Assignment
+                        <li class="collection-item">
+                            <p>
+                                <div>
+                                    {{#if ../culturalActivities}}
+                                    <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
+                                    {{else}}
+                                    <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
+                                    {{/if}}
+                                    1.4 Cultural Activities
 
-                                <div class="right">
-                                    <a class="btn-small" style="background-color: purple;">View</a>
+
                                 </div>
-                            </div>
-                        </p>
-                    </li>
+                            </p>
+                        </li>
 
-                    <li class="collection-item">
-                        <p>
-                            <div>
-                                {{#if ../externalProjectsOrCompetition}}
-                                <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
-                                {{else}}
-                                <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
-                                {{/if}} 3.5 External Projects Or Competitions Participations
+                        <li class="collection-item">
+                            <p>
+                                <div>
+                                    {{#if ../projectBasedLearning}}
+                                    <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
+                                    {{else}}
+                                    <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
+                                    {{/if}}
+                                    1.5 Project Based Learning
 
-                                <div class="right">
-                                    <a class="btn-small" style="background-color: purple;">View</a>
+
                                 </div>
-                            </div>
-                        </p>
-                    </li>
-                </ul>
+                            </p>
+                        </li>
+
+                        <li class="collection-item">
+                            <p>
+                                <div>
+                                    {{#if ../uddan}}
+                                    <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
+                                    {{else}}
+                                    <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
+                                    {{/if}}1.6 UDAAN Incubation Activities
+
+
+                                </div>
+                            </p>
+                        </li>
+
+                        <li class="collection-item">
+                            <p>
+                                <div>
+                                    {{#if ../placementActivities}}
+                                    <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
+                                    {{else}}
+                                    <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
+                                    {{/if}}
+                                    1.7 Placement Activities
+
+
+                                </div>
+                            </p>
+                        </li>
+
+                        <li class="collection-item">
+                            <p>
+                                <div>
+                                    {{#if ../inhousePlacement}}
+                                    <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
+                                    {{else}}
+                                    <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
+                                    {{/if}}
+                                    1.8 In-house Placement Activities(Trainings and Workshops)
+
+
+                                </div>
+                            </p>
+                        </li>
+
+
+                        <li class="collection-item">
+                            <p>
+                                <div>
+                                    {{#if ../studentOrganization}}
+                                    <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
+                                    {{else}}
+                                    <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
+                                    {{/if}}
+                                    1.9 Student Organisation Activity
+
+
+                                </div>
+                            </p>
+                        </li>
+
+                        <li class="collection-item">
+                            <p>
+                                <div>
+                                    {{#if ../industrialVisitActivities}}
+                                    <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
+                                    {{else}}
+                                    <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
+                                    {{/if}}
+                                    1.10 Industrial Visit Activities
+
+
+                                </div>
+                            </p>
+                        </li>
+
+                        <li class="collection-item">
+                            <p>
+                                <div>
+                                    {{#if ../admissionProcessActivities}}
+                                    <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
+                                    {{else}}
+                                    <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
+                                    {{/if}}
+                                    1.11 Admission Related Activities
+
+
+                                </div>
+                            </p>
+                        </li>
+
+                        <li class="collection-item">
+                            <p>
+                                <div>
+                                    {{#if ../examActivitiesSupervision}}
+                                    <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
+                                    {{else}}
+                                    <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
+                                    {{/if}}
+                                    1.12 Exam related activities(University exams Supervision)
+
+
+                                </div>
+                            </p>
+                        </li>
+
+                        <li class="collection-item">
+                            <p>
+                                <div>
+                                    {{#if ../examAssessmentExternal}}
+                                    <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
+                                    {{else}}
+                                    <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
+                                    {{/if}}
+                                    1.13 Exam related activities(External)
+
+
+                                </div>
+                            </p>
+                        </li>
+
+                        <li class="collection-item">
+                            <p>
+                                <div>
+                                    {{#if ../examActivitiesCollegeLevel}}
+                                    <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
+                                    {{else}}
+                                    <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
+                                    {{/if}}
+                                    1.14 Exam related activities(Assessment/Oral/Practical Exams Conducted, college
+                                    level)
+
+
+                                </div>
+                            </p>
+                        </li>
+
+                        <li class="collection-item">
+                            <p>
+                                <div>
+                                    {{#if ../itMaintenance}}
+                                    <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
+                                    {{else}}
+                                    <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
+                                    {{/if}}
+                                    1.15 IT Maintenance
+
+                                </div>
+                            </p>
+                        </li>
+
+                        <li class="collection-item">
+                            <p>
+                                <div>
+                                    {{#if ../lakshya}}
+                                    <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
+                                    {{else}}
+                                    <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
+                                    {{/if}}
+                                    1.16 Lakshya Related Activities
+
+                                </div>
+                            </p>
+                        </li>
+
+                        <li class="collection-item">
+                            <p>
+                                <div>
+                                    {{#if ../magazineNewsletter}}
+                                    <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
+                                    {{else}}
+                                    <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
+                                    {{/if}}
+                                    1.17 Magazine/Newsletter Related Activities
+
+                                </div>
+                            </p>
+                        </li>
+
+                        <li class="collection-item">
+                            <p>
+                                <div>
+                                    {{#if ../sttp}}
+                                    <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
+                                    {{else}}
+                                    <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
+                                    {{/if}}
+                                    1.18 Conduct Of STTP
+
+                                </div>
+                            </p>
+                        </li>
+
+                        <li class="collection-item">
+                            <p>
+                                <div>
+                                    {{#if ../departmentUGProjects}}
+                                    <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
+                                    {{else}}
+                                    <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
+                                    {{/if}}
+                                    1.19 Department UG Projects Undertaken
+
+                                </div>
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
+            <li id="overview">
+                <div class="collapsible-header"><i class="material-icons">book</i><b>Annexure 2</b>
+                    <div class="right inline col s12 m4 l2">
+                        <input id="score_inline" placeholder="Score ( /40)" name="annexure_2" disabled
+                            value="{{../hodMarks.annexure_2}}" type="number" class="validate">
+                    </div>
+                    <br><br><br>
+                </div>
+                <div class="collapsible-body">
+                    <ul class="collection">
+                        <li class="collection-item">
+                            <p>
+                                <div>
+                                    {{#if ../papersPublishedNationalConf}}
+                                    <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
+                                    {{else}}
+                                    <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
+                                    {{/if}}
+                                    2.1 Papers Published In National Conference
+
+
+                                </div>
+                            </p>
+                        </li>
+
+                        <li class="collection-item">
+                            <p>
+                                <div>
+                                    {{#if ../papersPublishedInternationalConf}}
+                                    <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
+                                    {{else}}
+                                    <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
+                                    {{/if}}
+                                    2.2 Papers Published International Conference
+
+
+                                </div>
+                            </p>
+                        </li>
+
+                        <li class="collection-item">
+                            <p>
+                                <div>
+                                    {{#if ../papersPublishedJournals}}
+                                    <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
+                                    {{else}}
+                                    <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
+                                    {{/if}}
+                                    2.3 Papers Published In Journals
+
+
+                                </div>
+                            </p>
+                        </li>
+
+                        <li class="collection-item">
+                            <p>
+                                <div>
+                                    {{#if ../moocs}}
+                                    <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
+                                    {{else}}
+                                    <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
+                                    {{/if}}
+                                    2.4 MOOCS
+
+
+                                </div>
+                            </p>
+                        </li>
+
+                        <li class="collection-item">
+                            <p>
+                                <div>
+                                    {{#if ../swayam}}
+                                    <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
+                                    {{else}}
+                                    <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
+                                    {{/if}}
+                                    2.5 Swayam
+
+
+                                </div>
+                            </p>
+                        </li>
+
+                        <li class="collection-item">
+                            <p>
+                                <div>
+                                    {{#if ../shortTermTraining}}
+                                    <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
+                                    {{else}}
+                                    <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
+                                    {{/if}}
+                                    2.6 Short-Term Traning
+
+
+                                </div>
+                            </p>
+                        </li>
+
+                        <li class="collection-item">
+                            <p>
+                                <div>
+                                    {{#if ../seminars}}
+                                    <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
+                                    {{else}}
+                                    <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
+                                    {{/if}}
+                                    2.8 Seminars
+
+
+                                </div>
+                            </p>
+                        </li>
+
+                    </ul>
+                </div>
+            </li>
+
+
+            <li id="overview">
+                <div class="collapsible-header"><i class="material-icons">book</i><b>Annexure 3</b>
+                    <div class="right inline col s12 m4 l2">
+                        <input id="score_inline" placeholder="Score ( /40)" name="annexure_3" disabled
+                            value="{{../hodMarks.annexure_3}}" type="number" class="validate">
+                    </div>
+                    <br><br><br>
+                </div>
+                <div class="collapsible-body">
+                    <ul class="collection">
+                        <li class="collection-item">
+                            <p>
+                                <div>
+                                    {{#if ../resourcePerson}}
+                                    <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
+                                    {{else}}
+                                    <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
+                                    {{/if}}
+                                    3.1Resource Person in STTP/Training Course/Lecture Talks
+
+
+                                </div>
+                            </p>
+                        </li>
+
+                        <li class="collection-item">
+                            <p>
+                                <div>{{#if ../contributionToSyllabus}}
+                                    <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
+                                    {{else}}
+                                    <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
+                                    {{/if}}
+                                    3.2 Contribution To Syllabus Framing
+
+
+                                </div>
+                            </p>
+                        </li>
+
+                        <li class="collection-item">
+                            <p>
+                                <div>
+                                    {{#if ../memberOfUniversityCommitte}}
+                                    <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
+                                    {{else}}
+                                    <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
+                                    {{/if}}
+                                    3.3 Member Of University Committe
+
+
+                                </div>
+                            </p>
+                        </li>
+
+                        <li class="collection-item">
+                            <p>
+                                <div>
+                                    {{#if ../consultancyAssignment}}
+                                    <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
+                                    {{else}}
+                                    <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
+                                    {{/if}}
+                                    3.4 Consultancy Assignment
+
+
+                                </div>
+                            </p>
+                        </li>
+
+                        <li class="collection-item">
+                            <p>
+                                <div>
+                                    {{#if ../externalProjectsOrCompetition}}
+                                    <i class="fa fa-check green-text fa-lg" aria-hidden="true"></i>
+                                    {{else}}
+                                    <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
+                                    {{/if}} 3.5 External Projects Or Competitions Participations
+
+
+                                </div>
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+        <br>
+        <h5>HOD FORM: Part-B </h5>
+            
+        <div>
+
+            <h6>HOD's Confidential Form : {{../hodMarks.confidential}}/20 &nbsp;
+            <a href="#" class="tooltipped" data-tooltip="4-Excellent, 3-Very Good, 2-Good, 1-Fair"><i class="fa fa-info-circle"></i></a>
+            </h6>
+            <hr>
+            <div class="row" id="HOD's Feedback Form">
+
+                <div class="input-field col s6 ">
+                    <h5>1:Openness to new policies</h5>
+                </div>
+
+                <div class="input-field col s6">
+                    <p>
+                        <label class="">
+                            <input name="value1" value="{{../hodMarks.value1}}" type="radio" disabled />
+                            <span>Excellent</span>
+                        </label>
+
+                        <label>
+                            <input name="value1" type="radio" disabled />
+                            <span>Very Good</span>
+                        </label>
+
+                        <label>
+                            <input name="value1" type="radio" disabled />
+                            <span>Good</span>
+                        </label>
+
+                        <label>
+                            <input name="value1" type="radio" disabled />
+                            <span>Fair</span>
+                        </label>
+                    </p>
+                </div>
             </div>
-        </li>
-    </ul>
-    <br>
-    <h4>HOD FORM: Part-B </h4>
-    <div>
 
-        <h5>HOD's Confidential Form : {{../hodMarks.confidential}}/20</h5>
-        <hr>
-        <div class="row" id="HOD's Feedback Form">
+            <div class="row" id="HOD's Feedback Form">
 
-            <div class="input-field col s6 ">
-                <h5>1:Openness to new policies</h5>
+                <div class="input-field col s6 ">
+                    <h5>2:Quality of material uploaded on moodle and effective use of smartboard</h5>
+                </div>
+
+                <div class="input-field col s6">
+                    <p>
+                        <label class="">
+                            <input name="value2" value="{{../hodMarks.value2}}" type="radio" disabled />
+                            <span>Excellent</span>
+                        </label>
+
+                        <label>
+                            <input name="value2" type="radio" disabled />
+                            <span>Very Good</span>
+                        </label>
+
+                        <label>
+                            <input name="value2" type="radio" disabled />
+                            <span>Good</span>
+                        </label>
+
+                        <label>
+                            <input name="value2" type="radio" disabled />
+                            <span>Fair</span>
+                        </label>
+                    </p>
+                </div>
             </div>
 
-            <div class="input-field col s6">
-                <p>
-                    <label class="">
-                        <input name="value1" value="{{../hodMarks.value1}}" type="radio" disabled />
-                        <span>Excellent</span>
-                    </label>
+            <div class="row" id="HOD's Feedback Form">
 
-                    <label>
-                        <input name="value1" type="radio" disabled/>
-                        <span>Very Good</span>
-                    </label>
+                <div class="input-field col s6 ">
+                    <h5>3:Regularity in updation of attendance, test/assignment assessment and defaulters list</h5>
+                </div>
 
-                    <label>
-                        <input name="value1" type="radio" disabled />
-                        <span>Good</span>
-                    </label>
+                <div class="input-field col s6">
+                    <p>
+                        <label class="">
+                            <input name="value3" value="{{../hodMarks.value3}}" type="radio" disabled />
+                            <span>Excellent</span>
+                        </label>
 
-                    <label>
-                        <input name="value1" type="radio" disabled />
-                        <span>Fair</span>
-                    </label>
-                </p>
-            </div>
-        </div>
+                        <label>
+                            <input name="value3" type="radio" disabled />
+                            <span>Very Good</span>
+                        </label>
 
-        <div class="row" id="HOD's Feedback Form">
+                        <label>
+                            <input name="value3" type="radio" disabled />
+                            <span>Good</span>
+                        </label>
 
-            <div class="input-field col s6 ">
-                <h5>2:Quality of material uploaded on moodle and effective use of smartboard</h5>
-            </div>
-
-            <div class="input-field col s6">
-                <p>
-                    <label class="">
-                        <input name="value2" value="{{../hodMarks.value2}}" type="radio" disabled />
-                        <span>Excellent</span>
-                    </label>
-
-                    <label>
-                        <input name="value2" type="radio" disabled />
-                        <span>Very Good</span>
-                    </label>
-
-                    <label>
-                        <input name="value2" type="radio" disabled />
-                        <span>Good</span>
-                    </label>
-
-                    <label>
-                        <input name="value2" type="radio" disabled />
-                        <span>Fair</span>
-                    </label>
-                </p>
-            </div>
-        </div>
-
-        <div class="row" id="HOD's Feedback Form">
-
-            <div class="input-field col s6 ">
-                <h5>3:Regularity in updation of attendance, test/assignment assessment and defaulters list</h5>
+                        <label>
+                            <input name="value3" type="radio" disabled />
+                            <span>Fair</span>
+                        </label>
+                    </p>
+                </div>
             </div>
 
-            <div class="input-field col s6">
-                <p>
-                    <label class="">
-                        <input name="value3" value="{{../hodMarks.value3}}" type="radio" disabled />
-                        <span>Excellent</span>
-                    </label>
+            <div class="row" id="HOD's Feedback Form">
 
-                    <label>
-                        <input name="value3" type="radio" disabled />
-                        <span>Very Good</span>
-                    </label>
+                <div class="input-field col s6 ">
+                    <h5>4:Efforts to improve student’s learning experience</h5>
+                </div>
 
-                    <label>
-                        <input name="value3" type="radio" disabled />
-                        <span>Good</span>
-                    </label>
+                <div class="input-field col s6">
+                    <p>
+                        <label class="">
+                            <input name="value4" value="{{../hodMarks.value4}}" type="radio" disabled />
+                            <span>Excellent</span>
+                        </label>
 
-                    <label>
-                        <input name="value3" type="radio" disabled />
-                        <span>Fair</span>
-                    </label>
-                </p>
-            </div>
-        </div>
+                        <label>
+                            <input name="value4" type="radio" disabled />
+                            <span>Very Good</span>
+                        </label>
 
-        <div class="row" id="HOD's Feedback Form">
+                        <label>
+                            <input name="value4" type="radio" disabled />
+                            <span>Good</span>
+                        </label>
 
-            <div class="input-field col s6 ">
-                <h5>4:Efforts to improve student’s learning experience</h5>
-            </div>
-
-            <div class="input-field col s6">
-                <p>
-                    <label class="">
-                        <input name="value4" value="{{../hodMarks.value4}}" type="radio" disabled />
-                        <span>Excellent</span>
-                    </label>
-
-                    <label>
-                        <input name="value4" type="radio" disabled />
-                        <span>Very Good</span>
-                    </label>
-
-                    <label>
-                        <input name="value4" type="radio" disabled />
-                        <span>Good</span>
-                    </label>
-
-                    <label>
-                        <input name="value4" type="radio" disabled />
-                        <span>Fair</span>
-                    </label>
-                </p>
-            </div>
-        </div>
-
-        <div class="row" id="HOD's Feedback Form">
-
-            <div class="input-field col s6 ">
-                <h5>5:Openness to adopt/experiment new policies and potential working in a team</h5>
+                        <label>
+                            <input name="value4" type="radio" disabled />
+                            <span>Fair</span>
+                        </label>
+                    </p>
+                </div>
             </div>
 
-            <div class="input-field col s6">
-                <p>
-                    <label class="">
-                        <input name="value5" value="{{../hodMarks.value5}}" type="radio" disabled/>
-                        <span>Excellent</span>
-                    </label>
+            <div class="row" id="HOD's Feedback Form">
 
-                    <label>
-                        <input name="value5" value="{{../hodMarks.value5}}" type="radio" disabled />
-                        <span>Very Good</span>
-                    </label>
+                <div class="input-field col s6 ">
+                    <h5>5:Openness to adopt/experiment new policies and potential working in a team</h5>
+                </div>
 
-                    <label>
-                        <input name="value5" value="{{../hodMarks.value5}}" type="radio" disabled />
-                        <span>Good</span>
-                    </label>
+                <div class="input-field col s6">
+                    <p>
+                        <label class="">
+                            <input name="value5" value="{{../hodMarks.value5}}" type="radio" disabled />
+                            <span>Excellent</span>
+                        </label>
 
-                    <label>
-                        <input name="value5" value="{{../hodMarks.value5}}" type="radio" disabled />
-                        <span>Fair</span>
-                    </label>
-                </p>
+                        <label>
+                            <input name="value5" value="{{../hodMarks.value5}}" type="radio" disabled />
+                            <span>Very Good</span>
+                        </label>
+
+                        <label>
+                            <input name="value5" value="{{../hodMarks.value5}}" type="radio" disabled />
+                            <span>Good</span>
+                        </label>
+
+                        <label>
+                            <input name="value5" value="{{../hodMarks.value5}}" type="radio" disabled />
+                            <span>Fair</span>
+                        </label>
+                    </p>
+                </div>
             </div>
-        </div>
 
-        {{!-- <div>
+            {{!-- <div>
             <p>
                 <label>
                     <input id="indeterminate-checkbox" type="checkbox" required />
@@ -868,13 +810,14 @@
                 </label>
             </p>
         </div> --}}
-        <button class="btn waves-effect waves-light" type="submit" id="submit_btn" disabled>Submit
-        </button><br><br><br>
-    </div>
-</form>
+        <p>Marks already submitted.</p>
+            <button class="btn waves-effect waves-light" type="submit" id="submit_btn" disabled>Submit
+            </button><br><br><br>
+        </div>
+    </form>
 </div>
 {{else}}
-<form action="/users/hod/finalSubmit/{{user}}" method="post">
+<form action="/users/hod/finalSubmit/{{user}}/{{../year}}" method="post">
     <ul class="collapsible popout" data-collapsible="accordion">
         <li id="overview">
             <div class="collapsible-header"><i class="material-icons">book</i><b>Academic Performance</b>
@@ -895,9 +838,7 @@
                                 <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
                                 {{/if}}
                                 Teaching Load
-                                <div class="right">
-                                    <a class="btn-small" href="" style="background-color: purple;">View</a>
-                                </div>
+
 
                             </div>
                         </p>
@@ -914,9 +855,7 @@
                                 {{/if}}
                                 Teaching Assistant
 
-                                <div class="right">
-                                    <a class="btn-small" style="background-color: purple;">View</a>
-                                </div>
+
                             </div>
                         </p>
                     </li>
@@ -932,9 +871,7 @@
                                 {{/if}}
                                 New Books Suggested To Library
 
-                                <div class="right">
-                                    <a class="btn-small" style="background-color: purple;">View</a>
-                                </div>
+
                             </div>
                         </p>
                     </li>
@@ -950,9 +887,7 @@
                                 {{/if}}
                                 Additional Experiment Added To Lab Manual
 
-                                <div class="right">
-                                    <a class="btn-small" style="background-color: purple;">View</a>
-                                </div>
+
                             </div>
                         </p>
                     </li>
@@ -968,9 +903,7 @@
                                 {{/if}}
                                 Innovative Teaching Technique Adapted
 
-                                <div class="right">
-                                    <a class="btn-small" style="background-color: purple;">View</a>
-                                </div>
+
                             </div>
                         </p>
                     </li>
@@ -998,9 +931,7 @@
                                 {{/if}}
                                 Leave Record
 
-                                <div class="right">
-                                    <a class="btn-small" style="background-color: purple;">View</a>
-                                </div>
+
                             </div>
                         </p>
                     </li>
@@ -1028,9 +959,7 @@
                                 {{/if}}
                                 1.1 Timetable Related Activities
 
-                                <div class="right">
-                                    <a class="btn-small" style="background-color: purple;">View</a>
-                                </div>
+
                             </div>
                         </p>
                     </li>
@@ -1045,9 +974,7 @@
                                 {{/if}}
                                 1.2 Class Advisor
 
-                                <div class="right">
-                                    <a class="btn-small" style="background-color: purple;">View</a>
-                                </div>
+
                             </div>
                         </p>
                     </li>
@@ -1062,9 +989,7 @@
                                 {{/if}}
                                 1.3 Sports Activities
 
-                                <div class="right">
-                                    <a class="btn-small" style="background-color: purple;">View</a>
-                                </div>
+
                             </div>
                         </p>
                     </li>
@@ -1079,9 +1004,7 @@
                                 {{/if}}
                                 1.4 Cultural Activities
 
-                                <div class="right">
-                                    <a class="btn-small" style="background-color: purple;">View</a>
-                                </div>
+
                             </div>
                         </p>
                     </li>
@@ -1096,9 +1019,7 @@
                                 {{/if}}
                                 1.5 Project Based Learning
 
-                                <div class="right">
-                                    <a class="btn-small" style="background-color: purple;">View</a>
-                                </div>
+
                             </div>
                         </p>
                     </li>
@@ -1112,9 +1033,7 @@
                                 <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
                                 {{/if}}1.6 UDAAN Incubation Activities
 
-                                <div class="right">
-                                    <a class="btn-small" style="background-color: purple;">View</a>
-                                </div>
+
                             </div>
                         </p>
                     </li>
@@ -1129,9 +1048,7 @@
                                 {{/if}}
                                 1.7 Placement Activities
 
-                                <div class="right">
-                                    <a class="btn-small" style="background-color: purple;">View</a>
-                                </div>
+
                             </div>
                         </p>
                     </li>
@@ -1146,9 +1063,7 @@
                                 {{/if}}
                                 1.8 In-house Placement Activities(Trainings and Workshops)
 
-                                <div class="right">
-                                    <a class="btn-small" style="background-color: purple;">View</a>
-                                </div>
+
                             </div>
                         </p>
                     </li>
@@ -1164,9 +1079,7 @@
                                 {{/if}}
                                 1.9 Student Organisation Activity
 
-                                <div class="right">
-                                    <a class="btn-small" style="background-color: purple;">View</a>
-                                </div>
+
                             </div>
                         </p>
                     </li>
@@ -1181,9 +1094,7 @@
                                 {{/if}}
                                 1.10 Industrial Visit Activities
 
-                                <div class="right">
-                                    <a class="btn-small" style="background-color: purple;">View</a>
-                                </div>
+
                             </div>
                         </p>
                     </li>
@@ -1198,9 +1109,7 @@
                                 {{/if}}
                                 1.11 Admission Related Activities
 
-                                <div class="right">
-                                    <a class="btn-small" style="background-color: purple;">View</a>
-                                </div>
+
                             </div>
                         </p>
                     </li>
@@ -1215,9 +1124,7 @@
                                 {{/if}}
                                 1.12 Exam related activities(University exams Supervision)
 
-                                <div class="right">
-                                    <a class="btn-small" style="background-color: purple;">View</a>
-                                </div>
+
                             </div>
                         </p>
                     </li>
@@ -1232,9 +1139,7 @@
                                 {{/if}}
                                 1.13 Exam related activities(External)
 
-                                <div class="right">
-                                    <a class="btn-small" style="background-color: purple;">View</a>
-                                </div>
+
                             </div>
                         </p>
                     </li>
@@ -1249,9 +1154,7 @@
                                 {{/if}}
                                 1.14 Exam related activities(Assessment/Oral/Practical Exams Conducted, college level)
 
-                                <div class="right">
-                                    <a class="btn-small" style="background-color: purple;">View</a>
-                                </div>
+
                             </div>
                         </p>
                     </li>
@@ -1265,9 +1168,7 @@
                                 <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
                                 {{/if}}
                                 1.15 IT Maintenance
-                                <div class="right">
-                                    <a class="btn-small" style="background-color: purple;">View</a>
-                                </div>
+
                             </div>
                         </p>
                     </li>
@@ -1281,9 +1182,7 @@
                                 <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
                                 {{/if}}
                                 1.16 Lakshya Related Activities
-                                <div class="right">
-                                    <a class="btn-small" style="background-color: purple;">View</a>
-                                </div>
+
                             </div>
                         </p>
                     </li>
@@ -1297,9 +1196,7 @@
                                 <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
                                 {{/if}}
                                 1.17 Magazine/Newsletter Related Activities
-                                <div class="right">
-                                    <a class="btn-small" style="background-color: purple;">View</a>
-                                </div>
+
                             </div>
                         </p>
                     </li>
@@ -1313,9 +1210,7 @@
                                 <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
                                 {{/if}}
                                 1.18 Conduct Of STTP
-                                <div class="right">
-                                    <a class="btn-small" style="background-color: purple;">View</a>
-                                </div>
+
                             </div>
                         </p>
                     </li>
@@ -1329,9 +1224,7 @@
                                 <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
                                 {{/if}}
                                 1.19 Department UG Projects Undertaken
-                                <div class="right">
-                                    <a class="btn-small" style="background-color: purple;">View</a>
-                                </div>
+
                             </div>
                         </p>
                     </li>
@@ -1359,9 +1252,7 @@
                                 {{/if}}
                                 2.1 Papers Published In National Conference
 
-                                <div class="right">
-                                    <a class="btn-small" style="background-color: purple;">View</a>
-                                </div>
+
                             </div>
                         </p>
                     </li>
@@ -1376,9 +1267,7 @@
                                 {{/if}}
                                 2.2 Papers Published International Conference
 
-                                <div class="right">
-                                    <a class="btn-small" style="background-color: purple;">View</a>
-                                </div>
+
                             </div>
                         </p>
                     </li>
@@ -1393,9 +1282,7 @@
                                 {{/if}}
                                 2.3 Papers Published In Journals
 
-                                <div class="right">
-                                    <a class="btn-small" style="background-color: purple;">View</a>
-                                </div>
+
                             </div>
                         </p>
                     </li>
@@ -1410,9 +1297,7 @@
                                 {{/if}}
                                 2.4 MOOCS
 
-                                <div class="right">
-                                    <a class="btn-small" style="background-color: purple;">View</a>
-                                </div>
+
                             </div>
                         </p>
                     </li>
@@ -1427,9 +1312,7 @@
                                 {{/if}}
                                 2.5 Swayam
 
-                                <div class="right">
-                                    <a class="btn-small" style="background-color: purple;">View</a>
-                                </div>
+
                             </div>
                         </p>
                     </li>
@@ -1444,9 +1327,7 @@
                                 {{/if}}
                                 2.6 Short-Term Traning
 
-                                <div class="right">
-                                    <a class="btn-small" style="background-color: purple;">View</a>
-                                </div>
+
                             </div>
                         </p>
                     </li>
@@ -1461,9 +1342,7 @@
                                 {{/if}}
                                 2.8 Seminars
 
-                                <div class="right">
-                                    <a class="btn-small" style="background-color: purple;">View</a>
-                                </div>
+
                             </div>
                         </p>
                     </li>
@@ -1493,9 +1372,7 @@
                                 {{/if}}
                                 3.1Resource Person in STTP/Training Course/Lecture Talks
 
-                                <div class="right">
-                                    <a class="btn-small" style="background-color: purple;">View</a>
-                                </div>
+
                             </div>
                         </p>
                     </li>
@@ -1509,9 +1386,7 @@
                                 {{/if}}
                                 3.2 Contribution To Syllabus Framing
 
-                                <div class="right">
-                                    <a class="btn-small" style="background-color: purple;">View</a>
-                                </div>
+
                             </div>
                         </p>
                     </li>
@@ -1526,9 +1401,7 @@
                                 {{/if}}
                                 3.3 Member Of University Committe
 
-                                <div class="right">
-                                    <a class="btn-small" style="background-color: purple;">View</a>
-                                </div>
+
                             </div>
                         </p>
                     </li>
@@ -1543,9 +1416,7 @@
                                 {{/if}}
                                 3.4 Consultancy Assignment
 
-                                <div class="right">
-                                    <a class="btn-small" style="background-color: purple;">View</a>
-                                </div>
+
                             </div>
                         </p>
                     </li>
@@ -1559,9 +1430,7 @@
                                 <i class="fa fa-times red-text fa-lg" aria-hidden="true"></i>
                                 {{/if}} 3.5 External Projects Or Competitions Participations
 
-                                <div class="right">
-                                    <a class="btn-small" style="background-color: purple;">View</a>
-                                </div>
+
                             </div>
                         </p>
                     </li>
@@ -1570,15 +1439,16 @@
         </li>
     </ul>
 
-    <h4>HOD FORM: Part-B </h4><br>
+    <h5>HOD FORM: Part-B </h5><br>
     <div>
 
-        <h5>HOD's Feedback Form</h5>
+        <h6>HOD's Feedback Form &nbsp;
+            <a href="#" class="tooltipped" data-tooltip="4-Excellent, 3-Very Good, 2-Good, 1-Fair"><i class="fa fa-info-circle"></i></a></h6>
         <hr>
         <div class="row" id="HOD's Feedback Form">
 
             <div class="input-field col s6 ">
-                <h5>1:Openness to new policies</h5>
+                <h7>1:Openness to new policies</h7>
             </div>
 
             <div class="input-field col s6">
@@ -1609,7 +1479,7 @@
         <div class="row" id="HOD's Feedback Form">
 
             <div class="input-field col s6 ">
-                <h5>2:Quality of material uploaded on moodle and effective use of smartboard</h5>
+                <h7>2:Quality of material uploaded on moodle and effective use of smartboard</h7>
             </div>
 
             <div class="input-field col s6">
@@ -1640,7 +1510,7 @@
         <div class="row" id="HOD's Feedback Form">
 
             <div class="input-field col s6 ">
-                <h5>3:Regularity in updation of attendance, test/assignment assessment and defaulters list</h5>
+                <h7>3:Regularity in updation of attendance, test/assignment assessment and defaulters list</h7>
             </div>
 
             <div class="input-field col s6">
@@ -1671,7 +1541,7 @@
         <div class="row" id="HOD's Feedback Form">
 
             <div class="input-field col s6 ">
-                <h5>4:Efforts to improve student’s learning experience</h5>
+                <h7>4:Efforts to improve student’s learning experience</h7>
             </div>
 
             <div class="input-field col s6">
@@ -1702,13 +1572,13 @@
         <div class="row" id="HOD's Feedback Form">
 
             <div class="input-field col s6 ">
-                <h5>5:Openness to adopt/experiment new policies and potential working in a team</h5>
+                <h7>5:Openness to adopt/experiment new policies and potential working in a team</h7>
             </div>
 
             <div class="input-field col s6">
                 <p>
                     <label class="">
-                        <input name="value5" value="4" type="radio" required/>
+                        <input name="value5" value="4" type="radio" required />
                         <span>Excellent</span>
                     </label>
 
@@ -1729,18 +1599,27 @@
                 </p>
             </div>
         </div>
-
-        <div>
+        {{!-- <div>
             <p>
                 <label>
                     <input id="indeterminate-checkbox" type="checkbox" required />
                     <span>I acknowledge that above filled information is verified and justified by me and is to be kept
-                        <b>STRICTLY CONFIDENTIAL AND NOT DISCUSSED WITH FACULTY.</b></span>
+                        <b>STRICTLY CONFIDENTIAL AND NOT DISCUSSED WITH FACULTY.</span>
+                </label>
+            </p>
+        </div> --}}
+        <div>
+             <p>
+                 <label>
+                <input id="indeterminate-checkbox-overview" type="checkbox" required/>
+                 <span>I acknowledge that above filled information is verified and justified by me.</span>
                 </label>
             </p>
         </div>
-        <button class="btn waves-effect waves-light" type="submit" id="submit_btn" disabled>Submit
-        </button><br><br><br>
+        <button class="btn waves-effect waves-light" type="submit" name="action" id="submit_btn_overview" disabled>Submit
+            <i class="material-icons right">send</i>
+        </button>
+        <br><br><br>
     </div>
 </form>
 </div>
@@ -1749,5 +1628,3 @@
 <h2>Marks not submitted yet.</h2>
 {{/each}}
 </div>
-
-

@@ -3,6 +3,10 @@ const Schema = mongoose.Schema;
 
 //create Schema
 const DepartmentUGProjects = new Schema({
+    academic_year: {
+        type: Number,
+        required: true
+    },
     dept_project_role: {
         type: String,
         required: true

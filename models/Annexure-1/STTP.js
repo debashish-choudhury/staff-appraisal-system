@@ -3,6 +3,10 @@ const Schema = mongoose.Schema;
 
 //create Schema
 const STTP = new Schema({
+    academic_year: {
+        type: Number,
+        required: true
+    },
     sttp_role: {
         type: String,
         required: true

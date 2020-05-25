@@ -1,6 +1,6 @@
-<h4>Annexure 1</h4><br>
+<h5>Annexure 1</h5><br>
 <div class="container">
-<h5>1.10 Industrial Visit Activities</h5>
+<h6>1.10 Industrial Visit Activities</h6>
 <hr>
 {{#if result}}
 {{#each result}}
@@ -10,9 +10,18 @@
                 <input id="industrial-visit-role" type="text" name="industrial_visit_role" value="{{industrial_visit_role}}" class="validate" required>
                 <label for="industrial-visit-role">Role</label>
             </div>
-             <div class="input-field col s6 md5">
-                <input id="class_name" type="text" name="class_name" value="{{class_name}}" class="validate" required>
-                <label for="class_name">Class</label>
+            
+                <div class="input-field col s6">
+                <select name="class_name">
+                    <option value="{{class_name}}" disabled selected>{{class_name}}</option>
+                    <option value="FE">FE</option>
+                    <option value="SE">SE</option>
+                    <option value="TE">TE</option>
+                    <option value="BE">BE</option>
+                    
+                </select>
+                <label for="">Class</label>
+
             </div>
         </div>
 
@@ -58,7 +67,7 @@
         </div>
         <div class="row">
             <div class="input-field col s6">
-                    <textarea id="iv-description" name="iv_description" aria-valuetext="{{iv_description}}" class="materialize-textarea"></textarea>
+                    <textarea id="iv-description" name="iv_description" aria-valuetext="{{iv_description}}" class="materialize-textarea">{{iv_description}}</textarea>
                     <label for="iv-description">Description</label>
                 </div>
             <div class="input-field col s6 md5">
@@ -103,17 +112,23 @@
                     <label for="industrial-visit-role">Role</label>
                 </div>
                 <div class="input-field col s6 md5">
-                    <input id="class_name" type="text" name="class_name" value="{{editResult.class_name}}" class="validate"
-                        required>
-                    <label for="class_name">Class</label>
+                    <select name="class_name" class="validate">
+                    <option value="{{editResult.class_name}}">{{editResult.class_name}}</option>
+                    <option value="FE">FE</option>
+                    <option value="SE">SE</option>
+                    <option value="TE">TE</option>
+                    <option value="BE">BE</option>
+                    
+                </select>
+                <label for="">Class</label>
                 </div>
             </div>
 
             <div class="row">
 
                 <div class="input-field col s6">
-                    <select name="department" class="validate" required>
-                        <option value="{{editResult.department}}" disabled selected>{{editResult.department}}</option>
+                    <select name="department">
+                        <option value="{{editResult.department}}" >{{editResult.department}}</option>
                         <option value="Information Technology">Information Technology</option>
                         <option value="Computer Engineering">Computer Engineering</option>
                         <option value="Mechanical Engineering">Mechanical Engineering</option>
@@ -133,9 +148,8 @@
             <div class="row">
 
                 <div class="input-field col s6 md5">
-                    <select name="industrial_visit_organizer" required>
-                        <option value="{{editResult.industrial_visit_organizer}}" disabled selected>
-                            {{editResult.industrial_visit_organizer}}</option>
+                    <select name="industrial_visit_organizer">
+                        <option value="{{editResult.industrial_visit_organizer}}">{{editResult.industrial_visit_organizer}}</option>
                         <option value="IEEE">IEEE</option>
                         <option value="ITSA">ITSA</option>
                         <option value="TPO">TPO</option>
@@ -154,8 +168,8 @@
             </div>
             <div class="row">
                 <div class="input-field col s6">
-                    <textarea id="iv-description" name="iv_description" value="{{editResult.iv_description}}"
-                        class="materialize-textarea"></textarea>
+                    <textarea id="iv-description" name="iv_description" aria-valuetext="{{editResult.iv_description}}"
+                        class="materialize-textarea">{{editResult.iv_description}}</textarea>
                     <label for="iv-description">Description</label>
                 </div>
                 <div class="input-field col s6 md5">
@@ -195,6 +209,103 @@
     </div>
 </div>
 {{else}}
+{{#if errors}}
+<div class="row" id="industrialVisitActivities">
+    <form action="/annexure-1/industrialVisitActivities" method="post" class="col s12">
+        <div class="row">
+            <div class="input-field col s6 md5">
+                <input id="industrial-visit-role" type="text" name="industrial_visit_role" value="{{industrial_visit_role}}" class="validate" required>
+                <label for="industrial-visit-role">Role</label>
+            </div>
+             <div class="input-field col s6 md5">
+                <select name="class_name" required>
+                    <option value="{{class_name}}" selected>{{class_name}}</option>
+                    <option value="FE">FE</option>
+                    <option value="SE">SE</option>
+                    <option value="TE">TE</option>
+                    <option value="BE">BE</option>
+                    
+                </select>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="input-field col s6">
+                <select name="department">
+                    <option value="{{department}}" selected>{{department}}</option>
+                    <option value="Information Technology">Information Technology</option>
+                    <option value="Computer Engineering">Computer Engineering</option>
+                    <option value="Mechanical Engineering">Mechanical Engineering</option>
+                    <option value="Civil Engineering">Civil Engineering</option>
+                    <option value="EXTC Engineering">EXTC Engineering</option>
+                </select>
+            </div>
+            
+            <div class="input-field col s6 md5">
+                <input id="industrial-visit-days" type="number" name="industrial_visit_days" value="{{industrial_visit_days}}" class="validate" required>
+                <label for="industrial-visit-days">No. of Days</label>
+            </div>   
+            
+        </div>
+        <div class="row">
+
+           <div class="input-field col s6 md5">
+                <select name="industrial_visit_organizer">
+                    <option value="{{industrial_visit_organizer}}" selected>{{industrial_visit_organizer}}</option>
+                    <option value="IEEE">IEEE</option>
+                    <option value="ITSA">ITSA</option>
+                    <option value="TPO">TPO</option>
+                    <option value="Others">Others</option>
+                  
+                </select>
+            </div>
+            
+             <div class="input-field col s6 md5">
+                <input id="name-of-company" type="text" name="name_of_company" value="{{name_of_company}}" class="validate" required>
+                <label for="name-of-company">Name of Company visited</label>
+            </div>  
+            
+        </div>
+        <div class="row">
+            <div class="input-field col s6">
+                    <textarea id="iv-description" name="iv_description" class="materialize-textarea">{{iv_description}}</textarea>
+                    <label for="iv-description">Description</label>
+                </div>
+            <div class="input-field col s6 md5">
+                <input id="industrial-visit-hrs" type="number" name="industrial_visit_hrs" value="{{industrial_visit_hrs}}" class="validate" required>
+                <label for="industrial-visit-hrs">Duration(hours)</label>
+            </div> 
+
+
+        </div>
+        <div class="row">
+           
+             <div class="input-field col s6 md5">
+                <input id="iv-start-date" type="text" name="iv_start_date" value="{{iv_start_date}}" class="datepicker validate" required>
+                <label for="student-event-start-date">Start Date</label>
+            </div>
+            
+            <div class="input-field col s6 md5">
+                <input id="iv-end-date" type="text" name="iv_end_date" value="{{iv_end_date}}" class="datepicker validate" required>
+                <label for="student-event-end-date">End Date</label>
+            </div>
+        </div>
+        <div>
+             <p>
+                 <label>
+                <input id="indeterminate-checkbox" type="checkbox" required/>
+                 <span>I acknowledge that above filled information is verified and justified by me.</span>
+                </label>
+            </p>
+        </div>
+        <a href="/annexure-1/admissionProcessActivities" class="waves-effect waves-light btn red center">Not Applicable</a>
+        <button class="btn waves-effect waves-light" id="submit_btn" type="submit" disabled>Submit
+        </button>
+    </form>
+</div>
+</div>
+{{else}}
 <div class="row" id="industrialVisitActivities">
     <form action="/annexure-1/industrialVisitActivities" method="post" class="col s12">
         <div class="row">
@@ -203,8 +314,14 @@
                 <label for="industrial-visit-role">Role</label>
             </div>
              <div class="input-field col s6 md5">
-                <input id="class_name" type="text" name="class_name" class="validate" required>
-                <label for="class_name">Class</label>
+                <select name="class_name" required>
+                    <option value="" disabled selected>Class</option>
+                    <option value="FE">FE</option>
+                    <option value="SE">SE</option>
+                    <option value="TE">TE</option>
+                    <option value="BE">BE</option>
+                    
+                </select>
             </div>
         </div>
 
@@ -285,5 +402,6 @@
     </form>
 </div>
 </div>
+{{/if}}
 {{/if}}
 {{/if}}

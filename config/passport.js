@@ -57,7 +57,6 @@ module.exports = function (passport) {
         Hod.findOne(query, function (err, hod) {
             if (err) throw err;
             if (!hod) {
-                console.log("no hod")
                 return done(null, false, { message: 'User not found' });
             }
             bcrypt.compare(password, hod.password, function (err, isMatch) {
@@ -75,7 +74,6 @@ module.exports = function (passport) {
         Manager.findOne(query, function (err, manager) {
             if (err) throw err;
             if (!manager) {
-                console.log("no manager")
                 return done(null, false, { message: 'User not found' });
             }
             bcrypt.compare(password, manager.password, function (err, isMatch) {

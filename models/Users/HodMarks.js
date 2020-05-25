@@ -3,11 +3,19 @@ const Schema = mongoose.Schema;
 
 //create Schema
 const HodMarks = new Schema({
+    academic_year: {
+        type: Number,
+        required: true
+    },
     faculty_name: {
         type: String,
         required: true
     },
     faculty_email: {
+        type: String,
+        required: true
+    },
+    department: {
         type: String,
         required: true
     },
@@ -34,6 +42,26 @@ const HodMarks = new Schema({
     confidential: {
         type: Number,
         require: true
+    },
+    facultyAP: {
+        type: Number,
+        required: true
+    },
+    facultyLeave: {
+        type: Number,
+        required: true
+    },
+    facultyA1: {
+        type: Number,
+        required: true
+    },
+    facultyA2: {
+        type: Number,
+        required: true
+    },
+    facultyA3: {
+        type: Number,
+        required: true
     },
     user: {
         type: String,

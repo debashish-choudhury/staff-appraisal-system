@@ -3,6 +3,10 @@ const Schema = mongoose.Schema;
 
 //create Schema
 const ResourcePerson = new Schema({
+    academic_year: {
+        type: Number,
+        required: true
+    },
     topicName: {
         type: String,
         required: true

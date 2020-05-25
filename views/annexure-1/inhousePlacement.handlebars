@@ -1,6 +1,6 @@
-<h4>Annexure 1</h4><br>
+<h5>Annexure 1</h5><br>
 <div class="container">
-<h5>1.8 In-house Placement Activities(Trainings and Workshops)</h5>
+<h6>1.8 In-house Placement Activities(Trainings and Workshops)</h6>
 <hr>
 {{#if result}}
 {{#each result}}
@@ -8,7 +8,7 @@
         <div class="row">
             <div class="input-field col s6 md5">
                 <input id="trainings-and-workshops" type="text" name="trainings_and_workshops" value="{{trainings_and_workshops}}" class="validate" required>
-               <label for="trainings-and-workshops">Training Activities &nbsp; <a href="#" class="tooltipped"
+<label for="trainings-and-workshops">Training Activities &nbsp; <a href="#" class="tooltipped"
                 data-tooltip="Name of Trainings and Workshops Conducted"><i class="fa fa-info-circle"></i></a></label>
             </div>
               <div class="input-field col s6">
@@ -39,7 +39,8 @@
 
             <div class="input-field col s6 md5">
                 <input id="no-of-participants" type="number" name="no_of_participants" value="{{no_of_participants}}" class="validate" required>
-                <label for="no-of-participants">No. of Participants &nbsp; <a href="#" class="tooltipped"
+
+<label for="no-of-participants">No. of Participants &nbsp; <a href="#" class="tooltipped"
                 data-tooltip="Number of Participating students"><i class="fa fa-info-circle"></i></a></label>
             </div>
         </div>
@@ -62,7 +63,7 @@
         <div class="row">
             <div class="input-field col s6 md5">
                 <input id="trainings-and-workshops" type="text" name="trainings_and_workshops" value="{{editResult.trainings_and_workshops}}" class="validate" required>
-                <label for="trainings-and-workshops">Training Activities &nbsp; <a href="#" class="tooltipped"
+<label for="trainings-and-workshops">Training Activities &nbsp; <a href="#" class="tooltipped"
                 data-tooltip="Name of Trainings and Workshops Conducted"><i class="fa fa-info-circle"></i></a></label>
             </div>
               <div class="input-field col s6">
@@ -93,7 +94,7 @@
 
             <div class="input-field col s6 md5">
                 <input id="no-of-participants" type="number" name="no_of_participants" value="{{editResult.no_of_participants}}" class="validate" required>
-                <label for="no-of-participants">No. of Participants &nbsp; <a href="#" class="tooltipped"
+<label for="no-of-participants">No. of Participants &nbsp; <a href="#" class="tooltipped"
                 data-tooltip="Number of Participating students"><i class="fa fa-info-circle"></i></a></label>
             </div>
         </div>
@@ -112,12 +113,66 @@
 </div>
 </div>
 {{else}}
+{{#if errors}}
+<div class="row" id="in-house-placementActivities">
+    <form action="/annexure-1/inhousePlacement" method="post" class="col s12">
+        <div class="row">
+            <div class="input-field col s6 md5">
+                <input id="trainings-and-workshops" type="text" name="trainings_and_workshops" value="{{trainings_and_workshops}}" class="validate" required>
+                <label for="trainings-and-workshops">Activities conducted</label>
+            </div>
+              <div class="input-field col s6">
+                <select name="class_name">
+                    <option value="{{class_name}}" selected>{{class_name}}</option>
+                    <option value="FE">FE</option>
+                    <option value="SE">SE</option>
+                    <option value="TE">TE</option>
+                    <option value="BE">BE</option>
+                    
+                </select>
+            </div>
+        </div>
+
+        <div class="row"> 
+            
+            <div class="input-field col s6">
+                <select name="department">
+                    <option value="{{department}}" selected>{{department}}</option>
+                    <option value="Information Technology">Information Technology</option>
+                    <option value="Computer Engineering">Computer Engineering</option>
+                    <option value="Mechanical Engineering">Mechanical Engineering</option>
+                    <option value="Civil Engineering">Civil Engineering</option>
+                    <option value="EXTC Engineering">EXTC Engineering</option>
+                </select>
+            </div>
+
+            <div class="input-field col s6 md5">
+                <input id="no-of-participants" type="number" name="no_of_participants" value="{{no_of_participants}}" class="validate" required>
+                 <label for="no-of-participants">Students Participants  &nbsp; <a href="#" class="tooltipped"
+                            data-tooltip="Enter the number of Students Participated"><i class="fa fa-info-circle"></i></a></label>
+            </div>
+        </div>
+        <div>
+             <p>
+                 <label>
+                <input id="indeterminate-checkbox" type="checkbox" required/>
+                 <span>I acknowledge that above filled information is verified and justified by me.</span>
+                </label>
+            </p>
+        </div>
+        <a href="/annexure-1/studentOrganizations" class="waves-effect waves-light btn red center">Not Applicable</a>
+        <button class="btn waves-effect waves-light" id="submit_btn" type="submit" disabled>Submit
+        </button>
+    </form>
+</div>
+</div>
+{{else}}
 <div class="row" id="in-house-placementActivities">
     <form action="/annexure-1/inhousePlacement" method="post" class="col s12">
         <div class="row">
             <div class="input-field col s6 md5">
                 <input id="trainings-and-workshops" type="text" name="trainings_and_workshops" class="validate" required>
-                <label for="trainings-and-workshops">Training Activities &nbsp; <a href="#" class="tooltipped"
+<label for="trainings-and-workshops">Training Activities &nbsp; <a href="#" class="tooltipped"
                 data-tooltip="Name of Trainings and Workshops Conducted"><i class="fa fa-info-circle"></i></a></label>
             </div>
               <div class="input-field col s6">
@@ -147,7 +202,7 @@
 
             <div class="input-field col s6 md5">
                 <input id="no-of-participants" type="number" name="no_of_participants" class="validate" required>
-                <label for="no-of-participants">No. of Participants &nbsp; <a href="#" class="tooltipped"
+<label for="no-of-participants">No. of Participants &nbsp; <a href="#" class="tooltipped"
                 data-tooltip="Number of Participating students"><i class="fa fa-info-circle"></i></a></label>
             </div>
         </div>
@@ -165,5 +220,6 @@
     </form>
 </div>
 </div>
+{{/if}}
 {{/if}}
 {{/if}}

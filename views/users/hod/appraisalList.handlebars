@@ -1,19 +1,40 @@
 
-<h2>HoD Page</h2>
-<h4>Marks of each faculty assessed by HoD(module wise)</h4>
-<br><br>
+<h5>HoD Page</h5>
+<h6>Marks of each faculty assessed by HoD(module wise)</h6>
+<br>
+
+<form action="/users/hod/search" method="post">
+    <div class="row">
+        <form class="col s12">
+            <div class="row">
+                <div class="input-field col s4 l5">
+                    <input id="email" name="filterEmail" value="{{fltEmail}}" type="text">
+                    <label for="email">Email ID</label>
+                </div>
+                <div class="input-field col s4 l5">
+                    <input id="academic_year" name="academic_year" value="{{academicYear}}" type="text">
+                    <label for="academic_year">Academic Year</label>
+                </div>
+                <div class="input-field col s4 l2">
+                    <button class="btn waves-effect waves-light purple" type="submit"><i class="fa fa-search white-text" aria-hidden="true"></i>&nbsp; Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</form>
 
 <table class="highlight centered responsive-table">
     <thead>
         <tr>
-            <th>Name</th>
-            <th>Email ID</th>
-            <th>Academic</th>
-            <th>Leave</th>
-            <th>annexure 1</th>
-            <th>Academic 2</th>
-            <th>Academic 3</th>
+            <th>Faculty Name</th>
+            <th>Faculty Email ID</th>
+            <th>Academic (H.|F.)</th>
+            <th>Leave Record (H.|F.)</th>
+            <th>annexure 1 (H.|F.)</th>
+            <th>Academic 2 (H.|F.)</th>
+            <th>Academic 3 (H.|F.)</th>
             <th>Confidential</th>
+            <th>Academic Year</th>
         </tr>
     </thead>
     <tbody>
@@ -23,12 +44,13 @@
         <tr>
             <td>{{faculty_name}}</td>
             <td>{{faculty_email}}</td>
-            <td>{{academicPerformance}}</td>
-            <td>{{leaveRecord}}</td>
-            <td>{{annexure_1}}</td>
-            <td>{{annexure_2}}</td>
-            <td>{{annexure_3}}</td>
+            <td>{{academicPerformance}} | {{facultyAP}}</td>
+            <td>{{leaveRecord}} | {{facultyLeave}}</td>
+            <td>{{annexure_1}} | {{facultyA1}}</td>
+            <td>{{annexure_2}} | {{facultyA2}}</td>
+            <td>{{annexure_3}} | {{facultyA3}}</td>
             <td>{{confidential}}</td>
+            <td>{{academic_year}}</td>
         </tr>
     
     {{/each}}

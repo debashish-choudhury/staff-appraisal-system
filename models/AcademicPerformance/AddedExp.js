@@ -3,21 +3,29 @@ const Schema = mongoose.Schema;
 
 //create Schema
 const AddedExp = new Schema({
+    academic_year: {
+        type: Number,
+        required: true
+    },
     subject_name: {
         type: String,
-        required: true
+        required: true,
+        default: "-"
     },
     class: {
         type: String,
-        required: true
+        required: true,
+        default: "-"
     },
     semester: {
         type: String,
-        required: true
+        required: true,
+        default: "-",
     },
     exp_name: {
         type: String,
-        required: true
+        required: true,
+        default: "-"
     },
     user: {
         type: String,

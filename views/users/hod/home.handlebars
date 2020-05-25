@@ -1,21 +1,40 @@
-<h4>Welcome {{user.name}} to the HOD page</h4><br>
-<h3>List of faculties</h3>
+<h5>Welcome {{user.name}} to the HOD page</h5><br>
+<h6>List of faculties</h6>
 <div class="row">
 {{#each faculty}}
 
-  <div class="col s12 m4 l3">
-    <div class="card grey lighten-3">
+  {{!-- <div class="col s12 m4 l3">
+    <div class="card activator grey lighten-3">
       <div class="card-content black-text">
         <span class="card-title" style="font-size: 17px !important;"><b>{{name}}</b></span>
         <p>{{email}}</p>
         <p>Employee Type: {{type}}</p>
       </div>
-      <div class="card-action">
-        <a href="/users/hod/hodOverview/{{_id}}" class="purple-text">HoD Feedback</a>
+      <div class="card-action"> --}}
+        {{!-- <a href="/users/hod/hodOverview/{{_id}}" class="purple-text">HoD Feedback</a> --}}
+        {{!-- <a href="/users/hod/check/year/{{_id}}" class="purple-text">HoD Feedback</a>
       </div>
+      <div class="card-reveal">
+      <span class="card-title grey-text text-darken-4">{{name}}<i class="material-icons right">close</i></span>
+      <p>Do you want to delete the user? <a href="/users/hod/deleteFaculty" class="btn red">Delete</a></p>
+    </div>
+    </div>
+  </div> --}}
+
+<div class="col s12 m6 l4">
+    <div class="card grey lighten-3 activator">
+    <div class="card-content">
+      <span class="card-title activator grey-text text-darken-4" style="font-size: 17px !important;"><b>{{name}}</b><i class="fa fa-trash right purple-text fa-lg" aria-hidden="true"></i></span><br>
+      <p>{{email}}</p>
+      <p>Employee Type: {{type}}</p><hr>
+      <p><a href="/users/hod/check/year/{{_id}}" class="purple-text">HoD Feedback</a></p>
+    </div>
+    <div class="card-reveal">
+      <span class="card-title grey-text text-darken-4">{{name}}<i class="material-icons right">close</i></span>
+      <p>Do you permanently want to delete the user?<br><a href="/users/hod/deleteFaculty/{{_id}}" class="red-text">Delete User</a></p>
     </div>
   </div>
-
+</div>
 {{else}}
 </div>
 {{/each}}

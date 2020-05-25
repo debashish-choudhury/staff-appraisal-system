@@ -3,6 +3,10 @@ const Schema = mongoose.Schema;
 
 //create Schema
 const PapersPublishedJournals = new Schema({
+    academic_year: {
+        type: Number,
+        required: true
+    },
     title_of_paper_published: {
         type: String,
         required: true

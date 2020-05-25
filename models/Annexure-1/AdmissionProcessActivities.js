@@ -3,6 +3,10 @@ const Schema = mongoose.Schema;
 
 //create Schema
 const AdmissionProcessActivities = new Schema({
+    academic_year: {
+        type: Number,
+        required: true
+    },
     admission_role: {
         type: String,
         required: true

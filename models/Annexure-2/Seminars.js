@@ -3,6 +3,10 @@ const Schema = mongoose.Schema;
 
 //create Schema
 const Seminars = new Schema({
+    academic_year: {
+        type: Number,
+        required: true
+    },
     name_of_seminar: {
         type: String,
         required: true
