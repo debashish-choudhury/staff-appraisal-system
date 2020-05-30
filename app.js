@@ -24,9 +24,7 @@ const reset = require('./routes/reset');
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Load helpers
-const {
-    if_eq
-} = require('./helpers/hbs');
+const { if_eq } = require('./helpers/hbs');
 
 // Passport config
 require('./config/passport')(passport);
@@ -35,22 +33,19 @@ require('./config/passport')(passport);
 const db = require('./config/database');
 
 //connect to mongoose
-mongoose.connect(db.mongoURI, {
-    useNewUrlParser: true
-})
+mongoose.connect(db.mongoURI, { useNewUrlParser: true })
     .then(() => { console.log('Connected to MongoDB...') })
     .catch(err => console.log(err));
 
 mongoose.set('useCreateIndex', true);
+
 //load leave model
 require('./models/Leave');
 const Leave = mongoose.model('leaves');
 
 //handlebars middleware
 app.engine('handlebars', exphbs({
-    helpers: {
-        if_eq: if_eq
-    },
+    helpers: { if_eq: if_eq },
     defaultLayout: 'main'
 }));
 app.set('view engine', 'handlebars');
