@@ -57,7 +57,7 @@ router.post('/', (req, res) => {
         errors.push({ text: 'Number of Leaves cannot be less than 0' });
     }
     if (errors.length > 0) {
-        res.render('leave', {
+        res.render('leaveForm', {
             errors: errors,
             pre_casual_leave: req.body.pre_casual_leave,
             pre_outdoor_leave: req.body.pre_outdoor_leave,
