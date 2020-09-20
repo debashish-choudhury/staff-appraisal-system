@@ -36,12 +36,14 @@ PASSWD is required for password reset. A mail will be sent to user for password 
 
 ## IEEE Paper Publications
 
-### 1) VIT Vellore.
-First paper was selected in **VIT Vellore** of the topic *Study on Feasibility of Uniform Appraisal System*. Here is the link of the paper published:
+### 1) IEEE ic-ETITE, VIT Vellore.
+First paper was selected in **International Conference on Emerging Trends in
+Information Technology and Engineering, VIT Vellore** of the topic *Study on Feasibility of Uniform Appraisal System*. Here is the link of the paper published:
 https://ieeexplore.ieee.org/document/9077847
 
-### 2) Sri Eshwar College of Engineering, Coimbatore.
-Second paper was selected in **Sri Eshwar College of Engineering, Coimbatore** of the topic *Study on Semi Automation in Uniform Faculty Appraisal System*. Here is the link of the paper published:
+### 2) IEEE ICACCS, Sri Eshwar College of Engineering, Coimbatore.
+Second paper was selected in **6th International Conference on
+Advanced Computing and Communication Systems, Sri Eshwar College of Engineering, Coimbatore** of the topic *Study on Semi Automation in Uniform Faculty Appraisal System*. Here is the link of the paper published:
 https://ieeexplore.ieee.org/document/9074383
 
 
