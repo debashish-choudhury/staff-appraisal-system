@@ -312,7 +312,7 @@ router.get('/hod/appraisalList', ensureAuthenticated, (req, res) => {
                 req.flash('error_msg', 'Not Authorized');
                 res.redirect('back');
             } else {
-                HodMarks.find({})
+                HodMarks.find({ department: req.user.department })
                     .sort({ date: 'desc' })
                     .then(result => {
                         if (!result) {
