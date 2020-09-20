@@ -634,7 +634,7 @@ router.post('/seminars', (req, res) => {
     if (req.body.start_date > req.body.end_date) {
         errors.push({ text: 'End Date should not be before start date' });
     }
-    if (!req.body.duration_of_course || req.body.duration_of_course < 0) {
+    else if (!req.body.duration_of_course || req.body.duration_of_course < 0) {
         errors.push({ text: 'Duration of course cannot be less than 0' });
     }
     if (errors.length > 0) {
