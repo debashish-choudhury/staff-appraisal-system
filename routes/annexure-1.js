@@ -960,7 +960,7 @@ router.post('/culturalActivities', (req, res) => {
 router.post('/projectBasedLearning', (req, res) => {
     let errors = [];
 
-    if (req.body.pbl_start_date > req.body.pbl_end_date) {
+    if (req.body.pbl_start_date < req.body.pbl_end_date) {
         errors.push({ text: 'End Date should not be before start date' });
     }
     if (errors.length > 0) {
