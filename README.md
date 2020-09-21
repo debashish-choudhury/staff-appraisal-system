@@ -16,7 +16,7 @@ Staff Appraisal System focuses on a modular plugin system and uses NodeJs for se
 #### Manual Installation
 
 1. Download and install the latest *Node.js* version.
-2. Clone the repository and check out the master branch: `git clone https://github.com/adevade16/BEIT-PROJECT_04_Staff-Appraisal-System`
+2. Clone the repository and check out the master branch: `git clone https://github.com/deb1398/staff-appraisal-system`
 3. Enter the repository: `cd BEIT-PROJECT_04_Staff-Appraisal-System/`
 4. Install and run the app with: `npm install && npm start` \
    For **Server Only** use: `npm install && node serveronly` .
