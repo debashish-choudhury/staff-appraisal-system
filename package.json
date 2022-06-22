@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/deb1398/staff-appraisal-system#readme",
   "dependencies": {
-    "async": "^3.2.0",
+    "async": "^3.2.2",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "chart.js": "^2.9.3",
